@@ -14,7 +14,6 @@ simplejson==2.0.9
 smartypants==1.6.0.2
 uuid==1.30
 psycopg2==2.5.1
-Imaging==1.1.7
 nose==1.1.2
 versiontools==1.9.1
 statsd==0.5.1
@@ -37,8 +36,6 @@ pylint==0.26.0
 six==1.2.0
 
 djangowind==0.10.3
-sorl==3.1
-tagging==0.3-pre
 typogrify==1.0
 django-staticmedia==0.2
 django-indexer==0.2.1
