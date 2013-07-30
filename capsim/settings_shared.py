@@ -48,7 +48,7 @@ JENKINS_TASKS = (
     'django_jenkins.tasks.run_pyflakes',
 )
 PROJECT_APPS = [
-    'capsim.main',
+    'capsim.main', 'capsim.sim'
 ]
 
 ALLOWED_HOSTS = ['localhost', '.ccnmtl.columbia.edu']
@@ -118,6 +118,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'impersonate',
     'capsim.main',
+    'capsim.sim',
 ]
 
 LETTUCE_APPS = (
