@@ -34,6 +34,9 @@ logilab-common==0.59.0
 logilab-astng==0.24.1
 pylint==0.26.0
 six==1.2.0
+numpy==1.7.1
+python-dateutil==2.1
+pytz==2013b
 
 djangowind==0.10.3
 typogrify==1.0

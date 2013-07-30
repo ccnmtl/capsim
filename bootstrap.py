@@ -29,6 +29,14 @@ ret = subprocess.call(
 if ret:
     exit(ret)
 
+ret = subprocess.call(
+    [os.path.join(vedir, 'bin', 'pip'), "install", "-E", vedir,
+     "--index-url=http://pypi.ccnmtl.columbia.edu/",
+     "--requirement", os.path.join(pwd, "second.txt")])
+
+if ret:
+    exit(ret)
+
 ret = subprocess.call(["python", "virtualenv.py", "--relocatable", vedir])
 # --relocatable always complains about activate.csh, which we don't really
 # care about. but it means we need to ignore its error messages
