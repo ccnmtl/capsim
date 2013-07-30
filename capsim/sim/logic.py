@@ -1,10 +1,65 @@
 import numpy as np
 
 
+class NormalVarParams(object):
+    """ parameters for a variable with a normal distribution """
+    def __init__(self, mean, sigma):
+        self.mean = mean
+        self.sigma = sigma
+
+
+class GammaVarParams(object):
+    """ parameters for a variable with a Gamma distribution """
+
+    # remember, 'lambda' is a keyword in python, so we'll use
+    # 'llambda' instead. I think it's closely related to an alphaca.
+    def __init__(self, alpha, llambda):
+        self.alpha = alpha
+        self.llambda = llambda
+
+
+class SimParamSet(object):
+    """ bundle up the parameters that specify a simulation """
+    def __init__(self, **kwargs):
+        """
+        The original logo parameters:
+
+        number-nodes
+        agent-initial-mass-mean agent-initial-mass-sigma
+        base-output-mean base-output-sigma
+
+        recreation-activity-alpha recreation-activity-lambda
+        domestic-activity-alpha domestic-activity-lambda
+        transport-activity-alpha transport-activity-lambda
+        education-activity-alpha education-activity-lambda
+
+        food-exposure-alpha food-exposure-lambda
+        food-energy-density-alpha food-energy-density-lambda
+        food-advertising-alpha food-advertising-lambda
+        food-convenience-alpha food-convenience-lambda
+        food-literacy-alpha food-literacy-lambda
+        """
+        self.number_agents = kwargs.get('number_agents', 1)
+        assert type(self.number_agents) == int
+        self.grid_size = kwargs.get('grid_size', 1)
+        assert type(self.grid_size) == int
+        assert self.grid_size > 0
+
+        self.agent_initial_mass = NormalVarParams(
+            kwargs.get('agent_initial_mass_mean', 100.),
+            kwargs.get('agent_initial_mass_sigma', 20.))
+        self.agent_initial_mass = NormalVarParams(
+            kwargs.get('agent_base_output_mean', 100.),
+            kwargs.get('agent_base_output_sigma', 20.))
+
+        self.recreation_activity = GammaVarParams(
+            kwargs.get('recreation_activity_alpha', 1.),
+            kwargs.get('recreation_activity_lambda', 1.))
+
+
 class Simulation(object):
-    def __init__(self, number_agents=1, number_patches=1):
-        self.number_agents = number_agents
-        self.number_patches = number_patches
+    def __init__(self, **kwargs):
+        self.params = SimParamSet(**kwargs)
         self.setup()
 
     def setup(self):
@@ -13,10 +68,10 @@ class Simulation(object):
         self.setup_network()
 
     def setup_agents(self):
-        self.agents_bmi = np.arange(self.number_agents)
+        self.agents_bmi = np.arange(self.params.number_agents)
 
     def setup_patches(self):
-        self.patches_food_exposure = np.arange(self.number_patches)
+        self.patches_food_exposure = np.arange(self.params.grid_size)
 
     def setup_network(self):
         pass

@@ -1,5 +1,11 @@
 from unittest import TestCase
-from capsim.sim.logic import Simulation
+from capsim.sim.logic import SimParamSet, Simulation
+
+
+class SimParamSetTest(TestCase):
+    def test_creation_defaults(self):
+        s = SimParamSet()
+        self.assertTrue(s is not None)
 
 
 class SimTest(TestCase):
@@ -12,5 +18,5 @@ class SimTest(TestCase):
         self.assertEquals(len(s.agents_bmi), 10)
 
     def test_setup_patches(self):
-        s = Simulation(number_patches=10)
+        s = Simulation(grid_size=10)
         self.assertEquals(len(s.patches_food_exposure), 10)

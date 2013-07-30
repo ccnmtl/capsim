@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 
-class BasicTest(TestCase):
+class BasicViewTest(TestCase):
     def setUp(self):
         self.c = Client()
 
