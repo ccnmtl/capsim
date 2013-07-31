@@ -65,11 +65,28 @@ class Simulation(object):
         """
         self.ticks += 1
 
+        # temporary agent environment variables
+        recreation = self.recreation_activity[self.agents_row, self.agents_col]
+        domestic = self.domestic_activity[self.agents_row, self.agents_col]
+        transport = self.transport_activity[self.agents_row, self.agents_col]
+        education = self.education_activity[self.agents_row, self.agents_col]
+
+        # values that need to be updated:
+        # * friend_output
+
+        self.physical_activity = calculate_physical_activity(
+            recreation, domestic, transport, education)
+
         self.total_output = calculate_total_output(
             self.agents_base_output,
             self.physical_activity, self.params.gamma_5,
             self.friend_output, self.params.gamma_6,
             self.params.sigma_2)
+
+        # values that need to be updated:
+        # * force_of_habit
+        # * friend_input
+        # * c_control
 
         self.input = calculate_input(
             self.total_output,
@@ -81,6 +98,37 @@ class Simulation(object):
         self.agents_mass = calculate_mass(
             self.agents_mass, self.input,
             self.total_output, self.params.gamma_1)
+
+
+def calculate_physical_activity(recreation_activity, domestic_activity,
+                                transport_activity, education_activity):
+    """
+    to-report physical-activity ;; turtle-procedure
+      report sigmoid (10 * activity-sum)
+    end
+    """
+    return sigmoid(
+        10. * activity_sum(
+            recreation_activity, domestic_activity,
+            transport_activity, education_activity))
+
+
+def activity_sum(recreation_activity, domestic_activity,
+                 transport_activity, education_activity):
+    """
+    to-report activity-sum
+      report sum map minus-half (list recreation-activity domestic-activity
+                                     transport-activity education-activity)
+    end
+
+    to-report minus-half [x]
+      report x - 0.5
+    end
+    """
+    return ((recreation_activity - 0.5)
+            + (domestic_activity - 0.5)
+            + (transport_activity - 0.5)
+            + (education_activity - 0.5))
 
 
 def calculate_mass(mass, input, total_output, gamma_1):
