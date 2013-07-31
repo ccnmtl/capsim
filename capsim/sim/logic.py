@@ -36,16 +36,19 @@ class Simulation(object):
         self.friend_output = np.zeros(n)
 
     def setup_patches(self):
-        self.recreation_activity = np.arange(self.params.grid_size)
-        self.domestic_activity = np.arange(self.params.grid_size)
-        self.transport_activity = np.arange(self.params.grid_size)
-        self.education_activity = np.arange(self.params.grid_size)
+        n = self.params.grid_size
+        shape = (n, n)
+        p = self.params
+        self.recreation_activity = p.recreation_activity.generate(shape)
+        self.domestic_activity = p.domestic_activity.generate(shape)
+        self.transport_activity = p.transport_activity.generate(shape)
+        self.education_activity = p.education_activity.generate(shape)
 
-        self.food_exposure = np.arange(self.params.grid_size)
-        self.energy_density = np.arange(self.params.grid_size)
-        self.food_advertising = np.arange(self.params.grid_size)
-        self.food_convenience = np.arange(self.params.grid_size)
-        self.food_literacy = np.arange(self.params.grid_size)
+        self.food_exposure = p.food_exposure.generate(shape)
+        self.energy_density = p.energy_density.generate(shape)
+        self.food_advertising = p.food_advertising.generate(shape)
+        self.food_convenience = p.food_convenience.generate(shape)
+        self.food_literacy = p.food_literacy.generate(shape)
 
     def setup_network(self):
         # make an adjacency matrix

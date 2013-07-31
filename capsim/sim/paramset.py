@@ -20,6 +20,9 @@ class GammaVarParams(object):
         self.alpha = alpha
         self.llambda = llambda
 
+    def generate(self, shape):
+        return np.random.gamma(self.alpha, self.llambda, shape)
+
 
 class SimParamSet(object):
     """ bundle up the parameters that specify a simulation """
