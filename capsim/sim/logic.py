@@ -23,8 +23,8 @@ class Simulation(object):
         self.agents_base_output = self.params.agent_base_output.generate(shape)
 
         # randomly position them on the grid
-        self.agents_row = np.arange(n)
-        self.agents_col = np.arange(n)
+        self.agents_row = np.random.randint(self.params.grid_size, size=n)
+        self.agents_col = np.random.randint(self.params.grid_size, size=n)
 
         # state variables that will be calculated each turn:
         self.input = np.zeros(n)
