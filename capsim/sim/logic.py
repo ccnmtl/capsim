@@ -22,6 +22,8 @@ class SimParamSet(object):
     """ bundle up the parameters that specify a simulation """
     def __init__(self, **kwargs):
         """
+        Initialize a ParameterSet
+
         The original logo parameters:
 
         number-nodes
@@ -55,6 +57,31 @@ class SimParamSet(object):
         self.recreation_activity = GammaVarParams(
             kwargs.get('recreation_activity_alpha', 1.),
             kwargs.get('recreation_activity_lambda', 1.))
+        self.domestic_activity = GammaVarParams(
+            kwargs.get('domestic_activity_alpha', 1.),
+            kwargs.get('domestic_activity_lambda', 1.))
+        self.transport_activity = GammaVarParams(
+            kwargs.get('transport_activity_alpha', 1.),
+            kwargs.get('transport_activity_lambda', 1.))
+        self.education_activity = GammaVarParams(
+            kwargs.get('education_activity_alpha', 1.),
+            kwargs.get('education_activity_lambda', 1.))
+
+        self.food_exposure = GammaVarParams(
+            kwargs.get('food_exposure_alpha', 1.),
+            kwargs.get('food_exposure_lambda', 1.))
+        self.energy_density = GammaVarParams(
+            kwargs.get('food_energy_density_alpha', 1.),
+            kwargs.get('food_energy_density_lambda', 1.))
+        self.food_advertising = GammaVarParams(
+            kwargs.get('food_advertising_alpha', 1.),
+            kwargs.get('food_advertising_lambda', 1.))
+        self.food_convenience = GammaVarParams(
+            kwargs.get('food_convenience_alpha', 1.),
+            kwargs.get('food_convenience_lambda', 1.))
+        self.food_literacy = GammaVarParams(
+            kwargs.get('food_literacy_alpha', 1.),
+            kwargs.get('food_literacy_lambda', 1.))
 
 
 class Simulation(object):
@@ -68,13 +95,24 @@ class Simulation(object):
         self.setup_network()
 
     def setup_agents(self):
-        self.agents_bmi = np.arange(self.params.number_agents)
+        self.agents_mass = np.arange(self.params.number_agents)
+        self.agents_base_output = np.arange(self.params.number_agents)
 
     def setup_patches(self):
-        self.patches_food_exposure = np.arange(self.params.grid_size)
+        self.recreation_activity = np.arange(self.params.grid_size)
+        self.domestic_activity = np.arange(self.params.grid_size)
+        self.transport_activity = np.arange(self.params.grid_size)
+        self.education_activity = np.arange(self.params.grid_size)
+
+        self.food_exposure = np.arange(self.params.grid_size)
+        self.energy_density = np.arange(self.params.grid_size)
+        self.food_advertising = np.arange(self.params.grid_size)
+        self.food_convenience = np.arange(self.params.grid_size)
+        self.food_literacy = np.arange(self.params.grid_size)
 
     def setup_network(self):
         pass
 
     def tick(self):
+        """ each tick of the clock """
         pass
