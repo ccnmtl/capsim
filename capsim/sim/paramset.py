@@ -53,6 +53,13 @@ class SimParamSet(object):
         assert type(self.grid_size) == int
         assert self.grid_size > 0
 
+        self.gamma_1 = kwargs.get('gamma_1', 1.)
+        self.gamma_2 = kwargs.get('gamma_2', 1.)
+        self.gamma_3 = kwargs.get('gamma_3', 1.)
+        self.gamma_4 = kwargs.get('gamma_4', 1.)
+        self.gamma_5 = kwargs.get('gamma_5', 1.)
+        self.gamma_6 = kwargs.get('gamma_6', 1.)
+
         self.agent_initial_mass = NormalVarParams(
             kwargs.get('agent_initial_mass_mean', 100.),
             kwargs.get('agent_initial_mass_sigma', 20.))
