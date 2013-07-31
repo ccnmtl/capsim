@@ -1,8 +1,14 @@
+import numpy as np
+
+
 class NormalVarParams(object):
     """ parameters for a variable with a normal distribution """
     def __init__(self, mean, sigma):
         self.mean = mean
         self.sigma = sigma
+
+    def generate(self, shape):
+        return np.random.normal(self.mean, self.sigma, shape)
 
 
 class GammaVarParams(object):
@@ -47,35 +53,35 @@ class SimParamSet(object):
         self.agent_initial_mass = NormalVarParams(
             kwargs.get('agent_initial_mass_mean', 100.),
             kwargs.get('agent_initial_mass_sigma', 20.))
-        self.agent_initial_mass = NormalVarParams(
+        self.agent_base_output = NormalVarParams(
             kwargs.get('agent_base_output_mean', 100.),
-            kwargs.get('agent_base_output_sigma', 20.))
+            kwargs.get('agent_base_output_sigma', 5.))
 
         self.recreation_activity = GammaVarParams(
-            kwargs.get('recreation_activity_alpha', 1.),
-            kwargs.get('recreation_activity_lambda', 1.))
+            kwargs.get('recreation_activity_alpha', 0.5),
+            kwargs.get('recreation_activity_lambda', 0.1))
         self.domestic_activity = GammaVarParams(
-            kwargs.get('domestic_activity_alpha', 1.),
-            kwargs.get('domestic_activity_lambda', 1.))
+            kwargs.get('domestic_activity_alpha', 0.5),
+            kwargs.get('domestic_activity_lambda', 0.1))
         self.transport_activity = GammaVarParams(
-            kwargs.get('transport_activity_alpha', 1.),
-            kwargs.get('transport_activity_lambda', 1.))
+            kwargs.get('transport_activity_alpha', 0.5),
+            kwargs.get('transport_activity_lambda', 0.1))
         self.education_activity = GammaVarParams(
-            kwargs.get('education_activity_alpha', 1.),
-            kwargs.get('education_activity_lambda', 1.))
+            kwargs.get('education_activity_alpha', 0.5),
+            kwargs.get('education_activity_lambda', 0.1))
 
         self.food_exposure = GammaVarParams(
-            kwargs.get('food_exposure_alpha', 1.),
-            kwargs.get('food_exposure_lambda', 1.))
+            kwargs.get('food_exposure_alpha', 0.5),
+            kwargs.get('food_exposure_lambda', 0.1))
         self.energy_density = GammaVarParams(
-            kwargs.get('food_energy_density_alpha', 1.),
-            kwargs.get('food_energy_density_lambda', 1.))
+            kwargs.get('food_energy_density_alpha', 0.5),
+            kwargs.get('food_energy_density_lambda', 0.1))
         self.food_advertising = GammaVarParams(
-            kwargs.get('food_advertising_alpha', 1.),
-            kwargs.get('food_advertising_lambda', 1.))
+            kwargs.get('food_advertising_alpha', 0.5),
+            kwargs.get('food_advertising_lambda', 0.1))
         self.food_convenience = GammaVarParams(
-            kwargs.get('food_convenience_alpha', 1.),
-            kwargs.get('food_convenience_lambda', 1.))
+            kwargs.get('food_convenience_alpha', 0.5),
+            kwargs.get('food_convenience_lambda', 0.1))
         self.food_literacy = GammaVarParams(
-            kwargs.get('food_literacy_alpha', 1.),
-            kwargs.get('food_literacy_lambda', 1.))
+            kwargs.get('food_literacy_alpha', 0.5),
+            kwargs.get('food_literacy_lambda', 0.1))

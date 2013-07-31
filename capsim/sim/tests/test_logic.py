@@ -30,3 +30,21 @@ class SimTest(TestCase):
         self.assertEquals(len(s.food_advertising), 10)
         self.assertEquals(len(s.food_convenience), 10)
         self.assertEquals(len(s.food_literacy), 10)
+
+    def test_setup_network(self):
+        s = Simulation(number_agents=10)
+        self.assertEquals(s.neighbors.shape, (10, 10))
+
+    def test_network_no_self_loops(self):
+        """ an agent can't have itself as a neighbor.
+
+        this means zeros in the adjacency matrix"""
+        s = Simulation(number_agents=10)
+        for i in range(10):
+            self.assertEquals(s.neighbors[i][i], 0)
+
+    def test_tick(self):
+        s = Simulation()
+        self.assertEqual(s.ticks, 0)
+        s.tick()
+        self.assertEqual(s.ticks, 1)
