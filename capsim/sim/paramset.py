@@ -60,6 +60,9 @@ class SimParamSet(object):
         self.gamma_5 = kwargs.get('gamma_5', 1.)
         self.gamma_6 = kwargs.get('gamma_6', 1.)
 
+        self.sigma_1 = kwargs.get('sigma_1', 6.2)
+        self.sigma_2 = kwargs.get('sigma_2', 5.)
+
         self.agent_initial_mass = NormalVarParams(
             kwargs.get('agent_initial_mass_mean', 100.),
             kwargs.get('agent_initial_mass_sigma', 20.))
