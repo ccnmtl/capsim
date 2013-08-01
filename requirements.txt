@@ -37,6 +37,7 @@ six==1.2.0
 numpy==1.7.1
 python-dateutil==2.1
 pytz==2013b
+networkx==1.8
 
 djangowind==0.10.3
 typogrify==1.0
