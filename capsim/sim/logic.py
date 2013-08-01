@@ -77,9 +77,11 @@ class Simulation(object):
                                                  self.agents_col]
         food_convenience = self.food_convenience[self.agents_row,
                                                  self.agents_col]
+        food_literacy = self.food_literacy[self.agents_row, self.agents_col]
 
         # values that need to be updated:
         # * friend_output
+        # * friend_input
 
         self.physical_activity = calculate_physical_activity(
             recreation, domestic, transport, education)
@@ -90,13 +92,11 @@ class Simulation(object):
             self.friend_output, self.params.gamma_6,
             self.params.sigma_2)
 
-        # values that need to be updated:
-        # * friend_input
-        # * c_control
-
         self.force_of_habit = calculate_force_of_habit(
             food_exposure, energy_density,
             food_advertising, food_convenience)
+
+        self.c_control = calculate_c_control(food_literacy)
 
         self.input = calculate_input(
             self.total_output,
@@ -108,6 +108,15 @@ class Simulation(object):
         self.agents_mass = calculate_mass(
             self.agents_mass, self.input,
             self.total_output, self.params.gamma_1)
+
+
+def calculate_c_control(food_literacy):
+    """
+    to-report c-control ;; turtle procedure
+     report sigmoid (10 * (food-literacy - 0.5))
+    end
+    """
+    return sigmoid(10. * (food_literacy - 0.5))
 
 
 def calculate_force_of_habit(food_exposure, energy_density,
