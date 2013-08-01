@@ -47,7 +47,7 @@ class SimParamSet(object):
         food-convenience-alpha food-convenience-lambda
         food-literacy-alpha food-literacy-lambda
         """
-        self.number_agents = kwargs.get('number_agents', 1)
+        self.number_agents = kwargs.get('number_agents', 4)
         assert type(self.number_agents) == int
         self.grid_size = kwargs.get('grid_size', 1)
         assert type(self.grid_size) == int

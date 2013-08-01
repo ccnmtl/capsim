@@ -1,3 +1,4 @@
+import networkx as nx
 from unittest import TestCase
 from capsim.sim.logic import SimParamSet, Simulation
 
@@ -34,15 +35,16 @@ class SimTest(TestCase):
 
     def test_setup_network(self):
         s = Simulation(number_agents=10)
-        self.assertEquals(s.neighbors.shape, (10, 10))
+        self.assertEquals(nx.to_numpy_matrix(s.neighbors).shape, (10, 10))
 
     def test_network_no_self_loops(self):
         """ an agent can't have itself as a neighbor.
 
         this means zeros in the adjacency matrix"""
         s = Simulation(number_agents=10)
+        neighbors = nx.to_numpy_matrix(s.neighbors).tolist()
         for i in range(10):
-            self.assertEquals(s.neighbors[i][i], 0)
+            self.assertEquals(neighbors[i][i], 0)
 
     def test_tick(self):
         s = Simulation()

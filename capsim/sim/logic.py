@@ -1,4 +1,5 @@
 import numpy as np
+import networkx as nx
 from .paramset import SimParamSet
 
 
@@ -53,8 +54,10 @@ class Simulation(object):
     def setup_network(self):
         # make an adjacency matrix
         n = self.params.number_agents
-        self.neighbors = np.zeros(n * n).reshape((n, n))
-        # fill it in
+        # make a random graph of links, all nodes have
+        # 3 neighbors. will want to add more controls
+        # here later.
+        self.neighbors = nx.random_regular_graph(3, n)
 
     def tick(self):
         """ each tick of the clock
@@ -108,6 +111,46 @@ class Simulation(object):
         self.agents_mass = calculate_mass(
             self.agents_mass, self.input,
             self.total_output, self.params.gamma_1)
+
+
+def calculate_friend_input():
+    """
+    to-report friend-input ;; turtle-procedure
+      report sigmoid (10 * (network-input-percent - 0.5)) - 0.5
+    end
+    """
+    return sigmoid(10. * (network_input_percent() - 0.5)) - 0.5
+
+
+def network_input_percent():
+    """
+    percentage of neighbors who have a higher input than the agent
+
+    to-report network-input-percent ;; turtle procedure
+      let my-input input
+      ifelse empty? [input] of link-neighbors
+      [report 0.0]
+      [report (count link-neighbors with [input >= my-input])
+               / (count link-neighbors)]
+    end
+    """
+    
+    
+
+def calculate_friend_output():
+    """
+    to-report friend-output
+      report sigmoid (10 * (network-output-percent - 0.50)) - 0.50
+    end
+
+    to-report network-output-percent ;; turtle procedure
+      let my-output total-output
+      ifelse empty? [total-output] of link-neighbors
+      [report 0.0]
+      [report (count link-neighbors with [total-output >= my-output])
+               / (count link-neighbors)]
+    end
+    """
 
 
 def calculate_c_control(food_literacy):
