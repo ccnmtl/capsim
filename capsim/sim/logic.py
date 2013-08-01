@@ -82,9 +82,10 @@ class Simulation(object):
                                                  self.agents_col]
         food_literacy = self.food_literacy[self.agents_row, self.agents_col]
 
-        # values that need to be updated:
-        # * friend_output
-        # * friend_input
+        # some circular stuff here. need to re-think
+        self.friend_input = calculate_friend_input(self.input, self.neighbors)
+        self.friend_output = calculate_friend_output(
+            self.total_output, self.neighbors)
 
         self.physical_activity = calculate_physical_activity(
             recreation, domestic, transport, education)
@@ -113,16 +114,16 @@ class Simulation(object):
             self.total_output, self.params.gamma_1)
 
 
-def calculate_friend_input():
+def calculate_friend_input(input, neighbors):
     """
     to-report friend-input ;; turtle-procedure
       report sigmoid (10 * (network-input-percent - 0.5)) - 0.5
     end
     """
-    return sigmoid(10. * (network_input_percent() - 0.5)) - 0.5
+    return sigmoid(10. * (network_input_percent(input, neighbors) - 0.5)) - 0.5
 
 
-def network_input_percent():
+def network_input_percent(input, neighbors):
     """
     percentage of neighbors who have a higher input than the agent
 
@@ -134,15 +135,37 @@ def network_input_percent():
                / (count link-neighbors)]
     end
     """
-    
-    
+    return (count_neighbors_greater(neighbors, input)
+            / count_neighbors(neighbors))
 
-def calculate_friend_output():
+
+def count_neighbors_greater(neighbors, a):
+    """ returns count of neighbors that are >= than each agent in array a """
+    out = np.zeros(a.shape)
+    for i in range(len(a)):
+        out[i] = len(np.where(a[[neighbors.neighbors(i)]] >= a[i]))
+    return out
+
+
+def count_neighbors(neighbors):
+    """ takes a nx.Graph and returns list np.array of # neighbors
+    basically, the degrees of each """
+    dlist = np.array(list(neighbors.degree_iter()))
+    return dlist.T[1]
+
+
+def calculate_friend_output(output, neighbors):
     """
     to-report friend-output
       report sigmoid (10 * (network-output-percent - 0.50)) - 0.50
     end
+    """
+    return (sigmoid(10. * (network_input_percent(output, neighbors) - 0.5))
+            - 0.5)
 
+
+def network_output_percent(output, neighbors):
+    """
     to-report network-output-percent ;; turtle procedure
       let my-output total-output
       ifelse empty? [total-output] of link-neighbors
@@ -151,6 +174,8 @@ def calculate_friend_output():
                / (count link-neighbors)]
     end
     """
+    return (count_neighbors_greater(neighbors, output)
+            / count_neighbors(neighbors))
 
 
 def calculate_c_control(food_literacy):
