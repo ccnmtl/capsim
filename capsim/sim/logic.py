@@ -71,6 +71,13 @@ class Simulation(object):
         transport = self.transport_activity[self.agents_row, self.agents_col]
         education = self.education_activity[self.agents_row, self.agents_col]
 
+        food_exposure = self.food_exposure[self.agents_row, self.agents_col]
+        energy_density = self.energy_density[self.agents_row, self.agents_col]
+        food_advertising = self.food_advertising[self.agents_row,
+                                                 self.agents_col]
+        food_convenience = self.food_convenience[self.agents_row,
+                                                 self.agents_col]
+
         # values that need to be updated:
         # * friend_output
 
@@ -84,9 +91,12 @@ class Simulation(object):
             self.params.sigma_2)
 
         # values that need to be updated:
-        # * force_of_habit
         # * friend_input
         # * c_control
+
+        self.force_of_habit = calculate_force_of_habit(
+            food_exposure, energy_density,
+            food_advertising, food_convenience)
 
         self.input = calculate_input(
             self.total_output,
@@ -98,6 +108,31 @@ class Simulation(object):
         self.agents_mass = calculate_mass(
             self.agents_mass, self.input,
             self.total_output, self.params.gamma_1)
+
+
+def calculate_force_of_habit(food_exposure, energy_density,
+                             food_advertising, food_convenience):
+    """
+    to-report force-of-habit ;; turtle-procedure
+      report sigmoid (10 * food-sum)
+    end
+    """
+    return sigmoid(10. * food_sum(food_exposure, energy_density,
+                                  food_advertising, food_convenience))
+
+
+def food_sum(food_exposure, energy_density,
+             food_advertising, food_convenience):
+    """
+    to-report food-sum
+      report sum map minus-half (list food-exposure food-energy-density
+                                      food-advertising food-convenience)
+    end
+    """
+    return ((food_exposure - 0.5)
+            + (energy_density - 0.5)
+            + (food_advertising - 0.5)
+            + (food_convenience - 0.5))
 
 
 def calculate_physical_activity(recreation_activity, domestic_activity,
