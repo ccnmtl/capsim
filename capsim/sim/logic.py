@@ -3,6 +3,10 @@ import networkx as nx
 from .paramset import SimParamSet
 
 
+# some constants (probably want to turn these into parameters eventually)
+NUM_NEIGHBORS = 3
+
+
 class Simulation(object):
     def __init__(self, **kwargs):
         self.params = SimParamSet(**kwargs)
@@ -55,9 +59,9 @@ class Simulation(object):
         # make an adjacency matrix
         n = self.params.number_agents
         # make a random graph of links, all nodes have
-        # 3 neighbors. will want to add more controls
+        # a fixed number of neighbors. will want to add more controls
         # here later.
-        self.neighbors = nx.random_regular_graph(3, n)
+        self.neighbors = nx.random_regular_graph(NUM_NEIGHBORS, n)
 
     def tick(self):
         """ each tick of the clock

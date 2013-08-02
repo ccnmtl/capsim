@@ -24,77 +24,74 @@ class GammaVarParams(object):
         return np.random.gamma(self.alpha, self.llambda, shape)
 
 
+# let's make some constants for defaults
+NUM_AGENTS = 4
+GRID_SIZE = 1
+DEFAULT_GAMMA = 1.
+INITIAL_MASS_MEAN = 100.
+INITIAL_MASS_SIGMA = 20.
+BASE_OUTPUT_MEAN = 100.
+BASE_OUTPUT_SIGMA = 5.
+SIGMA_1 = 6.2
+SIGMA_2 = 5.
+DEFAULT_ALPHA = 0.5
+DEFAULT_LAMBDA = 0.1
+
+
 class SimParamSet(object):
     """ bundle up the parameters that specify a simulation """
     def __init__(self, **kwargs):
         """
         Initialize a ParameterSet
-
-        The original logo parameters:
-
-        number-nodes
-        agent-initial-mass-mean agent-initial-mass-sigma
-        base-output-mean base-output-sigma
-
-        recreation-activity-alpha recreation-activity-lambda
-        domestic-activity-alpha domestic-activity-lambda
-        transport-activity-alpha transport-activity-lambda
-        education-activity-alpha education-activity-lambda
-
-        food-exposure-alpha food-exposure-lambda
-        food-energy-density-alpha food-energy-density-lambda
-        food-advertising-alpha food-advertising-lambda
-        food-convenience-alpha food-convenience-lambda
-        food-literacy-alpha food-literacy-lambda
         """
-        self.number_agents = kwargs.get('number_agents', 4)
+        self.number_agents = kwargs.get('number_agents', NUM_AGENTS)
         assert type(self.number_agents) == int
-        self.grid_size = kwargs.get('grid_size', 1)
+        self.grid_size = kwargs.get('grid_size', GRID_SIZE)
         assert type(self.grid_size) == int
         assert self.grid_size > 0
 
-        self.gamma_1 = kwargs.get('gamma_1', 1.)
-        self.gamma_2 = kwargs.get('gamma_2', 1.)
-        self.gamma_3 = kwargs.get('gamma_3', 1.)
-        self.gamma_4 = kwargs.get('gamma_4', 1.)
-        self.gamma_5 = kwargs.get('gamma_5', 1.)
-        self.gamma_6 = kwargs.get('gamma_6', 1.)
+        self.gamma_1 = kwargs.get('gamma_1', DEFAULT_GAMMA)
+        self.gamma_2 = kwargs.get('gamma_2', DEFAULT_GAMMA)
+        self.gamma_3 = kwargs.get('gamma_3', DEFAULT_GAMMA)
+        self.gamma_4 = kwargs.get('gamma_4', DEFAULT_GAMMA)
+        self.gamma_5 = kwargs.get('gamma_5', DEFAULT_GAMMA)
+        self.gamma_6 = kwargs.get('gamma_6', DEFAULT_GAMMA)
 
-        self.sigma_1 = kwargs.get('sigma_1', 6.2)
-        self.sigma_2 = kwargs.get('sigma_2', 5.)
+        self.sigma_1 = kwargs.get('sigma_1', SIGMA_1)
+        self.sigma_2 = kwargs.get('sigma_2', SIGMA_2)
 
         self.agent_initial_mass = NormalVarParams(
-            kwargs.get('agent_initial_mass_mean', 100.),
-            kwargs.get('agent_initial_mass_sigma', 20.))
+            kwargs.get('agent_initial_mass_mean', INITIAL_MASS_MEAN),
+            kwargs.get('agent_initial_mass_sigma', INITIAL_MASS_SIGMA))
         self.agent_base_output = NormalVarParams(
-            kwargs.get('agent_base_output_mean', 100.),
-            kwargs.get('agent_base_output_sigma', 5.))
+            kwargs.get('agent_base_output_mean', BASE_OUTPUT_MEAN),
+            kwargs.get('agent_base_output_sigma', BASE_OUTPUT_SIGMA))
 
         self.recreation_activity = GammaVarParams(
-            kwargs.get('recreation_activity_alpha', 0.5),
-            kwargs.get('recreation_activity_lambda', 0.1))
+            kwargs.get('recreation_activity_alpha', DEFAULT_ALPHA),
+            kwargs.get('recreation_activity_lambda', DEFAULT_LAMBDA))
         self.domestic_activity = GammaVarParams(
-            kwargs.get('domestic_activity_alpha', 0.5),
-            kwargs.get('domestic_activity_lambda', 0.1))
+            kwargs.get('domestic_activity_alpha', DEFAULT_ALPHA),
+            kwargs.get('domestic_activity_lambda', DEFAULT_LAMBDA))
         self.transport_activity = GammaVarParams(
-            kwargs.get('transport_activity_alpha', 0.5),
-            kwargs.get('transport_activity_lambda', 0.1))
+            kwargs.get('transport_activity_alpha', DEFAULT_ALPHA),
+            kwargs.get('transport_activity_lambda', DEFAULT_LAMBDA))
         self.education_activity = GammaVarParams(
-            kwargs.get('education_activity_alpha', 0.5),
-            kwargs.get('education_activity_lambda', 0.1))
+            kwargs.get('education_activity_alpha', DEFAULT_ALPHA),
+            kwargs.get('education_activity_lambda', DEFAULT_LAMBDA))
 
         self.food_exposure = GammaVarParams(
-            kwargs.get('food_exposure_alpha', 0.5),
-            kwargs.get('food_exposure_lambda', 0.1))
+            kwargs.get('food_exposure_alpha', DEFAULT_ALPHA),
+            kwargs.get('food_exposure_lambda', DEFAULT_LAMBDA))
         self.energy_density = GammaVarParams(
-            kwargs.get('food_energy_density_alpha', 0.5),
-            kwargs.get('food_energy_density_lambda', 0.1))
+            kwargs.get('food_energy_density_alpha', DEFAULT_ALPHA),
+            kwargs.get('food_energy_density_lambda', DEFAULT_LAMBDA))
         self.food_advertising = GammaVarParams(
-            kwargs.get('food_advertising_alpha', 0.5),
-            kwargs.get('food_advertising_lambda', 0.1))
+            kwargs.get('food_advertising_alpha', DEFAULT_ALPHA),
+            kwargs.get('food_advertising_lambda', DEFAULT_LAMBDA))
         self.food_convenience = GammaVarParams(
-            kwargs.get('food_convenience_alpha', 0.5),
-            kwargs.get('food_convenience_lambda', 0.1))
+            kwargs.get('food_convenience_alpha', DEFAULT_ALPHA),
+            kwargs.get('food_convenience_lambda', DEFAULT_LAMBDA))
         self.food_literacy = GammaVarParams(
-            kwargs.get('food_literacy_alpha', 0.5),
-            kwargs.get('food_literacy_lambda', 0.1))
+            kwargs.get('food_literacy_alpha', DEFAULT_ALPHA),
+            kwargs.get('food_literacy_lambda', DEFAULT_LAMBDA))
