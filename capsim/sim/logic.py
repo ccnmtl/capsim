@@ -278,8 +278,6 @@ def calculate_input(total_output, force_of_habit, gamma_2,
                     friend_input, gamma_3,
                     c_control, gamma_4, sigma_1):
     """
-    original netlogo:
-
     to-report calculate-input ;; turtle-procedure
       report total-output + force-of-habit * gamma2 + friend-input * gamma3
                           - c-control * gamma4 + random-normal 0 sigma1
@@ -295,8 +293,6 @@ def calculate_input(total_output, force_of_habit, gamma_2,
 def calculate_total_output(base_output, physical_activity, gamma_5,
                            friend_output, gamma_6, sigma_2):
     """
-    original netlogo:
-
     to-report calculate-total-output ;; turtle procedure
       report base-output + physical-activity * gamma5 + friend-output * gamma6
              + random-normal 0 sigma2

@@ -4,8 +4,8 @@ import numpy as np
 class NormalVarParams(object):
     """ parameters for a variable with a normal distribution """
     def __init__(self, mean, sigma):
-        self.mean = mean
-        self.sigma = sigma
+        self.mean = float(mean)
+        self.sigma = float(sigma)
 
     def generate(self, shape):
         return np.random.normal(self.mean, self.sigma, shape)
@@ -17,8 +17,8 @@ class GammaVarParams(object):
     # remember, 'lambda' is a keyword in python, so we'll use
     # 'llambda' instead. I think it's closely related to an alphaca.
     def __init__(self, alpha, llambda):
-        self.alpha = alpha
-        self.llambda = llambda
+        self.alpha = float(alpha)
+        self.llambda = float(llambda)
 
     def generate(self, shape):
         return np.random.gamma(self.alpha, self.llambda, shape)
@@ -44,21 +44,19 @@ class SimParamSet(object):
         """
         Initialize a ParameterSet
         """
-        self.number_agents = kwargs.get('number_agents', NUM_AGENTS)
-        assert type(self.number_agents) == int
-        self.grid_size = kwargs.get('grid_size', GRID_SIZE)
-        assert type(self.grid_size) == int
+        self.number_agents = int(kwargs.get('number_agents', NUM_AGENTS))
+        self.grid_size = int(kwargs.get('grid_size', GRID_SIZE))
         assert self.grid_size > 0
 
-        self.gamma_1 = kwargs.get('gamma_1', DEFAULT_GAMMA)
-        self.gamma_2 = kwargs.get('gamma_2', DEFAULT_GAMMA)
-        self.gamma_3 = kwargs.get('gamma_3', DEFAULT_GAMMA)
-        self.gamma_4 = kwargs.get('gamma_4', DEFAULT_GAMMA)
-        self.gamma_5 = kwargs.get('gamma_5', DEFAULT_GAMMA)
-        self.gamma_6 = kwargs.get('gamma_6', DEFAULT_GAMMA)
+        self.gamma_1 = float(kwargs.get('gamma_1', DEFAULT_GAMMA))
+        self.gamma_2 = float(kwargs.get('gamma_2', DEFAULT_GAMMA))
+        self.gamma_3 = float(kwargs.get('gamma_3', DEFAULT_GAMMA))
+        self.gamma_4 = float(kwargs.get('gamma_4', DEFAULT_GAMMA))
+        self.gamma_5 = float(kwargs.get('gamma_5', DEFAULT_GAMMA))
+        self.gamma_6 = float(kwargs.get('gamma_6', DEFAULT_GAMMA))
 
-        self.sigma_1 = kwargs.get('sigma_1', SIGMA_1)
-        self.sigma_2 = kwargs.get('sigma_2', SIGMA_2)
+        self.sigma_1 = float(kwargs.get('sigma_1', SIGMA_1))
+        self.sigma_2 = float(kwargs.get('sigma_2', SIGMA_2))
 
         self.agent_initial_mass = NormalVarParams(
             kwargs.get('agent_initial_mass_mean', INITIAL_MASS_MEAN),
