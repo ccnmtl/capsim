@@ -63,12 +63,80 @@ class Simulation(object):
         # here later.
         self.neighbors = nx.random_regular_graph(NUM_NEIGHBORS, n)
 
+    def to_dict(self):
+        """ expose a simple dict version of the state of the simulation
+
+        this should enable serialization and extracting the history
+        of the whole simulation run """
+        return dict(
+            params=self.params.to_dict(),
+            ticks=self.ticks,
+            # agent arrays
+            agents_mass=self.agents_mass,
+            agents_base_output=self.agents_base_output,
+            agents_row=self.agents_row,
+            agents_col=self.agents_col,
+            input=self.input,
+            total_output=self.total_output,
+            force_of_habit=self.force_of_habit,
+            c_control=self.c_control,
+            physical_activity=self.physical_activity,
+            friend_input=self.friend_input,
+            friend_output=self.friend_output,
+            # neighbor graph
+            neighbors=self.neighbors,
+            # environment/patches
+            recreation_activity=self.recreation_activity,
+            domestic_activity=self.domestic_activity,
+            transport_activity=self.transport_activity,
+            education_activity=self.education_activity,
+            food_exposure=self.food_exposure,
+            energy_density=self.energy_density,
+            food_advertising=self.food_advertising,
+            food_convenience=self.food_convenience,
+            food_literacy=self.food_literacy,
+        )
+
+    def from_dict(self, d):
+        """ set our state from a dict
+
+        we're expecting this to come from to_dict(), so there
+        is no attempt at validating that the input dict
+        has the keys we expect.
+        """
+        self.params = SimParamSet(**d['params'])
+        self.ticks = d['ticks']
+        # agent arrays
+        self.agents_mass = d['agents_mass']
+        self.agents_base_output = d['agents_base_output']
+        self.agents_row = d['agents_row']
+        self.agents_col = d['agents_col']
+        self.input = d['input']
+        self.total_output = d['total_output']
+        self.force_of_habit = d['force_of_habit']
+        self.c_control = d['c_control']
+        self.physical_activity = d['physical_activity']
+        self.friend_input = d['friend_input']
+        self.friend_output = d['friend_output']
+        # neighbor graph
+        self.neighbors = d['neighbors']
+        # environment/patches
+        self.recreation_activity = d['recreation_activity']
+        self.domestic_activity = d['domestic_activity']
+        self.transport_activity = d['transport_activity']
+        self.education_activity = d['education_activity']
+        self.food_exposure = d['food_exposure']
+        self.energy_density = d['energy_density']
+        self.food_advertising = d['food_advertising']
+        self.food_convenience = d['food_convenience']
+        self.food_literacy = d['food_literacy']
+
     def tick(self):
         """ each tick of the clock
         * calculate-total-output
         * calculate-input
         * set mass calculate-mass
-        * move if starving
+        * move if starving (TODO)
         """
         self.ticks += 1
 

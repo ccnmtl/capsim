@@ -8,6 +8,13 @@ class SimParamSetTest(TestCase):
         s = SimParamSet()
         self.assertTrue(s is not None)
 
+    def test_to_dict(self):
+        s = SimParamSet(gamma_4=5.)
+        result = s.to_dict()
+        self.assertEqual(type(result), dict)
+        self.assertTrue('grid_size' in result)
+        self.assertEqual(result['gamma_4'], 5.)
+
 
 class SimTest(TestCase):
     def test_creation(self):
@@ -51,3 +58,11 @@ class SimTest(TestCase):
         self.assertEqual(s.ticks, 0)
         s.tick()
         self.assertEqual(s.ticks, 1)
+
+    def test_dict_roundtrip(self):
+        s = Simulation()
+        d = s.to_dict()
+        s2 = Simulation()
+        s2.from_dict(d)
+        self.assertEqual(s.ticks, s2.ticks)
+        self.assertEqual(s.neighbors, s2.neighbors)

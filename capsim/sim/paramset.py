@@ -93,3 +93,40 @@ class SimParamSet(object):
         self.food_literacy = GammaVarParams(
             kwargs.get('food_literacy_alpha', DEFAULT_ALPHA),
             kwargs.get('food_literacy_lambda', DEFAULT_LAMBDA))
+
+    def to_dict(self):
+        """ return a simple dict of all the parameters """
+        return dict(
+            number_agents=self.number_agents,
+            grid_size=self.grid_size,
+            gamma_1=self.gamma_1,
+            gamma_2=self.gamma_2,
+            gamma_3=self.gamma_3,
+            gamma_4=self.gamma_4,
+            gamma_5=self.gamma_5,
+            gamma_6=self.gamma_6,
+            sigma_1=self.sigma_1,
+            sigma_2=self.sigma_2,
+            agent_initial_mass_mean=self.agent_initial_mass.mean,
+            agent_initial_mass_sigma=self.agent_initial_mass.sigma,
+            agent_base_output_mean=self.agent_base_output.mean,
+            agent_base_output_sigma=self.agent_base_output.mean,
+            recreation_activity_alpha=self.recreation_activity.alpha,
+            recreation_activity_lambda=self.recreation_activity.llambda,
+            domestic_activity_alpha=self.domestic_activity.alpha,
+            domestic_activity_lambda=self.domestic_activity.llambda,
+            transport_activity_alpha=self.transport_activity.alpha,
+            transport_activity_lambda=self.transport_activity.llambda,
+            education_activity_alpha=self.education_activity.alpha,
+            education_activity_lambda=self.education_activity.llambda,
+            food_exposure_alpha=self.food_exposure.alpha,
+            food_exposure_lambda=self.food_exposure.llambda,
+            energy_density_alpha=self.energy_density.alpha,
+            energy_density_lambda=self.energy_density.llambda,
+            food_advertising_alpha=self.food_advertising.alpha,
+            food_advertising_lambda=self.food_advertising.llambda,
+            food_convenience_alpha=self.food_convenience.alpha,
+            food_convenience_lambda=self.food_convenience.llambda,
+            food_literacy_alpha=self.food_literacy.alpha,
+            food_literacy_lambda=self.food_literacy.llambda,
+        )
