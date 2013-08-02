@@ -136,7 +136,7 @@ def network_input_percent(input, neighbors):
     end
     """
     return (count_neighbors_greater(neighbors, input)
-            / count_neighbors(neighbors))
+            / np.maximum(count_neighbors(neighbors), 1.))
 
 
 def count_neighbors_greater(neighbors, a):
@@ -160,7 +160,7 @@ def calculate_friend_output(output, neighbors):
       report sigmoid (10 * (network-output-percent - 0.50)) - 0.50
     end
     """
-    return (sigmoid(10. * (network_input_percent(output, neighbors) - 0.5))
+    return (sigmoid(10. * (network_output_percent(output, neighbors) - 0.5))
             - 0.5)
 
 
@@ -175,7 +175,7 @@ def network_output_percent(output, neighbors):
     end
     """
     return (count_neighbors_greater(neighbors, output)
-            / count_neighbors(neighbors))
+            / np.maximum(count_neighbors(neighbors), 1.))
 
 
 def calculate_c_control(food_literacy):
