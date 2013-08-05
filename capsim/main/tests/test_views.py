@@ -10,6 +10,10 @@ class BasicViewTest(TestCase):
         response = self.c.get("/")
         self.assertEquals(response.status_code, 200)
 
+    def test_root_post(self):
+        response = self.c.post("/")
+        self.assertEquals(response.status_code, 200)
+
     def test_smoketest(self):
         response = self.c.get("/smoketest/")
         self.assertEquals(response.status_code, 200)
