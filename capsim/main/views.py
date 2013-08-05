@@ -14,7 +14,7 @@ def index(request):
         for t in range(ticks):
             s.tick()
         end = datetime.now()
-        elapsed = (end - start).microseconds / 1000.
+        elapsed = (end - start).total_seconds()
         return dict(number_agents=number_agents, ticks=ticks, time=elapsed, ran=True)
     else:
         return dict()
