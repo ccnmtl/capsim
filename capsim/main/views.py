@@ -1,6 +1,5 @@
 from annoying.decorators import render_to
 from capsim.sim.logic import Simulation
-from django.http import HttpResponse
 from datetime import datetime
 
 
@@ -15,6 +14,7 @@ def index(request):
             s.tick()
         end = datetime.now()
         elapsed = (end - start).total_seconds()
-        return dict(number_agents=number_agents, ticks=ticks, time=elapsed, ran=True)
+        return dict(number_agents=number_agents, ticks=ticks, time=elapsed,
+                    ran=True)
     else:
         return dict()
