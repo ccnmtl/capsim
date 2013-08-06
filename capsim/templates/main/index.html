@@ -6,8 +6,9 @@
 <p>Congratulations! Now start coding.</p>
 </div>
 {% if ran %}
-<p>Ran simulation with {{number_agents}} agents for {{ticks}} ticks in
-	{{time}} seconds</p>
+<p>Ran simulation with <b>{{number_agents}}</b> agents for <b>{{ticks}}</b> ticks in
+	<b>{{time}}</b> seconds.</p>
+<p>Resulting agents mass mean: <b>{{mean}}</b>, stddev: <b>{{stddev}}</b></p>
 {% endif %}
 
 <form action="." method="post">
