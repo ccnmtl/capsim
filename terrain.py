@@ -168,15 +168,6 @@ def i_go_back(self):
 def wait(step,seconds):
     time.sleep(int(seconds))
 
-@step(r'I see the header "(.*)"')
-def see_header(step, text):
-    if world.using_selenium:
-        assert text.strip() == world.firefox.find_element_by_css_selector(".hero-unit>h1").text.strip()
-    else:
-        # header = world.dom.cssselect('h1')[0]
-        header = world.dom.cssselect('.hero-unit>h1')[0]
-        assert text.strip() == header.text_content().strip()
-
 @step(r'I see the page title "(.*)"')
 def see_title(step, text):
     if world.using_selenium:
