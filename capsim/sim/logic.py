@@ -1,5 +1,6 @@
 import numpy as np
 import networkx as nx
+import pandas as pd
 from .paramset import SimParamSet
 
 
@@ -370,3 +371,29 @@ def calculate_total_output(base_output, physical_activity, gamma_5,
             + (physical_activity * gamma_5)
             + (friend_output * gamma_6)
             + np.random.normal(0.0, sigma_2, base_output.shape))
+
+
+class RunOutput(object):
+    def __init__(self, ticks, params, data):
+        self.ticks = ticks
+        self.params = params
+        self.data = pd.DataFrame(data)
+
+
+class Run(object):
+    def __init__(self, **kwargs):
+        self.ticks = kwargs.get('ticks', 100)
+        self.params = kwargs
+
+    def run(self):
+        results = []
+        s = Simulation(**self.params)
+        for tick in range(self.ticks):
+            s.tick()
+            results.append(
+                dict(
+                    agents_mass=s.agents_mass,
+                    tick=tick,
+                )
+            )
+        return RunOutput(ticks=self.ticks, params=self.params, data=results)

@@ -1,6 +1,6 @@
 import networkx as nx
 from unittest import TestCase
-from capsim.sim.logic import SimParamSet, Simulation
+from capsim.sim.logic import SimParamSet, Simulation, Run
 
 
 class SimParamSetTest(TestCase):
@@ -66,3 +66,29 @@ class SimTest(TestCase):
         s2.from_dict(d)
         self.assertEqual(s.ticks, s2.ticks)
         self.assertEqual(s.neighbors, s2.neighbors)
+
+
+class RunTest(TestCase):
+    def test_creation(self):
+        r = Run()
+        self.assertTrue(r is not None)
+        r = Run(grid_size=10)
+        self.assertTrue(r is not None)
+        r = Run(num_agents=100)
+        self.assertTrue(r is not None)
+        r = Run(num_agents=100, ticks=100)
+        self.assertTrue(r is not None)
+
+    def test_run(self):
+        r = Run(num_agents=100, ticks=10)
+        out = r.run()
+        self.assertTrue(r is not None)
+        self.assertEqual(out.ticks, 10)
+        self.assertEqual(out.params['num_agents'], 100)
+        self.assertEqual(len(out.data), out.ticks)
+
+        r = Run(num_agents=10, ticks=100)
+        out = r.run()
+        self.assertEqual(out.ticks, 100)
+        self.assertEqual(out.params['num_agents'], 10)
+        self.assertEqual(len(out.data), out.ticks)
