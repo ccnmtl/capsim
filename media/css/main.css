@@ -52,3 +52,22 @@ body > .container {
 #primarynav a:hover {
   color: blue;
 }
+
+/* d3 graph stuff */
+		path {
+		    stroke: steelblue;
+		    stroke-width: 2;
+		    fill: none;
+		}
+		path.stddev {
+		  stroke-opacity: 20%;
+		}
+
+		line {
+		    stroke: black;
+		}
+
+		text {
+		    font-family: Arial;
+		    font-size: 9pt;
+		}

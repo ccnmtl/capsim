@@ -3,10 +3,28 @@
 {% block content %}
 
 {% if ran %}
+<script type="text/javascript" src="/site_media/js/d3.js"></script>
+<script type="text/javascript" src="/site_media/js/graph.js"></script>
+
 <p>Ran simulation with <b>{{number_agents}}</b> agents for <b>{{ticks}}</b> ticks in
 	<b>{{time}}</b> seconds.</p>
 <p>Resulting agents mass mean: <b>{{mean}}</b>, stddev: <b>{{stddev}}</b></p>
+<div class="placeholder"/>
+
+<script type="text/javascript">
+var runData = [];
+var runStdDevs = [];
+{% for d in stats %}
+runData.push({{d.mean}});runStdDevs.push({{d.std}});
+{% endfor %}
+
+makeGraph("div.placeholder", runData, runStdDevs);
+</script>
+
+
+
 {% endif %}
+
 
 <form action="." method="post">
 number of agents: <input type="text" value="{{number_agents}}" name="number_agents"

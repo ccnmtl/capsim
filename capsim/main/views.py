@@ -11,10 +11,12 @@ def index(request):
         start = datetime.now()
         r = Run(ticks=ticks, number_agents=number_agents)
         output = r.run().data
+        stats = [dict(mean=d.mean(), std=d.std()) for d in output.agents_mass]
         end = datetime.now()
         elapsed = (end - start).total_seconds()
         return dict(number_agents=number_agents, ticks=ticks, time=elapsed,
                     output=output,
+                    stats=stats,
                     mean=output.agents_mass[ticks-1].mean(),
                     stddev=output.agents_mass[ticks-1].std(), ran=True)
     else:
