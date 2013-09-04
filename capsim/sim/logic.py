@@ -397,3 +397,10 @@ class Run(object):
                 )
             )
         return RunOutput(ticks=self.ticks, params=self.params, data=results)
+
+    def to_dict(self):
+        return self.params
+
+    @classmethod
+    def from_dict(self, d):
+        return Run(**d)

@@ -92,3 +92,10 @@ class RunTest(TestCase):
         self.assertEqual(out.ticks, 100)
         self.assertEqual(out.params['num_agents'], 10)
         self.assertEqual(len(out.data), out.ticks)
+
+    def test_serialization(self):
+        r = Run(num_agents=100, ticks=10)
+        d = r.to_dict()
+        r2 = Run.from_dict(d)
+        self.assertEqual(r.ticks, r2.ticks)
+        self.assertEqual(r.params, r2.params)
