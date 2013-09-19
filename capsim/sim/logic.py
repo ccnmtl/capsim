@@ -20,6 +20,7 @@ NUM_NEIGHBORS = 3
 
 MODEL_VERSION = "001-2013-09-19"
 
+
 class Simulation(object):
     def __init__(self, **kwargs):
         self.params = SimParamSet(**kwargs)

@@ -26,6 +26,7 @@ urlpatterns = patterns(
     auth_urls,
     logout_page,
     (r'^$', 'capsim.main.views.index'),
+    (r'^runs/$', 'capsim.main.views.runs'),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^munin/', include('munin.urls')),

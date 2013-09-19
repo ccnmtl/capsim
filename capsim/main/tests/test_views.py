@@ -18,3 +18,8 @@ class BasicViewTest(TestCase):
         response = self.c.get("/smoketest/")
         self.assertEquals(response.status_code, 200)
         assert "PASS" in response.content
+
+    def test_runs(self):
+        response = self.c.get("/runs/")
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue("<ul>" in response.content)
