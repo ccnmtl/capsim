@@ -7,6 +7,18 @@ from .paramset import SimParamSet
 # some constants (probably want to turn these into parameters eventually)
 NUM_NEIGHBORS = 3
 
+# keep track of the version of the simulation model that is running
+# update this string each time a change is made to the simulation logic
+# (but not to other app infrastructure bits). It gets serialized
+# with run parameters and outputs. This lets us connect data from
+# runs back to the exact version of the code that ran it. Later on
+# we can, eg, find runs that happened with code that had a bug that was
+# found later and flag that data as suspicious.
+
+# please keep it in the NNN-YYYY-MM-DD format, incrementing the number
+# on the front each time, and setting the other fields to the current date
+
+MODEL_VERSION = "001-2013-09-19"
 
 class Simulation(object):
     def __init__(self, **kwargs):
@@ -96,6 +108,7 @@ class Simulation(object):
             food_advertising=self.food_advertising,
             food_convenience=self.food_convenience,
             food_literacy=self.food_literacy,
+            MODEL_VERSION=MODEL_VERSION,
         )
 
     def from_dict(self, d):
@@ -131,6 +144,11 @@ class Simulation(object):
         self.food_advertising = d['food_advertising']
         self.food_convenience = d['food_convenience']
         self.food_literacy = d['food_literacy']
+        # the dict ought to also have a MODEL_VERSION entry
+        # that we can compare to our current version
+        # for now, we don't have any actual use for it
+        # but it will help us manage backwards compatability
+        # later.
 
     def tick(self):
         """ each tick of the clock

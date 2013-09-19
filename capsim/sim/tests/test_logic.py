@@ -62,6 +62,7 @@ class SimTest(TestCase):
     def test_dict_roundtrip(self):
         s = Simulation()
         d = s.to_dict()
+        self.assertTrue('MODEL_VERSION' in d)
         s2 = Simulation()
         s2.from_dict(d)
         self.assertEqual(s.ticks, s2.ticks)
