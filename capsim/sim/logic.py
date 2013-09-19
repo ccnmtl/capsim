@@ -398,6 +398,12 @@ class RunOutput(object):
         self.params = params
         self.data = pd.DataFrame(data)
 
+    def to_dict(self):
+        return dict(
+            ticks=self.ticks,
+            data=self.data.to_json(),
+        )
+
 
 class Run(object):
     def __init__(self, **kwargs):

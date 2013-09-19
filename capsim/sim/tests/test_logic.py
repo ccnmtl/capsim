@@ -100,3 +100,10 @@ class RunTest(TestCase):
         r2 = Run.from_dict(d)
         self.assertEqual(r.ticks, r2.ticks)
         self.assertEqual(r.params, r2.params)
+
+    def test_runoutputserialization(self):
+        r = Run(num_agents=100, ticks=10)
+        out = r.run()
+        d = out.to_dict()
+        self.assertTrue('data' in d)
+        self.assertEqual(d['ticks'], 10)
