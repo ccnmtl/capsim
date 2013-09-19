@@ -1,6 +1,6 @@
 from annoying.decorators import render_to
 from capsim.sim.logic import Run
-from capsim.sim.models import RunRecord
+from capsim.sim.models import RunRecord, RunOutputRecord
 from datetime import datetime
 
 
@@ -13,7 +13,10 @@ def index(request):
         r = Run(ticks=ticks, number_agents=number_agents)
         rr = RunRecord()
         rr.from_run(r)
-        output = r.run().data
+        out = r.run()
+        ror = RunOutputRecord(run=rr)
+        ror.from_runoutput(out)
+        output = out.data
         stats = [dict(mean=d.mean(), std=d.std()) for d in output.agents_mass]
         end = datetime.now()
         elapsed = (end - start).total_seconds()
