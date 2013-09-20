@@ -14,6 +14,9 @@ class RunRecord(models.Model):
         self.data = dumps(run.to_dict())
         self.save()
 
+    def get_absolute_url(self):
+        return "/run/%d/" % self.id
+
 
 class RunOutputRecord(models.Model):
     created = models.DateTimeField(auto_now=True)

@@ -27,8 +27,3 @@ def index(request):
                     stddev=output.agents_mass[ticks-1].std(), ran=True)
     else:
         return dict(number_agents=100, ticks=100)
-
-
-@render_to('main/runs.html')
-def runs(request):
-    return dict(runs=RunRecord.objects.all())
