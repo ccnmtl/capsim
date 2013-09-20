@@ -5,7 +5,7 @@
 <h2>Saved Runs</h2>
 <ul>
 {% for run in runs %}
-<li>{{run.created}}</li>
+<li><a href="{{run.id}}/">{{run.created}}</a></li>
 {% endfor %}
 </ul>
 
