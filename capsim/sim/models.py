@@ -8,7 +8,7 @@ class RunRecord(models.Model):
     data = models.TextField(default=u"", blank=True, null=True)
 
     def get_run(self):
-        return Run.from_dict(loads(self.data))
+        return Run.from_dict(loads(self.data or '{}'))
 
     def from_run(self, run):
         self.data = dumps(run.to_dict())
@@ -16,6 +16,9 @@ class RunRecord(models.Model):
 
     def get_absolute_url(self):
         return "/run/%d/" % self.id
+
+    def runoutput(self):
+        return self.runoutputrecord_set.all()[0]
 
 
 class RunOutputRecord(models.Model):
@@ -28,7 +31,9 @@ class RunOutputRecord(models.Model):
         self.save()
 
     def get_runoutput(self):
-        d = loads(self.data)
+        d = loads(self.data or '{}')
         run = self.run.get_run()
         return RunOutput(
-            ticks=d['ticks'], params=run.params, data=loads(d['data']))
+            ticks=d.get('ticks', 1),
+            params=run.params,
+            data=loads(d.get('data', "{}")))
