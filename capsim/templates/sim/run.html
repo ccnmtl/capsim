@@ -21,4 +21,13 @@ runData.push({{d.mean}});runStdDevs.push({{d.std}});
 makeGraph("div.placeholder", runData, runStdDevs);
 </script>
 
+<h3>Parameters</h3>
+<table class="table">
+{% for param in run.view_params %}
+<tr class="{% if not param.default %}set{% endif %}">
+<td>{{param.name}}</td>
+<td>{{param.value}}</td>
+{% endfor %}
+</table>
+
 {% endblock %}

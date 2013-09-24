@@ -53,6 +53,10 @@ body > .container {
   color: blue;
 }
 
+tr.set td {
+  background-color: #ccffcc;
+}
+
 /* d3 graph stuff */
 		path {
 		    stroke: steelblue;

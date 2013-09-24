@@ -1,6 +1,7 @@
 from django.db import models
 from json import dumps, loads
 from .logic import Run, RunOutput
+from .paramset import SimParamSet
 
 
 class RunRecord(models.Model):
@@ -19,6 +20,27 @@ class RunRecord(models.Model):
 
     def runoutput(self):
         return self.runoutputrecord_set.all()[0]
+
+    def params(self):
+        return Run.from_dict(loads(self.data or '{}')).params
+
+    def view_params(self):
+        """ returns list of all parameters used for the model,
+        with distinction drawn between the defaults and
+        ones explicitly set """
+        set_params = self.params()
+        print str(set_params)
+        all_params = SimParamSet(**set_params)
+        d = all_params.to_dict()
+        for k in d.keys():
+            yield ViewParam(k, d[k], k not in set_params.keys())
+
+
+class ViewParam(object):
+    def __init__(self, name, value, default=True):
+        self.name = name
+        self.value = value
+        self.default = default
 
 
 class RunOutputRecord(models.Model):
