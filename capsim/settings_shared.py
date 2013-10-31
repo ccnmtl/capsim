@@ -105,7 +105,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.admin',
     'typogrify',
-    'munin',
     'south',
     'django_nose',
     'compressor',

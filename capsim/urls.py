@@ -26,7 +26,6 @@ urlpatterns = patterns(
     (r'^run/(?P<id>\d+)/$', 'capsim.sim.views.run'),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
-    (r'^munin/', include('munin.urls')),
     (r'^stats/', TemplateView.as_view(template_name="stats.html")),
     (r'smoketest/', include('smoketest.urls')),
     (r'^uploads/(?P<path>.*)$',
