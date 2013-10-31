@@ -100,7 +100,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'django.contrib.markup',
+    'django_markwhat',
     'django.contrib.staticfiles',
     'django.contrib.messages',
     'django.contrib.admin',
@@ -117,9 +117,20 @@ INSTALLED_APPS = [
     'smoketest',
     'django_extensions',
     'impersonate',
+    'pagetree',
+    'pageblocks',
+    'quizblock',
     'capsim.main',
     'capsim.sim',
 ]
+
+PAGEBLOCKS = ['pageblocks.TextBlock',
+              'pageblocks.HTMLBlock',
+              'pageblocks.PullQuoteBlock',
+              'pageblocks.ImageBlock',
+              'pageblocks.ImagePullQuoteBlock',
+              'quizblock.Quiz',
+              ]
 
 LETTUCE_APPS = (
     'capsim.main',

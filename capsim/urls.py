@@ -30,4 +30,11 @@ urlpatterns = patterns(
     (r'smoketest/', include('smoketest.urls')),
     (r'^uploads/(?P<path>.*)$',
      'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    (r'^pagetree/', include('pagetree.urls')),
+    (r'^quizblock/', include('quizblock.urls')),
+    (r'^pages/edit/(?P<path>.*)$', 'capsim.main.views.edit_page',
+     {}, 'edit-page'),
+    (r'^pages/instructor/(?P<path>.*)$',
+     'capsim.main.views.instructor_page'),
+    (r'^pages/(?P<path>.*)$', 'capsim.main.views.page'),
 )
