@@ -4,8 +4,8 @@
 
 <h2>Saved Run: {{run.created}}</h2>
 
-<script type="text/javascript" src="/site_media/js/d3.js"></script>
-<script type="text/javascript" src="/site_media/js/graph.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/d3.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/graph.js"></script>
 
 <p>Ran simulation with <b>{{number_agents}}</b> agents for <b>{{ticks}}</b> ticks.</p>
 <p>Resulting agents mass mean: <b>{{mean}}</b>, stddev: <b>{{stddev}}</b></p>

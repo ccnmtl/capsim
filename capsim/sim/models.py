@@ -29,7 +29,6 @@ class RunRecord(models.Model):
         with distinction drawn between the defaults and
         ones explicitly set """
         set_params = self.params()
-        print str(set_params)
         all_params = SimParamSet(**set_params)
         d = all_params.to_dict()
         for k in d.keys():

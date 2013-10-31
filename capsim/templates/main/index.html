@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% block pagetitle %}capsim{% endblock %}
 
 {% block content %}
 
 {% if ran %}
-<script type="text/javascript" src="/site_media/js/d3.js"></script>
-<script type="text/javascript" src="/site_media/js/graph.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/d3.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/graph.js"></script>
 
 <p>Ran simulation with <b>{{number_agents}}</b> agents for <b>{{ticks}}</b> ticks in
 	<b>{{time}}</b> seconds.</p>
