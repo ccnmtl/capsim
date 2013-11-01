@@ -152,7 +152,12 @@
                 <input class="regbutton login-local-form" type="submit" value="Log In" {% if not login_form.errors %}style="display: none;"{% endif %} />                        
                 <input type="hidden" name="next" value="{{ request.get_full_path }}" />
             </form>
+{% comment %}
+Do we want to allow non-CU self registration?
+Are we going to have non-CU accounts at all?
             <p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
+{% endcomment %}
+
         </div>
     </div>
 </div>
