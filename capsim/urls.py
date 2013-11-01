@@ -27,6 +27,7 @@ urlpatterns = patterns(
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/', TemplateView.as_view(template_name="stats.html")),
+    (r'^model/', TemplateView.as_view(template_name="main/model.html")),
     (r'smoketest/', include('smoketest.urls')),
     (r'^uploads/(?P<path>.*)$',
      'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
