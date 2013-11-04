@@ -29,7 +29,7 @@
 <a class="sr-only" href="#content">Skip navigation</a>
 
 {% block topnavbar %}
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="container">
   <div class="navbar-header">
@@ -39,18 +39,11 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-		<a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home"></span></a>
+		<a class="navbar-brand" href="/"><span style="font-weight: bold;"><span style="color: white;">PH<span style="color: red;">X</span> </span> </span>Public Health Capstone Experience  <span style="color: #555;">Beta</span> </a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-            <li><a href="/">New Run</a></li>
-            <li><a href="/run/">Saved Runs</a></li>
-            <li><a href="/pages/introduction/">Content</a></li>
-            <li><a href="/model/">Model</a></li>
-      {% block topnavbarleftitems %}{% endblock %}
-    </ul>
 
 <!-- 
     <form class="navbar-form navbar-left" role="search">
@@ -61,28 +54,46 @@
     </form>
 -->
 
-    <ul class="nav navbar-nav navbar-right">
-      {% block topnavbarrightitems %}{% endblock %}
-        <p class="navbar-text">
-
-{% block usernav %}
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="/">Start New Run</a></li>
+		<li><a href="/run/">View Saved Runs</a></li>
+		<li><a href="/model/">About the Model</a></li>
+		<li><a href="/pages/introduction/">Review Priming Exercises</a></li>
+		{% block topnavbarleftitems %}{% endblock %}
+		{% block topnavbarrightitems %}{% endblock %}
+		{% block usernav %}
           {% if request.user.is_anonymous %}
+          <li><a href="#" data-toggle="modal" data-target="#myModal">Log In</a></li>
           {% else %}
-          logged in as 
-            {% if request.user.last_name %}
-              {{request.user.first_name}} {{request.user.last_name}}
-            {% else %}
-              <b>{{ request.user.username }}</b>
-            {% endif %}
-{% if request.user.is_superuser %}
-          <a href="{% url 'impersonate-list' %}" class="btn btn-default">impersonate</a>
-{% endif %}
-          <a href="/accounts/logout/" class="btn btn-default">logout</a>
+		<li class="navbar-text">
+		<div class="btn-group">
+		<button type="button" class="btn btn-default btn-xs">
+		{% if request.user.last_name %}
+		{{request.user.first_name}} {{request.user.last_name}}
+		{% else %}
+		{{ request.user.username }}
+		{% endif %}
+		</button>
+		<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+		<span class="caret"></span>
+		<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+		{% if request.user.is_superuser %}
+		<li><a href="{% url 'impersonate-list' %}" class="">Impersonate</a></li>
+		{% endif %}
+		<li><a href="/accounts/logout/" class="">Log Out</a></li>
+		</ul>
+		</div>
+		</li>
           {% endif %}
 {% endblock %}
-       </p>
-
     </ul>
+    
+    
+
+
+
   </div>
   </div>
 </nav>
@@ -103,66 +114,95 @@
 
 
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>Select an account.</p>
+        
 {% block loginbox %}
 {% if request.user.is_anonymous %}
-<div class="loginbox-container columbia">
-    <div class="loginbox">
-        <h2>Choose a login option...</h2>
-        <div class="content">
+
+ 
             {% if WIND_BASE %}
                 <form method="get" action="{{ WIND_BASE }}login">
                     {% csrf_token %}
                     <input type="hidden" name="service" value="{{ WIND_SERVICE }}" />
                     <input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ request.get_full_path|urlencode }}" />
-                    <p>If you have a Columbia University Network ID (UNI)...</p>
-                    <input class="regbutton" type="submit" value="Columbia Log In" />
+                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Columbia University Network ID (UNI)" />
                 </form>
             {% endif %}
-            
-            <p class="smalltxt"><a href="http://cuit.columbia.edu/cuit/manage-my-uni" title="Learn more about UNI" target="_blank">What is a UNI?</a></p>
-            <!-- End UNI LOG IN -->
-            
-            <hr class="seperator" />
+
+
+		<p style="text-align: center;">or</p>
+
         
         {% if login_form.errors %}
             <p class="errornote">
                 <span>
-                    <b>ERROR:</b> Invalid username or password.
+                    <b>Oops!</b> Invalid username or password.
                 </span>
                 Please try again. Note that both username and password are case-sensitive.
             </p>
         {% endif %}
         
-            <p>If you have a guest account...</p>
-            <form id="login-local" name="login_local" method="post" action="/accounts/login/">
+            <form id="login-local" name="login_local" method="post" action="/accounts/login/" class="form-horizontal" role="form">
                 {% csrf_token %}
                 <div class="login-local-form" {% if not login_form.errors %}style="display: none"{% endif %}>
-                    <div class="fieldwrapper">
-                        <label for="id_username">Username:</label>
-                        {{ login_form.username }}
-                    </div><!-- fieldwrapper -->
                 
-                    <div class="fieldwrapper">
-                        <label for="id_password">Password:</label>
-                        {{ login_form.password }}
-                    </div><!-- fieldwrapper -->
+                <h3>Guest Account</h3>
+                    
+				<div class="form-group">
+				<label for="id_username" class="col-sm-4 control-label">User Name</label>
+				<div class="col-sm-8">
+				{{ login_form.username }}
+				</div>
+				</div>
+				
+				<div class="form-group">
+				<label for="id_password" class="col-sm-4 control-label">Password</label>
+				<div class="col-sm-8">
+				{{ login_form.password }}
+				</div>
+				</div>
+				
+				<div class="form-group">
+				<div class="col-sm-offset-4 col-sm-8">
+				<input class="btn btn-default login-local-form" type="submit" value="Log In" {% if not login_form.errors %}style="display: none;"{% endif %} />                        
+				<input type="hidden" name="next" value="{{ request.get_full_path }}" />
+				</div>
+				</div>
+              
                 </div>      
-                <input class="regbutton" type="button" value="Guest Log In" {% if login_form.errors %}style="display: none"{% endif %}
+              
+              <input class="btn btn-default btn-lg btn-block" type="button" value="Guest Account" {% if login_form.errors %}style="display: none"{% endif %}
                     onclick="jQuery('.login-local-form').show(); jQuery(this).hide(); return false;"/>
-                <input class="regbutton login-local-form" type="submit" value="Log In" {% if not login_form.errors %}style="display: none;"{% endif %} />                        
-                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                 
             </form>
-{% comment %}
-Do we want to allow non-CU self registration?
-Are we going to have non-CU accounts at all?
-            <p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
-{% endcomment %}
 
-        </div>
-    </div>
-</div>
+		{% comment %}
+		Do we want to allow non-CU self registration?
+		Are we going to have non-CU accounts at all?
+		<p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
+		{% endcomment %}
+
+    
 {% endif %}
 {% endblock %}
+        
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 
 <div class="row">
 <div class="col-md-2">
@@ -178,7 +218,7 @@ Are we going to have non-CU accounts at all?
 
 {% block footer %}
   <footer class="footer navbar-fixed-bottom hidden-phone">
-    <img src="{{STATIC_URL}}img/logo_ccnmtl_sidebar.gif" class="printonly pull-right" />
+    <img style="display: none;" src="{{STATIC_URL}}img/logo_ccnmtl_sidebar.gif" class="printonly pull-right" />
   </footer>
 {% endblock %}
 

@@ -7,40 +7,21 @@
 
 {% block content %}
 
-<div class="loginbox-container columbia">
-    <div class="loginbox">
-        <h2>Choose a login option...</h2>
+        <h2>Oops!</h2>
         <div class="content">
-            {% if wind_base %}
-                <form method="get" action="{{ wind_base }}login">
-                    {% csrf_token %}
-                    <input type="hidden" name="service" value="{{ wind_service }}" />
-                    <input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ next|urlencode }}" />
-                    <p>If you have a Columbia University Network ID (UNI)...</p>
-                    <input class="regbutton" type="submit" value="Columbia Log In" />
-                </form>
-            {% endif %}
-            
-            <p class="smalltxt"><a href="http://cuit.columbia.edu/cuit/manage-my-uni" title="Learn more about UNI" target="_blank">What is a UNI?</a></p>
-            <!-- End UNI LOG IN -->
-            
-            <hr class="seperator" />
+              
         
         {% if form.errors %}
-            <p class="errornote">
-                <span>
-                    <b>ERROR:</b> Invalid username or password.
-                </span>
-                Please try again. Note that both username and password are case-sensitive.
-            </p>
+            <div class="alert alert-danger">
+                    <b>ERROR:</b> Invalid username or password. Please try again. Note that both username and password are case-sensitive.
+            </div>
         {% endif %}
         
-            <p>If you have a guest account...</p>
             <form id="login-local" name="login_local" method="post" action=".">
                 {% csrf_token %}
                 <div class="login-local-form" {% if not form.errors %}style="display: none"{% endif %}>
                     <div class="fieldwrapper">
-                        <label for="id_username">Username:</label>
+                        <label for="id_username">User Name:</label>
                         {{ form.username }}
                     </div><!-- fieldwrapper -->
                 
@@ -51,17 +32,32 @@
                 </div>      
                 <input class="regbutton" type="button" value="Guest Log In" {% if form.errors %}style="display: none"{% endif %}
                     onclick="jQuery('.login-local-form').show(); jQuery(this).hide(); return false;"/>
-                <input class="regbutton login-local-form" type="submit" value="Log In" {% if not form.errors %}style="display: none;"{% endif %} />                        
+                <input class="regbutton login-local-form btn btn-default" type="submit" value="Log In" {% if not form.errors %}style="display: none;"{% endif %} />                        
                 <input type="hidden" name="next" value="{{ next|urlencode }}" />
             </form>
+            
 {% comment %}
 Do we want to allow non-CU self registration?
 Are we going to have non-CU accounts at all?
             <p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
 {% endcomment %}
+
+            <hr class="seperator" />
+
+          {% if wind_base %}
+                <form method="get" action="{{ wind_base }}login">
+                    {% csrf_token %}
+                    <input type="hidden" name="service" value="{{ wind_service }}" />
+                    <input type="hidden" name="destination" value="http://{{ request.get_host }}/accounts/windlogin/?next={{ next|urlencode }}" />
+                    <p>If you have a Columbia University Network ID (UNI)...</p>
+                    <input class="regbutton btn btn-default" type="submit" value="Columbia Log In" />
+                </form>
+            {% endif %}
+            
+            <p class="smalltxt"><a href="http://cuit.columbia.edu/cuit/manage-my-uni" title="Learn more about UNI" target="_blank">What is a UNI?</a></p>
+            <!-- End UNI LOG IN -->
         </div>
-    </div>
-</div>
+
 
 {% endblock %}
 {% block loginbox %}{% endblock %}
