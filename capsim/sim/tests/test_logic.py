@@ -26,6 +26,13 @@ class SimTest(TestCase):
         self.assertEquals(len(s.agents_mass), 10)
         self.assertEquals(len(s.agents_base_output), 10)
 
+    def test_setup_agents_odd_number(self):
+        # this test is here because networkx.random_regular_graph
+        # requires n * d to be even. so we make sure that we adjust
+        # beforehand
+        s = Simulation(number_agents=5)
+        self.assertEquals(len(s.agents_mass), 5)
+
     def test_setup_patches(self):
         s = Simulation(grid_size=10)
         shape = (10, 10)

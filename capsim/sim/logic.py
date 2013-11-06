@@ -75,7 +75,7 @@ class Simulation(object):
         # make a random graph of links, all nodes have
         # a fixed number of neighbors. will want to add more controls
         # here later.
-        self.neighbors = nx.random_regular_graph(NUM_NEIGHBORS, n)
+        self.neighbors = nx.random_regular_graph(NUM_NEIGHBORS, n + (n % 2))
 
     def to_dict(self):
         """ expose a simple dict version of the state of the simulation
