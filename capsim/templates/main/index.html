@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap %}
 
 {% block content %}
 
@@ -34,21 +35,23 @@ makeGraph("div.placeholder", runData, runStdDevs);
 
 
 <form action="." method="post" class="form-horizontal" role="form">
-
+  {{ form.non_field_errors }}
   <div class="form-group">
+		{{ form.number_agents.errors }}
     <label for="inputAgents" class="col-sm-2 control-label">How many agents?</label>
     <div class="col-sm-3">
-      <input type="text" class="form-control" id="inputAgents" placeholder="agents" value="{{number_agents}}" name="number_agents" />
+			{{ form.number_agents }}
     </div>
   </div>
   
   <div class="form-group">
+		{{ form.ticks.errors }}
     <label for="inputTicks" class="col-sm-2 control-label">How many ticks?</label>
     <div class="col-sm-3">
-      <input class="form-control" id="inputTicks" placeholder="ticks" type="text" value="{{ticks}}" name="ticks" />
+      {{ form.ticks }}
     </div>
   </div>
-  
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-3">
       <button type="submit" class="btn btn-default">Run it!</button>

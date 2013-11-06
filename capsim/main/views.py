@@ -7,22 +7,25 @@ from pagetree.generic.views import generic_edit_page
 from pagetree.generic.views import generic_instructor_page
 from capsim.sim.logic import Run
 from capsim.sim.models import RunRecord, RunOutputRecord
+from .forms import RunForm
 
 
 @render_to('main/index.html')
 def index(request):
     if request.method == "POST":
-        ticks = int(request.POST.get('ticks', 100))
-        number_agents = int(request.POST.get('number_agents', 100))
-        r = Run(ticks=ticks, number_agents=number_agents)
-        rr = RunRecord()
-        rr.from_run(r)
-        out = r.run()
-        ror = RunOutputRecord(run=rr)
-        ror.from_runoutput(out)
-        return HttpResponseRedirect(rr.get_absolute_url())
-    else:
-        return dict(number_agents=100, ticks=100)
+        form = RunForm(request.POST)
+        if form.is_valid():
+            ticks = form.cleaned_data['ticks']
+            number_agents = form.cleaned_data['number_agents']
+            r = Run(ticks=ticks, number_agents=number_agents)
+            rr = RunRecord()
+            rr.from_run(r)
+            out = r.run()
+            ror = RunOutputRecord(run=rr)
+            ror.from_runoutput(out)
+            return HttpResponseRedirect(rr.get_absolute_url())
+        return dict(form=form)
+    return dict(form=RunForm())
 
 
 def page(request, path):

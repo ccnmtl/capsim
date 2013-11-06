@@ -12,8 +12,13 @@ class BasicViewTest(TestCase):
         response = self.c.get("/")
         self.assertEquals(response.status_code, 200)
 
-    def test_root_post(self):
+    def test_root_post_invalid(self):
         response = self.c.post("/")
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue("errorlist" in response.content)
+
+    def test_root_post_valid(self):
+        response = self.c.post("/", dict(ticks=10, number_agents=10))
         self.assertEquals(response.status_code, 302)
 
     def test_smoketest(self):
