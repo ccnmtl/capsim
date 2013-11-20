@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
+import capsim.main.views
 admin.autodiscover()
 
 redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
@@ -21,7 +22,7 @@ urlpatterns = patterns(
     '',
     auth_urls,
     logout_page,
-    (r'^$', 'capsim.main.views.index'),
+    (r'^$', capsim.main.views.IndexView.as_view()),
     (r'^run/$', 'capsim.sim.views.runs'),
     (r'^run/(?P<id>\d+)/$', 'capsim.sim.views.run'),
     (r'^admin/', include(admin.site.urls)),

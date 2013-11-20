@@ -1,6 +1,7 @@
-from annoying.decorators import render_to
+from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.views.generic.base import View
 from pagetree.helpers import get_hierarchy
 from pagetree.generic.views import generic_view_page
 from pagetree.generic.views import generic_edit_page
@@ -10,9 +11,10 @@ from capsim.sim.models import RunRecord, RunOutputRecord
 from .forms import RunForm
 
 
-@render_to('main/index.html')
-def index(request):
-    if request.method == "POST":
+class IndexView(View):
+    template_name = 'main/index.html'
+
+    def post(self, request):
         form = RunForm(request.POST)
         if form.is_valid():
             ticks = form.cleaned_data['ticks']
@@ -24,8 +26,10 @@ def index(request):
             ror = RunOutputRecord(run=rr)
             ror.from_runoutput(out)
             return HttpResponseRedirect(rr.get_absolute_url())
-        return dict(form=form)
-    return dict(form=RunForm())
+        return render(request, self.template_name, dict(form=form))
+
+    def get(self, request):
+        return render(request, self.template_name, dict(form=RunForm()))
 
 
 def page(request, path):
