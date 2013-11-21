@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
 import capsim.main.views
+import capsim.sim.views
 admin.autodiscover()
 
 redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
@@ -23,8 +24,8 @@ urlpatterns = patterns(
     auth_urls,
     logout_page,
     (r'^$', capsim.main.views.IndexView.as_view()),
-    (r'^run/$', 'capsim.sim.views.runs'),
-    (r'^run/(?P<id>\d+)/$', 'capsim.sim.views.run'),
+    (r'^run/$', capsim.sim.views.RunsView.as_view()),
+    (r'^run/(?P<id>\d+)/$', capsim.sim.views.RunView.as_view()),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/', TemplateView.as_view(template_name="stats.html")),
@@ -34,9 +35,9 @@ urlpatterns = patterns(
      'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'^pagetree/', include('pagetree.urls')),
     (r'^quizblock/', include('quizblock.urls')),
-    (r'^pages/edit/(?P<path>.*)$', 'capsim.main.views.edit_page',
+    (r'^pages/edit/(?P<path>.*)$', capsim.main.views.EditPage.as_view(),
      {}, 'edit-page'),
     (r'^pages/instructor/(?P<path>.*)$',
-     'capsim.main.views.instructor_page'),
-    (r'^pages/(?P<path>.*)$', 'capsim.main.views.page'),
+     capsim.main.views.InstructorPage.as_view()),
+    (r'^pages/(?P<path>.*)$', capsim.main.views.ViewPage.as_view()),
 )

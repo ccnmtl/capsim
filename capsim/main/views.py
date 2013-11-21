@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import View
 from pagetree.helpers import get_hierarchy
@@ -32,22 +33,37 @@ class IndexView(View):
         return render(request, self.template_name, dict(form=RunForm()))
 
 
-def page(request, path):
-    # do auth on the request if you need the user to be logged in
-    # or only want some particular users to be able to get here
-    h = get_hierarchy("main", "/pages/")
-    return generic_view_page(request, path, hierarchy=h)
+class LoggedInMixin(object):
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoggedInMixin, self).dispatch(*args, **kwargs)
 
 
-@login_required
-def edit_page(request, path):
-    # do any additional auth here
-    h = get_hierarchy("main", "/pages/")
-    return generic_edit_page(request, path, hierarchy=h)
+class PageView(View):
+    hierarchy_name = "main"
+    hierarchy_base = "/pages/"
+
+    def hierarchy(self):
+        return get_hierarchy(self.hierarchy_name, self.hierarchy_base)
+
+    def get(self, request, path):
+        return self.handler(request, path)
+
+    def post(self, request, path):
+        return self.handler(request, path)
 
 
-@login_required
-def instructor_page(request, path):
-    # do any additional auth here
-    h = get_hierarchy("main", "/pages/")
-    return generic_instructor_page(request, path, hierarchy=h)
+class ViewPage(PageView):
+    def handler(self, request, path):
+        return generic_view_page(request, path, hierarchy=self.hierarchy())
+
+
+class EditPage(LoggedInMixin, PageView):
+    def handler(self, request, path):
+        return generic_edit_page(request, path, hierarchy=self.hierarchy())
+
+
+class InstructorPage(LoggedInMixin, PageView):
+    def handler(self, request, path):
+        return generic_instructor_page(request, path,
+                                       hierarchy=self.hierarchy())

@@ -44,6 +44,10 @@ class PagetreeViewTestsLoggedOut(TestCase):
         r = self.c.get("/pages/section-1/")
         self.assertEqual(r.status_code, 200)
 
+    def test_page_post(self):
+        r = self.c.post("/pages/section-1/")
+        self.assertEqual(r.status_code, 302)
+
     def test_edit_page(self):
         r = self.c.get("/pages/edit/section-1/")
         self.assertEqual(r.status_code, 302)
