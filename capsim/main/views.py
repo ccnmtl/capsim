@@ -3,10 +3,9 @@ from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import View
-from pagetree.helpers import get_hierarchy
-from pagetree.generic.views import generic_view_page
-from pagetree.generic.views import generic_edit_page
-from pagetree.generic.views import generic_instructor_page
+from pagetree.generic.views import PageView
+from pagetree.generic.views import EditView
+from pagetree.generic.views import InstructorView
 from capsim.sim.logic import Run
 from capsim.sim.models import RunRecord, RunOutputRecord
 from .forms import RunForm
@@ -39,31 +38,16 @@ class LoggedInMixin(object):
         return super(LoggedInMixin, self).dispatch(*args, **kwargs)
 
 
-class PageView(View):
+class ViewPage(PageView):
     hierarchy_name = "main"
     hierarchy_base = "/pages/"
 
-    def hierarchy(self):
-        return get_hierarchy(self.hierarchy_name, self.hierarchy_base)
 
-    def get(self, request, path):
-        return self.handler(request, path)
-
-    def post(self, request, path):
-        return self.handler(request, path)
+class EditPage(LoggedInMixin, EditView):
+    hierarchy_name = "main"
+    hierarchy_base = "/pages/"
 
 
-class ViewPage(PageView):
-    def handler(self, request, path):
-        return generic_view_page(request, path, hierarchy=self.hierarchy())
-
-
-class EditPage(LoggedInMixin, PageView):
-    def handler(self, request, path):
-        return generic_edit_page(request, path, hierarchy=self.hierarchy())
-
-
-class InstructorPage(LoggedInMixin, PageView):
-    def handler(self, request, path):
-        return generic_instructor_page(request, path,
-                                       hierarchy=self.hierarchy())
+class InstructorPage(LoggedInMixin, InstructorView):
+    hierarchy_name = "main"
+    hierarchy_base = "/pages/"
