@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
+from pagetree.generic.views import PageView
 import capsim.main.views
 import capsim.sim.views
 admin.autodiscover()
@@ -39,5 +40,7 @@ urlpatterns = patterns(
      {}, 'edit-page'),
     (r'^pages/instructor/(?P<path>.*)$',
      capsim.main.views.InstructorPage.as_view()),
-    (r'^pages/(?P<path>.*)$', capsim.main.views.ViewPage.as_view()),
+    (r'^pages/(?P<path>.*)$', PageView.as_view(
+        hierarchy_name="main",
+        hierarchy_base="/pages/")),
 )

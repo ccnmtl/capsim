@@ -3,7 +3,6 @@ from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import View
-from pagetree.generic.views import PageView
 from pagetree.generic.views import EditView
 from pagetree.generic.views import InstructorView
 from capsim.sim.logic import Run
@@ -36,11 +35,6 @@ class LoggedInMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LoggedInMixin, self).dispatch(*args, **kwargs)
-
-
-class ViewPage(PageView):
-    hierarchy_name = "main"
-    hierarchy_base = "/pages/"
 
 
 class EditPage(LoggedInMixin, EditView):
