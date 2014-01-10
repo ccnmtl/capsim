@@ -19,7 +19,9 @@ class IndexView(View):
             fields = ['ticks', 'number_agents', 'gamma_1', 'gamma_2',
                       'gamma_3', 'gamma_4', 'gamma_5', 'gamma_6',
                       'sigma_1', 'sigma_2',
-                      'agent_initial_mass_mean', 'agent_initial_mass_sigma']
+                      'agent_initial_mass_mean', 'agent_initial_mass_sigma',
+                      'agent_base_output_mean', 'agent_base_output_sigma',
+                      ]
             parameters = dict()
             for f in fields:
                 parameters[f] = form.cleaned_data[f]

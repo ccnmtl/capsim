@@ -24,7 +24,9 @@ class BasicViewTest(TestCase):
                  gamma_1=1.0, gamma_2=1.0, gamma_3=1.0, gamma_4=1.0,
                  gamma_5=1.0, gamma_6=1.0,
                  sigma_1=6.2, sigma_2=5.,
-                 agent_initial_mass_mean=100., agent_initial_mass_sigma=20.))
+                 agent_initial_mass_mean=100., agent_initial_mass_sigma=20.,
+                 agent_base_output_mean=100., agent_base_output_sigma=5.,
+                 ))
         self.assertEquals(response.status_code, 302)
 
     def test_smoketest(self):

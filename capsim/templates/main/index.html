@@ -128,6 +128,23 @@ makeGraph("div.placeholder", runData, runStdDevs);
   </div>
 
   <div class="form-group">
+		{{ form.agent_base_output_mean.errors }}
+    <label for="inputAgentInitialMassMean" class="col-sm-2
+    control-label">Agent Base Output Mean</label>
+    <div class="col-sm-3">
+      {{ form.agent_base_output_mean }}
+    </div>
+  </div>
+  <div class="form-group">
+		{{ form.agent_base_output_sigma.errors }}
+    <label for="inputAgentInitialMassSigma" class="col-sm-2
+    control-label">Agent Base Output Sigma</label>
+    <div class="col-sm-3">
+      {{ form.agent_base_output_sigma }}
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-3">
       <button type="submit" class="btn btn-default">Run it!</button>
     </div>
