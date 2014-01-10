@@ -24,6 +24,11 @@
   <script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
 
 	{% block feeds %}{% endblock %}
+	
+	<script>
+
+</script>
+	
 </head>
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 <a class="sr-only" href="#content">Skip navigation</a>
@@ -39,7 +44,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-		<a class="navbar-brand" href="/"><span style="font-weight: bold;"><span style="color: white;">PH<span style="color: red;">X</span> </span> </span>Public Health Capstone Experience  <span style="color: #555;">Beta</span> </a>
+		<a class="navbar-brand" href="/"><span style="font-weight: bold;"><span style="color: white;">PHC<span style="color: red;">X</span> </span> </span>  <span style="color: #555;">Beta</span> </a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
@@ -55,15 +60,17 @@
 -->
 
 	<ul class="nav navbar-nav navbar-right">
-		<li><a href="/">Start New Run</a></li>
-		<li><a href="/run/">View Saved Runs</a></li>
-		<li><a href="/model/">About the Model</a></li>
-		<li><a href="/pages/introduction/">Review Priming Exercises</a></li>
+	
+		<li><a href="/model/" title="Learn all about PHCX and the math behind it.">About PHCX</a></li>
+		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
+		<li class="active"><a href="/" title="Create a new run.">Start New Run</a></li>
+		<li><a href="/run/" title="See all the runs.">Saved Runs</a></li>
+		
 		{% block topnavbarleftitems %}{% endblock %}
 		{% block topnavbarrightitems %}{% endblock %}
 		{% block usernav %}
           {% if request.user.is_anonymous %}
-          <li><a href="#" data-toggle="modal" data-target="#myModal">Log In</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal" title="Log in to the system.">Log In</a></li>
           {% else %}
 		<li class="navbar-text">
 		<div class="btn-group">
