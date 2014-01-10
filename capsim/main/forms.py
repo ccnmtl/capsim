@@ -50,3 +50,11 @@ class RunForm(forms.Form):
         initial=SIGMA_2,
         label="Sigma 2",
         )
+    agent_initial_mass_mean = forms.FloatField(
+        initial=INITIAL_MASS_MEAN,
+        label="Agent Initial Mass Mean",
+        )
+    agent_initial_mass_sigma = forms.FloatField(
+        initial=INITIAL_MASS_SIGMA,
+        label="Agent Initial Mass Sigma",
+        )

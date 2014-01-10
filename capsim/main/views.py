@@ -18,7 +18,8 @@ class IndexView(View):
         if form.is_valid():
             fields = ['ticks', 'number_agents', 'gamma_1', 'gamma_2',
                       'gamma_3', 'gamma_4', 'gamma_5', 'gamma_6',
-                      'sigma_1', 'sigma_2']
+                      'sigma_1', 'sigma_2',
+                      'agent_initial_mass_mean', 'agent_initial_mass_sigma']
             parameters = dict()
             for f in fields:
                 parameters[f] = form.cleaned_data[f]
