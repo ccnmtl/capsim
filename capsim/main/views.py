@@ -16,9 +16,12 @@ class IndexView(View):
     def post(self, request):
         form = RunForm(request.POST)
         if form.is_valid():
-            ticks = form.cleaned_data['ticks']
-            number_agents = form.cleaned_data['number_agents']
-            r = Run(ticks=ticks, number_agents=number_agents)
+            fields = ['ticks', 'number_agents', 'gamma_1', 'gamma_2',
+                      'gamma_3', 'gamma_4', 'gamma_5', 'gamma_6']
+            parameters = dict()
+            for f in fields:
+                parameters[f] = form.cleaned_data[f]
+            r = Run(**parameters)
             rr = RunRecord()
             rr.from_run(r)
             out = r.run()
