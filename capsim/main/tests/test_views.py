@@ -22,7 +22,8 @@ class BasicViewTest(TestCase):
             "/",
             dict(ticks=10, number_agents=10,
                  gamma_1=1.0, gamma_2=1.0, gamma_3=1.0, gamma_4=1.0,
-                 gamma_5=1.0, gamma_6=1.0))
+                 gamma_5=1.0, gamma_6=1.0,
+                 sigma_1=6.2, sigma_2=5.))
         self.assertEquals(response.status_code, 302)
 
     def test_smoketest(self):
