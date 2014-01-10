@@ -26,6 +26,15 @@ class BasicViewTest(TestCase):
                  sigma_1=6.2, sigma_2=5.,
                  agent_initial_mass_mean=100., agent_initial_mass_sigma=20.,
                  agent_base_output_mean=100., agent_base_output_sigma=5.,
+                 recreation_activity_alpha=0.5, recreation_activity_lambda=0.1,
+                 domestic_activity_alpha=0.5, domestic_activity_lambda=0.1,
+                 transport_activity_alpha=0.5, transport_activity_lambda=0.1,
+                 education_activity_alpha=0.5, education_activity_lambda=0.1,
+                 food_exposure_alpha=0.5, food_exposure_lambda=0.1,
+                 energy_density_alpha=0.5, energy_density_lambda=0.1,
+                 food_advertising_alpha=0.5, food_advertising_lambda=0.1,
+                 food_convenience_alpha=0.5, food_convenience_lambda=0.1,
+                 food_literacy_alpha=0.5, food_literacy_lambda=0.1,
                  ))
         self.assertEquals(response.status_code, 302)
 

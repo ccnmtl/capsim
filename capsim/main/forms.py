@@ -66,21 +66,75 @@ class RunForm(forms.Form):
         initial=BASE_OUTPUT_SIGMA,
         label="Agent Base Output Sigma",
         )
-            # recreation_activity_alpha=self.recreation_activity.alpha,
-            # recreation_activity_lambda=self.recreation_activity.llambda,
-            # domestic_activity_alpha=self.domestic_activity.alpha,
-            # domestic_activity_lambda=self.domestic_activity.llambda,
-            # transport_activity_alpha=self.transport_activity.alpha,
-            # transport_activity_lambda=self.transport_activity.llambda,
-            # education_activity_alpha=self.education_activity.alpha,
-            # education_activity_lambda=self.education_activity.llambda,
-            # food_exposure_alpha=self.food_exposure.alpha,
-            # food_exposure_lambda=self.food_exposure.llambda,
-            # energy_density_alpha=self.energy_density.alpha,
-            # energy_density_lambda=self.energy_density.llambda,
-            # food_advertising_alpha=self.food_advertising.alpha,
-            # food_advertising_lambda=self.food_advertising.llambda,
-            # food_convenience_alpha=self.food_convenience.alpha,
-            # food_convenience_lambda=self.food_convenience.llambda,
-            # food_literacy_alpha=self.food_literacy.alpha,
-            # food_literacy_lambda=self.food_literacy.llambda,
+    recreation_activity_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Recreation Activity Alpha",
+        )
+    recreation_activity_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Recreation Activity Lambda",
+        )
+    domestic_activity_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Domestic Activity Alpha",
+        )
+    domestic_activity_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Domestic Activity Lambda",
+        )
+    transport_activity_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Transport Activity Alpha",
+        )
+    transport_activity_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Transport Activity Lambda",
+        )
+    education_activity_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Education Activity Alpha",
+        )
+    education_activity_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Education Activity Lambda",
+        )
+    food_exposure_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Food Exposure Alpha",
+        )
+    food_exposure_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Food Exposure Lambda",
+        )
+    energy_density_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Energy Density Alpha",
+        )
+    energy_density_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Energy Density Lambda",
+        )
+    food_advertising_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Food Advertising Alpha",
+        )
+    food_advertising_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Food Advertising Lambda",
+        )
+    food_convenience_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Food Convenience Alpha",
+        )
+    food_convenience_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Food Convenience Lambda",
+        )
+    food_literacy_alpha = forms.FloatField(
+        initial=DEFAULT_ALPHA,
+        label="Food Literacy Alpha",
+        )
+    food_literacy_lambda = forms.FloatField(
+        initial=DEFAULT_LAMBDA,
+        label="Food Literacy Lambda",
+        )
