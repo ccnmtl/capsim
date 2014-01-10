@@ -9,17 +9,17 @@ class BasicViewTest(TestCase):
         self.c = Client()
 
     def test_root(self):
-        response = self.c.get("/")
+        response = self.c.get("/run/new/")
         self.assertEquals(response.status_code, 200)
 
     def test_root_post_invalid(self):
-        response = self.c.post("/")
+        response = self.c.post("/run/new/")
         self.assertEquals(response.status_code, 200)
         self.assertTrue("errorlist" in response.content)
 
     def test_root_post_valid(self):
         response = self.c.post(
-            "/",
+            "/run/new/",
             dict(ticks=10, number_agents=10,
                  gamma_1=1.0, gamma_2=1.0, gamma_3=1.0, gamma_4=1.0,
                  gamma_5=1.0, gamma_6=1.0,

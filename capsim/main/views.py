@@ -10,7 +10,7 @@ from capsim.sim.models import RunRecord, RunOutputRecord
 from .forms import RunForm
 
 
-class IndexView(View):
+class NewRunView(View):
     template_name = 'main/index.html'
 
     def post(self, request):
