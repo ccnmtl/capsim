@@ -6,11 +6,11 @@ stuff is all hooked up properly and running.
 
     Scenario: Index Page Load
         Given I am not logged in
-        When I access the url "/"
+        When I access the url "/run/new/"
         Then I see the page title "capsim: "
 
     Scenario: Index Page Load With Selenium
         Using selenium
-        When I access the url "/"
+        When I access the url "/run/new/"
         Then I see the page title "capsim: "
         Finished using selenium
