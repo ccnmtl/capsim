@@ -102,7 +102,7 @@
 
   <div class="container" id="outer-container">
 
-<div id="primarynav">
+<div id="primarynav" style="display: none;">
 			<nav class="nav navbar-default">
 {% block moduletabs %}
 {% endblock %}
@@ -205,14 +205,15 @@
 
 
 <div class="row">
-<div class="col-md-2">
-{% block sidenav %}{% endblock %}
-</div>
-<div class="col-md-10">
+<div class="col-md-9">
 {% block pagetitle %}{% endblock %}
 {% block content %}{% endblock %}
 {% block content-nav %}{% endblock %}
 </div>
+<div class="col-md-3">
+{% block sidenav %}{% endblock %}
+</div>
+
 </div>
 </div>
 

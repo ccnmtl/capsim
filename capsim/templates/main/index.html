@@ -13,6 +13,8 @@
 
 <h2>Start New Run</h2>
 
+
+
 <p>All runs are saved automatically. You can <a href="/run/">review all of them</a>.</p>
 
 {% if ran %}
@@ -40,274 +42,320 @@ makeGraph("div.placeholder", runData, runStdDevs);
 
 {% endif %}
 
-
 <form action="." method="post" class="form-horizontal" role="form">
+
   {{ form.non_field_errors }}
+  
+  <div class="row">
+  <div class="col-md-4">
+  
   <div class="form-group">
 		{{ form.number_agents.errors }}
-    <label for="inputAgents" class="col-sm-2 control-label">How many agents?</label>
-    <div class="col-sm-3">
+    <label for="inputAgents" class="col-sm-4 control-label">How many agents?</label>
+    <div class="col-sm-8">
 			{{ form.number_agents }}
     </div>
   </div>
   
   <div class="form-group">
 		{{ form.ticks.errors }}
-    <label for="inputTicks" class="col-sm-2 control-label">How many ticks?</label>
-    <div class="col-sm-3">
+    <label for="inputTicks" class="col-sm-4 control-label">How many ticks?</label>
+    <div class="col-sm-8">
       {{ form.ticks }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.gamma_1.errors }}
-    <label for="inputGamma1" class="col-sm-2 control-label">Gamma 1</label>
-    <div class="col-sm-3">
+    <label for="inputGamma1" class="col-sm-4 control-label">Gamma 1</label>
+    <div class="col-sm-8">
       {{ form.gamma_1 }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.gamma_2.errors }}
-    <label for="inputGamma2" class="col-sm-2 control-label">Gamma 2</label>
-    <div class="col-sm-3">
+    <label for="inputGamma2" class="col-sm-4 control-label">Gamma 2</label>
+    <div class="col-sm-8">
       {{ form.gamma_2 }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.gamma_3.errors }}
-    <label for="inputGamma3" class="col-sm-2 control-label">Gamma 3</label>
-    <div class="col-sm-3">
+    <label for="inputGamma3" class="col-sm-4 control-label">Gamma 3</label>
+    <div class="col-sm-8">
       {{ form.gamma_3 }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.gamma_4.errors }}
-    <label for="inputGamma4" class="col-sm-2 control-label">Gamma 4</label>
-    <div class="col-sm-3">
+    <label for="inputGamma4" class="col-sm-4 control-label">Gamma 4</label>
+    <div class="col-sm-8">
       {{ form.gamma_4 }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.gamma_5.errors }}
-    <label for="inputGamma5" class="col-sm-2 control-label">Gamma 5</label>
-    <div class="col-sm-3">
+    <label for="inputGamma5" class="col-sm-4 control-label">Gamma 5</label>
+    <div class="col-sm-8">
       {{ form.gamma_5 }}
     </div>
   </div>
+  
   <div class="form-group">
 		{{ form.gamma_6.errors }}
-    <label for="inputGamma6" class="col-sm-2 control-label">Gamma 6</label>
-    <div class="col-sm-3">
+    <label for="inputGamma6" class="col-sm-4 control-label">Gamma 6</label>
+    <div class="col-sm-8">
       {{ form.gamma_6 }}
     </div>
   </div>
 
+
   <div class="form-group">
 		{{ form.sigma_1.errors }}
-    <label for="inputSigma1" class="col-sm-2 control-label">Sigma 1</label>
-    <div class="col-sm-3">
+    <label for="inputSigma1" class="col-sm-4 control-label">Sigma 1</label>
+    <div class="col-sm-8">
       {{ form.sigma_1 }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.sigma_2.errors }}
-    <label for="inputSigma2" class="col-sm-2 control-label">Sigma 2</label>
-    <div class="col-sm-3">
+    <label for="inputSigma2" class="col-sm-4 control-label">Sigma 2</label>
+    <div class="col-sm-8">
       {{ form.sigma_2 }}
     </div>
   </div>
 
+
   <div class="form-group">
 		{{ form.agent_initial_mass_mean.errors }}
-    <label for="inputAgentInitialMassMean" class="col-sm-2
+    <label for="inputAgentInitialMassMean" class="col-sm-4
     control-label">Agent Initial Mass Mean</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.agent_initial_mass_mean }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.agent_initial_mass_sigma.errors }}
-    <label for="inputAgentInitialMassSigma" class="col-sm-2
+    <label for="inputAgentInitialMassSigma" class="col-sm-4
     control-label">Agent Initial Mass Sigma</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.agent_initial_mass_sigma }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.agent_base_output_mean.errors }}
-    <label for="inputAgentBaseOutputMean" class="col-sm-2
+    <label for="inputAgentBaseOutputMean" class="col-sm-4
     control-label">Agent Base Output Mean</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.agent_base_output_mean }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.agent_base_output_sigma.errors }}
-    <label for="inputAgentBaseOuputSigma" class="col-sm-2
+    <label for="inputAgentBaseOuputSigma" class="col-sm-4
     control-label">Agent Base Output Sigma</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.agent_base_output_sigma }}
     </div>
   </div>
+</div>
+  <div class="col-md-4">
 
   <div class="form-group">
 		{{ form.recreation_activity_alpha.errors }}
-    <label for="inputRecreationActivityAlpha" class="col-sm-2
+    <label for="inputRecreationActivityAlpha" class="col-sm-4
     control-label">Recreation Activity Alpha</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.recreation_activity_alpha }}
     </div>
   </div>
   <div class="form-group">
 		{{ form.recreation_activity_lambda.errors }}
-    <label for="inputRecreationActivityLambda" class="col-sm-2
+    <label for="inputRecreationActivityLambda" class="col-sm-4
     control-label">Recreation Activity Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.recreation_activity_lambda }}
     </div>
   </div>
+  
+  
+
 
   <div class="form-group">
 		{{ form.domestic_activity_alpha.errors }}
-    <label for="inputDomesticActivityAlpha" class="col-sm-2
+    <label for="inputDomesticActivityAlpha" class="col-sm-4
     control-label">Domestic Activity Alpha</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.domestic_activity_alpha }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.domestic_activity_lambda.errors }}
-    <label for="inputDomesticActivityLambda" class="col-sm-2
+    <label for="inputDomesticActivityLambda" class="col-sm-4
     control-label">Domestic Activity Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.domestic_activity_lambda }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.transport_activity_alpha.errors }}
-    <label for="inputTransportActivityAlpha" class="col-sm-2
+    <label for="inputTransportActivityAlpha" class="col-sm-4
     control-label">Transport Activity Alpha</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.transport_activity_alpha }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.transport_activity_lambda.errors }}
-    <label for="inputTransportActivityLambda" class="col-sm-2
+    <label for="inputTransportActivityLambda" class="col-sm-4
     control-label">Transport Activity Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.transport_activity_lambda }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.education_activity_alpha.errors }}
-    <label for="inputEducationActivityAlpha" class="col-sm-2
+    <label for="inputEducationActivityAlpha" class="col-sm-4
     control-label">Education Activity Alpha</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.education_activity_alpha }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.education_activity_lambda.errors }}
-    <label for="inputEducationActivityLambda" class="col-sm-2
+    <label for="inputEducationActivityLambda" class="col-sm-4
     control-label">Education Activity Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.education_activity_lambda }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.food_exposure_alpha.errors }}
-    <label for="inputFoodExposureAlpha" class="col-sm-2
+    <label for="inputFoodExposureAlpha" class="col-sm-4
     control-label">Food Exposure Alpha</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.food_exposure_alpha }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.food_exposure_lambda.errors }}
-    <label for="inputFoodExposureLambda" class="col-sm-2
+    <label for="inputFoodExposureLambda" class="col-sm-4
     control-label">Food Exposure Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.food_exposure_lambda }}
     </div>
   </div>
 
+</div>
+  <div class="col-md-4">
+
   <div class="form-group">
 		{{ form.energy_density_alpha.errors }}
-    <label for="inputEnergyDensityAlpha" class="col-sm-2
+    <label for="inputEnergyDensityAlpha" class="col-sm-4
     control-label">Energy Density Alpha</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.energy_density_alpha }}
     </div>
   </div>
   <div class="form-group">
 		{{ form.energy_density_lambda.errors }}
-    <label for="inputEnergyDensityLambda" class="col-sm-2
+    <label for="inputEnergyDensityLambda" class="col-sm-4
     control-label">Energy Density Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.energy_density_lambda }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.food_advertising_alpha.errors }}
-    <label for="inputFoodAdvertisingAlpha" class="col-sm-2
+    <label for="inputFoodAdvertisingAlpha" class="col-sm-4
     control-label">Food Advertising Alpha</label>
     <div class="col-sm-3">
       {{ form.food_advertising_alpha }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.food_advertising_lambda.errors }}
-    <label for="inputFoodAdvertisingLambda" class="col-sm-2
+    <label for="inputFoodAdvertisingLambda" class="col-sm-4
     control-label">Food Advertising Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.food_advertising_lambda }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.food_convenience_alpha.errors }}
-    <label for="inputFoodConvenienceAlpha" class="col-sm-2
+    <label for="inputFoodConvenienceAlpha" class="col-sm-4
     control-label">Food Convenience Alpha</label>
     <div class="col-sm-3">
       {{ form.food_convenience_alpha }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.food_convenience_lambda.errors }}
-    <label for="inputFoodConvenienceLambda" class="col-sm-2
+    <label for="inputFoodConvenienceLambda" class="col-sm-4
     control-label">Food Convenience Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.food_convenience_lambda }}
     </div>
   </div>
 
   <div class="form-group">
 		{{ form.food_literacy_alpha.errors }}
-    <label for="inputFoodLiteracyAlpha" class="col-sm-2
+    <label for="inputFoodLiteracyAlpha" class="col-sm-4
     control-label">Food Literacy Alpha</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.food_literacy_alpha }}
     </div>
   </div>
+  
+  
   <div class="form-group">
 		{{ form.food_literacy_lambda.errors }}
-    <label for="inputFoodLiteracyLambda" class="col-sm-2
+    <label for="inputFoodLiteracyLambda" class="col-sm-4
     control-label">Food Literacy Lambda</label>
-    <div class="col-sm-3">
+    <div class="col-sm-8">
       {{ form.food_literacy_lambda }}
     </div>
   </div>
 
+</div>
+</div>
 
+<hr />
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-3">
-      <button type="submit" class="btn btn-default">Run it!</button>
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-default  pull-right">Run it!</button>
     </div>
   </div>
   
