@@ -23,3 +23,14 @@ class BasicViewTest(TestCase):
         response = self.c.get("/run/%d/" % rr.id)
         self.assertEquals(response.status_code, 200)
         self.assertTrue("<h2>Saved Run: " in response.content)
+
+    def test_run_json(self):
+        rr = RunRecord.objects.create()
+        r = Run(ticks=10, number_agents=10)
+        rr.from_run(r)
+        ror = RunOutputRecord.objects.create(run=rr)
+        out = r.run()
+        ror.from_runoutput(out)
+        response = self.c.get("/run/%d/json/" % rr.id)
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue("agents_mass" in response.content)

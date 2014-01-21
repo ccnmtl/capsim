@@ -1,7 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 from capsim.sim.models import RunRecord
+from json import dumps, loads
 import numpy as np
 
 
@@ -27,3 +29,12 @@ class RunView(TemplateView):
                     stats=stats,
                     mean=np.array(output.agents_mass[ticks-1]).mean(),
                     stddev=np.array(output.agents_mass[ticks-1]).std(), run=rr)
+
+
+class RunOutputView(View):
+    def get(self, request, pk):
+        rr = get_object_or_404(RunRecord, pk=pk)
+        out = loads(rr.runoutput().data)
+        return HttpResponse(
+            dumps(out['data']),
+            content_type="application/json")
