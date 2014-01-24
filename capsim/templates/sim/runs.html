@@ -1,13 +1,20 @@
 {% extends 'base.html' %}
+{% load waffle_tags %}
 
 		{% block topnav %}
 		<li><a href="/model/" title="Learn all about PHCX and the math behind it.">About PHCX</a></li>
 		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
+{% flag simulation %}
 		<li><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
 		<li class="active"><a href="/run/" title="See all the runs.">Saved Runs</a></li>
+{% else %}
+		<li><span class="navbar-text">[Simulation Deactivated]</span></li>
+{% endflag %}
 		{% endblock %}
 
 {% block content %}
+{% flag simulation %}
+
 
 <h2>Saved Runs</h2>
 <ul>
@@ -15,5 +22,8 @@
 <li><a href="{{run.id}}/">{{run.created}}</a></li>
 {% endfor %}
 </ul>
-
+{% else %}
+<p>Simulation is not active yet</p>
+{% endflag %}
 {% endblock %}
+

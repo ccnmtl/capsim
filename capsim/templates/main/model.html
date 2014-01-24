@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
+{% load waffle_tags %}
 
 		{% block topnav %}
 		<li class="active"><a href="/model/" title="Learn all about PHCX and the math behind it.">About PHCX</a></li>
 		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
+
+{% flag simulation %}
 		<li><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
 		<li><a href="/run/" title="See all the runs.">Saved Runs</a></li>
+{% else %}
+		<li><span class="navbar-text">[Simulation Deactivated]</span></li>
+{% endflag %}
+
 		{% endblock %}
 
 {% block pagetitle %}

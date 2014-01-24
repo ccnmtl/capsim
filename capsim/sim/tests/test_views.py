@@ -2,11 +2,13 @@ from django.test import TestCase
 from django.test.client import Client
 from capsim.sim.models import RunRecord, RunOutputRecord
 from capsim.sim.logic import Run
+from waffle import Flag
 
 
 class BasicViewTest(TestCase):
     def setUp(self):
         self.c = Client()
+        Flag.objects.create(name='simulation', everyone=True)
 
     def test_runs(self):
         response = self.c.get("/run/")
