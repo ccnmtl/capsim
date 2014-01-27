@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action='.' method="post">
+<div class="alert alert-danger">
+<p>Deleting a Run can't be undone. Are you sure?<br />
+<input type="submit" class='btn btn-danger' value="Yes, delete this
+run" />
+<a href="../" class="btn btn-success">No, nevermind</a>
+</div>
+</form>
+{% endblock %}

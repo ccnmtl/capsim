@@ -3,9 +3,11 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
+from django.views.generic.edit import DeleteView
 from pagetree.generic.views import PageView
 import capsim.main.views
 import capsim.sim.views
+from capsim.sim.models import RunRecord
 admin.autodiscover()
 
 redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
@@ -30,6 +32,8 @@ urlpatterns = patterns(
     (r'^run/$', capsim.sim.views.RunsView.as_view()),
     (r'^run/(?P<id>\d+)/$', capsim.sim.views.RunView.as_view()),
     (r'^run/(?P<pk>\d+)/json/$', capsim.sim.views.RunOutputView.as_view()),
+    (r'^run/(?P<pk>\d+)/delete/$',
+     DeleteView.as_view(model=RunRecord, success_url="/run/")),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/', TemplateView.as_view(template_name="stats.html")),
