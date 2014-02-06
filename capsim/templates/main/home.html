@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load waffle_tags %}
+
+		{% block topnav %}
+		<li><a href="/model/" title="Learn all about PHCX and the math behind it.">About PHCX</a></li>
+		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
+{% flag simulation %}
+		<li><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
+		<li><a href="/run/" title="See all the runs.">Saved Runs</a></li>
+{% else %}
+		<li><span class="navbar-text">[Simulation Deactivated]</span></li>
+{% endflag %}
+
+		{% endblock %}
+
+
+{% block content %}
+<div class="jumbotron">
+  <h1>PHCX</h1>
+  <h2>Public Health Capstone Experience</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Log In</a></p>
+</div>
+
+<div class="row">
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://placehold.it/300x200">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://placehold.it/300x200">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://placehold.it/300x200">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
