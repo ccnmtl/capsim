@@ -54,7 +54,9 @@
 	<ul class="nav navbar-nav navbar-right">
 
 		{% block topnav %}
-		<li><a href="/model/" title="Learn all about PHCX and the math behind it.">About PHCX</a></li>
+		<li><a href="/model/" title="Learn all about PHCX and the math behind it.">About</a></li>
+		<li><a href="#" title="">Contact</a></li>
+		<li><a href="#" title="">Topics</a></li>
 		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
 {% flag simulation %}
 		<li><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
@@ -68,7 +70,7 @@
 		{% block topnavbarrightitems %}{% endblock %}
 		{% block usernav %}
           {% if request.user.is_anonymous %}
-          <li><a href="#" data-toggle="modal" data-target="#myModal" title="Log in to the system.">Log In</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#myModal" title="Log in to the system.">Sign In</a></li>
           {% else %}
 		<li class="navbar-text">
 		<div class="btn-group">
@@ -122,7 +124,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
       </div>
       <div class="modal-body">
 
