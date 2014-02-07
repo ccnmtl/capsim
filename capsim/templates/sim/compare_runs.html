@@ -38,7 +38,7 @@
 	<tbody>
 {% for run in runs %}
 <tr>
-	<td><a href="{{run.id}}/">{{run.run.title|default:run.run.created}}</a></td>
+	<td><a href="/run/{{run.run.id}}/">{{run.run.title|default:run.run.created}}</a></td>
 	<td>{{run.run.description|markdown}}</td>
 	<td>{{run.number_agents}}</td>
 	<td>{{run.ticks}}</td>
