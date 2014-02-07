@@ -9,6 +9,10 @@ from waffle import Flag
 class BasicViewTest(TestCase):
     def setUp(self):
         self.c = Client()
+        self.u = User.objects.create(username="testuser")
+        self.u.set_password("test")
+        self.u.save()
+        self.c.login(username="testuser", password="test")
         Flag.objects.create(name='simulation', everyone=True)
 
     def test_runs(self):

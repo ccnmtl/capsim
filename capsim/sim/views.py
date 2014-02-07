@@ -3,17 +3,18 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.base import TemplateView, View
 from capsim.sim.models import RunRecord
+from capsim.main.views import LoggedInMixin
 from json import dumps, loads
 import numpy as np
 
 
-class RunsView(ListView):
+class RunsView(LoggedInMixin, ListView):
     template_name = 'sim/runs.html'
     model = RunRecord
     context_object_name = 'runs'
 
 
-class RunView(TemplateView):
+class RunView(LoggedInMixin, TemplateView):
     template_name = 'sim/run.html'
 
     def get_context_data(self, id):
@@ -31,7 +32,7 @@ class RunView(TemplateView):
                     stddev=np.array(output.agents_mass[ticks-1]).std(), run=rr)
 
 
-class RunOutputView(View):
+class RunOutputView(LoggedInMixin, View):
     def get(self, request, pk):
         rr = get_object_or_404(RunRecord, pk=pk)
         out = loads(rr.runoutput().data)
