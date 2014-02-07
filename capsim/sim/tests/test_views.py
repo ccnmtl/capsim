@@ -44,6 +44,26 @@ class BasicViewTest(TestCase):
         self.assertEquals(rr2.title, "test title")
         self.assertEquals(rr2.description, "test description")
 
+    def test_compare_runs_empty(self):
+        response = self.c.get("/run/compare/")
+        self.assertEquals(response.status_code, 200)
+
+    def test_compare_runs_bad_param(self):
+        response = self.c.get("/run/compare/?someparam=whatever")
+        self.assertEquals(response.status_code, 200)
+
+    def test_compare_runs(self):
+        u = User.objects.create(username='test')
+        rr = RunRecord.objects.create(user=u)
+        r = Run(ticks=10, number_agents=10)
+        rr.from_run(r)
+        ror = RunOutputRecord.objects.create(run=rr)
+        out = r.run()
+        ror.from_runoutput(out)
+        response = self.c.get("/run/compare/?run_%d=on" % rr.id)
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue("makeGraph" in response.content)
+
     def test_run_json(self):
         u = User.objects.create(username='test')
         rr = RunRecord.objects.create(user=u)

@@ -35,6 +35,35 @@ class RunView(LoggedInMixin, TemplateView):
                     stddev=np.array(output.agents_mass[ticks-1]).std(), run=rr)
 
 
+class CompareRunsView(LoggedInMixin, TemplateView):
+    template_name = "sim/compare_runs.html"
+
+    def get_context_data(self):
+        runs = []
+        for k in self.request.GET.keys():
+            if not k.startswith('run'):
+                continue
+            id = k.split('_')[1]
+
+            rr = get_object_or_404(RunRecord, id=id)
+            out = rr.runoutput().get_runoutput()
+            ticks = out.ticks
+            number_agents = out.params.get('number_agents', 100)
+            output = out.data
+            stats = [dict(mean=np.array(d).mean(), std=np.array(d).std())
+                     for d in output.agents_mass]
+            runs.append(
+                dict(
+                    number_agents=number_agents,
+                    ticks=ticks,
+                    output=output,
+                    stats=stats,
+                    mean=np.array(output.agents_mass[ticks-1]).mean(),
+                    stddev=np.array(output.agents_mass[ticks-1]).std(),
+                    run=rr))
+        return dict(runs=runs)
+
+
 class RunEditView(LoggedInMixin, View):
     def post(self, request, pk):
         rr = get_object_or_404(RunRecord, pk=pk)

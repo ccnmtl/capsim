@@ -6,15 +6,6 @@
 		<li><a href="/model/" title="Learn all about PHCX and the math behind it.">About</a></li>
 		<li><a href="/contact/" title="Get in touch.">Contact</a></li>
 		<li><a href="/topics/" title="These are all of the simulations available.">Topics</a></li>
-		<!--
-		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
-		{% flag simulation %}
-		<li><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
-		<li class="active"><a href="/run/" title="See all the runs.">Saved Runs</a></li>
-		{% else %}
-		<li><span class="navbar-text">[Simulation Deactivated]</span></li>
-		{% endflag %}
-		-->
 		{% endblock %}
 
 {% block content %}
@@ -32,40 +23,60 @@
 
 {% flag simulation %}
 
-{% if runs %}
-<form action="compare/" method="get">
-<h2>Saved Runs</h2>
+<h2>Compare Runs</h2>
 <table class="table table-condensed table-striped">
 	<thead>
 		<tr>
-			<th></th>
 			<th>Run</th>
 			<th>Description</th>
-			<th>Created</th>
-			<th></th>
+			<th>Number of Agents</th>
+			<th>Ticks</th>
+			<th>Mean mass</th>
+			<th>StdDev of mass</th>
 		</tr>
 	</thead>
 	<tbody>
 {% for run in runs %}
 <tr>
-	<td><input type="checkbox" name="run_{{run.id}}" /></td>
-	<td><a href="{{run.id}}/">{{run.title|default:run.created}}</a></td>
-	<td>{{run.description|markdown}}</td>
-	<td>{{run.created}}</td>
-	<td><a href="{{run.id}}/delete/" class="btn btn-danger btn-xs">Delete</a></td>
+	<td><a href="{{run.id}}/">{{run.run.title|default:run.run.created}}</a></td>
+	<td>{{run.run.description|markdown}}</td>
+	<td>{{run.number_agents}}</td>
+	<td>{{run.ticks}}</td>
+	<td>{{run.mean}}</td>
+	<td>{{run.stddev}}</td>
+</tr>
+<tr>
+	<td colspan="6">
+		<div class="placeholder" id="graph-{{run.run.id}}"/>
+	</td>
 </tr>
 {% endfor %}
 </tbody>
 </table>
 
-<input type="submit" value="compare selected runs"
-			 class="btn btn-primary" />
-</form>
-{% else %}
-<p>No saved runs yet.</p>
-{% endif %}
 {% else %}
 <p>Simulation is not active yet</p>
 {% endflag %}
 {% endblock %}
 
+
+{% block js %}
+<script type="text/javascript" src="{{STATIC_URL}}js/d3.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/graph.js"></script>
+
+<script type="text/javascript">
+var runData = [];
+var runStdDevs = [];
+
+{% for run in runs %}
+runData = [];
+runStdDevs = [];
+{% for d in run.stats %}
+runData.push({{d.mean}});runStdDevs.push({{d.std}});
+{% endfor %}
+
+makeGraph("div#graph-{{run.run.id}}", runData, runStdDevs);
+{% endfor %}
+</script>
+
+{% endblock %}
