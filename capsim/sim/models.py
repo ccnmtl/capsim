@@ -9,6 +9,8 @@ class RunRecord(models.Model):
     created = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User)
     data = models.TextField(default=u"", blank=True, null=True)
+    title = models.TextField(default=u"", blank=True, null=True)
+    description = models.TextField(default=u"", blank=True, null=True)
 
     def get_run(self):
         return Run.from_dict(loads(self.data or '{}'))
