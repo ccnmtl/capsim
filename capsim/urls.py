@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
-from django.views.generic.base import RedirectView
 from django.views.generic.edit import DeleteView
 from pagetree.generic.views import PageView
 import capsim.main.views
@@ -27,7 +26,6 @@ urlpatterns = patterns(
     '',
     auth_urls,
     logout_page,
-    #(r'^$', RedirectView.as_view(url='/home/')),
     (r'^$', TemplateView.as_view(template_name="main/home.html")),
     (r'^run/new/$', capsim.main.views.NewRunView.as_view()),
     (r'^run/$', capsim.sim.views.RunsView.as_view()),

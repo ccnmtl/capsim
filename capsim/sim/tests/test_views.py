@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
 from capsim.sim.models import RunRecord, RunOutputRecord
@@ -16,7 +17,8 @@ class BasicViewTest(TestCase):
         self.assertTrue("<ul>" in response.content)
 
     def test_run(self):
-        rr = RunRecord.objects.create()
+        u = User.objects.create(username='test')
+        rr = RunRecord.objects.create(user=u)
         r = Run(ticks=10, number_agents=10)
         rr.from_run(r)
         ror = RunOutputRecord.objects.create(run=rr)
@@ -27,7 +29,8 @@ class BasicViewTest(TestCase):
         self.assertTrue("<h2>Saved Run: " in response.content)
 
     def test_run_json(self):
-        rr = RunRecord.objects.create()
+        u = User.objects.create(username='test')
+        rr = RunRecord.objects.create(user=u)
         r = Run(ticks=10, number_agents=10)
         rr.from_run(r)
         ror = RunOutputRecord.objects.create(run=rr)
