@@ -18,7 +18,7 @@ class BasicViewTest(TestCase):
     def test_runs(self):
         response = self.c.get("/run/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("<ul>" in response.content)
+        self.assertTrue("<p>No saved runs yet.</p>" in response.content)
 
     def test_run(self):
         u = User.objects.create(username='test')

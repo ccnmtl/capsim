@@ -25,19 +25,36 @@
 <li class="active"><a href="/run/new/" title="Create a new run.">Simulation</a></li>
 <li><a href="/topic-obesity-debrief/"">Debrief</a></li>
 </ul>
-<!--stop 4 part topic subnav-->
+<!-- stop 4 part topic subnav -->
 
 
 
 {% flag simulation %}
 
-
+{% if runs %}
 <h2>Saved Runs</h2>
-<ul>
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th>Run</th>
+			<th>Created</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
 {% for run in runs %}
-<li><a href="{{run.id}}/">{{run.created}}</a></li>
+<tr>
+	<td><a href="{{run.id}}/">{{run.title|default:run.created}}</a></td>
+	<td>{{run.created}}</td>
+	<td><a href="{{run.id}}/delete/" class="btn btn-danger btn-xs">Delete</a></td>
+</tr>
 {% endfor %}
-</ul>
+</tbody>
+</table>
+
+{% else %}
+<p>No saved runs yet.</p>
+{% endif %}
 {% else %}
 <p>Simulation is not active yet</p>
 {% endflag %}
