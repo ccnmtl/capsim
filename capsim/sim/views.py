@@ -13,6 +13,9 @@ class RunsView(LoggedInMixin, ListView):
     model = RunRecord
     context_object_name = 'runs'
 
+    def get_queryset(self):
+        return RunRecord.objects.filter(user=self.request.user)
+
 
 class RunView(LoggedInMixin, TemplateView):
     template_name = 'sim/run.html'
