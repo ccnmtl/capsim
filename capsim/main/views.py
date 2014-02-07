@@ -45,6 +45,7 @@ class NewRunView(View):
                 parameters[f] = form.cleaned_data[f]
             r = Run(**parameters)
             rr = RunRecord()
+            rr.user = request.user
             rr.from_run(r)
             out = r.run()
             ror = RunOutputRecord(run=rr)
