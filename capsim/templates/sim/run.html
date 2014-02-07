@@ -31,6 +31,8 @@
 <h2>Saved Run: {{run.created}}</h2>
 
 <p><a href="delete/">Delete this Run</a></p>
+
+
 <script type="text/javascript" src="{{STATIC_URL}}js/d3.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/graph.js"></script>
 
@@ -47,6 +49,16 @@ runData.push({{d.mean}});runStdDevs.push({{d.std}});
 
 makeGraph("div.placeholder", runData, runStdDevs);
 </script>
+
+<hr />
+
+<form action="edit/" method="post">
+<input type="text" name="title" placeholder="title for this run" value="{{run.title}}"/>
+<textarea name="description" cols="50" rows="3">{{run.description}}</textarea>
+<input type="submit" value="save" class="btn btn-primary" />
+</form>
+
+<hr />
 
 <p><a href="json/">Download Run data in JSON</a></p>
 

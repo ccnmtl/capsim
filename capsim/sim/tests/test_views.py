@@ -32,6 +32,18 @@ class BasicViewTest(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTrue("<h2>Saved Run: " in response.content)
 
+    def test_edit_run(self):
+        u = User.objects.create(username='test')
+        rr = RunRecord.objects.create(user=u)
+
+        response = self.c.post(
+            "/run/%d/edit/" % rr.id,
+            dict(title="test title", description="test description"))
+        self.assertEquals(response.status_code, 302)
+        rr2 = RunRecord.objects.get(id=rr.id)
+        self.assertEquals(rr2.title, "test title")
+        self.assertEquals(rr2.description, "test description")
+
     def test_run_json(self):
         u = User.objects.create(username='test')
         rr = RunRecord.objects.create(user=u)

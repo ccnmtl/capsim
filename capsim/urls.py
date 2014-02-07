@@ -38,6 +38,7 @@ urlpatterns = patterns(
     (r'^run/$', capsim.sim.views.RunsView.as_view()),
     (r'^run/(?P<id>\d+)/$', capsim.sim.views.RunView.as_view()),
     (r'^run/(?P<pk>\d+)/json/$', capsim.sim.views.RunOutputView.as_view()),
+    (r'^run/(?P<pk>\d+)/edit/$', capsim.sim.views.RunEditView.as_view()),
     (r'^run/(?P<pk>\d+)/delete/$',
      DeleteView.as_view(model=RunRecord, success_url="/run/")),
     (r'^admin/', include(admin.site.urls)),

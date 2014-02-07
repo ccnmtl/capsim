@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.base import TemplateView, View
@@ -33,6 +33,15 @@ class RunView(LoggedInMixin, TemplateView):
                     stats=stats,
                     mean=np.array(output.agents_mass[ticks-1]).mean(),
                     stddev=np.array(output.agents_mass[ticks-1]).std(), run=rr)
+
+
+class RunEditView(LoggedInMixin, View):
+    def post(self, request, pk):
+        rr = get_object_or_404(RunRecord, pk=pk)
+        rr.title = request.POST.get('title', '')
+        rr.description = request.POST.get('description', '')
+        rr.save()
+        return HttpResponseRedirect(rr.get_absolute_url())
 
 
 class RunOutputView(LoggedInMixin, View):
