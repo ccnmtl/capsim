@@ -394,7 +394,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 </div>
   
 </form>
-{% else %}
+
 
 <!--START NEW INPUT INTERFACE PLACEHOLDER -->
 
@@ -726,7 +726,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 
 </div>
 
-<!--START NEW INPUT INTERFACE PLACEHOLDER -->
+
+{% else %}
+<p>Simulation is not yet active.</p>
 
 {% endflag %}
 {% endblock %}
