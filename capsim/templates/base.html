@@ -22,14 +22,11 @@
 {% endcompress %}
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
-  <script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
 
 	{% block feeds %}{% endblock %}
-	
-	<script>
-
-</script>
-	
+	<style type="text/css">
+	.popover-content {background-color: white !important;}
+	</style> 
 </head>
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 <a class="sr-only" href="#content">Skip navigation</a>
@@ -108,7 +105,7 @@
 
   <div class="container" id="outer-container">
 
-<div id="primarynav">
+<div id="primarynav" style="display: none;">
 	<nav class="nav navbar-default">
 	{% block moduletabs %}
 	{% endblock %}
@@ -283,5 +280,10 @@ You are impersonating.<br />
   ga('send', 'pageview');
 </script>
 {% endif %}
+
+  <script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
+<script>
+    $('.moreinfo').popover()
+    </script> 
 </body>
 </html>
