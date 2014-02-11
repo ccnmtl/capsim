@@ -18,14 +18,14 @@ class BasicViewTest(TestCase):
     def test_run_form(self):
         response = self.c.get("/run/new/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("<h2>Start New Run</h2>" in response.content)
+        self.assertTrue("id=\"test-new-run-form\"" in response.content)
 
     def test_run_form_disabled(self):
         self.flag.everyone = False
         self.flag.save()
         response = self.c.get("/run/new/")
         self.assertEquals(response.status_code, 200)
-        self.assertFalse("<h2>Start New Run</h2>" in response.content)
+        self.assertFalse("id=\"test-new-run-form\"" in response.content)
 
     def test_runs(self):
         response = self.c.get("/run/")

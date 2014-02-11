@@ -20,9 +20,22 @@
 
 {% block content %}
 
+<h2>Simulation</h2>
+
+<h1>Obesity</h1>
+
+<!--start 4 part topic subnav-->
+<ul class="nav nav-tabs nav-justified">
+<li><a href="/topic-obesity/">Introduction</a></li>
+<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Exercises</a></li>
+<li class="active"><a href="/run/new/" title="Create a new run.">Simulation</a></li>
+<li><a href="/topic-obesity-debrief/">Debrief</a></li>
+</ul>
+<!--stop 4 part topic subnav-->
+
+
 {% flag simulation %}
 <h2>Start New Run</h2>
-
 
 
 <p>All runs are saved automatically. You can <a href="/run/">review all of them</a>.</p>
@@ -52,7 +65,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 
 {% endif %}
 
-<form action="." method="post" class="form-horizontal" role="form">
+<form action="." method="post" class="form-horizontal" role="form" id="test-new-run-form">
 
 {{ form.non_field_errors }}
 
@@ -395,21 +408,6 @@ makeGraph("div.placeholder", runData, runStdDevs);
   
 </form>
 
-
-<!--START NEW INPUT INTERFACE PLACEHOLDER -->
-
-<h1>Obesity</h1>
-
-<!--start 4 part topic subnav-->
-<ul class="nav nav-tabs nav-justified">
-<li><a href="/topic-obesity/">Introduction</a></li>
-<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Exercises</a></li>
-<li class="active"><a href="/run/new/" title="Create a new run.">Simulation</a></li>
-<li><a href="/topic-obesity-debrief/">Debrief</a></li>
-</ul>
-<!--stop 4 part topic subnav-->
-
-<h2>Simulation</h2>
 
 <h3>New Run</h3>
 
