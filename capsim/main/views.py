@@ -7,6 +7,7 @@ from pagetree.generic.views import EditView
 from pagetree.generic.views import InstructorView
 from capsim.sim.logic import Run
 from capsim.sim.models import RunRecord, RunOutputRecord
+from waffle import Flag
 from .forms import RunForm
 
 
@@ -61,6 +62,15 @@ class LoggedInMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+
+
+class ToggleFlagView(LoggedInMixin, View):
+    def post(self, request):
+        flag, _ = Flag.objects.get_or_create(name='simulation',
+                                             defaults={'everyone': False})
+        flag.everyone = not flag.everyone
+        flag.save()
+        return HttpResponseRedirect("/run/new/")
 
 
 class EditPage(LoggedInMixin, EditView):

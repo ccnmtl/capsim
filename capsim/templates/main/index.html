@@ -35,6 +35,10 @@
 
 
 {% flag simulation %}
+{% if request.user.is_staff %}
+<div class="well"><form action="/run/toggle/" method="post">Staff only: <input type="submit" class="btn btn-warning"
+				 value="Disable Simulation" /></form></div>
+{% endif %}
 <h2>Start New Run</h2>
 
 
@@ -727,6 +731,11 @@ makeGraph("div.placeholder", runData, runStdDevs);
 
 {% else %}
 <p>Simulation is not yet active.</p>
+
+{% if request.user.is_staff %}
+<div class="well"><form action="/run/toggle/" method="post">Staff only: <input type="submit" class="btn btn-warning"
+				 value="Enable Simulation" /></form></div>
+{% endif %}
 
 {% endflag %}
 {% endblock %}

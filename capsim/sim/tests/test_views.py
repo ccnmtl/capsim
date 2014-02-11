@@ -27,6 +27,12 @@ class BasicViewTest(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertFalse("id=\"test-new-run-form\"" in response.content)
 
+    def test_toggle_flag(self):
+        response = self.c.post("/run/toggle/", dict())
+        self.assertEquals(response.status_code, 302)
+        f = Flag.objects.get(name='simulation')
+        self.assertFalse(f.everyone == self.flag.everyone)
+
     def test_runs(self):
         response = self.c.get("/run/")
         self.assertEquals(response.status_code, 200)
