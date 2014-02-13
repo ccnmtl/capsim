@@ -20,7 +20,6 @@
 
 {% block content %}
 
-<h2>Simulation</h2>
 
 <h1>Obesity</h1>
 
@@ -35,14 +34,27 @@
 
 
 {% flag simulation %}
+
+
+<h2>Simulation</h2>
+<strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac est facilisis, blandit risus at, accumsan mi. Ut eget gravida massa, sed convallis neque. Mauris turpis elit, congue eget venenatis a, sodales eget magna. Proin ornare congue laoreet. Cras enim ligula, tempus eget urna cursus, ultricies posuere magna. Praesent ante mi, congue vitae ultrices a, mattis vitae nunc</strong>
+
+<hr />
+
+
 {% if request.user.is_staff %}
-<div class="well"><form action="/run/toggle/" method="post">Staff only: <input type="submit" class="btn btn-warning"
-				 value="Disable Simulation" /></form></div>
+<div class="well">
+<form action="/run/toggle/" method="post">
+<input type="submit" class="btn btn-warning" value="Disable Simulation (Staff Only)" />
+</form>
+</div>
 {% endif %}
-<h2>Start New Run</h2>
 
+<h3>Create Run (Old Form)</h3>
 
-<p>All runs are saved automatically. You can <a href="/run/">review all of them</a>.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac est facilisis, blandit risus at, accumsan mi. Ut eget gravida massa, sed convallis neque. Mauris turpis elit, congue eget venenatis a, sodales eget magna. Proin ornare congue laoreet. Cras enim ligula, tempus eget urna cursus, ultricies posuere magna. Praesent ante mi, congue vitae ultrices a, mattis vitae nunc. Maecenas id tellus sit amet orci fringilla dictum sit amet ac mauris. Proin sed eleifend ante, vitae sodales elit. Aliquam sit amet est aliquam, congue turpis a, porttitor ligula. Phasellus quis odio blandit, sollicitudin est a, consequat purus. Cras metus nisl, ullamcorper vitae ipsum a, sagittis porta odio. Etiam dapibus felis nulla, non malesuada arcu facilisis eget. Suspendisse lacus turpis, malesuada nec porta ac, convallis ultricies orci. Sed nulla orci, hendrerit eget elit id, gravida volutpat nunc. Proin vel neque auctor diam eleifend varius. Nulla facilisi.</p>
+
+<!--<p>All runs are saved automatically. You can <a href="/run/">review all of them</a>.</p>-->
 
 {% if ran %}
 <script type="text/javascript" src="{{STATIC_URL}}js/d3.js"></script>
@@ -413,11 +425,15 @@ makeGraph("div.placeholder", runData, runStdDevs);
 </form>
 
 
-<h3>New Run</h3>
+<h3>Create Run (New Form)</h3>
 
-<strong>These are sample inputs. The simulation is not active yet.</strong>
+<h4>Your Role</h4>
 
-<hr />
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac est facilisis, blandit risus at, accumsan mi. Ut eget gravida massa, sed convallis neque. Mauris turpis elit, congue eget venenatis a, sodales eget magna. Proin ornare congue laoreet. Cras enim ligula, tempus eget urna cursus, ultricies posuere magna. Praesent ante mi, congue vitae ultrices a, mattis vitae nunc. Maecenas id tellus sit amet orci fringilla dictum sit amet ac mauris. 
+		</p>
+		
+		<p>
+		Proin sed eleifend ante, vitae sodales elit. Aliquam sit amet est aliquam, congue turpis a, porttitor ligula. Phasellus quis odio blandit, sollicitudin est a, consequat purus. Cras metus nisl, ullamcorper vitae ipsum a, sagittis porta odio. Etiam dapibus felis nulla, non malesuada arcu facilisis eget. Suspendisse lacus turpis, malesuada nec porta ac, convallis ultricies orci. Sed nulla orci, hendrerit eget elit id, gravida volutpat nunc. Proin vel neque auctor diam eleifend varius. Nulla facilisi.</p>
 
 <div class="container">
 
@@ -466,13 +482,24 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		</div>
 		
 		<div class="row well">
+			<legend> Budget <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Budget info goes here."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
 		
-			<legend> Physical Activity <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+<div class="progress" style="background-color: #666;">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+    <span class="sr">You have $0000.00!</span>
+
+  </div>		
+  
+  </div>
+  </div>
+		
+		<div class="row well">
+		
+			<legend> Physical Activity Context <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Info about Physical Activity Context goes here."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
 			
-			<div class="col-md-4">
 			
 				<div class="form-group">
-					<label for="">Recreational</label> 
+					<label for="">Provide and Support Community Programs Designed to Increase Physical Activity</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -482,7 +509,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					</div>
 				
 				<div class="form-group">
-					<label for="">Physical Education</label> 
+					<label for="">Ensure Coverage of, Access to, and Incentives for Routine Obesity Prevention, Screening, Diagnosis, and Treatment</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -491,12 +518,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					</select>				
 					</div>
 				
-			</div>
-		
-			<div class="col-md-4">
 			
 				<div class="form-group">
-					<label for="">Domestic</label> 
+					<label for="">Encourage Active Living at Work</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -506,7 +530,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 				</div>
 				
 				<div class="form-group">
-					<label for="">Social Influence</label> 
+					<label for="">Social Influence (Gamma 6)</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -515,12 +539,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					</select>				
 				</div>
 				
-			</div>
-		
-			<div class="col-md-4">
 			
 				<div class="form-group">
-					<label for="">Transportation</label> 
+					<label for="">Enhance the Physical and Built Environment</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -532,19 +553,17 @@ makeGraph("div.placeholder", runData, runStdDevs);
 				
 				
 				
-			</div>
 			
 		</div>
 		
 		
 		<div class="row well">
 		
-			<legend> Diet <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+			<legend> Diet Behavior Context<a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Diet Behavior Context help info goes here."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
 			
-			<div class="col-md-4">
 			
 				<div class="form-group">
-					<label for="">Food Exposure</label> 
+					<label for="">Introduce, Modify, and Utilize Health-Promoting Food and Beverage Retailing and Distribution Policies</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -554,7 +573,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					</div>
 				
 				<div class="form-group">
-					<label for="">Convenience of Food Offerings</label> 
+					<label for="">Encourage Healthy Eating at Work</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -563,12 +582,10 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					</select>				
 					</div>
 				
-			</div>
 		
-			<div class="col-md-4">
 			
 				<div class="form-group">
-					<label for="">Energy Density of Food</label> 
+					<label for="">Utilize Strong Nutritional Standards for all Foods and Beverages Sold or Provided Through the Government, and Ensure That These Healthy Options Are Available in All Places Frequented by the Public</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -578,7 +595,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 				</div>
 				
 				<div class="form-group">
-					<label for="">Nutritional Literacy</label> 
+					<label for="">Adopt Consistent Nutrition Education Policies for Federal Programs with Nutrition Education Components</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -587,12 +604,10 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					</select>				
 				</div>
 				
-			</div>
 		
-			<div class="col-md-4">
 			
 				<div class="form-group">
-					<label for="">Exposure to Food Advertising</label> 
+					<label for="">Ensure Consistent Nutrition Labeling for the Front of Packages, Retail Store Shelves, and Menus and Menu Boards That Encourages Healthier Food Choices</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -603,7 +618,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 				
 				
 				<div class="form-group">
-					<label for="">Social Influence</label> 
+					<label for="">Social Influence (Gamma 5)</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -613,7 +628,6 @@ makeGraph("div.placeholder", runData, runStdDevs);
 				</div>
 				
 				
-			</div>
 			
 		</div>		
 		
@@ -621,10 +635,10 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		
 			<legend> Individual Behavior <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
 			
-			<div class="col-md-4">
+			<div class="col-md-6">
 			
 				<div class="form-group">
-					<label for="">Force of Habit</label> 
+					<label for="">Force of Dietary Habit</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -632,13 +646,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option>Low</option>
 					</select>				
 					</div>
-				
-			</div>
-		
-			<div class="col-md-4">
-			
+					
 				<div class="form-group">
-					<label for="">C-Control</label> 
+					<label for="">Level of Physical Activity</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -649,10 +659,10 @@ makeGraph("div.placeholder", runData, runStdDevs);
 				
 			</div>
 		
-			<div class="col-md-4">
+			<div class="col-md-6">
 			
 				<div class="form-group">
-					<label for="">Physical Activity</label> 
+					<label for="">Level of Conscious Control of Accumulation</label> 
 					<select class="form-control">
 					  <option>Select Level</option>
 					  <option>High</option>
@@ -660,9 +670,10 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option>Low</option>
 					</select>				
 				</div>
-								
+				
 			</div>
-			
+		
+
 		</div>		
 		<div class="row well">
 		
@@ -713,7 +724,10 @@ makeGraph("div.placeholder", runData, runStdDevs);
 						<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
 						Tails 
 						</label>
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Tails %" style="width: 8em;">
+						<label> 
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 8em;">
+						Tails Percentage
+						</label>
 					</div>
 				</div>
 			</div>
@@ -726,15 +740,33 @@ makeGraph("div.placeholder", runData, runStdDevs);
 
 	</form>
 
+
+<h4>About these Variables</h4>
+
+<p>
+All these intervention levers are taken directly from the Committee on Accelerating Progress in Obesity Prevention recommendations, strategies and action steps. [IOM (Institute of Medicine).  2012.  Accelerating Progress in Obesity Prevention:  Solving the Weight of the Nation.  Washington, DC:  The National Academies Press.]
+</p>
+
+<p>
+The simulation interface will consist of organized variables and input options that users have access to.  The input options are primarily checkboxes or buttons with "low/medium/high" or the equivalent. All variables are organized into three categories called •contexts•: •physical activity context•, •diet behavior context•, and •individual-level behavior context•. 
+</p>
+
 </div>
 
 
 {% else %}
-<p>Simulation is not yet active.</p>
+
+<h2>Oops!</h2>
+<strong>This simulation is inactive.</strong>
+
+<hr />
 
 {% if request.user.is_staff %}
-<div class="well"><form action="/run/toggle/" method="post">Staff only: <input type="submit" class="btn btn-warning"
-				 value="Enable Simulation" /></form></div>
+<div class="well">
+<form action="/run/toggle/" method="post">
+<input type="submit" class="btn btn-warning" value="Enable Simulation (Staff Only" />
+</form>
+</div>
 {% endif %}
 
 {% endflag %}
