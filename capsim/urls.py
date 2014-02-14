@@ -28,7 +28,7 @@ urlpatterns = patterns(
     logout_page,
     (r'^$', TemplateView.as_view(template_name="main/home.html")),
     (r'^contact/$', TemplateView.as_view(template_name="main/contact.html")),
-    (r'^about/$', TemplateView.as_view(template_name="main/model.html")),
+    (r'^about/$', TemplateView.as_view(template_name="main/about.html")),
     (r'^topics/$', TemplateView.as_view(template_name="main/topics.html")),
     (r'^topic-obesity/$', TemplateView.as_view(
      template_name="sim/topic-obesity.html")),
