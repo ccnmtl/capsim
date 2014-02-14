@@ -1,6 +1,10 @@
 import networkx as nx
+import numpy as np
 from unittest import TestCase
 from capsim.sim.logic import SimParamSet, Simulation, Run
+from capsim.sim.logic import (
+    sigmoid, mass_delta
+)
 
 
 class SimParamSetTest(TestCase):
@@ -114,3 +118,18 @@ class RunTest(TestCase):
         d = out.to_dict()
         self.assertTrue('data' in d)
         self.assertEqual(d['ticks'], 10)
+
+
+class TestHelpers(TestCase):
+    def test_sigmoid(self):
+        t = np.zeros(1)
+        r = sigmoid(t)
+        self.assertEqual(r, 0.5 + np.zeros(1))
+
+        t = np.zeros(1) + 1.
+        r = sigmoid(t)
+        self.assertTrue((r - 0.73105858) < 0.001)
+
+    def test_mass_delta(self):
+        self.assertEqual(mass_delta(1.0, 1.0), 0.0)
+        self.assertTrue((0.4998883466 - mass_delta(10.0, 0.9)) < 0.001)
