@@ -5,7 +5,6 @@ from django.views.generic.base import TemplateView, View
 from capsim.sim.models import RunRecord
 from capsim.main.views import LoggedInMixin
 from json import dumps, loads
-import numpy as np
 
 
 class RunsView(LoggedInMixin, ListView):
@@ -23,29 +22,9 @@ class RunView(LoggedInMixin, TemplateView):
     def get_context_data(self, id):
         rr = get_object_or_404(RunRecord, id=id)
         out = rr.runoutput().get_runoutput()
-        ticks = out.ticks
-        number_agents = out.params.get('number_agents', 100)
-        output = out.data
-        mass_stats = [dict(mean=np.array(d).mean(), std=np.array(d).std())
-                      for d in output.agents_mass]
-        intake_stats = [dict(mean=np.array(d).mean(), std=np.array(d).std())
-                        for d in output.intake]
-        expenditure_stats = [dict(mean=np.array(d).mean(),
-                                  std=np.array(d).std())
-                             for d in output.expenditure]
-        return dict(
-            number_agents=number_agents, ticks=ticks,
-            output=output,
-            mass_stats=mass_stats,
-            intake_stats=intake_stats,
-            expenditure_stats=expenditure_stats,
-            mass_mean=np.array(output.agents_mass[ticks-1]).mean(),
-            mass_stddev=np.array(output.agents_mass[ticks-1]).std(),
-            intake_mean=np.array(output.intake[ticks-1]).mean(),
-            intake_stddev=np.array(output.intake[ticks-1]).std(),
-            expenditure_mean=np.array(output.expenditure[ticks-1]).mean(),
-            expenditure_stddev=np.array(output.expenditure[ticks-1]).std(),
-            run=rr)
+        d = out.display_data()
+        d.update(run=rr)
+        return d
 
 
 class CompareRunsView(LoggedInMixin, TemplateView):
@@ -60,34 +39,9 @@ class CompareRunsView(LoggedInMixin, TemplateView):
 
             rr = get_object_or_404(RunRecord, id=id)
             out = rr.runoutput().get_runoutput()
-            ticks = out.ticks
-            number_agents = out.params.get('number_agents', 100)
-            output = out.data
-            mass_stats = [dict(mean=np.array(d).mean(), std=np.array(d).std())
-                          for d in output.agents_mass]
-            intake_stats = [dict(mean=np.array(d).mean(),
-                                 std=np.array(d).std())
-                            for d in output.intake]
-            expenditure_stats = [dict(mean=np.array(d).mean(),
-                                      std=np.array(d).std())
-                                 for d in output.expenditure]
-            runs.append(
-                dict(
-                    number_agents=number_agents,
-                    ticks=ticks,
-                    output=output,
-                    mass_stats=mass_stats,
-                    intake_stats=intake_stats,
-                    expenditure_stats=expenditure_stats,
-                    mass_mean=np.array(output.agents_mass[ticks-1]).mean(),
-                    mass_stddev=np.array(output.agents_mass[ticks-1]).std(),
-                    intake_mean=np.array(output.intake[ticks-1]).mean(),
-                    intake_stddev=np.array(output.intake[ticks-1]).std(),
-                    expenditure_mean=np.array(
-                        output.expenditure[ticks-1]).mean(),
-                    expenditure_stddev=np.array(
-                        output.expenditure[ticks-1]).std(),
-                    run=rr))
+            d = out.display_data()
+            d.update(run=rr)
+            runs.append(d)
         return dict(runs=runs)
 
 

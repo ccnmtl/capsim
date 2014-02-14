@@ -404,6 +404,31 @@ class RunOutput(object):
             data=self.data.to_json(),
         )
 
+    def display_data(self):
+        ticks = self.ticks
+        number_agents = self.params.get('number_agents', 100)
+        output = self.data
+        mass_stats = [dict(mean=np.array(d).mean(), std=np.array(d).std())
+                      for d in output.agents_mass]
+        intake_stats = [dict(mean=np.array(d).mean(), std=np.array(d).std())
+                        for d in output.intake]
+        expenditure_stats = [dict(mean=np.array(d).mean(),
+                                  std=np.array(d).std())
+                             for d in output.expenditure]
+        return dict(
+            number_agents=number_agents,
+            ticks=ticks,
+            output=output,
+            mass_stats=mass_stats,
+            intake_stats=intake_stats,
+            expenditure_stats=expenditure_stats,
+            mass_mean=np.array(output.agents_mass[ticks-1]).mean(),
+            mass_stddev=np.array(output.agents_mass[ticks-1]).std(),
+            intake_mean=np.array(output.intake[ticks-1]).mean(),
+            intake_stddev=np.array(output.intake[ticks-1]).std(),
+            expenditure_mean=np.array(output.expenditure[ticks-1]).mean(),
+            expenditure_stddev=np.array(output.expenditure[ticks-1]).std())
+
 
 class Run(object):
     def __init__(self, **kwargs):
