@@ -1,10 +1,9 @@
-var margin = 20;
-width = 860;
-height = 200;
-var w = width;
-var h = height;
-
-var makeGraph = function (loc, data, stddevs) {
+//var margin = 15;
+//width = 860;
+//height = 200;
+var makeGraph = function (loc, data, stddevs, width, height, margin) {
+    var w = width;
+    var h = height;
 
     y = d3.scale.linear().domain([0, d3.max(data)]).range([0 + margin, height - margin]);
     x = d3.scale.linear().domain([0, data.length]).range([0 + margin, width - margin]);

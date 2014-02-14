@@ -418,6 +418,8 @@ class Run(object):
             results.append(
                 dict(
                     agents_mass=s.agents_mass,
+                    intake=s.input,
+                    expenditure=s.total_output,
                     tick=tick,
                 )
             )
