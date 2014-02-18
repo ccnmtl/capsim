@@ -229,6 +229,7 @@
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
 {% compress js %}
+<script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
 <script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
 {% endcompress %}
 
@@ -281,9 +282,5 @@ You are impersonating.<br />
 </script>
 {% endif %}
 
-  <script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
-<script>
-    $('.moreinfo').popover()
-    </script> 
 </body>
 </html>

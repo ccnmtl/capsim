@@ -441,7 +441,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 	
 		<div class="row well">
 		
-			<legend> Standing Conditions <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+			<legend> Standing Conditions 
+				<button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </button>
+			</legend> 
 			
 			<div class="col-md-3">
 			
@@ -482,7 +484,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		</div>
 		
 		<div class="row well">
-			<legend> Budget <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Budget info goes here."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+			<legend> Budget <button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Budget info goes here."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
 		
 <div class="progress" style="background-color: #666;">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
@@ -495,7 +497,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		
 		<div class="row well">
 		
-			<legend> Physical Activity Context <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Info about Physical Activity Context goes here."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+			<legend> Physical Activity Context <button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Info about Physical Activity Context goes here."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
 			
 			
 				<div class="form-group">
@@ -559,7 +561,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		
 		<div class="row well">
 		
-			<legend> Diet Behavior Context<a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Diet Behavior Context help info goes here."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+			<legend> Diet Behavior Context<button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Diet Behavior Context help info goes here."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
 			
 			
 				<div class="form-group">
@@ -633,7 +635,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		
 		<div class="row well">
 		
-			<legend> Individual Behavior <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+			<legend> Individual Behavior <button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
 			
 			<div class="col-md-6">
 			
@@ -677,7 +679,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		</div>		
 		<div class="row well">
 		
-			<legend> Targets <a href="#" type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </a> </legend> 
+			<legend> Targets <button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
 		
 			<div class="col-md-4">
 				<div class="form-group">
@@ -770,4 +772,10 @@ The simulation interface will consist of organized variables and input options t
 {% endif %}
 
 {% endflag %}
+{% endblock %}
+
+{% block js %}
+<script>
+    $('.moreinfo').popover()
+</script> 
 {% endblock %}
