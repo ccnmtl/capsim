@@ -11,7 +11,13 @@ from waffle import Flag
 from .forms import RunForm
 
 
-class NewRunView(View):
+class LoggedInMixin(object):
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+
+
+class NewRunView(LoggedInMixin, View):
     template_name = 'main/index.html'
 
     def post(self, request):
@@ -56,12 +62,6 @@ class NewRunView(View):
 
     def get(self, request):
         return render(request, self.template_name, dict(form=RunForm()))
-
-
-class LoggedInMixin(object):
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super(LoggedInMixin, self).dispatch(*args, **kwargs)
 
 
 class ToggleFlagView(LoggedInMixin, View):
