@@ -486,9 +486,14 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		<div class="row well">
 			<legend> Budget <button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Budget info goes here."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
 		
-<div class="progress" style="background-color: #666;">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-    <span class="sr">You have $0000.00!</span>
+<div class="progress" style="background-color: #666;" id="budget-progress-bar">
+  <div class="progress-bar progress-bar-success"
+			 role="progressbar"
+			 aria-valuenow="100"
+			 aria-valuemin="0"
+			 aria-valuemax="100"
+			 style="width: 100%">
+    <span class="sr">You have $1000.00!</span>
 
   </div>		
   
@@ -502,59 +507,55 @@ makeGraph("div.placeholder", runData, runStdDevs);
 			
 				<div class="form-group">
 					<label for="">Provide and Support Community Programs Designed to Increase Physical Activity</label> 
-					<select class="form-control">
-					  <option>Select Level</option>
-					  <option>High</option>
-					  <option>Medium</option>
-					  <option>Low</option>
+					<select class="form-control intervention-control" id="increase-physical-activity">
+					  <option value="">Select Level</option>
+					  <option value="high">High</option>
+					  <option value="medium">Medium</option>
+					  <option value="low">Low</option>
 					</select>				
 					</div>
 				
 				<div class="form-group">
 					<label for="">Ensure Coverage of, Access to, and Incentives for Routine Obesity Prevention, Screening, Diagnosis, and Treatment</label> 
-					<select class="form-control">
-					  <option>Select Level</option>
-					  <option>High</option>
-					  <option>Medium</option>
-					  <option>Low</option>
+					<select class="form-control intervention-control" id="ensure-screening">
+					  <option value="">Select Level</option>
+					  <option value="high">High</option>
+					  <option value="medium">Medium</option>
+					  <option value="low">Low</option>
 					</select>				
 					</div>
 				
 			
 				<div class="form-group">
 					<label for="">Encourage Active Living at Work</label> 
-					<select class="form-control">
-					  <option>Select Level</option>
-					  <option>High</option>
-					  <option>Medium</option>
-					  <option>Low</option>
+					<select class="form-control intervention-control" id="active-living-at-work">
+					  <option value="">Select Level</option>
+					  <option value="high">High</option>
+					  <option value="medium">Medium</option>
+					  <option value="low">Low</option>
 					</select>				
 				</div>
 				
 				<div class="form-group">
 					<label for="">Social Influence (Gamma 6)</label> 
-					<select class="form-control">
-					  <option>Select Level</option>
-					  <option>High</option>
-					  <option>Medium</option>
-					  <option>Low</option>
+					<select class="form-control intervention-control" id="social-influence">
+					  <option value="">Select Level</option>
+					  <option value="high">High</option>
+					  <option value="medium">Medium</option>
+					  <option value="low">Low</option>
 					</select>				
 				</div>
 				
 			
 				<div class="form-group">
 					<label for="">Enhance the Physical and Built Environment</label> 
-					<select class="form-control">
-					  <option>Select Level</option>
-					  <option>High</option>
-					  <option>Medium</option>
-					  <option>Low</option>
+					<select class="form-control intervention-control" id="physical-environment">
+					  <option value="">Select Level</option>
+					  <option value="high">High</option>
+					  <option value="medium">Medium</option>
+					  <option value="low">Low</option>
 					</select>				
 				</div>
-				
-				
-				
-				
 			
 		</div>
 		
@@ -777,5 +778,6 @@ The simulation interface will consist of organized variables and input options t
 {% block js %}
 <script>
     $('.moreinfo').popover()
-</script> 
+</script>
+<script src="{{STATIC_URL}}js/interventions.js"></script>
 {% endblock %}
