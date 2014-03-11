@@ -418,7 +418,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 </div>
 <div class="form-group">
 <div class="col-sm-12">
-<button type="submit" class="btn pull-right">Run it!</button>
+<button type="submit" class="btn pull-right" id="run-sim-button">Run it!</button>
 </div>
 </div>
   
@@ -493,11 +493,14 @@ makeGraph("div.placeholder", runData, runStdDevs);
 			 aria-valuemin="0"
 			 aria-valuemax="100"
 			 style="width: 100%">
-    <span class="sr">You have $1000.00!</span>
-
+    <span class="sr">$1000</span>
   </div>		
-  
-  </div>
+</div>
+
+  <div id="overbudget" class="alert alert-danger">
+		You are over budget by $<span id="overbudget-amount"></span>
+	</div>
+
   </div>
 		
 		<div class="row well">
@@ -778,6 +781,7 @@ The simulation interface will consist of organized variables and input options t
 {% block js %}
 <script>
     $('.moreinfo').popover()
+		$("#overbudget").hide();
 </script>
 <script src="{{STATIC_URL}}js/interventions.js"></script>
 {% endblock %}

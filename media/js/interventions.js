@@ -9,7 +9,7 @@ var update_budget_progress_bar = function() {
     bar.attr('aria-valuenow', percent_remaining);
     bar.attr('style', 'width: ' + Math.floor(percent_remaining) + "%");
     var label = $('#budget-progress-bar .sr');
-    label.text("You have $" + (total_budget - budget_used) + ".00!");
+    label.text("$" + (total_budget - budget_used));
 };
 
 var costs = {
@@ -30,6 +30,12 @@ var costs = {
     }
 };
 
+var over_budget = function(amount) {
+    $("#run-sim-button").attr('disabled','disabled');
+    $("#overbudget-amount").text(amount);
+    $("#overbudget").show();
+};
+
 var calculate_budget = function() {
     budget_used = 0;
     var controls = $(".intervention-control");
@@ -41,6 +47,12 @@ var calculate_budget = function() {
     }
     apply_modifiers();
     update_budget_progress_bar();
+    if (budget_used > total_budget) {
+        over_budget(budget_used - total_budget);
+    } else {
+        $("#run-sim-button").removeAttr('disabled');
+        $("#overbudget").hide();
+    }
 };
 
 var defaults = {
