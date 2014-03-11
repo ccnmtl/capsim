@@ -223,3 +223,7 @@ var apply_modifiers = function() {
 };
 
 $(".intervention-control").change(calculate_budget);
+$("#reset-all-button").click(function () {
+    reset_parameters();
+    $("#intervention-form").trigger('reset');
+});
