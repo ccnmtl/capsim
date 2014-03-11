@@ -22,11 +22,41 @@ var costs = {
     'active-living-at-work': {
         'high': 300, 'medium': 200, 'low': 100
     },
-    'social-influence': {
+    'activity-social-influence': {
         'high': 300, 'medium': 200, 'low': 100
     },
     'physical-environment': {
         'high': 300, 'medium': 200, 'low': 100
+    },
+
+    'health-promoting-food': {
+        'high': 300, 'medium': 200, 'low': 100
+    },
+    'healthy-eating-at-work': {
+        'high': 300, 'medium': 200, 'low': 100
+    },
+    'national-health-standards': {
+        'high': 300, 'medium': 200, 'low': 100
+    },
+    'nutrition-education-policies': {
+        'high': 300, 'medium': 200, 'low': 100
+    },
+    'food-labeling': {
+        'high': 300, 'medium': 200, 'low': 100
+    },
+    'food-social-influence': {
+        'high': 300, 'medium': 200, 'low': 100
+    },
+
+    // these aren't really "interventions"
+    'force-of-dietary-habit': {
+        'high': 0, 'medium': 0, 'low': 0
+    },
+    'level-of-physical-activity': {
+        'high': 0, 'medium': 0, 'low': 0
+    },
+    'level-of-conscious-control': {
+        'high': 0, 'medium': 0, 'low': 0
     }
 };
 
@@ -56,6 +86,13 @@ var calculate_budget = function() {
 };
 
 var defaults = {
+    'id_gamma_1': 1.0,
+    'id_gamma_2': 1.0,
+    'id_gamma_3': 1.0,
+    'id_gamma_4': 1.0,
+    'id_gamma_5': 1.0,
+    'id_gamma_6': 1.0,
+
     'id_recreation_activity_alpha': 0.5,
     'id_education_activity_alpha': 0.5,
     'id_domestic_activity_alpha': 0.5,
@@ -66,7 +103,17 @@ var defaults = {
     'id_food_convenience_alpha': 0.5,
     'id_food_literacy_alpha': 0.5,
     'id_food_advertising_alpha': 0.5,
-    'id_gamma_6': 1.0,
+
+    'id_recreation_activity_lambda': 0.1,
+    'id_education_activity_lambda': 0.1,
+    'id_domestic_activity_lambda': 0.1,
+    'id_transport_activity_lambda': 0.1,
+    'id_food_convenience_lambda': 0.1,
+    'id_energy_density_lambda': 0.1,
+    'id_food_exposure_lambda': 0.1,
+    'id_food_convenience_lambda': 0.1,
+    'id_food_literacy_lambda': 0.1,
+    'id_food_advertising_lambda': 0.1
 }
 
 var modifiers = {
@@ -85,7 +132,7 @@ var modifiers = {
         'medium': [{'param': 'id_domestic_activity_alpha', 'adjustment': 0.2}],
         'low': [{'param': 'id_domestic_activity_alpha', 'adjustment': 0.1}]
     },
-    'social-influence': {
+    'activity-social-influence': {
         'high': [{'param': 'id_gamma_6', 'adjustment': 0.3}],
         'medium': [{'param': 'id_gamma_6', 'adjustment': 0.2}],
         'low': [{'param': 'id_gamma_6', 'adjustment': 0.1}]
@@ -94,6 +141,53 @@ var modifiers = {
         'high': [],
         'medium': [],
         'low': []
+    },
+
+    'health-promoting-food': {
+        'high': [],
+        'medium': [],
+        'low': []
+    },
+    'healthy-eating-at-work': {
+        'high': [],
+        'medium': [],
+        'low': []
+    },
+    'national-health-standards': {
+        'high': [],
+        'medium': [],
+        'low': []
+    },
+    'nutrition-education-policies': {
+        'high': [],
+        'medium': [],
+        'low': []
+    },
+    'food-labeling': {
+        'high': [],
+        'medium': [],
+        'low': []
+    },
+    'food-social-influence': {
+        'high': [],
+        'medium': [],
+        'low': []
+    },
+
+    'force-of-dietary-habit': {
+        'high': [{'param': 'id_gamma_2', 'adjustment': 0.3}],
+        'medium': [{'param': 'id_gamma_2', 'adjustment': 0.2}],
+        'low': [{'param': 'id_gamma_2', 'adjustment': 0.1}]
+    },
+    'level-of-physical-activity': {
+        'high': [{'param': 'id_gamma_5', 'adjustment': 0.3}],
+        'medium': [{'param': 'id_gamma_5', 'adjustment': 0.2}],
+        'low': [{'param': 'id_gamma_5', 'adjustment': 0.1}]
+    },
+    'level-of-conscious-control': {
+        'high': [{'param': 'id_gamma_4', 'adjustment': 0.3}],
+        'medium': [{'param': 'id_gamma_4', 'adjustment': 0.2}],
+        'low': [{'param': 'id_gamma_4', 'adjustment': 0.1}]
     }
 }
 
