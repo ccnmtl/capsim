@@ -179,3 +179,10 @@ text {
 		font-family: Arial;
 		font-size: 9pt;
 }
+
+.affix {
+   position: fixed;
+   top: 100px;
+	 right: 20px;
+	 width: 400px;
+}
