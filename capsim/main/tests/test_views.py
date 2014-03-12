@@ -41,6 +41,12 @@ class BasicViewTest(TestCase):
                  food_advertising_alpha=0.5, food_advertising_lambda=0.1,
                  food_convenience_alpha=0.5, food_convenience_lambda=0.1,
                  food_literacy_alpha=0.5, food_literacy_lambda=0.1,
+
+                 recreation_activity_weight=1.0,
+                 domestic_activity_weight=1.0,
+                 transport_activity_weight=1.0,
+                 education_activity_weight=1.0,
+
                  ))
         self.assertEquals(response.status_code, 302)
 

@@ -231,6 +231,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 </div>
 </div>
 </div>
+
 <div class="well">
 <div class="row">
 <div class="col-md-4">
@@ -416,6 +417,55 @@ makeGraph("div.placeholder", runData, runStdDevs);
 </div>
 </div>
 </div>
+
+<div class="well">
+	<div class="row">
+		<div class="col-md-5">
+
+			<div class="form-group">
+				{{ form.recreation_activity_weight.errors }}
+				<label for="inputRecreationActivityWeight"
+							 class="col-sm-8">Recreation Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.recreation_activity_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.domestic_activity_weight.errors }}
+				<label for="inputDomesticActivityWeight"
+							 class="col-sm-8">Domestic Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.domestic_activity_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.transport_activity_weight.errors }}
+				<label for="inputTransportActivityWeight"
+							 class="col-sm-8">Transport Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.transport_activity_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.education_activity_weight.errors }}
+				<label for="inputEducationActivityWeight"
+							 class="col-sm-8">Education Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.education_activity_weight }}
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-5">
+
+		</div>
+	</div>
+</div>
+
 <div class="form-group">
 <div class="col-sm-12">
 <button type="submit" class="btn pull-right" id="run-sim-button">Run it!</button>

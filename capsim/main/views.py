@@ -36,6 +36,12 @@ class NewRunView(LoggedInMixin, View):
                       'transport_activity_lambda',
                       'education_activity_alpha',
                       'education_activity_lambda',
+
+                      'recreation_activity_weight',
+                      'domestic_activity_weight',
+                      'transport_activity_weight',
+                      'education_activity_weight',
+
                       'food_exposure_alpha',
                       'food_exposure_lambda',
                       'energy_density_alpha',

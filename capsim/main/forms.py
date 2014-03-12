@@ -161,3 +161,25 @@ class RunForm(forms.Form):
         label="Food Literacy Lambda",
         widget=forms.TextInput(attrs={'size': '4'}),
         )
+
+    # physical environment weights
+    recreation_activity_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Recreation Activity Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
+    domestic_activity_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Domestic Activity Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
+    transport_activity_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Transport Activity Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
+    education_activity_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Education Activity Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
