@@ -146,7 +146,7 @@
 
 <div class="well">
 \begin{equation}
-\frac{1}{1 + e^{-10(\sum_{1}^{4}\text{PhysActivEnviron} - 0.50)}}
+\frac{1}{1 + e^{-10(\sum_{1}^{4}\text{PhysActivEnviron}_{i} * \text{PEWeight}_{i} - 0.50)}}
 \end{equation}
 </div>
 
@@ -161,6 +161,8 @@
 
 <p>where x is % of social network ties with total-output &gt;= agent's own input and \(\gamma_5, \gamma_6 = 1\)</p>
 
+<p>\(\text{PEWeight}_{1}\) through \(\text{PEWeight}_{4}\) are weights
+	on each physical environment value (defaulting to 1).</p>
 
 <h3>Dynamics of Model</h3>
 

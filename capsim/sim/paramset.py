@@ -67,6 +67,18 @@ class SimParamSet(object):
             kwargs.get('education_activity_alpha', defaults.DEFAULT_ALPHA),
             kwargs.get('education_activity_lambda', defaults.DEFAULT_LAMBDA))
 
+        self.recreation_activity_weight = kwargs.get(
+            'recreation_activity_weight',
+            defaults.DEFAULT_WEIGHT)
+        self.domestic_activity_weight = kwargs.get('domestic_activity_weight',
+                                                   defaults.DEFAULT_WEIGHT)
+        self.transport_activity_weight = kwargs.get(
+            'transport_activity_weight',
+            defaults.DEFAULT_WEIGHT)
+        self.education_activity_weight = kwargs.get(
+            'education_activity_weight',
+            defaults.DEFAULT_WEIGHT)
+
         self.food_exposure = GammaVarParams(
             kwargs.get('food_exposure_alpha', defaults.DEFAULT_ALPHA),
             kwargs.get('food_exposure_lambda', defaults.DEFAULT_LAMBDA))
@@ -119,6 +131,10 @@ class SimParamSet(object):
             transport_activity_lambda=self.transport_activity.llambda,
             education_activity_alpha=self.education_activity.alpha,
             education_activity_lambda=self.education_activity.llambda,
+            recreation_activity_weight=self.recreation_activity_weight,
+            domestic_activity_weight=self.domestic_activity_weight,
+            transport_activity_weight=self.transport_activity_weight,
+            education_activity_weight=self.education_activity_weight,
             food_exposure_alpha=self.food_exposure.alpha,
             food_exposure_lambda=self.food_exposure.llambda,
             energy_density_alpha=self.energy_density.alpha,

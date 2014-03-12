@@ -180,7 +180,11 @@ class Simulation(object):
             self.total_output, self.neighbors)
 
         self.physical_activity = calculate_physical_activity(
-            recreation, domestic, transport, education)
+            recreation, domestic, transport, education,
+            self.params.recreation_activity_weight,
+            self.params.domestic_activity_weight,
+            self.params.transport_activity_weight,
+            self.params.education_activity_weight)
 
         self.total_output = calculate_total_output(
             self.agents_base_output,
@@ -196,7 +200,8 @@ class Simulation(object):
             self.params.food_advertising_weight,
             self.params.food_convenience_weight)
 
-        self.c_control = calculate_c_control(food_literacy)
+        self.c_control = calculate_c_control(
+            food_literacy, self.params.food_literacy_weight)
 
         self.input = calculate_input(
             self.total_output,
@@ -274,13 +279,8 @@ def network_output_percent(output, neighbors):
             / np.maximum(count_neighbors(neighbors), 1.))
 
 
-def calculate_c_control(food_literacy):
-    """
-    to-report c-control ;; turtle procedure
-     report sigmoid (10 * (food-literacy - 0.5))
-    end
-    """
-    return sigmoid(10. * (food_literacy - 0.5))
+def calculate_c_control(food_literacy, food_literacy_weight=1.):
+    return sigmoid(10. * ((food_literacy * food_literacy_weight) - 0.5))
 
 
 def calculate_force_of_habit(food_exposure, energy_density,
@@ -307,34 +307,29 @@ def food_sum(food_exposure, energy_density,
 
 
 def calculate_physical_activity(recreation_activity, domestic_activity,
-                                transport_activity, education_activity):
-    """
-    to-report physical-activity ;; turtle-procedure
-      report sigmoid (10 * activity-sum)
-    end
-    """
+                                transport_activity, education_activity,
+                                recreation_activity_weight=1.,
+                                domestic_activity_weight=1.,
+                                transport_activity_weight=1.,
+                                education_activity_weight=1.):
     return sigmoid(
         10. * activity_sum(
             recreation_activity, domestic_activity,
-            transport_activity, education_activity))
+            transport_activity, education_activity,
+            recreation_activity_weight, domestic_activity_weight,
+            transport_activity_weight, education_activity_weight))
 
 
 def activity_sum(recreation_activity, domestic_activity,
-                 transport_activity, education_activity):
-    """
-    to-report activity-sum
-      report sum map minus-half (list recreation-activity domestic-activity
-                                     transport-activity education-activity)
-    end
-
-    to-report minus-half [x]
-      report x - 0.5
-    end
-    """
-    return ((recreation_activity - 0.5)
-            + (domestic_activity - 0.5)
-            + (transport_activity - 0.5)
-            + (education_activity - 0.5))
+                 transport_activity, education_activity,
+                 recreation_activity_weight=1.,
+                 domestic_activity_weight=1.,
+                 transport_activity_weight=1.,
+                 education_activity_weight=1.):
+    return (((recreation_activity * recreation_activity_weight) - 0.5)
+            + ((domestic_activity * domestic_activity_weight) - 0.5)
+            + ((transport_activity * transport_activity_weight) - 0.5)
+            + ((education_activity * education_activity_weight) - 0.5))
 
 
 def calculate_mass(mass, input, total_output, gamma_1):
