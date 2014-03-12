@@ -18,7 +18,7 @@ NUM_NEIGHBORS = 3
 # please keep it in the NNN-YYYY-MM-DD format, incrementing the number
 # on the front each time, and setting the other fields to the current date
 
-MODEL_VERSION = "001-2013-09-19"
+MODEL_VERSION = "002-2014-03-12"
 
 
 class Simulation(object):
@@ -190,7 +190,11 @@ class Simulation(object):
 
         self.force_of_habit = calculate_force_of_habit(
             food_exposure, energy_density,
-            food_advertising, food_convenience)
+            food_advertising, food_convenience,
+            self.params.food_exposure_weight,
+            self.params.energy_density_weight,
+            self.params.food_advertising_weight,
+            self.params.food_convenience_weight)
 
         self.c_control = calculate_c_control(food_literacy)
 
@@ -280,28 +284,26 @@ def calculate_c_control(food_literacy):
 
 
 def calculate_force_of_habit(food_exposure, energy_density,
-                             food_advertising, food_convenience):
-    """
-    to-report force-of-habit ;; turtle-procedure
-      report sigmoid (10 * food-sum)
-    end
-    """
-    return sigmoid(10. * food_sum(food_exposure, energy_density,
-                                  food_advertising, food_convenience))
+                             food_advertising, food_convenience,
+                             food_exposure_weight=1.,
+                             energy_density_weight=1.,
+                             food_advertising_weight=1.,
+                             food_convenience_weight=1.):
+    return sigmoid(
+        10. * food_sum(
+            food_exposure, energy_density, food_advertising, food_convenience,
+            food_exposure_weight, energy_density_weight,
+            food_advertising_weight, food_convenience_weight))
 
 
 def food_sum(food_exposure, energy_density,
-             food_advertising, food_convenience):
-    """
-    to-report food-sum
-      report sum map minus-half (list food-exposure food-energy-density
-                                      food-advertising food-convenience)
-    end
-    """
-    return ((food_exposure - 0.5)
-            + (energy_density - 0.5)
-            + (food_advertising - 0.5)
-            + (food_convenience - 0.5))
+             food_advertising, food_convenience,
+             food_exposure_weight=1., energy_density_weight=1.,
+             food_advertising_weight=1., food_convenience_weight=1.):
+    return (((food_exposure * food_exposure_weight) - 0.5)
+            + ((energy_density * energy_density_weight) - 0.5)
+            + ((food_advertising * food_advertising_weight) - 0.5)
+            + ((food_convenience * food_convenience_weight) - 0.5))
 
 
 def calculate_physical_activity(recreation_activity, domestic_activity,

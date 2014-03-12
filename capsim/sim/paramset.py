@@ -83,6 +83,17 @@ class SimParamSet(object):
             kwargs.get('food_literacy_alpha', defaults.DEFAULT_ALPHA),
             kwargs.get('food_literacy_lambda', defaults.DEFAULT_LAMBDA))
 
+        self.food_exposure_weight = kwargs.get('food_exposure_weight',
+                                               defaults.DEFAULT_WEIGHT)
+        self.energy_density_weight = kwargs.get('energy_density_weight',
+                                                defaults.DEFAULT_WEIGHT)
+        self.food_advertising_weight = kwargs.get('food_advertising_weight',
+                                                  defaults.DEFAULT_WEIGHT)
+        self.food_convenience_weight = kwargs.get('food_convenience_weight',
+                                                  defaults.DEFAULT_WEIGHT)
+        self.food_literacy_weight = kwargs.get('food_literacy_weight',
+                                               defaults.DEFAULT_WEIGHT)
+
     def to_dict(self):
         """ return a simple dict of all the parameters """
         return dict(
@@ -118,4 +129,9 @@ class SimParamSet(object):
             food_convenience_lambda=self.food_convenience.llambda,
             food_literacy_alpha=self.food_literacy.alpha,
             food_literacy_lambda=self.food_literacy.llambda,
+            food_exposure_weight=self.food_exposure_weight,
+            energy_density_weight=self.energy_density_weight,
+            food_advertising_weight=self.food_advertising_weight,
+            food_convenience_weight=self.food_convenience_weight,
+            food_literacy_weight=self.food_literacy_weight,
         )

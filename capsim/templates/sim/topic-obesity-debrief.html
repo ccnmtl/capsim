@@ -109,7 +109,7 @@
 
 <div class="well">
 \begin{equation}
-\frac{1}{1 + e^{-10(\sum_{1}^{4}\text{FoodEnviron} - 0.50)}}
+\frac{1}{1 + e^{-10(\sum_{1}^{4}\text{FoodEnviron}_{i} * \text{FEWeight}_{i} - 0.50)}}
 \end{equation}
 </div>
 
@@ -117,7 +117,7 @@
 
 <div class="well">
 \begin{equation}
-\frac{1}{1 + e^{-10(\sum_{5}^{5}\text{FoodEnviron} - 0.50)}}
+\frac{1}{1 + e^{-10(\sum_{5}^{5}\text{FoodEnviron} * \text{FEWeight}_{5} - 0.50)}}
 \end{equation}
 </div>
 
@@ -130,6 +130,9 @@
 </div>
 
 <p>where x is % of social network ties with input &gt;= agent's own input. and \(\gamma_2 \ldots \gamma_4 = 1\).</p>
+
+<p>\(\text{FEWeight}_{1}\) through \(\text{FEWeight}_{5}\) are weights
+	on each food environment value (defaulting to 1).</p>
 
 <h3>Agent Energy Expenditure</h3>
 
