@@ -1,6 +1,7 @@
 # Django settings for capsim project.
 import os.path
 import sys
+import djcelery
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -95,6 +96,8 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), "templates"),
 )
 
+djcelery.setup_loader()
+
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,6 +126,7 @@ INSTALLED_APPS = [
     'quizblock',
     'capsim.main',
     'capsim.sim',
+    'djcelery',
 ]
 
 PAGEBLOCKS = ['pageblocks.TextBlock',
@@ -136,6 +140,9 @@ PAGEBLOCKS = ['pageblocks.TextBlock',
 LETTUCE_APPS = (
     'capsim.main',
 )
+
+BROKER_URL = "amqp://localhost:5672//dmt"
+CELERYD_CONCURRENCY = 4
 
 INTERNAL_IPS = ('127.0.0.1', )
 DEBUG_TOOLBAR_PANELS = (

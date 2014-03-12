@@ -26,6 +26,8 @@ COMPRESS_ROOT = "/var/www/capsim/capsim/media/"
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+CELERYD_CONCURRENCY = 4
+
 if 'migrate' not in sys.argv:
     INSTALLED_APPS.append('raven.contrib.django.raven_compat')
 
