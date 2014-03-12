@@ -52,6 +52,12 @@ class NewRunView(LoggedInMixin, View):
                       'food_convenience_lambda',
                       'food_literacy_alpha',
                       'food_literacy_lambda',
+
+                      'food_exposure_weight',
+                      'energy_density_weight',
+                      'food_advertising_weight',
+                      'food_convenience_weight',
+                      'food_literacy_weight',
                       ]
             parameters = dict()
             for f in fields:

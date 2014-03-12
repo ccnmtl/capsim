@@ -47,6 +47,11 @@ class BasicViewTest(TestCase):
                  transport_activity_weight=1.0,
                  education_activity_weight=1.0,
 
+                 food_exposure_weight=1.0,
+                 energy_density_weight=1.0,
+                 food_advertising_weight=1.0,
+                 food_convenience_weight=1.0,
+                 food_literacy_weight=1.0,
                  ))
         self.assertEquals(response.status_code, 302)
 

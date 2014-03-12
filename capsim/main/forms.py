@@ -183,3 +183,30 @@ class RunForm(forms.Form):
         label="Education Activity Weight",
         widget=forms.TextInput(attrs={'size': '4'}),
         )
+
+    # food environment weights
+    energy_density_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Energy Density Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
+    food_exposure_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Food Exposure Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
+    food_literacy_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Food Literacy Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
+    food_advertising_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Food Advertising Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
+    food_convenience_weight = forms.FloatField(
+        initial=defaults.DEFAULT_WEIGHT,
+        label="Food Convenience Weight",
+        widget=forms.TextInput(attrs={'size': '4'}),
+        )
