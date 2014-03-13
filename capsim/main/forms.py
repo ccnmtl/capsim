@@ -1,8 +1,10 @@
 from django import forms
 import capsim.sim.defaults as defaults
 
-ALL_FIELDS = [
-    'ticks', 'number_agents', 'gamma_1', 'gamma_2',
+INT_FIELDS = ['ticks', 'number_agents']
+
+FLOAT_FIELDS = [
+    'gamma_1', 'gamma_2',
     'gamma_3', 'gamma_4', 'gamma_5', 'gamma_6',
     'sigma_1', 'sigma_2',
     'agent_initial_mass_mean', 'agent_initial_mass_sigma',
@@ -38,6 +40,8 @@ ALL_FIELDS = [
     'food_convenience_weight',
     'food_literacy_weight',
 ]
+
+ALL_FIELDS = INT_FIELDS + FLOAT_FIELDS
 
 
 class RunForm(forms.Form):
@@ -252,13 +256,14 @@ class RunForm(forms.Form):
 
 class ExperimentForm(forms.Form):
     title = forms.CharField(
-        initial="",
+        initial="a name for the experiment",
         label="Experiment Title",
+        required=False,
         )
 
     independent_variable = forms.ChoiceField(
         initial="gamma_1",
-        choices=zip(ALL_FIELDS, ALL_FIELDS),
+        choices=zip(FLOAT_FIELDS, FLOAT_FIELDS),
         label="Independent Variable",
         )
     independent_min = forms.FloatField(
@@ -278,10 +283,8 @@ class ExperimentForm(forms.Form):
         )
 
     dependent_variable = forms.ChoiceField(
-        initial="",
-        choices=(
-            [("", "[None. will vary over ind variable only]")]
-            + zip(ALL_FIELDS, ALL_FIELDS)),
+        initial="gamma_2",
+        choices=zip(FLOAT_FIELDS, FLOAT_FIELDS),
         label="Dependent Variable",
         )
     dependent_min = forms.FloatField(
