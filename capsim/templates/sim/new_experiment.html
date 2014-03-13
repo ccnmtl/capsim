@@ -1,0 +1,505 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+
+<form action="." method="post">
+
+<fieldset><legend>Run Experiment</legend>
+
+<div class="row">
+	<div class="col-md-10">
+	<div class="form-group">
+		<label for="inputTitle">Experiment Title</label>
+		<input type="text" name="title" class="form-control" />
+	</div>
+</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<label>Independent Variable</label>
+		{{expform.independent_variable}}
+	</div>
+
+	<div class="col-md-1">
+		<label>Min</label><br />
+		{{expform.independent_min}}
+	</div>
+
+	<div class="col-md-1">
+		<label>Max</label><br />
+		{{expform.independent_max}}
+	</div>
+
+	<div class="col-md-1">
+		<label>Steps</label><br />
+		{{expform.independent_steps}}
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<label>Dependent Variable</label>
+		{{expform.dependent_variable}}
+	</div>
+
+	<div class="col-md-1">
+		<label>Min</label><br />
+		{{expform.dependent_min}}
+	</div>
+
+	<div class="col-md-1">
+		<label>Max</label><br />
+		{{expform.dependent_max}}
+	</div>
+
+	<div class="col-md-1">
+		<label>Steps</label><br />
+		{{expform.dependent_steps}}
+	</div>
+
+</div>
+
+
+</fieldset>
+
+<div class="row">
+	<div class="col-sm-2">
+		<label># Trials:</label>
+		{{expform.trials}}
+	</div>
+	<div class="col-sm-10">
+		<button type="submit" class="btn pull-right" id="run-sim-button">Run it!</button>
+	</div>
+</div>
+
+<hr />
+<p>These are the default parameters that will be used for all others:</p>
+
+<div class="well">
+	<div class="row">
+	
+		<div class="col-md-4">
+			<div class="form-group">
+				{{ form.number_agents.errors }}
+				<label for="inputAgents" class="col-sm-8 ">How many agents?</label>
+				<div class="col-sm-2">
+					{{ form.number_agents }}
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="form-group">
+				{{ form.ticks.errors }}
+				<label for="inputTicks" class="col-sm-8 ">How many ticks?</label>
+				<div class="col-sm-2">
+					{{ form.ticks }}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="well">
+<div class="row">
+<div class="col-md-4">
+  <div class="form-group">
+		{{ form.gamma_1.errors }}
+    <label for="inputGamma1" class="col-sm-6 ">&gamma; 1</label>
+    <div class="col-sm-2">
+      {{ form.gamma_1 }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.gamma_2.errors }}
+    <label for="inputGamma2" class="col-sm-6 ">&gamma; 2</label>
+    <div class="col-sm-4">
+      {{ form.gamma_2 }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.gamma_3.errors }}
+    <label for="inputGamma3" class="col-sm-6 ">&gamma; 3</label>
+    <div class="col-sm-4">
+      {{ form.gamma_3 }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.gamma_4.errors }}
+    <label for="inputGamma4" class="col-sm-6 ">&gamma; 4</label>
+    <div class="col-sm-4">
+      {{ form.gamma_4 }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.gamma_5.errors }}
+    <label for="inputGamma5" class="col-sm-6 ">&gamma; 5</label>
+    <div class="col-sm-4">
+      {{ form.gamma_5 }}
+    </div>
+  </div>
+  
+  <div class="form-group">
+		{{ form.gamma_6.errors }}
+    <label for="inputGamma6" class="col-sm-6 ">&gamma; 6</label>
+    <div class="col-sm-4">
+      {{ form.gamma_6 }}
+    </div>
+  </div>
+
+</div>
+<div class="col-md-5">
+  <div class="form-group">
+		{{ form.agent_initial_mass_mean.errors }}
+    <label for="inputAgentInitialMassMean" class="col-sm-8
+    ">Agent Initial Mass Mean</label>
+    <div class="col-sm-4">
+      {{ form.agent_initial_mass_mean }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.agent_initial_mass_sigma.errors }}
+    <label for="inputAgentInitialMassSigma" class="col-sm-8
+    ">Agent Initial Mass &sigma;</label>
+    <div class="col-sm-4">
+      {{ form.agent_initial_mass_sigma }}
+    </div>
+  </div>
+
+  <div class="form-group">
+		{{ form.agent_base_output_mean.errors }}
+    <label for="inputAgentBaseOutputMean" class="col-sm-8
+    ">Agent Base Output Mean</label>
+    <div class="col-sm-4">
+      {{ form.agent_base_output_mean }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.agent_base_output_sigma.errors }}
+    <label for="inputAgentBaseOuputSigma" class="col-sm-8
+    ">Agent Base Output &sigma;</label>
+    <div class="col-sm-4">
+      {{ form.agent_base_output_sigma }}
+    </div>
+  </div>
+
+</div>
+<div class="col-md-4">
+  <div class="form-group">
+		{{ form.sigma_1.errors }}
+    <label for="inputSigma1" class="col-sm-6 ">&sigma; 1</label>
+    <div class="col-sm-4">
+      {{ form.sigma_1 }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.sigma_2.errors }}
+    <label for="inputSigma2" class="col-sm-6 ">&sigma; 2</label>
+    <div class="col-sm-4">
+      {{ form.sigma_2 }}
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<div class="well">
+<div class="row">
+<div class="col-md-4">
+
+  <div class="form-group">
+		{{ form.recreation_activity_alpha.errors }}
+    <label for="inputRecreationActivityAlpha" class="col-sm-8
+    ">Recreation Activity &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.recreation_activity_alpha }}
+    </div>
+  </div>
+  <div class="form-group">
+		{{ form.recreation_activity_lambda.errors }}
+    <label for="inputRecreationActivityLambda" class="col-sm-8
+    ">Recreation Activity &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.recreation_activity_lambda }}
+    </div>
+  </div>
+
+
+  <div class="form-group">
+		{{ form.education_activity_alpha.errors }}
+    <label for="inputEducationActivityAlpha" class="col-sm-8
+    ">Education Activity &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.education_activity_alpha }}
+    </div>
+  </div>
+
+  <div class="form-group">
+		{{ form.education_activity_lambda.errors }}
+    <label for="inputEducationActivityLambda" class="col-sm-8
+    ">Education Activity &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.education_activity_lambda }}
+    </div>
+  </div>
+
+  <div class="form-group">
+		{{ form.food_convenience_alpha.errors }}
+    <label for="inputFoodConvenienceAlpha" class="col-sm-8
+    ">Food Convenience &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.food_convenience_alpha }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.food_convenience_lambda.errors }}
+    <label for="inputFoodConvenienceLambda" class="col-sm-8
+    ">Food Convenience &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.food_convenience_lambda }}
+    </div>
+  </div>
+
+
+</div>
+<div class="col-md-4">
+  <div class="form-group">
+		{{ form.domestic_activity_alpha.errors }}
+    <label for="inputDomesticActivityAlpha" class="col-sm-8
+    ">Domestic Activity &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.domestic_activity_alpha }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.domestic_activity_lambda.errors }}
+    <label for="inputDomesticActivityLambda" class="col-sm-8
+    ">Domestic Activity &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.domestic_activity_lambda }}
+    </div>
+  </div>
+
+  <div class="form-group">
+		{{ form.energy_density_alpha.errors }}
+    <label for="inputEnergyDensityAlpha" class="col-sm-8
+    ">Energy Density &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.energy_density_alpha }}
+    </div>
+  </div>
+  <div class="form-group">
+		{{ form.energy_density_lambda.errors }}
+    <label for="inputEnergyDensityLambda" class="col-sm-8
+    ">Energy Density &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.energy_density_lambda }}
+    </div>
+  </div>
+
+ <div class="form-group">
+		{{ form.food_literacy_alpha.errors }}
+    <label for="inputFoodLiteracyAlpha" class="col-sm-8
+    ">Food Literacy &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.food_literacy_alpha }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.food_literacy_lambda.errors }}
+    <label for="inputFoodLiteracyLambda" class="col-sm-8
+    ">Food Literacy &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.food_literacy_lambda }}
+    </div>
+  </div>
+
+
+
+</div>
+<div class="col-md-4">
+
+ <div class="form-group">
+		{{ form.transport_activity_alpha.errors }}
+    <label for="inputTransportActivityAlpha" class="col-sm-8
+    ">Transport Activity &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.transport_activity_alpha }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.transport_activity_lambda.errors }}
+    <label for="inputTransportActivityLambda" class="col-sm-8
+    ">Transport Activity &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.transport_activity_lambda }}
+    </div>
+  </div>
+
+
+  <div class="form-group">
+		{{ form.food_exposure_alpha.errors }}
+    <label for="inputFoodExposureAlpha" class="col-sm-8
+    ">Food Exposure &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.food_exposure_alpha }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.food_exposure_lambda.errors }}
+    <label for="inputFoodExposureLambda" class="col-sm-8
+    ">Food Exposure &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.food_exposure_lambda }}
+    </div>
+  </div>
+
+  <div class="form-group">
+		{{ form.food_advertising_alpha.errors }}
+    <label for="inputFoodAdvertisingAlpha" class="col-sm-8
+    ">Food Advertising &alpha;</label>
+    <div class="col-sm-2">
+      {{ form.food_advertising_alpha }}
+    </div>
+  </div>
+  
+  
+  <div class="form-group">
+		{{ form.food_advertising_lambda.errors }}
+    <label for="inputFoodAdvertisingLambda" class="col-sm-8
+    ">Food Advertising &lambda;</label>
+    <div class="col-sm-2">
+      {{ form.food_advertising_lambda }}
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+</div>
+
+<div class="well">
+	<div class="row">
+		<div class="col-md-5">
+
+			<div class="form-group">
+				{{ form.recreation_activity_weight.errors }}
+				<label for="inputRecreationActivityWeight"
+							 class="col-sm-8">Recreation Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.recreation_activity_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.domestic_activity_weight.errors }}
+				<label for="inputDomesticActivityWeight"
+							 class="col-sm-8">Domestic Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.domestic_activity_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.transport_activity_weight.errors }}
+				<label for="inputTransportActivityWeight"
+							 class="col-sm-8">Transport Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.transport_activity_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.education_activity_weight.errors }}
+				<label for="inputEducationActivityWeight"
+							 class="col-sm-8">Education Activity Weight</label>
+				<div class="col-sm-2">
+					{{ form.education_activity_weight }}
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-5">
+
+			<div class="form-group">
+				{{ form.energy_density_weight.errors }}
+				<label for="inputEnergyDensityWeight"
+							 class="col-sm-8">Energy Density Weight</label>
+				<div class="col-sm-2">
+					{{ form.energy_density_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.food_advertising_weight.errors }}
+				<label for="inputFoodAdvertisingWeight"
+							 class="col-sm-8">Food Advertising Weight</label>
+				<div class="col-sm-2">
+					{{ form.food_advertising_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.food_exposure_weight.errors }}
+				<label for="inputFoodExposureWeight"
+							 class="col-sm-8">Food Exposure Weight</label>
+				<div class="col-sm-2">
+					{{ form.food_exposure_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.food_convenience_weight.errors }}
+				<label for="inputFoodConvenienceWeight"
+							 class="col-sm-8">Food Convenience Weight</label>
+				<div class="col-sm-2">
+					{{ form.food_convenience_weight }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{{ form.food_literacy_weight.errors }}
+				<label for="inputFoodLiteracyWeight"
+							 class="col-sm-8">Food Literacy Weight</label>
+				<div class="col-sm-2">
+					{{ form.food_literacy_weight }}
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+</form>
+
+{% endblock %}

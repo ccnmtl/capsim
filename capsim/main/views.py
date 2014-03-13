@@ -8,7 +8,7 @@ from pagetree.generic.views import InstructorView
 from capsim.sim.logic import Run
 from capsim.sim.models import RunRecord, RunOutputRecord
 from waffle import Flag
-from .forms import RunForm
+from .forms import RunForm, ALL_FIELDS
 
 
 class LoggedInMixin(object):
@@ -23,44 +23,8 @@ class NewRunView(LoggedInMixin, View):
     def post(self, request):
         form = RunForm(request.POST)
         if form.is_valid():
-            fields = ['ticks', 'number_agents', 'gamma_1', 'gamma_2',
-                      'gamma_3', 'gamma_4', 'gamma_5', 'gamma_6',
-                      'sigma_1', 'sigma_2',
-                      'agent_initial_mass_mean', 'agent_initial_mass_sigma',
-                      'agent_base_output_mean', 'agent_base_output_sigma',
-                      'recreation_activity_alpha',
-                      'recreation_activity_lambda',
-                      'domestic_activity_alpha',
-                      'domestic_activity_lambda',
-                      'transport_activity_alpha',
-                      'transport_activity_lambda',
-                      'education_activity_alpha',
-                      'education_activity_lambda',
-
-                      'recreation_activity_weight',
-                      'domestic_activity_weight',
-                      'transport_activity_weight',
-                      'education_activity_weight',
-
-                      'food_exposure_alpha',
-                      'food_exposure_lambda',
-                      'energy_density_alpha',
-                      'energy_density_lambda',
-                      'food_advertising_alpha',
-                      'food_advertising_lambda',
-                      'food_convenience_alpha',
-                      'food_convenience_lambda',
-                      'food_literacy_alpha',
-                      'food_literacy_lambda',
-
-                      'food_exposure_weight',
-                      'energy_density_weight',
-                      'food_advertising_weight',
-                      'food_convenience_weight',
-                      'food_literacy_weight',
-                      ]
             parameters = dict()
-            for f in fields:
+            for f in ALL_FIELDS:
                 parameters[f] = form.cleaned_data[f]
             r = Run(**parameters)
             rr = RunRecord()

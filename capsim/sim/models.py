@@ -92,6 +92,9 @@ class Experiment(models.Model):
     total = models.IntegerField(default=0)
     completed = models.IntegerField(default=0)
 
+    def get_absolute_url(self):
+        return "/experiment/%d/" % self.id
+
 
 class ExpRun(models.Model):
     experiment = models.ForeignKey(Experiment)

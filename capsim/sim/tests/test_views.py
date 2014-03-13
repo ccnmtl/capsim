@@ -93,3 +93,72 @@ class BasicViewTest(TestCase):
         response = self.c.get("/run/%d/json/" % rr.id)
         self.assertEquals(response.status_code, 200)
         self.assertTrue("agents_mass" in response.content)
+
+
+class ExperimentViewTest(TestCase):
+    def setUp(self):
+        self.c = Client()
+        self.u = User.objects.create(username="testuser")
+        self.u.set_password("test")
+        self.u.save()
+        self.c.login(username="testuser", password="test")
+        self.flag = Flag.objects.create(name='simulation', everyone=True)
+
+    def test_experiment_list(self):
+        response = self.c.get("/experiment/")
+        self.assertEquals(response.status_code, 200)
+
+    def test_experiment_form(self):
+        response = self.c.get("/experiment/new/")
+        self.assertEquals(response.status_code, 200)
+
+    def test_experiment_post_invalid(self):
+        response = self.c.post("/experiment/new/")
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue("errorlist" in response.content)
+
+    def test_experiment_post_valid(self):
+        response = self.c.post(
+            "/experiment/new/",
+            dict(ticks=10, number_agents=10,
+                 gamma_1=1.0, gamma_2=1.0, gamma_3=1.0, gamma_4=1.0,
+                 gamma_5=1.0, gamma_6=1.0,
+                 sigma_1=6.2, sigma_2=5.,
+                 agent_initial_mass_mean=100., agent_initial_mass_sigma=20.,
+                 agent_base_output_mean=100., agent_base_output_sigma=5.,
+                 recreation_activity_alpha=0.5, recreation_activity_lambda=0.1,
+                 domestic_activity_alpha=0.5, domestic_activity_lambda=0.1,
+                 transport_activity_alpha=0.5, transport_activity_lambda=0.1,
+                 education_activity_alpha=0.5, education_activity_lambda=0.1,
+                 food_exposure_alpha=0.5, food_exposure_lambda=0.1,
+                 energy_density_alpha=0.5, energy_density_lambda=0.1,
+                 food_advertising_alpha=0.5, food_advertising_lambda=0.1,
+                 food_convenience_alpha=0.5, food_convenience_lambda=0.1,
+                 food_literacy_alpha=0.5, food_literacy_lambda=0.1,
+
+                 recreation_activity_weight=1.0,
+                 domestic_activity_weight=1.0,
+                 transport_activity_weight=1.0,
+                 education_activity_weight=1.0,
+
+                 food_exposure_weight=1.0,
+                 energy_density_weight=1.0,
+                 food_advertising_weight=1.0,
+                 food_convenience_weight=1.0,
+                 food_literacy_weight=1.0,
+
+                 title="new experiment",
+                 independent_variable="gamma_1",
+                 dependent_variable="gamma_2",
+
+                 independent_min=0.0,
+                 independent_max=1.0,
+                 independent_steps=1,
+
+                 dependent_min=0.0,
+                 dependent_max=1.0,
+                 dependent_steps=1,
+
+                 trials=1,
+                 ))
+        self.assertEquals(response.status_code, 302)

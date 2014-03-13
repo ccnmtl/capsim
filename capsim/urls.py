@@ -43,6 +43,10 @@ urlpatterns = patterns(
     (r'^run/(?P<pk>\d+)/edit/$', capsim.sim.views.RunEditView.as_view()),
     (r'^run/(?P<pk>\d+)/delete/$',
      DeleteView.as_view(model=RunRecord, success_url="/run/")),
+
+    (r'^experiment/new/$', capsim.sim.views.NewExperimentView.as_view()),
+    (r'^experiment/$', capsim.sim.views.ExperimentListView.as_view()),
+
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/', TemplateView.as_view(template_name="stats.html")),
