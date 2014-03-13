@@ -7,20 +7,28 @@
 
 <h2>Experiment: {{object.title}}</h2>
 
-<dl>
+<dl class="dl-horizontal">
 	<dt>Ind Variable:</dt>
-	<dd>{{object.independent_variable}} from <b>{{object.independent_min}}</b> to <b>{{object.independent_max}}</b>
+	<dd><b>{{object.independent_variable}}</b> from <b>{{object.independent_min}}</b> to <b>{{object.independent_max}}</b>
 	in <b>{{object.independent_steps}}</b> steps</dd>
-	<dd>{{object.dependent_variable}} from <b>{{object.dependent_min}}</b> to <b>{{object.dependent_max}}</b>
+	<dt>Dep Variable:</dt>
+	<dd><b>{{object.dependent_variable}}</b> from <b>{{object.dependent_min}}</b> to <b>{{object.dependent_max}}</b>
 	in <b>{{object.dependent_steps}}</b> steps</dd>
 	<dt>Trials</dt>
 	<dd>{{object.trials}}</dd>
 
 	<dt>created</dt>
 	<dd>{{object.created}}</dd>
+	<dt>last modified</dt>
+	<dd>{{object.modified}}</dd>
 
 	<dt>status</dt>
 	<dd>{{object.status}}</dd>
+	{% ifequal object.status "complete" %}
+	{% else %}
+	<dt>progress</dt>
+	<dd>{{object.completed}} / {{object.total}}</dd>
+	{% endifequal %}
 </dl>
 
 <h3>Runs</h3>
@@ -42,9 +50,9 @@
 		{% endifequal %}
 	</td>
 	<td>{{er.trial}}</td>
-	<td>{{er.independent_value}}</td>
-	<td>{{er.dependent_value}}</td>
-	<td>{{er.mass}}</td>
+	<td>{{er.independent_value|floatformat}}</td>
+	<td>{{er.dependent_value|floatformat}}</td>
+	<td>{% ifequal er.status "complete" %}{{er.mass|floatformat}}{% else %}-{% endifequal %}</td>
 </tr>
 {% endfor %}
 </tbody>

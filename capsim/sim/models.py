@@ -160,6 +160,7 @@ class ExpRun(models.Model):
 
     def completed(self, ror):
         self.status = "complete"
+        self.mass = self.run.runoutput(
+            ).get_runoutput().display_data()['mass_mean']
         self.save()
-        # TODO: set mass
         self.experiment.check_if_complete()

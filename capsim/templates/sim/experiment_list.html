@@ -9,6 +9,7 @@
 <thead>
 	<tr>
 		<th>title</th>
+		<td>size</td>
 		<th>ind variable</th>
 		<th>dep variable</th>
 		<th>trials</th>
@@ -20,6 +21,7 @@
 {% for experiment in object_list %}
 <tr>
 	<td><a href="{{experiment.get_absolute_url}}">{{experiment.title}}</a></td>
+	<td>{{experiment.total}}</td>
 	<td>{{experiment.independent_variable}}
 	[{{experiment.independent_min}} - {{experiment.independent_max}},
 	{{experiment.independent_steps}}]
