@@ -62,3 +62,45 @@ class RunOutputRecord(models.Model):
             ticks=d.get('ticks', 1),
             params=run.params,
             data=loads(d.get('data', "{}")))
+
+
+class Experiment(models.Model):
+    user = models.ForeignKey(User)
+    title = models.TextField(default=u"", blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    status = models.CharField(max_length=256, default="enqueued")
+
+    data = models.TextField(default=u"", blank=True, null=True)
+
+    independent_variable = models.CharField(max_length=256, default="",
+                                            blank=True, null=True)
+    dependent_variable = models.CharField(max_length=256, default="",
+                                          blank=True, null=True)
+
+    independent_min = models.FloatField(blank=True, null=True)
+    independent_max = models.FloatField(blank=True, null=True)
+    independent_steps = models.IntegerField(default=1, blank=True, null=True)
+
+    dependent_min = models.FloatField(blank=True, null=True)
+    dependent_max = models.FloatField(blank=True, null=True)
+    dependent_steps = models.IntegerField(default=1, blank=True, null=True)
+
+    trials = models.IntegerField(default=1)
+
+    total = models.IntegerField(default=0)
+    completed = models.IntegerField(default=0)
+
+
+class ExpRun(models.Model):
+    experiment = models.ForeignKey(Experiment)
+    run = models.ForeignKey(RunRecord)
+
+    status = models.CharField(max_length=256, default="enqueued")
+
+    independent_value = models.FloatField(blank=True, null=True)
+    dependent_value = models.FloatField(blank=True, null=True)
+
+    trial = models.IntegerField(default=0)
+    mass = models.FloatField(default="100.0")
