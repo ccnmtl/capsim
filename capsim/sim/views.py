@@ -97,6 +97,8 @@ class NewExperimentView(LoggedInMixin, View):
             dependent_max = expform.cleaned_data['dependent_max']
             dependent_steps = expform.cleaned_data['dependent_steps']
 
+            total = int(independent_steps) * int(dependent_steps) * int(trials)
+
             experiment = Experiment.objects.create(
                 user=request.user,
                 title=title,
@@ -114,7 +116,7 @@ class NewExperimentView(LoggedInMixin, View):
                 dependent_steps=dependent_steps,
 
                 trials=trials,
-                total=1,
+                total=total,
                 completed=0,
                 )
             return HttpResponseRedirect(experiment.get_absolute_url())
