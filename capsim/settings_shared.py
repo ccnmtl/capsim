@@ -32,6 +32,8 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
             'PASSWORD': '',
         }
     }
+    CELERY_ALWAYS_EAGER = True
+    BROKER_BACKEND = 'memory'
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 SOUTH_TESTS_MIGRATE = False

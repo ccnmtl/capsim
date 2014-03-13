@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.list import ListView
@@ -6,6 +7,7 @@ from django.views.generic.base import TemplateView, View
 from capsim.sim.models import RunRecord, Experiment
 from capsim.main.views import LoggedInMixin
 from capsim.main.forms import RunForm, ExperimentForm, ALL_FIELDS
+from capsim.sim.tasks import run_experiment
 
 from json import dumps, loads
 
@@ -76,6 +78,7 @@ class RunOutputView(LoggedInMixin, View):
 class NewExperimentView(LoggedInMixin, View):
     template_name = 'sim/new_experiment.html'
 
+    @transaction.commit_manually
     def post(self, request):
         form = RunForm(request.POST)
         expform = ExperimentForm(request.POST)
@@ -98,12 +101,11 @@ class NewExperimentView(LoggedInMixin, View):
             dependent_steps = expform.cleaned_data['dependent_steps']
 
             total = int(independent_steps) * int(dependent_steps) * int(trials)
-
             experiment = Experiment.objects.create(
                 user=request.user,
                 title=title,
                 status="enqueued",
-                data=parameters,  # JSON
+                data=dumps(parameters),
                 independent_variable=independent_variable,
                 dependent_variable=dependent_variable,
 
@@ -119,7 +121,11 @@ class NewExperimentView(LoggedInMixin, View):
                 total=total,
                 completed=0,
                 )
-            return HttpResponseRedirect(experiment.get_absolute_url())
+            redirect_url = experiment.get_absolute_url()
+            transaction.commit()
+            run_experiment.delay(experiment_id=experiment.id)
+            return HttpResponseRedirect(redirect_url)
+        transaction.rollback()
         return render(request, self.template_name,
                       dict(form=form, expform=expform))
 

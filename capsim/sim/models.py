@@ -95,6 +95,51 @@ class Experiment(models.Model):
     def get_absolute_url(self):
         return "/experiment/%d/" % self.id
 
+    def populate(self):
+        """ make a run / exprun for each each step and queue them up """
+        import capsim.sim.tasks
+
+        ind_steps = make_steps(self.independent_min, self.independent_max,
+                               self.independent_steps)
+        dep_steps = make_steps(self.dependent_min, self.dependent_max,
+                               self.dependent_steps)
+        parameters = loads(self.data)
+        for trial in range(self.trials):
+            for i in ind_steps:
+                for j in dep_steps:
+                    print (trial, i, j)
+                    parameters[self.independent_variable] = i
+                    parameters[self.dependent_variable] = j
+                    rr = RunRecord.objects.create(
+                        user=self.user,
+                        data=dumps(parameters)
+                        )
+                    er = ExpRun.objects.create(
+                        experiment=self,
+                        run=rr,
+                        status="enqueued",
+                        independent_value=i,
+                        dependent_value=j,
+                        trial=trial,
+                        )
+                    capsim.sim.tasks.process_run.delay(run_id=rr.id,
+                                                       exprun_id=er.id)
+
+        self.status = "processing"
+        self.save()
+
+
+def make_steps(min_value, max_value, num_steps):
+    assert min_value < max_value
+    num_steps = int(num_steps)
+    assert num_steps > 0
+    interval = max_value - min_value
+    step_size = float(interval) / num_steps
+    steps = [min_value + (s * step_size)
+             for s in range(num_steps)]
+    assert len(steps) == num_steps
+    return steps
+
 
 class ExpRun(models.Model):
     experiment = models.ForeignKey(Experiment)
@@ -107,3 +152,9 @@ class ExpRun(models.Model):
 
     trial = models.IntegerField(default=0)
     mass = models.FloatField(default="100.0")
+
+    def completed(self, ror):
+        self.status = "complete"
+        self.save()
+        # TODO: set mass
+        # TODO: update Experiment count/status
