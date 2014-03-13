@@ -44,7 +44,7 @@ amqplib==1.0.2
 kombu==3.0.12
 librabbitmq==1.0.1
 billiard==3.3.0.14
-celery==3.1.8
+celery==3.1.9
 
 sorl==3.1
 djangowind==0.12.0
@@ -73,4 +73,4 @@ django-pagetree==0.13.1
 django-pageblocks==0.5.11
 django-quizblock==0.6.13
 django-markwhat==1.0
-django-celery==3.0.11
+django-celery==3.1.9
