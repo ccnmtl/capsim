@@ -35,7 +35,12 @@
 	<tbody>
 {% for er in object.exprun_set.all %}
 <tr>
-	<td>{{er.status}}</td>
+	<td>{% ifequal er.status "complete" %}
+		<a href="{{er.run.get_absolute_url}}">complete</a>
+		{% else %}
+		{{er.status}}
+		{% endifequal %}
+	</td>
 	<td>{{er.trial}}</td>
 	<td>{{er.independent_value}}</td>
 	<td>{{er.dependent_value}}</td>
