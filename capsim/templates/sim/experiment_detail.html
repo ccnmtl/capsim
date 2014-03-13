@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a href="/experiment/" class="btn btn-primary">All Experiments</a>
+<a href="/experiment/new/" class="btn btn-primary">New Experiment</a>
+
+<h2>Experiment: {{object.title}}</h2>
+
+<dl>
+	<dt>Ind Variable:</dt>
+	<dd>{{object.independent_variable}} from <b>{{object.independent_min}}</b> to <b>{{object.independent_max}}</b>
+	in <b>{{object.independent_steps}}</b> steps</dd>
+	<dd>{{object.dependent_variable}} from <b>{{object.dependent_min}}</b> to <b>{{object.dependent_max}}</b>
+	in <b>{{object.dependent_steps}}</b> steps</dd>
+	<dt>Trials</dt>
+	<dd>{{object.trials}}</dd>
+
+	<dt>created</dt>
+	<dd>{{object.created}}</dd>
+
+	<dt>status</dt>
+	<dd>{{object.status}}</dd>
+</dl>
+
+{% endblock %}

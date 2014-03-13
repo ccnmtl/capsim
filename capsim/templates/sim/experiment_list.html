@@ -1,5 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>nothing here yet</p>
+
+<a class="btn btn-primary" href="/experiment/new/">New Experiment</a>
+
+<h2>Experiments</h2>
+<table class="table table-condensed table-striped">
+<thead>
+	<tr>
+		<th>title</th>
+		<th>ind variable</th>
+		<th>dep variable</th>
+		<th>trials</th>
+		<th>created</th>
+		<th>status</th>
+		</tr>
+	</thead>
+<tbody>
+{% for experiment in object_list %}
+<tr>
+	<td><a href="{{experiment.get_absolute_url}}">{{experiment.title}}</a></td>
+	<td>{{experiment.independent_variable}}
+	[{{experiment.independent_min}} - {{experiment.independent_max}},
+	{{experiment.independent_steps}}]
+	</td>
+	<td>{{experiment.dependent_variable}}
+	[{{experiment.dependent_min}} - {{experiment.dependent_max}}, {{experiment.dependent_steps}}]</td>
+	<td>{{experiment.trials}}</td>
+</td>
+	<td>{{experiment.created}}</td>
+	<td>{{experiment.status}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
 {% endblock %}

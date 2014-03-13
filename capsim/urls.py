@@ -2,11 +2,12 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
+from django.views.generic import DetailView
 from django.views.generic.edit import DeleteView
 from pagetree.generic.views import PageView
 import capsim.main.views
 import capsim.sim.views
-from capsim.sim.models import RunRecord
+from capsim.sim.models import RunRecord, Experiment
 admin.autodiscover()
 
 redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
@@ -46,6 +47,7 @@ urlpatterns = patterns(
 
     (r'^experiment/new/$', capsim.sim.views.NewExperimentView.as_view()),
     (r'^experiment/$', capsim.sim.views.ExperimentListView.as_view()),
+    (r'^experiment/(?P<pk>\d+)/$', DetailView.as_view(model=Experiment)),
 
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
