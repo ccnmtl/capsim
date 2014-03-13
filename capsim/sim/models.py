@@ -95,10 +95,8 @@ class Experiment(models.Model):
     def get_absolute_url(self):
         return "/experiment/%d/" % self.id
 
-    def populate(self):
+    def populate(self, callback=None):
         """ make a run / exprun for each each step and queue them up """
-        import capsim.sim.tasks
-
         ind_steps = make_steps(self.independent_min, self.independent_max,
                                self.independent_steps)
         dep_steps = make_steps(self.dependent_min, self.dependent_max,
@@ -107,7 +105,6 @@ class Experiment(models.Model):
         for trial in range(self.trials):
             for i in ind_steps:
                 for j in dep_steps:
-                    print (trial, i, j)
                     parameters[self.independent_variable] = i
                     parameters[self.dependent_variable] = j
                     rr = RunRecord.objects.create(
@@ -122,10 +119,18 @@ class Experiment(models.Model):
                         dependent_value=j,
                         trial=trial,
                         )
-                    capsim.sim.tasks.process_run.delay(run_id=rr.id,
-                                                       exprun_id=er.id)
+                    if callback:
+                        callback(run_id=rr.id, exprun_id=er.id)
 
         self.status = "processing"
+        self.save()
+
+    def check_if_complete(self):
+        # need to make sure this isn't a race condition
+        completed = self.exprun_set.filter(status="complete").count()
+        self.completed = completed
+        if completed == self.total:
+            self.status = "complete"
         self.save()
 
 
@@ -157,4 +162,4 @@ class ExpRun(models.Model):
         self.status = "complete"
         self.save()
         # TODO: set mass
-        # TODO: update Experiment count/status
+        self.experiment.check_if_complete()

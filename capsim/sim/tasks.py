@@ -6,7 +6,7 @@ from .models import Experiment, ExpRun, RunRecord, RunOutputRecord
 def run_experiment(experiment_id):
     print "running experiment %d" % experiment_id
     e = Experiment.objects.get(id=experiment_id)
-    e.populate()
+    e.populate(callback=process_run.delay)
 
 
 @task

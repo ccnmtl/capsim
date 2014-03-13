@@ -23,4 +23,26 @@
 	<dd>{{object.status}}</dd>
 </dl>
 
+<h3>Runs</h3>
+<table class="table table-condensed table-striped">
+	<thead>
+		<th>status</th>
+		<th>trial</th>
+		<th>{{object.independent_variable}}</th>
+		<th>{{object.dependent_variable}}</th>
+		<th>mass</th>
+	</thead>
+	<tbody>
+{% for er in object.exprun_set.all %}
+<tr>
+	<td>{{er.status}}</td>
+	<td>{{er.trial}}</td>
+	<td>{{er.independent_value}}</td>
+	<td>{{er.dependent_value}}</td>
+	<td>{{er.mass}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
 {% endblock %}
