@@ -51,3 +51,12 @@ class ExperimentTest(TestCase):
         er.save()
         e.check_if_complete()
         self.assertEqual(e.status, "complete")
+
+    def test_normalize_title(self):
+        e = ExperimentFactory()
+        e.title = ""
+        e.save()
+        e.normalize_title()
+        self.assertTrue(e.title != "")
+        e.normalize_title()
+        self.assertTrue(e.title != "")

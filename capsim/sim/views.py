@@ -156,6 +156,7 @@ class NewExperimentView(LoggedInMixin, View):
                 total=total,
                 completed=0,
                 )
+            experiment.normalize_title()
             redirect_url = experiment.get_absolute_url()
             transaction.commit()
             run_experiment.delay(experiment_id=experiment.id)

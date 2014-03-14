@@ -19,6 +19,13 @@ class ExperimentFactory(factory.DjangoModelFactory):
     user = factory.SubFactory(UserFactory)
     total = 1
     data = "{}"
+    independent_min = 0.0
+    independent_max = 1.0
+    independent_steps = 1
+    dependent_min = 0.0
+    dependent_max = 1.0
+    dependent_steps = 1
+    trials = 1
 
 
 class ExpRunFactory(factory.DjangoModelFactory):

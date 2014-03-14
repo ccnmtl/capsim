@@ -133,6 +133,22 @@ class Experiment(models.Model):
             self.status = "complete"
         self.save()
 
+    def normalize_title(self):
+        """ if the user doesn't set a title, we make one"""
+        if self.title != "":
+            return
+        self.title = (
+            "[(%s, %f - %f [%d]) x (%s, %f - %f [%d])] x %d trials" % (
+                self.independent_variable,
+                float(self.independent_min),
+                float(self.independent_max),
+                self.independent_steps,
+                self.dependent_variable,
+                float(self.dependent_min),
+                float(self.dependent_max),
+                self.dependent_steps,
+                self.trials))
+
 
 def make_steps(min_value, max_value, num_steps):
     assert min_value < max_value
