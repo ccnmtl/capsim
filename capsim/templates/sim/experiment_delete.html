@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="." method="post">
+<fieldset><legend>Delete Experiment</legend>
+<p>Deleting this experiment will clear out all {{experiment.total}}
+	runs of data associated with it</p>
+
+<a class="btn btn-default" href="../">Nevermind</a>
+<input class="btn btn-danger" type="submit" value="Delete This Experiment and all its Data" />
+</fieldset>
+</form>
+
+{% endblock %}

@@ -17,6 +17,7 @@ class RunRecordFactory(factory.DjangoModelFactory):
 class ExperimentFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Experiment
     user = factory.SubFactory(UserFactory)
+    total = 1
 
 
 class ExpRunFactory(factory.DjangoModelFactory):

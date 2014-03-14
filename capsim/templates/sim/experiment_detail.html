@@ -5,6 +5,12 @@
 <a href="/experiment/" class="btn btn-primary">All Experiments</a>
 <a href="/experiment/new/" class="btn btn-primary">New Experiment</a>
 
+{% ifequal object.status "complete" %}
+<a class="pull-right btn btn-danger btn-xs" href="delete/"><span class="glyphicon
+ glyphicon-trash"></span> Delete</a>
+{% endifequal %}
+
+
 <h2>Experiment: {{object.title}}</h2>
 
 <dl class="dl-horizontal">

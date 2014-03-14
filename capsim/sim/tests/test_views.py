@@ -168,3 +168,11 @@ class ExperimentViewTest(TestCase):
         er = ExpRunFactory()
         r = self.c.get(er.experiment.get_absolute_url() + "csv/")
         self.assertEqual(r.status_code, 200)
+
+    def test_delete_experimeent(self):
+        er = ExpRunFactory()
+        r = self.c.get(er.experiment.get_absolute_url() + "delete/")
+        self.assertEqual(r.status_code, 200)
+        self.assertTrue("<form" in r.content)
+        r = self.c.post(er.experiment.get_absolute_url() + "delete/")
+        self.assertEqual(r.status_code, 302)

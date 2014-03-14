@@ -93,6 +93,23 @@ class ExperimentOutputView(LoggedInMixin, View):
         return response
 
 
+class ExperimentDeleteView(LoggedInMixin, View):
+    template_name = "sim/experiment_delete.html"
+
+    def get(self, request, pk):
+        experiment = get_object_or_404(Experiment, pk=pk)
+        return render(request, self.template_name,
+                      dict(experiment=experiment))
+
+    def post(self, request, pk):
+        experiment = get_object_or_404(Experiment, pk=pk)
+        for er in experiment.exprun_set.all():
+            er.run.delete()
+            er.delete()
+        experiment.delete()
+        return HttpResponseRedirect("/experiment/")
+
+
 class NewExperimentView(LoggedInMixin, View):
     template_name = 'sim/new_experiment.html'
 
