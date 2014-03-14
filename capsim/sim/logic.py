@@ -244,7 +244,7 @@ def count_neighbors_greater(neighbors, a):
     """ returns count of neighbors that are >= than each agent in array a """
     out = np.zeros(a.shape)
     for i in range(len(a)):
-        out[i] = len(np.where(a[[neighbors.neighbors(i)]] >= a[i]))
+        out[i] = len(np.where(a[[neighbors.neighbors(i)]] >= a[i])[0])
     return out
 
 
@@ -371,7 +371,7 @@ def calculate_input(total_output, force_of_habit, gamma_2,
     return (total_output
             + (force_of_habit * gamma_2)
             + (friend_input * gamma_3)
-            + (c_control * gamma_4)
+            - (c_control * gamma_4)
             + np.random.normal(0.0, sigma_1, total_output.shape))
 
 
