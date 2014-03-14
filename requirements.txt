@@ -74,3 +74,4 @@ django-pageblocks==0.5.11
 django-quizblock==0.6.13
 django-markwhat==1.0
 django-celery==3.1.9
+factory_boy==2.1.1

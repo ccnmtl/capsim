@@ -31,6 +31,11 @@
 	{% endifequal %}
 </dl>
 
+{% ifequal object.status "complete" %}
+<h3>Data</h3>
+<p><a href="csv/">Download CSV</a></p>
+{% endifequal %}
+
 <h3>Runs</h3>
 <table class="table table-condensed table-striped">
 	<thead>

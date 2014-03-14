@@ -4,6 +4,7 @@ from django.test.client import Client
 from capsim.sim.models import RunRecord, RunOutputRecord
 from capsim.sim.logic import Run
 from waffle import Flag
+from .factories import ExpRunFactory
 
 
 class BasicViewTest(TestCase):
@@ -162,3 +163,8 @@ class ExperimentViewTest(TestCase):
                  trials=1,
                  ))
         self.assertEquals(response.status_code, 302)
+
+    def test_csv(self):
+        er = ExpRunFactory()
+        r = self.c.get(er.experiment.get_absolute_url() + "csv/")
+        self.assertEqual(r.status_code, 200)

@@ -9,6 +9,7 @@ from capsim.main.views import LoggedInMixin
 from capsim.main.forms import RunForm, ExperimentForm, ALL_FIELDS
 from capsim.sim.tasks import run_experiment
 
+import csv
 from json import dumps, loads
 
 
@@ -73,6 +74,23 @@ class RunOutputView(LoggedInMixin, View):
         return HttpResponse(
             dumps(out['data']),
             content_type="application/json")
+
+
+class ExperimentOutputView(LoggedInMixin, View):
+    def get(self, request, pk):
+        experiment = get_object_or_404(Experiment, pk=pk)
+        response = HttpResponse(mimetype='text/csv')
+        response['Content-Disposition'] = (
+            'attachment; filename=capsim_experiment_%d.csv' % experiment.id)
+        writer = csv.writer(response)
+        headers = ['trial', experiment.independent_variable,
+                   experiment.dependent_variable, 'mass']
+        writer.writerow(headers)
+        for er in experiment.exprun_set.all():
+            writer.writerow(
+                [er.trial, er.independent_value,
+                 er.dependent_value, er.mass])
+        return response
 
 
 class NewExperimentView(LoggedInMixin, View):

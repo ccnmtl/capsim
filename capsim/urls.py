@@ -48,6 +48,8 @@ urlpatterns = patterns(
     (r'^experiment/new/$', capsim.sim.views.NewExperimentView.as_view()),
     (r'^experiment/$', capsim.sim.views.ExperimentListView.as_view()),
     (r'^experiment/(?P<pk>\d+)/$', DetailView.as_view(model=Experiment)),
+    (r'^experiment/(?P<pk>\d+)/csv/$',
+     capsim.sim.views.ExperimentOutputView.as_view()),
 
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
