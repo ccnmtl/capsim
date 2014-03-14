@@ -1,6 +1,6 @@
 # let's make some constants for defaults
 NUM_AGENTS = 4
-GRID_SIZE = 1
+GRID_SIZE = 10
 DEFAULT_GAMMA = 1.
 INITIAL_MASS_MEAN = 100.
 INITIAL_MASS_SIGMA = 20.
