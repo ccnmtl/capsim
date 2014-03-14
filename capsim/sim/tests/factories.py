@@ -18,6 +18,7 @@ class ExperimentFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Experiment
     user = factory.SubFactory(UserFactory)
     total = 1
+    data = "{}"
 
 
 class ExpRunFactory(factory.DjangoModelFactory):
