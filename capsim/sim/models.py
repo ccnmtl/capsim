@@ -3,6 +3,8 @@ from django.db import models
 from json import dumps, loads
 from .logic import Run, RunOutput
 from .paramset import SimParamSet
+import numpy as np
+import pandas as pd
 
 
 class RunRecord(models.Model):
@@ -148,6 +150,23 @@ class Experiment(models.Model):
                 float(self.dependent_max),
                 self.dependent_steps,
                 self.trials))
+
+    def heatmap(self):
+        data = []
+        for er in self.exprun_set.all():
+            data.append(dict(ind=er.independent_value, dep=er.dependent_value,
+                             trial=er.trial, mass=er.mass))
+        df = pd.DataFrame(data)
+        hdict = df.groupby(['ind', 'dep'])['mass'].mean().to_dict()
+        output = np.zeros((self.independent_steps, self.dependent_steps))
+        ind_steps = make_steps(self.independent_min, self.independent_max,
+                               self.independent_steps)
+        dep_steps = make_steps(self.dependent_min, self.dependent_max,
+                               self.dependent_steps)
+        for i, i_step in enumerate(ind_steps):
+            for j, j_step in enumerate(dep_steps):
+                output[i][j] = hdict[(i_step, j_step)]
+        return dict(data=output, min=np.min(output), max=np.max(output))
 
 
 def make_steps(min_value, max_value, num_steps):

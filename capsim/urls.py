@@ -50,6 +50,10 @@ urlpatterns = patterns(
     (r'^experiment/(?P<pk>\d+)/$', DetailView.as_view(model=Experiment)),
     (r'^experiment/(?P<pk>\d+)/csv/$',
      capsim.sim.views.ExperimentOutputView.as_view()),
+    (r'^experiment/(?P<pk>\d+)/heatmap/$',
+     DetailView.as_view(
+         model=Experiment,
+         template_name="sim/experiment_heatmap.html")),
     (r'^experiment/(?P<pk>\d+)/delete/$',
      capsim.sim.views.ExperimentDeleteView.as_view()),
 

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p><a class="btn btn-default" href="../">back to experiment details</a></p>
+
+<table class="table table-condensed" id="heatmap-table">
+
+<tbody>
+{% for row in object.heatmap.data %}
+<tr>
+{% for col in row %}
+<td>{{col|floatformat}}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+
+</table>
+
+<p>Each cell is the mean of {{object.trials}} trials</p>
+
+{% endblock %}
+
+{% block js %}
+<script>
+var min = {{object.heatmap.min}};
+var max = {{object.heatmap.max}};
+
+var range = max - min;
+
+var value_to_color = function(value) {
+    return (255 / range) * (value - min);
+}
+
+$("#heatmap-table td").each(
+   function() {
+     var scaled = value_to_color($(this).text());
+     var css = "rgb(" + Math.round(scaled) +"," + Math.round(scaled) + ",255)";
+     $(this).css("background-color", css);
+   }
+)
+
+</script>
+
+{% endblock %}
