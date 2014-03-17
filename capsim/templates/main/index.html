@@ -50,6 +50,19 @@
 </div>
 {% endif %}
 
+{% comment %}
+
+For now, we'll just make the old form invisible. This form is still
+the one that gets submitted, so it can't just be taken out. The
+interventions just modify the parameters here in-place.
+
+Eventually, the intervention -> parameter mapping will happen on the
+backend and we can just submit the interventions directly and take
+this out. But not quite yet...
+
+{% endcomment %}
+<div class="hidden">
+
 <h3>Create Run (Old Form)</h3>
 
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac est facilisis, blandit risus at, accumsan mi. Ut eget gravida massa, sed convallis neque. Mauris turpis elit, congue eget venenatis a, sodales eget magna. Proin ornare congue laoreet. Cras enim ligula, tempus eget urna cursus, ultricies posuere magna. Praesent ante mi, congue vitae ultrices a, mattis vitae nunc. Maecenas id tellus sit amet orci fringilla dictum sit amet ac mauris. Proin sed eleifend ante, vitae sodales elit. Aliquam sit amet est aliquam, congue turpis a, porttitor ligula. Phasellus quis odio blandit, sollicitudin est a, consequat purus. Cras metus nisl, ullamcorper vitae ipsum a, sagittis porta odio. Etiam dapibus felis nulla, non malesuada arcu facilisis eget. Suspendisse lacus turpis, malesuada nec porta ac, convallis ultricies orci. Sed nulla orci, hendrerit eget elit id, gravida volutpat nunc. Proin vel neque auctor diam eleifend varius. Nulla facilisi.</p>
@@ -511,7 +524,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 		</div>
 	</div>
 </div>
-
+</div>
 <div class="form-group">
 <div class="col-sm-12">
 <button type="submit" class="btn pull-right" id="run-sim-button">Run it!</button>
@@ -880,6 +893,11 @@ The simulation interface will consist of organized variables and input options t
     $('.moreinfo').popover()
 		$("#overbudget").hide();
     $('#progress-bar-well').affix();
+</script>
+<script>
+var costs = {};
+{% for intervention in interventions %}
+costs['{{intervention.slug}}'] = {'high': {{intervention.high_cost}}, 'medium': {{intervention.medium_cost}}, 'low': {{intervention.low_cost}}};{% endfor %}
 </script>
 <script src="{{STATIC_URL}}js/interventions.js"></script>
 {% endblock %}

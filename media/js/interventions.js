@@ -12,54 +12,6 @@ var update_budget_progress_bar = function() {
     label.text("$" + (total_budget - budget_used));
 };
 
-var costs = {
-    'increase-physical-activity': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'ensure-screening': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'active-living-at-work': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'activity-social-influence': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'physical-environment': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-
-    'health-promoting-food': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'healthy-eating-at-work': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'national-health-standards': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'nutrition-education-policies': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'food-labeling': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-    'food-social-influence': {
-        'high': 300, 'medium': 200, 'low': 100
-    },
-
-    // these aren't really "interventions"
-    'force-of-dietary-habit': {
-        'high': 0, 'medium': 0, 'low': 0
-    },
-    'level-of-physical-activity': {
-        'high': 0, 'medium': 0, 'low': 0
-    },
-    'level-of-conscious-control': {
-        'high': 0, 'medium': 0, 'low': 0
-    }
-};
-
 var over_budget = function(amount) {
     $("#run-sim-button").attr('disabled','disabled');
     $("#overbudget-amount").text(amount);
