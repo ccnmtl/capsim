@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<ul class="breadcrumb">
+  <li><a href="/calibrate/">Calibration</a></li>
+  <li class="active">Experiments</li>
+</ul>
 
 <a class="btn btn-primary" href="/experiment/new/">New Experiment</a>
 
@@ -20,7 +24,7 @@
 <tbody>
 {% for experiment in object_list %}
 <tr>
-	<td><a href="{{experiment.get_absolute_url}}">{{experiment.title}}</a></td>
+	<td><a href="{{experiment.get_absolute_url}}">{{experiment.title|default:"no title"}}</a></td>
 	<td>{{experiment.total}}</td>
 	<td>{{experiment.independent_variable}}
 	[{{experiment.independent_min}} - {{experiment.independent_max}},

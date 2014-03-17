@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<p><a class="btn btn-default" href="../">back to experiment details</a></p>
+<ul class="breadcrumb">
+  <li><a href="/calibrate/">Calibration</a></li>
+	<li><a href="/experiment/">Experiments</a></li>
+  <li><a href="../">{{object.title|default:"no title"}}</a></li>
+	<li class="active">Heatmap</li>
+</ul>
 
 <table class="table table-condensed" id="heatmap-table">
 
