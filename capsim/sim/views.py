@@ -77,7 +77,7 @@ class InterventionEditView(LoggedInMixin, View):
                 continue
             parameter = request.POST[k]
             value = request.POST.get("%s_adjustment_%s" % (level, n), "0.0")
-            if value == "0.0" or value == "" or value == "":
+            if parameter == "" or value == "0.0" or value == "" or value == "":
                 continue
             intervention.add_modifier(level, parameter, value)
         return HttpResponseRedirect(intervention.get_absolute_url())

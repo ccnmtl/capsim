@@ -83,4 +83,18 @@
 <input type="submit" value="save" class="btn btn-primary"/>
 </form>
 
+<hr />
+<p>for debugging, the js that will be generated corresponding to this:</p>
+<pre>
+costs['{{object.slug}}'] = {'high': {{object.high_cost}}, 'medium': {{object.medium_cost}}, 'low': {{object.low_cost}}};
+
+modifiers['{{object.slug}}'] = {'high': [], 'medium': [], 'low': []};
+{% for il in object.interventionlevel_set.all %}
+{% for m in il.modifier_set.all %}
+modifiers['{{object.slug}}']['{{il.level}}'].push(
+    {'param': '{{m.parameter}}',
+     'adjustment': {{m.adjustment}}});{% endfor %}{% endfor %}
+</pre>
+
+
 {% endblock %}

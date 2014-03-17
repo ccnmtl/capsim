@@ -4,6 +4,8 @@
 						name="{{level}}_parameter_{{n}}">
 			{% ifequal selected_param "" %}
 			<option selected="selected" value=""></option>
+      {% else %}
+			<option value="">[remove this one]</option>
 			{% endifequal %}
 			{% for p in parameters %}
 			<option value="{{p}}"
