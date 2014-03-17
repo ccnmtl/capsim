@@ -9,6 +9,9 @@
 
 <form action="." method="post">
 
+<h2>Intervention: {{object.name}}</h2>
+<p>slug: <tt>{{object.slug}}</tt></p>
+
 <h3>High</h3>
 
 {% for m in object.high_modifiers %}
@@ -84,7 +87,22 @@
 </form>
 
 <hr />
-<p>for debugging, the js that will be generated corresponding to this:</p>
+<h4>Instructions</h4>
+<p>Each intervention has three different levels, "high", "medium", and
+	"low". Each of those has a cost, and a set of "modifiers". Each
+	modifier adjusts one of the simulation parameters by some
+	amount. The modifiers are cumulative, so if multiple interventions
+	affect the same parameters and are both selected by the user, they
+	will be added together.
+</p>
+<p>This form will show you the existing modifiers set for each
+	level. It will always include three more empty rows for each as well
+	so you can add modifiers. To remove one, just select "[remove this
+	one]" or set the value to "0.0" and hit save.</p>
+<p>Remember that you can put negative values in</p>
+
+
+<p>for debugging, the js that will be generated corresponding to this intervention:</p>
 <pre>
 costs['{{object.slug}}'] = {'high': {{object.high_cost}}, 'medium': {{object.medium_cost}}, 'low': {{object.low_cost}}};
 
