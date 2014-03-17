@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-4">
+		<select class="form-control"
+						name="{{level}}_parameter_{{n}}">
+			{% ifequal selected_param "" %}
+			<option selected="selected" value=""></option>
+			{% endifequal %}
+			{% for p in parameters %}
+			<option value="{{p}}"
+							{% ifequal p selected_param %}selected="selected"{% endifequal %}>{{p}}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="col-md-4">
+		<input type="text" name="{{level}}_adjustment_{{n}}"
+		value="{{adjustment}}" class="form-control"/>
+	</div>
+</div>

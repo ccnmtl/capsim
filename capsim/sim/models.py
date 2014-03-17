@@ -205,6 +205,9 @@ class Intervention(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=256)
 
+    def get_absolute_url(self):
+        return "/calibrate/intervention/%d/" % self.id
+
     def high_cost(self):
         return self.interventionlevel_set.filter(level="high")[0].cost
 
@@ -213,6 +216,28 @@ class Intervention(models.Model):
 
     def low_cost(self):
         return self.interventionlevel_set.filter(level="low")[0].cost
+
+    def level_modifiers(self, level):
+        return self.interventionlevel_set.filter(
+            level=level)[0].modifier_set.all()
+
+    def high_modifiers(self):
+        return self.level_modifiers("high")
+
+    def medium_modifiers(self):
+        return self.level_modifiers("medium")
+
+    def low_modifiers(self):
+        return self.level_modifiers("low")
+
+    def clear_all_modifiers(self):
+        for il in self.interventionlevel_set.all():
+            il.modifier_set.all().delete()
+
+    def add_modifier(self, level, parameter, adjustment):
+        il = self.interventionlevel_set.filter(level=level)[0]
+        Modifier.objects.create(
+            interventionlevel=il, parameter=parameter, adjustment=adjustment)
 
 
 class InterventionLevel(models.Model):

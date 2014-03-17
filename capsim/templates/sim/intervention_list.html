@@ -30,7 +30,7 @@
 
 {% for intervention in object_list %}
 <div class="row">
-		<div class="col-md-6">{{intervention.name}}</div>
+		<div class="col-md-6"><a href="{{intervention.get_absolute_url}}">{{intervention.name}}</a></div>
 		<div class="col-md-2"><div class="input-group">
 				<span class="input-group-addon">$</span><input type="text" name="high_cost_{{intervention.id}}"
 		value="{{intervention.high_cost}}" class="form-control input-sm"/></div></div>

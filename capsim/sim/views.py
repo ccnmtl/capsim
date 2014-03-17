@@ -8,7 +8,8 @@ from capsim.sim.models import (
     RunRecord, Experiment, Intervention, InterventionLevel)
 
 from capsim.main.views import LoggedInMixin
-from capsim.main.forms import RunForm, ExperimentForm, ALL_FIELDS
+from capsim.main.forms import (
+    RunForm, ExperimentForm, ALL_FIELDS, FLOAT_FIELDS)
 from capsim.sim.tasks import run_experiment
 
 import csv
@@ -55,6 +56,31 @@ class InterventionSetCostsView(LoggedInMixin, View):
             il.cost = cost
             il.save()
         return HttpResponseRedirect("/calibrate/intervention/")
+
+
+class InterventionEditView(LoggedInMixin, View):
+    template_name = "sim/intervention_edit.html"
+    model = Intervention
+
+    def get(self, request, pk):
+        return render(
+            request, self.template_name,
+            dict(object=get_object_or_404(self.model, pk=pk),
+                 parameters=FLOAT_FIELDS))
+
+    def post(self, request, pk):
+        intervention = get_object_or_404(self.model, pk=pk)
+        intervention.clear_all_modifiers()
+        for k in request.POST.keys():
+            (level, t, n) = k.split("_")
+            if t != "parameter":
+                continue
+            parameter = request.POST[k]
+            value = request.POST.get("%s_adjustment_%s" % (level, n), "0.0")
+            if value == "0.0" or value == "" or value == "":
+                continue
+            intervention.add_modifier(level, parameter, value)
+        return HttpResponseRedirect(intervention.get_absolute_url())
 
 
 class RunsView(LoggedInMixin, ListView):

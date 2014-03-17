@@ -58,9 +58,11 @@ urlpatterns = patterns(
      capsim.sim.views.ExperimentDeleteView.as_view()),
 
     (r'^calibrate/$', TemplateView.as_view(
-            template_name="sim/calibrate_index.html")),
+        template_name="sim/calibrate_index.html")),
     (r'^calibrate/intervention/$',
      capsim.sim.views.InterventionListView.as_view()),
+    (r'^calibrate/intervention/(?P<pk>\d+)/$',
+     capsim.sim.views.InterventionEditView.as_view()),
     (r'^calibrate/intervention/add/$',
      capsim.sim.views.InterventionAddView.as_view()),
     (r'^calibrate/intervention/set_costs/$',

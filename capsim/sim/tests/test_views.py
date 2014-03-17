@@ -206,10 +206,22 @@ class InterventionViewTest(TestCase):
 
         i = Intervention.objects.all()[0]
         response = self.c.post(
-            "/calibrate/intervention/add/",
+            "/calibrate/intervention/set_costs/",
             {
                 "high_cost_%d" % i.id: "400",
                 "medium_cost_%d" % i.id: "200",
                 "low_cost_%d" % i.id: "100",
             })
         self.assertEquals(response.status_code, 302)
+        response = self.c.get("/calibrate/intervention/")
+        self.assertTrue("400" in response.content)
+
+        response = self.c.get(i.get_absolute_url())
+        self.assertEquals(response.status_code, 200)
+
+        response = self.c.post(
+            i.get_absolute_url(),
+            dict(high_parameter_0="gamma_1",
+                 high_adjustment_0="1.0",
+                 medium_parameter_0="gamma_1",
+                 medium_adjustment_0="0.0"))

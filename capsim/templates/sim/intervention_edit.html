@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="breadcrumb">
+  <li><a href="/calibrate/">Calibration</a></li>
+	<li><a href="/calibrate/intervention/">Interventions</a></li>
+	<li class="active">{{object.name}}</li>
+</ul>
+
+<form action="." method="post">
+
+<h3>High</h3>
+
+{% for m in object.high_modifiers %}
+{% with level="high" n=forloop.counter0 adjustment=m.adjustment selected_param=m.parameter %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+{% endfor %}
+
+{% with level="high" adjustment="0.0" selected_param="" %}
+{% with n="new00" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% with n="new01" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% with n="new02" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% endwith %}
+
+
+<h3>Medium</h3>
+
+{% for m in object.medium_modifiers %}
+{% with level="medium" n=forloop.counter0 adjustment=m.adjustment selected_param=m.parameter %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+{% endfor %}
+
+{% with level="medium" adjustment="0.0" selected_param="" %}
+{% with n="new00" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% with n="new01" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% with n="new02" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% endwith %}
+
+<h3>Low</h3>
+
+{% for m in object.low_modifiers %}
+{% with level="low" n=forloop.counter0 adjustment=m.adjustment selected_param=m.parameter %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+{% endfor %}
+
+{% with level="low" adjustment="0.0" selected_param="" %}
+{% with n="new00" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% with n="new01" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% with n="new02" adjustment="0.0" %}
+{% include "sim/modifier_field.html" %}
+{% endwith %}
+
+{% endwith %}
+
+
+<input type="submit" value="save" class="btn btn-primary"/>
+</form>
+
+{% endblock %}
