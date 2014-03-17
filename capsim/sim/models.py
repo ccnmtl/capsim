@@ -199,3 +199,24 @@ class ExpRun(models.Model):
             ).get_runoutput().display_data()['mass_mean']
         self.save()
         self.experiment.check_if_complete()
+
+
+class Intervention(models.Model):
+    name = models.CharField(max_length=256)
+    slug = models.SlugField(max_length=256)
+
+
+class InterventionLevel(models.Model):
+    intervention = models.ForeignKey(Intervention)
+    level = models.CharField(
+        max_length=256,
+        choices=[("high", "high"),
+                 ("medium", "medium"),
+                 ("low", "low")])
+    cost = models.IntegerField(default=0)
+
+
+class Modifier(models.Model):
+    interventionlevel = models.ForeignKey(InterventionLevel)
+    parameter = models.CharField(max_length=256)
+    adjustment = models.FloatField(default=0.0)
