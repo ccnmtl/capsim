@@ -45,6 +45,18 @@ class InterventionAddView(LoggedInMixin, View):
         return HttpResponseRedirect("/calibrate/intervention/")
 
 
+class InterventionSetCostsView(LoggedInMixin, View):
+    def post(self, request):
+        for k in request.POST.keys():
+            (level, _, intervention_id) = k.split("_")
+            cost = request.POST.get(k, "0")
+            i = Intervention.objects.get(pk=intervention_id)
+            il = i.interventionlevel_set.filter(level=level)[0]
+            il.cost = cost
+            il.save()
+        return HttpResponseRedirect("/calibrate/intervention/")
+
+
 class RunsView(LoggedInMixin, ListView):
     template_name = 'sim/runs.html'
     model = RunRecord

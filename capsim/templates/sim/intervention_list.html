@@ -2,32 +2,44 @@
 
 {% block content %}
 
-<a class="pull-right btn btn-primary btn-xs" href="add/"><span class="glyphicon
+<a class="pull-right btn btn-default btn-xs" href="add/"><span class="glyphicon
  glyphicon-plus"></span> Add Intervention</a>
 
 <h2>Calibrate Interventions</h2>
 
+<form action="set_costs/" method="post">
 
-<table class="table table-condensed table-striped">
-	<thead>
-		<tr>
-			<th>Intervention</th>
-			<th>High</th>
-			<th>Medium</th>
-			<th>Low</th>
-		</tr>
-	</thead>
-	<tbody>
+<div class="row">
+	<div class="col-md-6">
+		<b>Intervention</b>
+	</div>
+
+	<div class="col-md-2">
+			<b>High</b>
+	</div>
+	<div class="col-md-2">
+			<b>Medium</b>
+	</div>
+	<div class="col-md-2">
+			<b>Low</b>
+	</div>
+
 {% for intervention in object_list %}
-	<tr>
-		<td>{{intervention.name}}</td>
-		<td>${{intervention.high_cost}}</td>
-		<td>${{intervention.medium_cost}}</td>
-		<td>${{intervention.low_cost}}</td>
-	</tr>
+<div class="row">
+		<div class="col-md-6">{{intervention.name}}</div>
+		<div class="col-md-2"><div class="input-group">
+				<span class="input-group-addon">$</span><input type="text" name="high_cost_{{intervention.id}}"
+		value="{{intervention.high_cost}}" class="form-control input-sm"/></div></div>
+		<div class="col-md-2"><div class="input-group">
+				<span class="input-group-addon">$</span><input type="text" name="medium_cost_{{intervention.id}}"
+		value="{{intervention.medium_cost}}" class="form-control input-sm"/></div></div>
+		<div class="col-md-2"><div class="input-group">
+				<span class="input-group-addon">$</span><input type="text" name="low_cost_{{intervention.id}}"
+		value="{{intervention.low_cost}}" class="form-control input-sm"/></div></div>
+</div>
 {% endfor %}
-</tbody>
-</table>
 
+<input type="submit" class="btn btn-primary pull-right" value="update costs" />
+</form>
 
 {% endblock %}

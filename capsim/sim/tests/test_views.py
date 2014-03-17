@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
-from capsim.sim.models import RunRecord, RunOutputRecord
+from capsim.sim.models import RunRecord, RunOutputRecord, Intervention
 from capsim.sim.logic import Run
 from waffle import Flag
 from .factories import ExpRunFactory
@@ -188,6 +188,8 @@ class InterventionViewTest(TestCase):
         self.flag = Flag.objects.create(name='simulation', everyone=True)
 
     def test_runthrough(self):
+        """ a quick end-to-end run through for now. replace with
+        more granular unit tests later"""
         response = self.c.get("/calibrate/intervention/add/")
         self.assertEquals(response.status_code, 200)
         self.assertTrue("<form" in response.content)
@@ -201,3 +203,13 @@ class InterventionViewTest(TestCase):
 
         response = self.c.get("/calibrate/intervention/")
         self.assertTrue("new intervention" in response.content)
+
+        i = Intervention.objects.all()[0]
+        response = self.c.post(
+            "/calibrate/intervention/add/",
+            {
+                "high_cost_%d" % i.id: "400",
+                "medium_cost_%d" % i.id: "200",
+                "low_cost_%d" % i.id: "100",
+            })
+        self.assertEquals(response.status_code, 302)

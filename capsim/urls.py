@@ -61,6 +61,8 @@ urlpatterns = patterns(
      capsim.sim.views.InterventionListView.as_view()),
     (r'^calibrate/intervention/add/$',
      capsim.sim.views.InterventionAddView.as_view()),
+    (r'^calibrate/intervention/set_costs/$',
+     capsim.sim.views.InterventionSetCostsView.as_view()),
 
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
