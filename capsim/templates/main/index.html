@@ -880,7 +880,7 @@ The simulation interface will consist of organized variables and input options t
 {% if request.user.is_staff %}
 <div class="well">
 <form action="/run/toggle/" method="post">
-<input type="submit" class="btn btn-warning" value="Enable Simulation (Staff Only" />
+<input type="submit" class="btn btn-warning" value="Enable Simulation (Staff Only)" />
 </form>
 </div>
 {% endif %}
@@ -896,8 +896,18 @@ The simulation interface will consist of organized variables and input options t
 </script>
 <script>
 var costs = {};
+var modifiers = {};
 {% for intervention in interventions %}
-costs['{{intervention.slug}}'] = {'high': {{intervention.high_cost}}, 'medium': {{intervention.medium_cost}}, 'low': {{intervention.low_cost}}};{% endfor %}
+costs['{{intervention.slug}}'] = {'high': {{intervention.high_cost}}, 'medium': {{intervention.medium_cost}}, 'low': {{intervention.low_cost}}};
+
+modifiers['{{intervention.slug}}'] = {'high': [], 'medium': [], 'low': []};
+{% for il in intervention.interventionlevel_set.all %}
+{% for m in il.modifier_set.all %}
+modifiers['{{intervention.slug}}']['{{il.level}}'].push(
+    {'param': '{{m.parameter}}',
+     'adjustment': {{m.adjustment}}});{% endfor %}{% endfor %}
+
+{% endfor %}
 </script>
 <script src="{{STATIC_URL}}js/interventions.js"></script>
 {% endblock %}
