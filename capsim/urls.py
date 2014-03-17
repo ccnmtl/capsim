@@ -57,6 +57,11 @@ urlpatterns = patterns(
     (r'^experiment/(?P<pk>\d+)/delete/$',
      capsim.sim.views.ExperimentDeleteView.as_view()),
 
+    (r'^calibrate/intervention/$',
+     capsim.sim.views.InterventionListView.as_view()),
+    (r'^calibrate/intervention/add/$',
+     capsim.sim.views.InterventionAddView.as_view()),
+
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/', TemplateView.as_view(template_name="stats.html")),

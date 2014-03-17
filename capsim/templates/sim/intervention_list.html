@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a class="pull-right btn btn-primary btn-xs" href="add/"><span class="glyphicon
+ glyphicon-plus"></span> Add Intervention</a>
+
+<h2>Calibrate Interventions</h2>
+
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th>Intervention</th>
+			<th>High</th>
+			<th>Medium</th>
+			<th>Low</th>
+		</tr>
+	</thead>
+	<tbody>
+{% for intervention in object_list %}
+	<tr>
+		<td>{{intervention.name}}</td>
+		<td>${{intervention.high_cost}}</td>
+		<td>${{intervention.medium_cost}}</td>
+		<td>${{intervention.low_cost}}</td>
+	</tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}

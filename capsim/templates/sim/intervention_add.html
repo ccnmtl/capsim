@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p class="alert alert-danger">If you don't know exactly what you're doing here, just back away
+	slowly.</p>
+
+<form action="." method="post">
+<fieldset><legend>Add Intervention</legend>
+
+<input type="text" name="name" value="" placeholder="Name"
+			 class="form-control" />
+
+<input type="text" name="slug" value="" placeholder="slug"
+			 class="form-control" />
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="input-group">
+			<span class="input-group-addon">$</span>
+			<input type="text" name="high_cost" placeholder="high"
+			class="form-control"/>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="input-group">
+			<span class="input-group-addon">$</span>
+			<input type="text" name="medium_cost" placeholder="medium"
+			class="form-control"/>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="input-group">
+			<span class="input-group-addon">$</span>
+			<input type="text" name="low_cost" placeholder="low"
+						 class="form-control"/>
+		</div>
+	</div>
+</div>
+
+<input type="submit" class="btn btn-primary" value="Add"/>
+</fieldset>
+</form>
+{% endblock %}

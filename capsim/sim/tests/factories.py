@@ -1,6 +1,7 @@
 import factory
 from django.contrib.auth.models import User
-from capsim.sim.models import Experiment, RunRecord, ExpRun
+from capsim.sim.models import (
+    Experiment, RunRecord, ExpRun, Intervention, InterventionLevel)
 
 
 class UserFactory(factory.DjangoModelFactory):
@@ -32,3 +33,16 @@ class ExpRunFactory(factory.DjangoModelFactory):
     FACTORY_FOR = ExpRun
     experiment = factory.SubFactory(ExperimentFactory)
     run = factory.SubFactory(RunRecordFactory)
+
+
+class InterventionFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Intervention
+    name = factory.Sequence(lambda n: "Intervention r%03d" % n)
+    slug = factory.Sequence(lambda n: "intervention-r%03d" % n)
+
+
+class InterventionLevelFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = InterventionLevel
+    intervention = factory.SubFactory(InterventionFactory)
+    level = "medium"
+    cost = 200

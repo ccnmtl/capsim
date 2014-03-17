@@ -205,6 +205,15 @@ class Intervention(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=256)
 
+    def high_cost(self):
+        return self.interventionlevel_set.filter(level="high")[0].cost
+
+    def medium_cost(self):
+        return self.interventionlevel_set.filter(level="medium")[0].cost
+
+    def low_cost(self):
+        return self.interventionlevel_set.filter(level="low")[0].cost
+
 
 class InterventionLevel(models.Model):
     intervention = models.ForeignKey(Intervention)

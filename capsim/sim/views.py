@@ -4,13 +4,45 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic.list import ListView
 from django.views.generic.base import TemplateView, View
 
-from capsim.sim.models import RunRecord, Experiment
+from capsim.sim.models import (
+    RunRecord, Experiment, Intervention, InterventionLevel)
+
 from capsim.main.views import LoggedInMixin
 from capsim.main.forms import RunForm, ExperimentForm, ALL_FIELDS
 from capsim.sim.tasks import run_experiment
 
 import csv
 from json import dumps, loads
+
+
+class InterventionListView(LoggedInMixin, ListView):
+    model = Intervention
+
+
+class InterventionAddView(LoggedInMixin, View):
+    template_name = "sim/intervention_add.html"
+    model = Intervention
+
+    def get(self, request):
+        return render(request, self.template_name, dict())
+
+    def post(self, request):
+        i = self.model.objects.create(
+            name=request.POST.get('name', 'no name'),
+            slug=request.POST.get('slug', 'no-slug'))
+        InterventionLevel.objects.create(
+            intervention=i,
+            level="high",
+            cost=request.POST.get('high_cost', '0'))
+        InterventionLevel.objects.create(
+            intervention=i,
+            level="medium",
+            cost=request.POST.get('medium_cost', '0'))
+        InterventionLevel.objects.create(
+            intervention=i,
+            level="low",
+            cost=request.POST.get('low_cost', '0'))
+        return HttpResponseRedirect("/calibrate/intervention/")
 
 
 class RunsView(LoggedInMixin, ListView):

@@ -176,3 +176,28 @@ class ExperimentViewTest(TestCase):
         self.assertTrue("<form" in r.content)
         r = self.c.post(er.experiment.get_absolute_url() + "delete/")
         self.assertEqual(r.status_code, 302)
+
+
+class InterventionViewTest(TestCase):
+    def setUp(self):
+        self.c = Client()
+        self.u = User.objects.create(username="testuser")
+        self.u.set_password("test")
+        self.u.save()
+        self.c.login(username="testuser", password="test")
+        self.flag = Flag.objects.create(name='simulation', everyone=True)
+
+    def test_runthrough(self):
+        response = self.c.get("/calibrate/intervention/add/")
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue("<form" in response.content)
+
+        response = self.c.post(
+            "/calibrate/intervention/add/",
+            dict(
+                name="new intervention", slug="new-intervention",
+                high_cost="300", medium_cost="200", low_cost="100"))
+        self.assertEquals(response.status_code, 302)
+
+        response = self.c.get("/calibrate/intervention/")
+        self.assertTrue("new intervention" in response.content)
