@@ -284,3 +284,10 @@ class Parameter(models.Model):
         if self.num_type == "int":
             return int(self.value)
         return self.value
+
+
+def merge_parameters_into_form(form, parameters):
+    for p in parameters:
+        if p.slug in form.fields:
+            form.fields[p.slug].initial = p.cast_value()
+    return form

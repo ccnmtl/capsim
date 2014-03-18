@@ -6,7 +6,9 @@ from django.views.generic.base import View
 from pagetree.generic.views import EditView
 from pagetree.generic.views import InstructorView
 from capsim.sim.logic import Run
-from capsim.sim.models import RunRecord, RunOutputRecord, Intervention
+from capsim.sim.models import (
+    RunRecord, RunOutputRecord, Intervention, Parameter,
+    merge_parameters_into_form)
 from waffle import Flag
 from .forms import RunForm, ALL_FIELDS
 
@@ -36,12 +38,17 @@ class NewRunView(LoggedInMixin, View):
             return HttpResponseRedirect(rr.get_absolute_url())
         return render(
             request, self.template_name,
-            dict(form=form, interventions=Intervention.objects.all()))
+            dict(form=form, interventions=Intervention.objects.all(),
+                 parameters=Parameter.objects.all()))
 
     def get(self, request):
+        form = RunForm()
+        parameters = Parameter.objects.all()
+        form = merge_parameters_into_form(form, parameters)
         return render(
             request, self.template_name,
-            dict(form=RunForm(), interventions=Intervention.objects.all()))
+            dict(form=form, interventions=Intervention.objects.all(),
+                 parameters=parameters))
 
 
 class ToggleFlagView(LoggedInMixin, View):

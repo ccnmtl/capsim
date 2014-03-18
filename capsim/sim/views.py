@@ -6,7 +6,7 @@ from django.views.generic.base import TemplateView, View
 
 from capsim.sim.models import (
     RunRecord, Experiment, Intervention, InterventionLevel,
-    Parameter)
+    Parameter, merge_parameters_into_form)
 
 from capsim.main.views import LoggedInMixin
 from capsim.main.forms import (
@@ -269,11 +269,16 @@ class NewExperimentView(LoggedInMixin, View):
             run_experiment.delay(experiment_id=experiment.id)
             return HttpResponseRedirect(redirect_url)
         transaction.rollback()
+        parameters = Parameter.objects.all()
+        form = merge_parameters_into_form(form, parameters)
         return render(request, self.template_name,
                       dict(form=form, expform=expform))
 
     def get(self, request):
+        form = RunForm()
+        parameters = Parameter.objects.all()
+        form = merge_parameters_into_form(form, parameters)
         return render(request, self.template_name,
-                      dict(form=RunForm(),
+                      dict(form=form,
                            expform=ExperimentForm(),
                            ))

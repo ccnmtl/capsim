@@ -908,6 +908,56 @@ modifiers['{{intervention.slug}}']['{{il.level}}'].push(
      'adjustment': {{m.adjustment}}});{% endfor %}{% endfor %}
 
 {% endfor %}
+
+// kind of "default defaults"
+
+var defaults = {
+    'id_gamma_1': 1.0,
+    'id_gamma_2': 1.0,
+    'id_gamma_3': 1.0,
+    'id_gamma_4': 1.0,
+    'id_gamma_5': 1.0,
+    'id_gamma_6': 1.0,
+
+    'id_recreation_activity_alpha': 0.5,
+    'id_education_activity_alpha': 0.5,
+    'id_domestic_activity_alpha': 0.5,
+    'id_transport_activity_alpha': 0.5,
+    'id_food_convenience_alpha': 0.5,
+    'id_energy_density_alpha': 0.5,
+    'id_food_exposure_alpha': 0.5,
+    'id_food_convenience_alpha': 0.5,
+    'id_food_literacy_alpha': 0.5,
+    'id_food_advertising_alpha': 0.5,
+
+    'id_recreation_activity_lambda': 0.1,
+    'id_education_activity_lambda': 0.1,
+    'id_domestic_activity_lambda': 0.1,
+    'id_transport_activity_lambda': 0.1,
+    'id_food_convenience_lambda': 0.1,
+    'id_energy_density_lambda': 0.1,
+    'id_food_exposure_lambda': 0.1,
+    'id_food_convenience_lambda': 0.1,
+    'id_food_literacy_lambda': 0.1,
+    'id_food_advertising_lambda': 0.1,
+
+    'id_recreation_activity_weight': 1.0,
+    'id_domestic_activity_weight': 1.0,
+    'id_transport_activity_weight': 1.0,
+    'id_education_activity_weight': 1.0,
+
+    'id_energy_density_weight': 1.0,
+    'id_food_advertising_weight': 1.0,
+    'id_food_exposure_weight': 1.0,
+    'id_food_convenience_weight': 1.0,
+    'id_food_literacy_weight': 1.0
+};
+
+{% for parameter in parameters %}
+defaults['id_{{parameter.slug}}'] = {{parameter.cast_value}};
+{% endfor %}
+
+
 </script>
 <script src="{{STATIC_URL}}js/interventions.js"></script>
 {% endblock %}

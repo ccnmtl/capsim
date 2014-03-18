@@ -37,37 +37,6 @@ var calculate_budget = function() {
     }
 };
 
-var defaults = {
-    'id_gamma_1': 1.0,
-    'id_gamma_2': 1.0,
-    'id_gamma_3': 1.0,
-    'id_gamma_4': 1.0,
-    'id_gamma_5': 1.0,
-    'id_gamma_6': 1.0,
-
-    'id_recreation_activity_alpha': 0.5,
-    'id_education_activity_alpha': 0.5,
-    'id_domestic_activity_alpha': 0.5,
-    'id_transport_activity_alpha': 0.5,
-    'id_food_convenience_alpha': 0.5,
-    'id_energy_density_alpha': 0.5,
-    'id_food_exposure_alpha': 0.5,
-    'id_food_convenience_alpha': 0.5,
-    'id_food_literacy_alpha': 0.5,
-    'id_food_advertising_alpha': 0.5,
-
-    'id_recreation_activity_lambda': 0.1,
-    'id_education_activity_lambda': 0.1,
-    'id_domestic_activity_lambda': 0.1,
-    'id_transport_activity_lambda': 0.1,
-    'id_food_convenience_lambda': 0.1,
-    'id_energy_density_lambda': 0.1,
-    'id_food_exposure_lambda': 0.1,
-    'id_food_convenience_lambda': 0.1,
-    'id_food_literacy_lambda': 0.1,
-    'id_food_advertising_lambda': 0.1
-}
-
 var current_values = {};
 
 var reset_parameters = function() {

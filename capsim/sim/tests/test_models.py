@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
-from capsim.sim.models import RunRecord, RunOutputRecord
+from capsim.sim.models import (
+    RunRecord, RunOutputRecord, merge_parameters_into_form,
+    Parameter)
 from capsim.sim.logic import Run
 from .factories import (
     ExperimentFactory, ExpRunFactory, InterventionLevelFactory,
@@ -81,3 +83,21 @@ class TestParameter(TestCase):
         self.assertEqual(p.cast_value(), 0)
         p = ParameterFactory(num_type='float', value=1.0)
         self.assertEqual(p.cast_value(), 1.0)
+
+
+class TestMergeParameters(TestCase):
+    def test_merge(self):
+        ParameterFactory(slug="gamma_1", value="2.0")
+        ParameterFactory(slug="gamma_2", value="2.0")
+
+        class DummyField(object):
+            initial = 1.0
+
+        class DummyForm(object):
+            fields = dict()
+
+        f = DummyForm()
+        f.fields['gamma_1'] = DummyField()
+
+        new_form = merge_parameters_into_form(f, Parameter.objects.all())
+        self.assertEqual(new_form.fields['gamma_1'].initial, 2.0)
