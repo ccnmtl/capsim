@@ -135,6 +135,10 @@ class Experiment(models.Model):
             self.status = "complete"
         self.save()
 
+    def failed(self):
+        self.status = "failed"
+        self.save()
+
     def normalize_title(self):
         """ if the user doesn't set a title, we make one"""
         if len(self.title) > 0:
@@ -212,6 +216,11 @@ class ExpRun(models.Model):
             ).get_runoutput().display_data()['mass_mean']
         self.save()
         self.experiment.check_if_complete()
+
+    def failed(self):
+        self.status = "failed"
+        self.save()
+        self.experiment.failed()
 
 
 class Intervention(models.Model):

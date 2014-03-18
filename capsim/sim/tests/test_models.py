@@ -65,6 +65,13 @@ class ExperimentTest(TestCase):
         e.normalize_title()
         self.assertTrue(e.title != "")
 
+    def test_failed(self):
+        er = ExpRunFactory()
+        e = er.experiment
+        er.failed()
+        self.assertEqual(er.status, "failed")
+        self.assertEqual(e.status, "failed")
+
 
 class TestIntervention(TestCase):
     def test_add_modifier(self):
