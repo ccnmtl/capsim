@@ -40,6 +40,15 @@
 	{% endifequal %}
 </dl>
 
+{% ifequal object.status "failed" %}
+<p class="alert alert-danger">One or more runs failed. This is usually
+	due to a parameter being set to an illegal value (eg, trying to
+	generate a gamma distribution using a zero or negative
+	parameter). Double check your ranges and settings. If you can't
+	figure out what's wrong, send the config/settings you used to Anders
+	and he'll try to figure it out.</p>
+{% endifequal %}
+
 {% ifequal object.status "complete" %}
 <h3>Data</h3>
 <p><a href="csv/">Download CSV</a></p>
