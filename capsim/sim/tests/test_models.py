@@ -2,7 +2,8 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from capsim.sim.models import RunRecord, RunOutputRecord
 from capsim.sim.logic import Run
-from .factories import ExperimentFactory, ExpRunFactory
+from .factories import (
+    ExperimentFactory, ExpRunFactory, InterventionLevelFactory)
 
 
 class RunRecordTest(TestCase):
@@ -60,3 +61,14 @@ class ExperimentTest(TestCase):
         self.assertTrue(e.title != "")
         e.normalize_title()
         self.assertTrue(e.title != "")
+
+
+class TestIntervention(TestCase):
+    def test_add_modifier(self):
+        il = InterventionLevelFactory()
+        i = il.intervention
+        i.add_modifier("medium", "foo", 1.0)
+        self.assertEqual(i.interventionlevel_set.count(), 1)
+        self.assertEqual(i.medium_modifiers().count(), 1)
+        i.clear_all_modifiers()
+        self.assertEqual(i.medium_modifiers().count(), 0)
