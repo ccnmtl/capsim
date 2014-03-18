@@ -277,6 +277,9 @@ class Parameter(models.Model):
                  ("int", "integer")])
     value = models.FloatField(default=0.0)
 
+    def get_absolute_url(self):
+        return "/calibrate/parameter/%d/" % self.id
+
     def cast_value(self):
         if self.num_type == "int":
             return int(self.value)

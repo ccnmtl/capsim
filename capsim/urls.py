@@ -7,7 +7,7 @@ from django.views.generic.edit import DeleteView
 from pagetree.generic.views import PageView
 import capsim.main.views
 import capsim.sim.views
-from capsim.sim.models import RunRecord, Experiment
+from capsim.sim.models import RunRecord, Experiment, Parameter
 admin.autodiscover()
 
 redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
@@ -67,6 +67,17 @@ urlpatterns = patterns(
      capsim.sim.views.InterventionAddView.as_view()),
     (r'^calibrate/intervention/set_costs/$',
      capsim.sim.views.InterventionSetCostsView.as_view()),
+
+    (r'^calibrate/parameter/$',
+     capsim.sim.views.ParameterListView.as_view()),
+    (r'^calibrate/parameter/(?P<pk>\d+)/$',
+     capsim.sim.views.ParameterEditView.as_view()),
+    (r'^calibrate/parameter/add/$',
+     capsim.sim.views.ParameterAddView.as_view()),
+    (r'^calibrate/parameter/(?P<pk>\d+)/delete/$',
+     DeleteView.as_view(
+         model=Parameter,
+         success_url="/calibrate/parameter/")),
 
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),

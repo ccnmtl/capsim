@@ -5,7 +5,8 @@ from django.views.generic.list import ListView
 from django.views.generic.base import TemplateView, View
 
 from capsim.sim.models import (
-    RunRecord, Experiment, Intervention, InterventionLevel)
+    RunRecord, Experiment, Intervention, InterventionLevel,
+    Parameter)
 
 from capsim.main.views import LoggedInMixin
 from capsim.main.forms import (
@@ -14,6 +15,42 @@ from capsim.sim.tasks import run_experiment
 
 import csv
 from json import dumps, loads
+
+
+class ParameterListView(LoggedInMixin, ListView):
+    model = Parameter
+
+
+class ParameterAddView(LoggedInMixin, View):
+    template_name = "sim/parameter_add.html"
+    model = Parameter
+
+    def get(self, request):
+        return render(request, self.template_name, dict())
+
+    def post(self, request):
+        self.model.objects.create(
+            slug=request.POST.get('slug', 'no-slug'),
+            num_type=request.POST.get('num_type', 'float'),
+            value=request.POST.get('value', '0.0'))
+        return HttpResponseRedirect("/calibrate/parameter/")
+
+
+class ParameterEditView(LoggedInMixin, View):
+    template_name = "sim/parameter_edit.html"
+    model = Parameter
+
+    def get(self, request, pk):
+        return render(
+            request, self.template_name,
+            dict(object=get_object_or_404(self.model, pk=pk)))
+
+    def post(self, request, pk):
+        parameter = get_object_or_404(self.model, pk=pk)
+        parameter.num_type = request.POST.get('num_type', 'float')
+        parameter.value = request.POST.get('value', '0.0')
+        parameter.save()
+        return HttpResponseRedirect(parameter.get_absolute_url())
 
 
 class InterventionListView(LoggedInMixin, ListView):

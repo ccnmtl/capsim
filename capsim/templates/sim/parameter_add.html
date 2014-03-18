@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul class="breadcrumb">
+  <li><a href="/calibrate/">Calibration</a></li>
+	<li><a href="/calibrate/parameter/">Parameters</a></li>
+	<li class="active">Add Parameter</li>
+</ul>
+
+<form action="." method="post">
+<fieldset><legend>Add Parameter</legend>
+
+<div class="row">
+	<div class="col-md-4">
+		<input type="text" name="slug" value="" placeholder="slug"
+					 class="form-control" />
+	</div>
+	<div class="col-md-4">
+		<select name="num_type" class="form-control">
+			<option value="float">Floating Point</option>
+			<option value="int">Integer</option>
+		</select>
+	</div>
+	<div class="col-md-4">
+
+		<input type="text" name="value" value="" placeholder="value"
+					 value="0.0"
+					 class="form-control" />
+		</div>
+</div>
+
+
+<input type="submit" class="btn btn-primary" value="Add"/>
+</fieldset>
+</form>
+{% endblock %}

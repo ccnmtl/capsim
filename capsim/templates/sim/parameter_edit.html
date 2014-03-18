@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="breadcrumb">
+  <li><a href="/calibrate/">Calibration</a></li>
+	<li><a href="/calibrate/parameter/">Parameters</a></li>
+	<li class="active">{{object.name}}</li>
+</ul>
+
+<a class="pull-right btn btn-danger btn-xs" href="delete/"><span class="glyphicon
+ glyphicon-trash"></span> Delete</a>
+
+<form action="." method="post">
+
+<h2>Parameter: {{object.slug}}</h2>
+
+<div class="row">
+	<div class="col-md-4">
+		<select name="num_type" class="form-control">
+			<option value="float" {% ifequal object.num_type "float" %}selected="selected"{% endifequal %}>Floating Point</option>
+			<option value="int" {% ifequal object.num_type "int" %}selected="selected"{% endifequal %}>Integer</option>
+		</select>
+	</div>
+	<div class="col-md-4">
+
+		<input type="text" name="value" 
+					 value="{{object.cast_value}}"
+					 class="form-control" />
+		</div>
+</div>
+
+
+<input type="submit" class="btn btn-primary" value="Save"/>
+
+
+</form>
+{% endblock %}

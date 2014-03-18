@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
-from capsim.sim.models import RunRecord, RunOutputRecord, Intervention
+from capsim.sim.models import (
+    RunRecord, RunOutputRecord, Intervention, Parameter)
 from capsim.sim.logic import Run
 from waffle import Flag
 from .factories import ExpRunFactory
@@ -225,3 +226,42 @@ class InterventionViewTest(TestCase):
                  high_adjustment_0="1.0",
                  medium_parameter_0="gamma_1",
                  medium_adjustment_0="0.0"))
+
+
+class ParameterViewTest(TestCase):
+    def setUp(self):
+        self.c = Client()
+        self.u = User.objects.create(username="testuser")
+        self.u.set_password("test")
+        self.u.save()
+        self.c.login(username="testuser", password="test")
+        self.flag = Flag.objects.create(name='simulation', everyone=True)
+
+    def test_runthrough(self):
+        """ a quick end-to-end run through for now. replace with
+        more granular unit tests later"""
+        response = self.c.get("/calibrate/parameter/add/")
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue("<form" in response.content)
+
+        response = self.c.post(
+            "/calibrate/parameter/add/",
+            dict(slug="new_parameter",
+                 num_type="float", value="1.0"))
+        self.assertEquals(response.status_code, 302)
+
+        response = self.c.get("/calibrate/parameter/")
+        self.assertTrue("new_parameter" in response.content)
+
+        p = Parameter.objects.all()[0]
+        response = self.c.post(
+            "/calibrate/parameter/%d/" % p.id,
+            dict(num_type="float",
+                 value="2.0",
+                 ))
+        self.assertEquals(response.status_code, 302)
+        response = self.c.get("/calibrate/parameter/")
+        self.assertTrue("2.0" in response.content)
+
+        response = self.c.get(p.get_absolute_url())
+        self.assertEquals(response.status_code, 200)
