@@ -158,6 +158,18 @@ class Experiment(models.Model):
                              trial=er.trial, mass=er.mass))
         df = pd.DataFrame(data)
         hdict = df.groupby(['ind', 'dep'])['mass'].mean().to_dict()
+        # since floats make bad dict keys, we force them to
+        # string representations. This is reliable but arbitrarily
+        # limits us to 4 decimal points of precision. Not perfect,
+        # but probably good enough for generating a heatmap
+        # in this context. Just beware that this heatmap function
+        # will be buggy for very small or very large floating point
+        # numbers. In those cases, you would probably want to use
+        # a proper implementation from matplotlib or something
+        # anyway. This is just for quick and dirty web heatmaps.
+        fixed_dict = dict()
+        for (i, j) in hdict.keys():
+            fixed_dict[("%04f" % i, "%04f" % j)] = hdict[(i, j)]
         output = np.zeros((self.independent_steps, self.dependent_steps))
         ind_steps = make_steps(self.independent_min, self.independent_max,
                                self.independent_steps)
@@ -165,7 +177,7 @@ class Experiment(models.Model):
                                self.dependent_steps)
         for i, i_step in enumerate(ind_steps):
             for j, j_step in enumerate(dep_steps):
-                output[i][j] = hdict[(i_step, j_step)]
+                output[i][j] = fixed_dict[("%04f" % i_step, "%04f" % j_step)]
         return dict(data=output, min=np.min(output), max=np.max(output))
 
 
