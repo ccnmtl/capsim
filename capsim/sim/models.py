@@ -267,3 +267,17 @@ class Modifier(models.Model):
     interventionlevel = models.ForeignKey(InterventionLevel)
     parameter = models.CharField(max_length=256)
     adjustment = models.FloatField(default=0.0)
+
+
+class Parameter(models.Model):
+    slug = models.SlugField(max_length=256)
+    num_type = models.CharField(
+        max_length=256,
+        choices=[("float", "floating point"),
+                 ("int", "integer")])
+    value = models.FloatField(default=0.0)
+
+    def cast_value(self):
+        if self.num_type == "int":
+            return int(self.value)
+        return self.value

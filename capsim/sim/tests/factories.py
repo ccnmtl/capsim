@@ -1,7 +1,8 @@
 import factory
 from django.contrib.auth.models import User
 from capsim.sim.models import (
-    Experiment, RunRecord, ExpRun, Intervention, InterventionLevel)
+    Experiment, RunRecord, ExpRun, Intervention, InterventionLevel,
+    Parameter)
 
 
 class UserFactory(factory.DjangoModelFactory):
@@ -46,3 +47,10 @@ class InterventionLevelFactory(factory.DjangoModelFactory):
     intervention = factory.SubFactory(InterventionFactory)
     level = "medium"
     cost = 200
+
+
+class ParameterFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Parameter
+    slug = "test_parameter"
+    num_type = "int"
+    value = 0.0

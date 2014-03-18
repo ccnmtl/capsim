@@ -3,7 +3,8 @@ from django.test import TestCase
 from capsim.sim.models import RunRecord, RunOutputRecord
 from capsim.sim.logic import Run
 from .factories import (
-    ExperimentFactory, ExpRunFactory, InterventionLevelFactory)
+    ExperimentFactory, ExpRunFactory, InterventionLevelFactory,
+    ParameterFactory)
 
 
 class RunRecordTest(TestCase):
@@ -72,3 +73,11 @@ class TestIntervention(TestCase):
         self.assertEqual(i.medium_modifiers().count(), 1)
         i.clear_all_modifiers()
         self.assertEqual(i.medium_modifiers().count(), 0)
+
+
+class TestParameter(TestCase):
+    def test_cast_value(self):
+        p = ParameterFactory(num_type='int', value=0.0)
+        self.assertEqual(p.cast_value(), 0)
+        p = ParameterFactory(num_type='float', value=1.0)
+        self.assertEqual(p.cast_value(), 1.0)
