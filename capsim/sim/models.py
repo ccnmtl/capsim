@@ -137,7 +137,7 @@ class Experiment(models.Model):
 
     def normalize_title(self):
         """ if the user doesn't set a title, we make one"""
-        if self.title != "":
+        if len(self.title) > 0:
             return
         self.title = (
             "[(%s, %f - %f [%d]) x (%s, %f - %f [%d])] x %d trials" % (
@@ -150,6 +150,7 @@ class Experiment(models.Model):
                 float(self.dependent_max),
                 self.dependent_steps,
                 self.trials))
+        self.save()
 
     def heatmap(self):
         data = []
