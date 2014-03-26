@@ -4,7 +4,10 @@
 		{% block topnav %}
 		<li><a href="/about/" title="Learn all about PHCX and the math behind it.">About</a></li>
 		<li><a href="/contact/" title="Get in touch.">Contact</a></li>
+		<!--
 		<li><a href="/topics/" title="These are all of the simulations available.">Topics</a></li>
+		-->
+		<li><a href="/topic-obesity/" title="This is the only simulation available.">Obesity</a></li>
 		<!--
 		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
 		{% flag simulation %}
@@ -17,52 +20,69 @@
 
 {% endblock %}
 
-
 {% block content %}
+
 <div class="jumbotron">
-  <h1>PHCX</h1>
-  <h2>Public Health Capstone Experience</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
-  <p><a href="/topics/" class="btn btn-primary btn-lg" role="button">Explore Topics</a></p>
+	
+	<h1>PHC<span style="color: #6489c9;">X</span></h1>
+	
+	<h2>Public Health Capstone Experience</h2>
+	
+	<p>
+	Successful intervention proposals require the application of a systems perspective to approaching complex problems. PHCX lets you practice this application of systems thinking to both public health policy and intervention decision-making. 
+	</p>
+	
+	<!--<p><a href="/topics/" class="btn btn-primary btn-lg" role="button">Explore Topics</a></p>-->
+	<p><a href="/topic-obesity/" class="btn btn-primary btn-lg" role="button">Get Started with Obesity</a></p>
+	
 </div>
-
+	
 <div class="row">
-
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/300x200">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/300x200">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <img src="http://placehold.it/300x200">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus feugiat nisl vitae placerat. Sed pharetra nulla in velit pharetra, volutpat aliquam mi condimentum. Nulla ullamcorper neque eget laoreet euismod.</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-
+	
+	<div class="col-md-4">
+	
+		<div class="thumbnail">
+		<img src="http://www.sxc.hu/pic/l/i/im/immrchris/1238452_46868173.jpg">
+		<div class="caption">
+		<h3>Understand</h3>
+		<p>
+		Make informed decisions. PHCX takes you through a series of systems thinking exercises.  
+		</p>
+		</div>
+		</div>
+	
+	</div>
+	
+	
+	<div class="col-md-4">
+	
+		<div class="thumbnail">
+		<img src="http://www.sxc.hu/pic/l/g/gu/gugacurado/46486_2218.jpg">
+		<div class="caption">
+		<h3>Simulate</h3>
+		<p>
+		Test your relationship theories with an agent-based simulation that is based on real data.
+		</p>
+		</div>
+		</div>
+	
+	</div>
+	
+	
+	<div class="col-md-4">
+	
+		<div class="thumbnail">
+		<img src="http://www.sxc.hu/pic/l/a/an/andrewatla/967718_74977628.jpg">
+		<div class="caption">
+		<h3>Decide</h3>
+		<p>
+		Apply your findings to support an intervention proposal for addressing a public health challenge. 
+		</p>
+		</div>
+		</div>
+	
+	</div>
+	
 </div>
 
 {% endblock %}
