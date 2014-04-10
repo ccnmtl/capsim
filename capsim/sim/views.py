@@ -178,9 +178,11 @@ class RunOutputView(LoggedInMixin, View):
     def get(self, request, pk):
         rr = get_object_or_404(RunRecord, pk=pk)
         out = loads(rr.runoutput().data)
-        return HttpResponse(
-            dumps(out['data']),
-            content_type="application/json")
+        r = HttpResponse(mimetype='application/json')
+        r['Content-Disposition'] = (
+            "attachment; filename=capsim_run_%d.json" % rr.id)
+        r.write(dumps(loads(out['data'])))
+        return r
 
 
 class ExperimentOutputView(LoggedInMixin, View):
