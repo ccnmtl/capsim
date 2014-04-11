@@ -50,6 +50,8 @@ urlpatterns = patterns(
     (r'^experiment/(?P<pk>\d+)/$', DetailView.as_view(model=Experiment)),
     (r'^experiment/(?P<pk>\d+)/csv/$',
      capsim.sim.views.ExperimentOutputView.as_view()),
+    (r'^experiment/(?P<pk>\d+)/fullcsv/$',
+     capsim.sim.views.ExperimentFullOutputView.as_view()),
     (r'^experiment/(?P<pk>\d+)/heatmap/$',
      DetailView.as_view(
          model=Experiment,
