@@ -101,6 +101,7 @@ TEMPLATE_DIRS = (
 djcelery.setup_loader()
 
 INSTALLED_APPS = [
+    'gunicorn',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
