@@ -222,6 +222,7 @@ class ExperimentDeleteView(LoggedInMixin, View):
 
     def post(self, request, pk):
         experiment = get_object_or_404(Experiment, pk=pk)
+        experiment.delete_csv_file()
         for er in experiment.exprun_set.all():
             er.run.delete()
             er.delete()

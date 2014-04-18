@@ -7,6 +7,7 @@ from .paramset import SimParamSet
 import numpy as np
 import pandas as pd
 import os.path
+import os
 import csv
 
 
@@ -227,6 +228,16 @@ class Experiment(models.Model):
                                 d['intake'][t][a],
                                 d['expenditure'][t][a],
                             ])
+
+    def delete_csv_file(self):
+        p = self.full_csv_path()
+        try:
+            os.unlink(p)
+        except:
+            # failing to delete the file shouldn't be fatal
+            # most of the time, it will just mean that
+            # the file just doesn't exist
+            pass
 
 
 def make_steps(min_value, max_value, num_steps):
