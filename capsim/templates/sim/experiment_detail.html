@@ -36,7 +36,8 @@
 	{% ifequal object.status "complete" %}
 	{% else %}
 	<dt>progress</dt>
-	<dd>{{object.completed}} / {{object.total}}</dd>
+	<dd>{{object.completed}} / {{object.total}} <a href="reenqueue/"
+	class="btn btn-xs btn-default">re-enqueue</a> (only do it if you're fairly sure it got stuck)</dd>
 	{% endifequal %}
 </dl>
 

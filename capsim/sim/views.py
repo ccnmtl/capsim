@@ -11,7 +11,8 @@ from capsim.sim.models import (
 from capsim.main.views import LoggedInMixin
 from capsim.main.forms import (
     RunForm, ExperimentForm, ALL_FIELDS, FLOAT_FIELDS)
-from capsim.sim.tasks import run_experiment, generate_full_csv
+from capsim.sim.tasks import (
+    run_experiment, generate_full_csv, process_run)
 
 import csv
 from json import dumps, loads
@@ -226,6 +227,14 @@ class ExperimentDeleteView(LoggedInMixin, View):
             er.delete()
         experiment.delete()
         return HttpResponseRedirect("/experiment/")
+
+
+class ExperimentReEnqueueView(LoggedInMixin, View):
+    def get(self, request, pk):
+        experiment = get_object_or_404(Experiment, pk=pk)
+        for er in experiment.exprun_set.filter(status='enqueued'):
+            process_run.delay(er.run.id, er.id)
+        return HttpResponseRedirect(experiment.get_absolute_url())
 
 
 class NewExperimentView(LoggedInMixin, View):

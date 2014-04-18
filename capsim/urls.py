@@ -58,6 +58,8 @@ urlpatterns = patterns(
          template_name="sim/experiment_heatmap.html")),
     (r'^experiment/(?P<pk>\d+)/delete/$',
      capsim.sim.views.ExperimentDeleteView.as_view()),
+    (r'^experiment/(?P<pk>\d+)/reenqueue/$',
+     capsim.sim.views.ExperimentReEnqueueView.as_view()),
 
     (r'^calibrate/$', TemplateView.as_view(
         template_name="sim/calibrate_index.html")),
