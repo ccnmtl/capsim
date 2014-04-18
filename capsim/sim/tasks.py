@@ -12,6 +12,14 @@ def run_experiment(experiment_id):
 
 
 @task
+def generate_full_csv(experiment_id):
+    statsd.incr("generate_full_csv")
+    print "generating full csv"
+    e = Experiment.objects.get(id=experiment_id)
+    e.write_csv()
+
+
+@task
 def process_run(run_id, exprun_id):
     statsd.incr("process_run")
     print "process_run %d, %d" % (run_id, exprun_id)

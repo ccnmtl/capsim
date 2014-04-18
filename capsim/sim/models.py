@@ -1,10 +1,13 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.conf import settings
 from json import dumps, loads
 from .logic import Run, RunOutput
 from .paramset import SimParamSet
 import numpy as np
 import pandas as pd
+import os.path
+import csv
 
 
 class RunRecord(models.Model):
@@ -184,6 +187,46 @@ class Experiment(models.Model):
             for j, j_step in enumerate(dep_steps):
                 output[i][j] = fixed_dict[("%04f" % i_step, "%04f" % j_step)]
         return dict(data=output, min=np.min(output), max=np.max(output))
+
+    def full_csv_filename(self):
+        return "experiment_full_%d.csv" % self.id
+
+    def full_csv_path(self):
+        return os.path.join(
+            settings.MEDIA_ROOT,
+            self.full_csv_filename())
+
+    def full_csv_url(self):
+        return settings.MEDIA_URL + self.full_csv_filename()
+
+    def write_csv(self):
+        experiment = self
+        filename = self.full_csv_path()
+        with open(filename, 'wb') as csvfile:
+            writer = csv.writer(csvfile)
+            headers = ['trial', 'agent', 'tick',
+                       experiment.independent_variable,
+                       experiment.dependent_variable,
+                       'mass', 'input', 'output']
+            writer.writerow(headers)
+            for er in experiment.exprun_set.all():
+                ro = er.run.runoutput().get_runoutput()
+                d = ro.data
+                ticks = len(ro.data['tick'])
+                agents = len(ro.data['intake'][0])
+                for t in range(ticks):
+                    for a in range(agents):
+                        writer.writerow(
+                            [
+                                er.trial,
+                                a,
+                                t,
+                                er.independent_value,
+                                er.dependent_value,
+                                d['agents_mass'][t][a],
+                                d['intake'][t][a],
+                                d['expenditure'][t][a],
+                            ])
 
 
 def make_steps(min_value, max_value, num_steps):

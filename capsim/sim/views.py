@@ -11,7 +11,7 @@ from capsim.sim.models import (
 from capsim.main.views import LoggedInMixin
 from capsim.main.forms import (
     RunForm, ExperimentForm, ALL_FIELDS, FLOAT_FIELDS)
-from capsim.sim.tasks import run_experiment
+from capsim.sim.tasks import run_experiment, generate_full_csv
 
 import csv
 from json import dumps, loads
@@ -205,35 +205,10 @@ class ExperimentOutputView(LoggedInMixin, View):
 class ExperimentFullOutputView(LoggedInMixin, View):
     def get(self, request, pk):
         experiment = get_object_or_404(Experiment, pk=pk)
-        response = HttpResponse(mimetype='text/csv')
-        response['Content-Disposition'] = (
-            'attachment; filename=capsim_'
-            'experiment_full_%d.csv' % experiment.id)
-        writer = csv.writer(response)
-        headers = ['trial', 'agent', 'tick',
-                   experiment.independent_variable,
-                   experiment.dependent_variable,
-                   'mass', 'input', 'output']
-        writer.writerow(headers)
-        for er in experiment.exprun_set.all():
-            ro = er.run.runoutput().get_runoutput()
-            d = ro.data
-            ticks = len(ro.data['tick'])
-            agents = len(ro.data['intake'][0])
-            for t in range(ticks):
-                for a in range(agents):
-                    writer.writerow(
-                        [
-                            er.trial,
-                            a,
-                            t,
-                            er.independent_value,
-                            er.dependent_value,
-                            d['agents_mass'][t][a],
-                            d['intake'][t][a],
-                            d['expenditure'][t][a],
-                        ])
-        return response
+        generate_full_csv.delay(experiment_id=experiment.id)
+        return HttpResponse(
+            """CSV is being generated. After a few minutes it will be available
+            <a href="%s">here</a>.""" % experiment.full_csv_url())
 
 
 class ExperimentDeleteView(LoggedInMixin, View):
