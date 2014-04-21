@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load waffle_tags %}
 
 {% block content %}
 
@@ -53,7 +54,9 @@
 {% ifequal object.status "complete" %}
 <h3>Data</h3>
 <p><a href="csv/">Download CSV</a></p>
+{% flag linode %}
 <p><a href="fullcsv/">Download FULL CSV</a> (every data point for every run. This is potentially very large)</p>
+{% endflag %}
 <p><a href="heatmap/">View Heatmap</a></p>
 {% endifequal %}
 
