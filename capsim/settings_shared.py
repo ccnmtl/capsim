@@ -73,6 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.request',
     'stagingcontext.staging_processor',
+    'gacontext.ga_processor',
     'django.core.context_processors.static',
     'djangowind.context.context_processor',
 )
