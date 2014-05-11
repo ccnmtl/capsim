@@ -1,7 +1,6 @@
 import numpy as np
 import networkx as nx
 import pandas as pd
-from django.utils.simplejson import dumps
 from .paramset import SimParamSet
 
 
@@ -395,6 +394,7 @@ class RunOutput(object):
         self.ticks = ticks
         self.params = params
         self.data = pd.DataFrame(data).sort(['tick'])
+
 
     def to_dict(self):
         return dict(
