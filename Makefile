@@ -16,6 +16,9 @@ flake8: ./ve/bin/python
 runserver: ./ve/bin/python validate
 	$(MANAGE) runserver
 
+celery: ./ve/bin/python validate
+	$(MANAGE) celery worker
+
 migrate: ./ve/bin/python validate jenkins
 	$(MANAGE) migrate
 
