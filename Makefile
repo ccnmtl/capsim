@@ -50,6 +50,9 @@ rebase:
 	make migrate
 	make flake8
 
+notebook: ./ve/bin/python
+	$(MANAGE) shell_plus --notebook
+
 # run this one the very first time you check
 # this out on a new machine to set up dev
 # database, etc. You probably *DON'T* want

@@ -20,7 +20,10 @@ cssselect==0.8
 lxml==3.2.3
 fuzzywuzzy==0.2
 sure==1.2.2
-ipython==0.13.2
+pyzmq==14.3.0
+MarkupSafe==0.18
+Jinja2==2.7
+ipython==2.0.0
 ipdb==0.7
 extras==0.0.3
 python-mimeparse==0.1.4

@@ -161,6 +161,10 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.logger.LoggingPanel',
 )
 
+IPYTHON_ARGUMENTS = [
+    '--pylab',
+]
+
 STATSD_CLIENT = 'statsd.client'
 STATSD_PREFIX = 'capsim'
 STATSD_HOST = '127.0.0.1'
