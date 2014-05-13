@@ -395,7 +395,6 @@ class RunOutput(object):
         self.params = params
         self.data = pd.DataFrame(data).sort(['tick'])
 
-
     def to_dict(self):
         return dict(
             ticks=self.ticks,
