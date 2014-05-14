@@ -1,4 +1,4 @@
-var total_budget = 1000;
+var total_budget = 5000000;
 
 var budget_used = 0;
 
@@ -9,7 +9,12 @@ var update_budget_progress_bar = function() {
     bar.attr('aria-valuenow', percent_remaining);
     bar.attr('style', 'width: ' + Math.floor(percent_remaining) + "%");
     var label = $('#budget-progress-bar .sr');
-    label.text("$" + (total_budget - budget_used));
+		var formatter = new Intl.NumberFormat('en-US', {
+				style: 'currency',
+				currency: 'USD',
+				minimumFractionDigits: 0,
+		});
+    label.text(formatter.format(total_budget - budget_used));
 };
 
 var over_budget = function(amount) {
