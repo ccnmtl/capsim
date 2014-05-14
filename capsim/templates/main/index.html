@@ -7,15 +7,6 @@
 		<li><a href="/about/" title="Learn all about PHCX and the math behind it.">About</a></li>
 		<li><a href="/contact/" title="Get in touch.">Contact</a></li>
 		<li><a href="/topics/" title="These are all of the simulations available.">Topics</a></li>
-		<!--
-		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
-		{% flag simulation %}
-		<li class="active"><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
-		<li><a href="/run/" title="See all the runs.">Saved Runs</a></li>
-		{% else %}
-		<li><span class="navbar-text">[Simulation Deactivated]</span></li>
-		{% endflag %}
-		-->
 		{% endblock %}
 
 {% block content %}
@@ -539,49 +530,6 @@ makeGraph("div.placeholder", runData, runStdDevs);
 
 <div class="container">
 
-		<div class="row well">
-		
-			<legend> Standing Conditions 
-				<button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </button>
-			</legend> 
-			
-			<div class="col-md-3">
-			
-				<div class="form-group">
-					<label for="">Mass</label> 
-					<div>#</div>
-				</div>
-				
-			</div>
-		
-			<div class="col-md-3">
-							
-				<div class="form-group">
-					<label for="">Total Output</label> 
-					<div>#</div>
-				</div>
-				
-			</div>
-		
-			<div class="col-md-3">
-							
-				<div class="form-group">
-					<label for="">Input</label> 
-					<div>#</div>
-				</div>
-				
-			</div>
-		
-			<div class="col-md-3">
-			
-				<div class="form-group">
-					<label for="">Base Output</label> 
-					<div>#</div>
-				</div>
-
-			</div>
-			
-		</div>
 
 <div	data-spy="affix" data-offset-top="60"
 		 data-offset-bottom="200" id="progress-bar-well">
@@ -735,110 +683,8 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="low">Low</option>
 					</select>				
 				</div>
-				
-				
-			
 		</div>		
 		
-		<div class="row well">
-		
-			<legend> Individual Behavior <button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
-			
-			<div class="col-md-6">
-			
-				<div class="form-group">
-					<label for="">Force of Dietary Habit</label> 
-					<select class="form-control intervention-control" id="force-of-dietary-habit">
-					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
-					</select>				
-					</div>
-					
-				<div class="form-group">
-					<label for="">Level of Physical Activity</label> 
-					<select class="form-control intervention-control" id="level-of-physical-activity">
-					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
-					</select>				
-				</div>
-				
-			</div>
-		
-			<div class="col-md-6">
-				<div class="form-group">
-					<label for="">Level of Conscious Control of Accumulation</label> 
-					<select class="form-control intervention-control" id="level-of-conscious-control">
-					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
-					</select>				
-				</div>
-			</div>
-		
-
-		</div>		
-		<div class="row well">
-		
-			<legend> Targets <button type="button" class="moreinfo btn btn-default btn-xs pull-right" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> <span class="glyphicon glyphicon-question-sign"></span> </button> </legend> 
-		
-			<div class="col-md-4">
-				<div class="form-group">
-					<label>Individuals</label> 
-					<div class="radio">
-						<label> 
-						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-						Yes</label> 
-					</div>
-					<div class="radio">
-						<label> 
-						<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-						No</label> 
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-md-4">
-				<div class="form-group">
-					<label>Neighborhoods</label> 
-					<div class="radio">
-						<label> 
-						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-						Yes </label> 
-					</div>
-					<div class="radio">
-						<label> 
-						<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-						No </label> 
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-md-4">
-				<div class="form-group">
-					<label>Distribution</label> 
-					<div class="radio">
-						<label> 
-						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-						Whole </label> 
-					</div>
-					<div class="radio">
-						<label> 
-						<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-						Tails 
-						</label>
-						<label> 
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="" style="width: 8em;">
-						Tails Percentage
-						</label>
-					</div>
-				</div>
-			</div>
-		</div>
 		
 		<div class="row">
 			<input type="submit" class="btn btn-success btn-lg btn-block" value="Run It" /> 
