@@ -75,10 +75,26 @@ makeGraph("div.placeholder-expenditure", expenditureRunData, expenditureRunStdDe
 <hr />
 
 <form action="edit/" method="post">
-<input type="text" name="title" placeholder="title for this run" value="{{run.title}}"/>
-<textarea name="description" cols="50" rows="3">{{run.description}}</textarea>
+
+<div class="form-group">
+<label>Title For Run</label>
+<input class="form-control" type="text" name="title" value="{{run.title}}"/>
+</div>
+
+<div class="form-group">
+<label>Describe Your Run</label>
+<textarea name="description" cols="50" rows="3" class="form-control">{{run.description}}</textarea>
+</div>
+
+
 <input type="submit" value="save" class="btn btn-primary" />
+
 </form>
+
+<hr />
+
+<p><a href="/run/">View All Saved Runs</a></p>
+<p><a href="/run/new/">New Run</a></p>
 
 <hr />
 
