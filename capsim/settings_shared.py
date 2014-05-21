@@ -130,6 +130,7 @@ INSTALLED_APPS = [
     'capsim.main',
     'capsim.sim',
     'djcelery',
+    'sorl.thumbnail',
 ]
 
 PAGEBLOCKS = ['pageblocks.TextBlock',
