@@ -30,11 +30,50 @@
 <h2>Simulation</h2>
 <h3>Your Role</h3>
 
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac est facilisis, blandit risus at, accumsan mi. Ut eget gravida massa, sed convallis neque. Mauris turpis elit, congue eget venenatis a, sodales eget magna. Proin ornare congue laoreet. Cras enim ligula, tempus eget urna cursus, ultricies posuere magna. Praesent ante mi, congue vitae ultrices a, mattis vitae nunc. Maecenas id tellus sit amet orci fringilla dictum sit amet ac mauris. 
-		</p>
-		
-		<p>
-		Proin sed eleifend ante, vitae sodales elit. Aliquam sit amet est aliquam, congue turpis a, porttitor ligula. Phasellus quis odio blandit, sollicitudin est a, consequat purus. Cras metus nisl, ullamcorper vitae ipsum a, sagittis porta odio. Etiam dapibus felis nulla, non malesuada arcu facilisis eget. Suspendisse lacus turpis, malesuada nec porta ac, convallis ultricies orci. Sed nulla orci, hendrerit eget elit id, gravida volutpat nunc. Proin vel neque auctor diam eleifend varius. Nulla facilisi.</p>
+<p>
+Your group represents the NY State Health Department, Bureau of Health
+Behavior & Prevention. Your group applied for and has just been awarded a
+$5 million grant which you must allocate across a variety of intervention
+options you'll see below. Each intervention option has three levels of
+emphasis, High, Medium and Low, and those levels represent the amount of
+funding you're providing each. Which interventions should you invest
+heavily in, and which lightly? With limited resources you'll have to
+prioritize which interventions will likely be the best investments for
+accomplishing your goal.  The funding allocation is connected directly to
+what percentage of the population you'll be affecting directly. For
+example, your budget allocation affects how many businesses you will reach
+by building a "healthy eating at work" initiative, or how much of the
+physical and built environment you will directly impact if you decide to
+invest there.</p>
+
+<p>Please use the simulation to test your intervention strategies and attempt
+to gain some incite into where the best leverage points might be for having
+the greatest impact on this population, measured by positive changes in
+their body mass. Each time you run the simulation you'll be taken to a page
+that lets you title, describe and save your runs. As you accumulate these
+runs, certain patterns should emerge that will provide a sense of where
+your dollars are best spent. Once having a good sense of where those
+effective interventions (and their synergies!) are, you will complete a
+short proposal that describes in detail specific aspects of your
+interventions as described in the instructions on the "Proposal" page
+above. The interventions in the simulation are best thought of as
+"categories" of intervention, and you will be responsible for designing the
+actual means of executing those interventions with specific details in the
+proposal you will write.</p>
+
+<p>Your proposal should include the results of your simulation runs and an
+explanation for the synergies you have discovered. Additionally, studies
+have been attached to each intervention that describe with some real data
+certain effects that these interventions have had in past trials and
+studies, and those should also join your rationale for proposing the
+interventions you have decided on.</p>
+
+<p>Work together as a group to design your intervention tests to run through
+the simulation. Think back to the systems mapping you have done in
+preparation, and be mindful of what variables these intervention options
+will likely influence (and in what ways) to help you achieve your desired
+effects on the system.</p>
+
 
 {% if request.user.is_staff %}
 <div class="well">
@@ -560,13 +599,25 @@ makeGraph("div.placeholder", runData, runStdDevs);
 			
 			
 				<div class="form-group">
-					<label for="">Provide and Support Community Programs Designed to Increase Physical Activity</label> 
+					<label for="">
+						Provide and Support Community Programs Designed to
+						Increase Physical Activity
+					</label> 
 					<select class="form-control intervention-control" id="increase-physical-activity">
 					  <option value="">Select Level</option>
 					  <option value="high">High</option>
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+
+					<p>Potential actions include:  Developing and implementing physical activity strategies that fit into people’s daily routines – strategies that are most effective when tailored to specific interests and preferences.</p>
+<p><small>Reference:  <a href="/media/pdf/CD008366.pdf">Baker PRA, Francis DP, Soares J, Weightman AL, Foster
+						C. Community wide interventions for increasing physical
+						activity. Cochrane Database of Systematic Reviews 2011,
+						Issue 4. Art. No.: CD008366. DOI:
+						10.1002/14651858.CD008366.pub2.</a></small>
+						</p>
+
 					</div>
 				
 				<div class="form-group">
@@ -577,6 +628,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+					<p>Potential actions include:  Health care providers’ standards of practice including routine screening of body mass index (BMI), counseling, and behavioral interventions for adults to improve physical activity behaviors and dietary choices.</p>
+					<p><small>Reference:  <a href="http://capsim.ccnmtl.columbia.edu/media/pdf/CD000984.pdf">Flodgren G, Deane K, Dickinson HO, Kirk S, Alberti H, Beyer FR, Brown JG, Penney TL, Summerbell CD, Eccles MP. Interventions to change the behaviour of health professionals and the organisation of care to promote weight reduction in overweight and obese adults. Cochrane Database of Systematic Reviews 2010, Issue 3. Art. No.: CD000984. DOI: 10.1002/14651858.CD000984.pub2.</a></small></p>
+
 					</div>
 				
 			
@@ -587,17 +641,11 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="high">High</option>
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
-					</select>				
-				</div>
-				
-				<div class="form-group">
-					<label for="">Social Influence (Gamma 6)</label> 
-					<select class="form-control intervention-control" id="activity-social-influence">
-					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
-					</select>				
+					</select>
+					<p>Potential actions include:  Increasing opportunities for
+					physical activity as part of a wellness/health promotion
+					program.</p>
+					<p><small>Reference:  <a href="/media/pdf/CD009209.pdf">Freak-Poli RLA, Cumpston M, Peeters A, Clemes SA. Workplace pedometer interventions for increasing physical activity. Cochrane Database of Systematic Reviews 2013, Issue 4. Art. No.: CD009209. DOI: 10.1002/14651858.CD009209.pub2.</a> </small></p>
 				</div>
 				
 			
@@ -609,7 +657,23 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+					<p>Potential actions include:  Communities and organizations
+					developing and maintaining sustainable strategies to create
+					and/or enhance access to places and programs where people
+					can be physically active in a safe and enjoyable way.</p>
+					<p><small>Reference:  <a href="http://capsim.ccnmtl.columbia.edu/media/pdf/Am.%20J.%20Epidemiol.-2009-Li-401-8.pdf">Li F.  Harmer P.  Cardinal BJ.  Bosworth M.  Johnson-Shelton D.  Moore JM.  Acock A.  Vongjaturapat N.  Built environment and 1-year change in weight and waist circumference in middle-aged and older adults: Portland Neighborhood Environment and Health Study.  American Journal of Epidemiology.  169(4):401-8, 2009 Feb 15.</a></small></p>
 				</div>
+
+				<div class="form-group">
+					<label for="">Social Influence (Gamma 6)</label> 
+					<select class="form-control intervention-control" id="activity-social-influence">
+					  <option value="">Select Level</option>
+					  <option value="high">High</option>
+					  <option value="medium">Medium</option>
+					  <option value="low">Low</option>
+					</select>				
+				</div>
+				
 			
 		</div>
 		
@@ -627,6 +691,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+					<p>Potential actions include:  State and localities creating cross-sectoral collaborations among the food and beverage industry, philanthropy, the finance and banking sector, the real estate sector, and the community to develop private funding to facilitate the development of healthy food retailing in underserved areas.</p>
+					<p><small>Reference:  PHA’s full progress report including partner
+					data is available online at: <a href="http://progressreports.ahealthieramerica.org">progressreports.ahealthieramerica.org</a></small></p>
 					</div>
 				
 				<div class="form-group">
@@ -637,6 +704,8 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+					<p>Potential actions include:  Public and private employers promoting healthy eating in the worksite in their own institutional policies and practices by, for example, providing access to and promotion of healthful foods and beverages.</p>
+					<p><small>References:  <a href="http://capsim.ccnmtl.columbia.edu/media/pdf/Worksite2010AHRFSystematic_Soler.pdf">Soler RE, Leeks KD, Razi S, Hopkins DP, Griffith M, Aten A, Chattopadhyay SK, Smith SC, Habarta N, Goetzel RZ, Pronk NP, Richling DE, Bauer DR, Buchanan LR, Florence CS, Koonin L, MacLean D, Rosenthal A, Matson Koffman D, Grizzell JV, Walker AM: A systematic review of selected interventions for worksite health promotion: the assessment of health risks with feedback. Am J Prev Med 2010, 38:S237-S262.</a></small></p>
 					</div>
 				
 		
@@ -649,6 +718,10 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+
+					<p>Potential actions include:  Making clean, potable water readily available in public places, worksites, and recreation areas.
+					</p>
+					<p><small>Reference:  <a href="http://capsim.ccnmtl.columbia.edu/media/pdf/0.pdf">Te Morenga L, Mallard S, Mann J. Dietary sugars and body weight:  systematic review and meta-analyses of randomized controlled trials and cohort studies.  BMJ 2012 Jan 15;346:e7492. DOI: 10.1136/e7492.</a></small></p>
 				</div>
 				
 				<div class="form-group">
@@ -659,6 +732,8 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+					<p>Potential actions include:  Removing the restrictions on the types of information that can be included in SNAP-Ed programs and encouraging advice about types of foods to reduce.</p>
+					<p><small>Reference:  <a href="http://www.cdc.gov/nutrition/downloads/State-Indicator-Report-Fruits-Vegetables-2013.pdf">http://www.cdc.gov/nutrition/downloads/State-Indicator-Report-Fruits-Vegetables-2013.pdf</a></small></p>
 				</div>
 				
 		
@@ -671,6 +746,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 					  <option value="medium">Medium</option>
 					  <option value="low">Low</option>
 					</select>				
+
+					<p>Potential actions include:  Restaurants implementing the FDA regulations that require restaurants with 20 or more locations to provide calorie labeling on their menus and menu boards, and the FDA/USDA monitoring industry for compliance with this policy.</p>
+					<p><small>Reference:  <a href="http://capsim.ccnmtl.columbia.edu/media/pdf/oby20550.pdf">Elbel, B., Mijanovich, T., Dixon, L. B., Abrams, C., Weitzman, B., Kersh, R., Auchincloss, A. H. and Ogedegbe, G. (2013), Calorie labeling, Fast food purchasing and restaurant visits. Obesity, 21: 2172–2179. doi: 10.1002/oby.20550.</a></small></p>
 				</div>
 				
 				
