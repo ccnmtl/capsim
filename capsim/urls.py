@@ -35,6 +35,8 @@ urlpatterns = patterns(
         template_name="sim/topic-obesity.html")),
     (r'^topic-obesity-debrief/$', TemplateView.as_view(
         template_name="sim/topic-obesity-debrief.html")),
+    (r'^proposal/$', TemplateView.as_view(
+        template_name="sim/proposal.html")),
     (r'^run/new/$', capsim.main.views.NewRunView.as_view()),
     (r'^run/$', capsim.sim.views.RunsView.as_view()),
     (r'^run/compare/$', capsim.sim.views.CompareRunsView.as_view()),
