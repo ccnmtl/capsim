@@ -72,6 +72,26 @@ class ExperimentTest(TestCase):
         self.assertEqual(er.status, "failed")
         self.assertEqual(e.status, "failed")
 
+    def test_full_csv_filename(self):
+        er = ExpRunFactory()
+        e = er.experiment
+        self.assertTrue(e.full_csv_filename().startswith('experiment'))
+        self.assertTrue(e.full_csv_filename().endswith('.csv'))
+
+    def test_full_csv_url(self):
+        er = ExpRunFactory()
+        e = er.experiment
+        self.assertTrue(e.full_csv_url().endswith('.csv'))
+
+    def test_empty_heatmap(self):
+        er = ExpRunFactory()
+        e = er.experiment
+        try:
+            e.heatmap()
+        except KeyError:
+            # expected with no data
+            pass
+
 
 class TestIntervention(TestCase):
     def test_add_modifier(self):
