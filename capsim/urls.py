@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.views.generic import DetailView
 from django.views.generic.edit import DeleteView
 from pagetree.generic.views import PageView
+from infranil.views import InfranilView
 import capsim.main.views
 import capsim.sim.views
 from capsim.sim.models import RunRecord, Experiment, Parameter
@@ -90,6 +91,7 @@ urlpatterns = patterns(
     (r'^stats/', TemplateView.as_view(template_name="stats.html")),
     (r'^model/', TemplateView.as_view(template_name="main/model.html")),
     (r'smoketest/', include('smoketest.urls')),
+    (r'^infranil/(?P<path>.*)$', InfranilView.as_view()),
     (r'^uploads/(?P<path>.*)$',
      'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'^pagetree/', include('pagetree.urls')),

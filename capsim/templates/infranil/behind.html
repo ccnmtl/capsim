@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Behind the Model</h1>
+
+<p class="text-warning">Please note that this document is the work of the programmer who
+	implemented the model, not the designer of the model. I have enough
+	of a math, science, and simulation background that I'm comfortable
+	interpreting the equations document, but I can only make educated
+	guesses about the intentions of the original model designer.</p>
+
+
+<p>The <a href="/topic-obesity-debrief/">Debrief document</a> contains
+	a comprehensive description of the model behind this
+	simulation. That document though is extremely dense and does not
+	attempt to be comprehensible to someone new to Agent Based Modelling
+	(presumably, students encountering it in the class will be given an
+	introduction, or will be walked through it by the instructor). This
+	document attempts to supplement that canonical equations document
+	and provide a bit gentler of an introduction for someone with less
+	of a simulation/modelling background.</p>
+
+
+<p>First, at a very basic level, the idea of an Agent Based Model
+(ABM) is just that there are "agents", which act as somewhat
+autonomous actors in the system. There are usually more than one and
+they each have a unique identity in the system. Each agent has its own
+distinct attributes, some of which may be fixed for the simulation,
+and some of which may change over time. Agents exist within an
+environment and have some notion of interaction with each other and/or
+the environment. A key thing to keep in mind is just that each agent
+(of a given type, but capsim only has one type) has the same
+programming or basic behavior. Ie, two agents may have different
+states and attributes in the simulation, but they are otherwise
+interchangeable.</p>
+
+<p>The agents in capsim are essentially each individual "people". Each
+	has:</p>
+
+<ul>
+<li>a current mass</li>
+<li>an 'input' which roughly means the number of calories/joules the agent
+consumes in a turn</li>
+<li>an 'output', which is roughly the number of
+calories/joules that the agent burns (through physical activity and
+basal metabolic rate) in a turn</li>
+</ul>
+
+<p>And some other attributes that are intermediate values on those.</p>
+
+<p>The "Agent Mass" equation is the entry point to the whole
+ thing:</p>
+
+<p class="js-katex-equation well">
+\text{mass}_{t} = \text{mass}_{t-1} + f(\text{input} - \text{total-output}) * \gamma_1
+</p>
+
+<p> It says that at each turn, the agent's new mass is calculated by
+taking its previous mass, then adding to it some value calculated from
+the difference between its input and output (that value might be
+negative).</p>
+
+<p>The rest of the equations break down how the input and
+output values are calculated. Eg, in the "Agent Energy Intake"
+equation: </p>
+
+<p class="js-katex-equation well">
+\text{input} = \text{total-output} + \text{force-of-habit} * \gamma_2 +
+\text{friend-input} * \gamma_3 - \text{c-control}* \gamma_4 + N(0, \sigma_1)
+</p>
+
+<p>The input is a sum of the agent's physical activity
+('total-output'--if you exercise more, you get hungrier), it's
+"force of habit", it's "friend input" (the network aspect of capsim,
+which comes from research showing that your eating habits are
+influenced by your social network's) and your "conscious
+control". Each of those are in turn described in subsequent
+equations. "friend input" comes from looking at the previous turn's
+"input" values in all the agents that are in it's social network,
+getting a higher or lower value depending on what percent of them have
+higher inputs. (if you hang out with a lot of people who eat more than
+you, you will tend to eat more).</p>
+
+<p>Others, like "conscious control" come more from the agent's
+environment. Ie, advertising, nutritional education, and the
+easy availability of high calorie food in your environment affect how
+much you can/will consciously control your eating habits.</p>
+
+<p>Output is structured pretty much the same way.</p>
+
+<p>The "environment" in our simulation is basically a two dimensional
+grid where each square is a "neighborhood". The number of squares is
+configurable but defaults to 10x10. Each agent, at the beginning of
+the simulation is assigned a random location on that grid, and each
+square in the grid gets attributes assigned to it as described in the
+"Environment Variables" section. Each of those is populated randomly
+based on a Gamma (<span class="js-katex-equation">\Gamma</span>)
+distribution.  Basically, the neighborhood that a given agent lives in
+has some particular set of values for:</p>
+
+<ul>
+	<li>energy density/convenience of the food there (think bodegas full
+	of junk food vs farmers' markets)</li>
+	<li>how much food advertising is there</li>
+	<li>nutritional education/literacy</li>
+	<li>how much physical activity residents of the neighborhood will
+typically engage in (eg, suburban car culture where you drive the
+quarter mile to the store vs NYC where you do a lot of walking or the
+Netherlands where everyone bikes everywhere).</li>
+</ul>
+
+<p>Now, if you have actually been looking at those equations while
+reading this, you'll probably have noticed that I left some things
+out.</p>
+
+<p>A lot of the equations have gamma (<span class="js-katex-equation">\gamma</span>) terms in them. Right in the
+first agent mass equation, there's a <span class="js-katex-equation">\gamma_1</span> that the entire input/output
+result is multiplied by. These gamma terms are essentially "fudge
+factors" built into the model to allow it to be tuned and
+calibrated. The mindset here is that these equations represent very
+high level descriptions of what's going on in the real world but
+aren't very precise otherwise. It's clearly the case that your weight
+today is essentially your weight yesterday plus some function of how
+much (and what) you ate and how much your body burned in the same time
+period. But exactly how much it affects it one way or another is hard
+to pinpoint without going into ridiculous detail. So the approach here
+is to set up the equations in forms that we know are reasonably
+correct, and leave those calibration terms there so we can just adjust
+it to match real-world or at least realistic data. Eg, on the energy
+intake equation, we say that an agent's total intake is the sum of
+various terms (force of habit, friend input, conscious control, etc),
+each multiplied by a different gamma. Ie, we know that it really is
+influenced by all those things, but the gammas give us the knobs to
+turn to specify what proportional weight each has.</p>
+
+<p>You'll also see a recurring pattern in the equations, with a structure
+something like:</p>
+
+<p class="js-katex-equation well">
+\frac{1}{1 + e^{\text{some-value}}}
+</p>
+
+<p>(eg, look at the equation for friend-input):</p>
+
+<p class="js-katex-equation well">
+\frac{1}{1 + e^{-10(x - 0.50)}} - 0.50
+</p>
+
+<p> If you aren't steeped in
+simulation/modelling or something related, it might not mean anything
+to you. But to someone in the field, it's recognizable as a <a
+ href="http://en.wikipedia.org/wiki/Logistic_function">"logistic
+function" or "sigmoid curve"</a></p>
+
+<img src="{{STATIC_URL}}img/logistic.svg">
+
+<p>Take a good look at the graph of the function there. How it works and
+how it's derived aren't important, but its functionality is fairly
+straightforward. The function basically takes an input value (the
+x-axis) and maps it to an output (y-axis) between 0.0 and 1.0. Going
+to the left, small inputs are mapped essentially to 0 and large inputs
+on the right get mapped to 1. If you extended the graph all the way
+out to infinity in each direction, that's what you'd see for most
+inputs. The interesting region is right in the middle where it
+switches from 0 to 1 relatively quickly. In other words, it's a
+function where every input below certain level sends it basically to
+zero, every input value above another point is just going to come out
+as (very close to) 1, and the relatively narrow region in between is a
+"threshold" where you actually get intermediate values. The various
+terms in the "some-value" part of the equation determine how steep the
+curve is or how narrow the "interesting" region is.</p>
+
+<p>As an analogy, think about a graph with temperature as the x-axis and
+your perception of it with 0 meaning "cold" and 1 meaning
+"hot". Anything below 32F or so is "cold". Doesn't really matter
+whether it's 10F or -100F, both are "cold". Similarly, anything over
+maybe 90F is "hot". Then there's a region in between there where it's
+not quite so clear. Is 54 hot or cold? 68? For some range, it's in
+between. If you're building a thermostat to control your furnace and
+AC, there will be a point below which, it always turns the heat on and
+another point above which it always turns on the AC. But then the
+range in between will take more care and you might want to let the
+individual adjust the precise slope and intersection point of that
+curve.</p>
+
+<p>Basically, whereever you see that form in the equations, you know that
+it's taking whatever inputs its given and the output is going to be
+some value between 0 and 1. You also know that there will be that
+interesting region of inputs, outside of which, the function will
+pretty much output just a zero or one no matter how far outside it
+is. Key point to remember is that within some very narrow range, it
+will be very sensitive though.</p>
+
+<p>So, going back to the Agent Mass equation and the next equation
+immediately after it that defines
+	the <span class="js-katex-equation">f(\text{input} -
+		\text{total-output})</span> term:</p>
+
+<p class="js-katex-equation well">
+\frac{1}{1 + e^{-(\text{input} - \text{total-output})}} - 0.50
+</p>
+
+<p> You
+should now see that the <span class="js-katex-equation">f(\text{input} -
+		\text{total-output})</span> is just a logistic curve
+applied to the input minus the output, which you now know will produce
+a value between 0 and 1. .5 is then subtracted from that, so it will
+really be a value between -.5 and .5.</p>
+
+<p>The only other parts of the equation document that I haven't discussed
+are a couple places where there are small random (normal distribution)
+values added in, basically as an admission that there is some random
+element involved at each time step. Similarly, the starting mass and
+basal metabolic rate for each agent are randomly set (from a normal
+distribution).</p>
+
+<p>The agents also, besides just having a "neighborhood" of their
+environment that they live in, have a randomly generated social
+network. So far, that random social network is just that each agent
+has three other random agents (again, configurable) that it is
+"friends" with. Those other agents are the ones that are looked at for
+calculating friend input and friend output. Not very
+sophisticated.</p>
+
+
+{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/katex.min.css">
+{% endblock %}
+
+{% block js %}
+	<script src="{{STATIC_URL}}js/katex.min.js"
+	type="text/javascript"></script>
+
+<script>
+$('.js-katex-equation').each(function (idx) {
+  var el = $(this);
+  katex.render(el.text(), this);
+});
+</script>
+{% endblock %}
