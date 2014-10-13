@@ -151,14 +151,11 @@
 	{% if request.user.is_anonymous %}
 	
 	 
-			  {% if WIND_BASE %}
-				 <form method="get" action="{{ WIND_BASE }}login">
+				 <form method="get" action="{{ CAS_BASE }}cas/login">
 					{% csrf_token %}
-					<input type="hidden" name="service" value="{{ WIND_SERVICE }}" />
-					<input type="hidden" name="destination" value="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/accounts/windlogin/?next={{ request.get_full_path|urlencode }}" />
+					<input type="hidden" name="destination" value="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/accounts/caslogin/?next={{ request.get_full_path|urlencode }}" />
 					<input class="btn btn-primary btn-lg btn-block" type="submit" value="Columbia University Network ID (UNI)" />
 				 </form>
-			  {% endif %}
 	
 	
 			<p style="text-align: center;">or</p>

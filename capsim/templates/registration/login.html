@@ -44,11 +44,10 @@ Are we going to have non-CU accounts at all?
 
             <hr class="seperator" />
 
-          {% if wind_base %}
-                <form method="get" action="{{ wind_base }}login">
+          {% if CAS_BASE %}
+                <form method="get" action="{{ CAS_BASE }}cas/login">
                     {% csrf_token %}
-                    <input type="hidden" name="service" value="{{ wind_service }}" />
-                    <input type="hidden" name="destination" value="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/accounts/windlogin/?next={{ next|urlencode }}" />
+                    <input type="hidden" name="destination" value="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/accounts/caslogin/?next={{ next|urlencode }}" />
                     <p>If you have a Columbia University Network ID (UNI)...</p>
                     <input class="regbutton btn btn-default" type="submit" value="Columbia Log In" />
                 </form>
