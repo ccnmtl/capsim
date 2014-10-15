@@ -22,7 +22,6 @@ class RunRecord(models.Model):
         return Run.from_dict(loads(self.data or '{}'))
 
     def from_run(self, run):
-        self.data = dumps(run.to_dict())
         self.save()
 
     def get_absolute_url(self):
@@ -52,13 +51,49 @@ class ViewParam(object):
         self.default = default
 
 
+def skew_for_demo(d, skew_params):
+    """ sometimes for demo purposes, we need to force the output
+    to have a certain change. do that here"""
+
+    # unpack it
+    dd = loads(d['data'])
+
+    # mess with it
+    dd['agents_mass'] = skew_param(dd['agents_mass'], skew_params['mass'])
+    dd['intake'] = skew_param(dd['intake'], skew_params['intake'])
+    dd['expenditure'] = skew_param(dd['expenditure'],
+                                   skew_params['expenditure'])
+
+    # pack it back up
+    d['data'] = dumps(dd)
+    return d
+
+
+def skew_param(dset, skew):
+    new_dset = dset
+    c = 0.
+    for j in range(len(dset)):
+        v = dset[str(j)]
+        new_list = v
+        c = (j / 100.) * skew
+        for i, m in enumerate(v):
+            new_list[i] = float(m) + float(c)
+        new_dset[str(j)] = new_list
+    return new_dset
+
+
 class RunOutputRecord(models.Model):
     created = models.DateTimeField(auto_now=True)
     run = models.ForeignKey(RunRecord)
     data = models.TextField(default=u"", blank=True, null=True)
 
-    def from_runoutput(self, runoutput):
-        self.data = dumps(runoutput.to_dict())
+    def from_runoutput(self, runoutput, skew_params=None):
+        d = runoutput.to_dict()
+        if skew_params:
+            d = skew_for_demo(
+                d,
+                skew_params)
+        self.data = dumps(d)
         self.save()
 
     def get_runoutput(self):

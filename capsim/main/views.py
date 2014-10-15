@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.views.generic.base import View
 from pagetree.generic.views import EditView
@@ -10,6 +11,7 @@ from capsim.sim.models import (
     RunRecord, RunOutputRecord, Intervention, Parameter,
     merge_parameters_into_form)
 from waffle import Flag
+import waffle
 from .forms import RunForm, ALL_FIELDS
 
 
@@ -17,6 +19,18 @@ class LoggedInMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+
+
+def apply_skews(request, skew_params):
+    i_s = settings.INTERVENTION_SKEWS
+    for k in request.POST.keys():
+        if not k.startswith('intervention_'):
+            continue
+        v = request.POST[k]
+        if (k, v) in i_s:
+            for f in ['mass', 'intake', 'expenditure']:
+                skew_params[f] += i_s[(k, v)][f]
+    return skew_params
 
 
 class NewRunView(LoggedInMixin, View):
@@ -28,13 +42,19 @@ class NewRunView(LoggedInMixin, View):
             parameters = dict()
             for f in ALL_FIELDS:
                 parameters[f] = form.cleaned_data[f]
+
             r = Run(**parameters)
             rr = RunRecord()
             rr.user = request.user
             rr.from_run(r)
             out = r.run()
+
             ror = RunOutputRecord(run=rr)
-            ror.from_runoutput(out)
+            skew_params = dict(mass=0., intake=0., expenditure=0.)
+
+            if waffle.flag_is_active(request, 'demo_mode'):
+                skew_params = apply_skews(request, skew_params)
+            ror.from_runoutput(out, skew_params)
             return HttpResponseRedirect(rr.get_absolute_url())
         return render(
             request, self.template_name,

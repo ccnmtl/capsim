@@ -210,3 +210,18 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
 }
+
+INTERVENTION_SKEWS = {
+    ('intervention_increase_physical_activity', 'high'): dict(
+        mass=-20.,
+        intake=-20.,
+        expenditure=-20.),
+    ('intervention_increase_physical_activity', 'medium'): dict(
+        mass=-3.,
+        intake=-3.,
+        expenditure=-3.),
+    ('intervention_increase_physical_activity', 'low'): dict(
+        mass=-1.,
+        intake=-1.,
+        expenditure=-1.),
+}
