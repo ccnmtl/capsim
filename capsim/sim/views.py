@@ -179,7 +179,7 @@ class RunOutputView(LoggedInMixin, View):
     def get(self, request, pk):
         rr = get_object_or_404(RunRecord, pk=pk)
         out = loads(rr.runoutput().data)
-        r = HttpResponse(mimetype='application/json')
+        r = HttpResponse(content_type='application/json')
         r['Content-Disposition'] = (
             "attachment; filename=capsim_run_%d.json" % rr.id)
         r.write(dumps(loads(out['data'])))
@@ -189,7 +189,7 @@ class RunOutputView(LoggedInMixin, View):
 class ExperimentOutputView(LoggedInMixin, View):
     def get(self, request, pk):
         experiment = get_object_or_404(Experiment, pk=pk)
-        response = HttpResponse(mimetype='text/csv')
+        response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = (
             'attachment; filename=capsim_experiment_%d.csv' % experiment.id)
         writer = csv.writer(response)
@@ -241,8 +241,9 @@ class ExperimentReEnqueueView(LoggedInMixin, View):
 class NewExperimentView(LoggedInMixin, View):
     template_name = 'sim/new_experiment.html'
 
-    @transaction.commit_manually
+    @transaction.atomic()
     def post(self, request):
+        sp1 = transaction.savepoint()
         form = RunForm(request.POST)
         expform = ExperimentForm(request.POST)
         if form.is_valid() and expform.is_valid():
@@ -286,10 +287,10 @@ class NewExperimentView(LoggedInMixin, View):
                 )
             experiment.normalize_title()
             redirect_url = experiment.get_absolute_url()
-            transaction.commit()
+            transaction.savepoint_commit(sp1)
             run_experiment.delay(experiment_id=experiment.id)
             return HttpResponseRedirect(redirect_url)
-        transaction.rollback()
+        transaction.savepoint_commit(sp1)
         parameters = Parameter.objects.all()
         form = merge_parameters_into_form(form, parameters)
         return render(request, self.template_name,

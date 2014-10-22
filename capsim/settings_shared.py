@@ -36,7 +36,6 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
     BROKER_BACKEND = 'memory'
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-SOUTH_TESTS_MIGRATE = False
 
 NOSE_ARGS = [
     '--with-coverage',
@@ -44,7 +43,6 @@ NOSE_ARGS = [
 ]
 
 JENKINS_TASKS = (
-    'django_jenkins.tasks.with_coverage',
     'django_jenkins.tasks.run_pep8',
 )
 PROJECT_APPS = [
@@ -112,12 +110,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.admin',
     'typogrify',
-    'south',
     'django_nose',
     'compressor',
     'django_statsd',
     'bootstrapform',
-    'lettuce.django',
     'debug_toolbar',
     'waffle',
     'django_jenkins',
@@ -141,10 +137,6 @@ PAGEBLOCKS = ['pageblocks.TextBlock',
               'pageblocks.ImagePullQuoteBlock',
               'quizblock.Quiz',
               ]
-
-LETTUCE_APPS = (
-    'capsim.main',
-)
 
 BROKER_URL = "amqp://localhost:5672//dmt"
 CELERYD_CONCURRENCY = 4

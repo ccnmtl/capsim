@@ -9,5 +9,7 @@ sys.path.append('/var/www/capsim/capsim/')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'capsim.settings_production'
 
 import django.core.handlers.wsgi
+import django
+django.setup()
 
 application = django.core.handlers.wsgi.WSGIHandler()
