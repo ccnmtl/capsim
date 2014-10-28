@@ -29,7 +29,7 @@ def apply_skews(request, skew_params):
         v = request.POST[k]
         if (k, v) in i_s:
             for f in ['mass', 'intake', 'expenditure']:
-                skew_params[f] += i_s[(k, v)][f]
+                skew_params[f] += i_s[(k, v)].get(f, 0.)
     return skew_params
 
 

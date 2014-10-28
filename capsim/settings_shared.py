@@ -204,16 +204,57 @@ LOGGING = {
 }
 
 INTERVENTION_SKEWS = {
-    ('intervention_increase_physical_activity', 'high'): dict(
-        mass=-20.,
-        intake=-20.,
-        expenditure=-20.),
-    ('intervention_increase_physical_activity', 'medium'): dict(
-        mass=-3.,
-        intake=-3.,
-        expenditure=-3.),
-    ('intervention_increase_physical_activity', 'low'): dict(
-        mass=-1.,
-        intake=-1.,
-        expenditure=-1.),
+    # 1-2: Provide and Support Community Programs Designed
+    #      to Increase Physical Activity
+    ('intervention_increase_physical_activity', 'high'): dict(mass=-2.),
+    ('intervention_increase_physical_activity', 'medium'): dict(mass=-1.),
+
+    # 4-1:  Provide Standardized Care and Advocate for Healthy
+    #       Community Environments
+    ('intervention_ensure_screening', 'high'): dict(mass=-5.),
+    ('intervention_ensure_screening', 'medium'): dict(mass=-3.),
+    ('intervention_ensure_screening', 'low'): dict(mass=-1.),
+
+    # 4-3: Encourage Active Living at Work
+    ('intervention_active_living_at_work', 'high'): dict(mass=-2.),
+    ('intervention_active_living_at_work', 'medium'): dict(mass=-1.),
+
+    # 1-1:  Enhance the Physical and Built Environment
+    ('intervention_physical_environment', 'high'): dict(mass=-2.),
+    ('intervention_physical_environment', 'medium'): dict(mass=-1.),
+
+    # Social Influence (Gamma 6)
+    ('intervention_social_influence', 'high'): dict(mass=-4.),
+    ('intervention_social_influence', 'medium'): dict(mass=-2.),
+
+    # 2-4:  Introduce, Modify, and Utilize Health-Promoting
+    #       Food and Beverage Retailing and Distribution Policies
+    ('intervention_health_promoting_food', 'high'): dict(mass=-2.),
+    ('intervention_health_promoting_food', 'high'): dict(mass=-1.),
+
+    # 4-3: Encourage Active Living and Healthy Eating at Work
+    ('intervention_healthy_eating_at_work', 'high'): dict(mass=-3.),
+    ('intervention_healthy_eating_at_work', 'medium'): dict(mass=-2.),
+    ('intervention_healthy_eating_at_work', 'low'): dict(mass=-1.),
+
+    # 2-1:  Adopt Policies and Implement Practices to Reduce
+    #       Overconsumption of Sugar-Sweetened Beverages
+    ('intervention_national_health_standards', 'high'): dict(mass=-2.),
+    ('intervention_national_health_standards', 'medium'): dict(mass=-1.),
+
+    # 3-4: Adopt Consistent Nutrition Education Policies for Federal
+    #      Programs with Nutrition Education Components
+    ('intervention_nutrition_education_policies', 'high'): dict(mass=-3.),
+    ('intervention_nutrition_education_policies', 'medium'): dict(mass=-2.),
+    ('intervention_nutrition_education_policies', 'low'): dict(mass=-1.),
+
+    # 3-3:  Ensure Consistent Nutrition Labeling for the Front of
+    #       Packages, Retail Store Shelves, and Menus and Menu Boards
+    #       That Encourages Healthier Food Choices
+    ('intervention_food_labeling', 'high'): dict(mass=-2.),
+    ('intervention_food_labeling', 'medium'): dict(mass=-1.),
+
+    # Social Influence (Gamma 5)
+    ('intervention_food_social_influence', 'high'): dict(mass=-4.),
+    ('intervention_food_social_influence', 'medium'): dict(mass=-2.),
 }
