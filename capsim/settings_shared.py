@@ -109,6 +109,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.messages',
     'django.contrib.admin',
+    'django.contrib.humanize',
     'typogrify',
     'django_nose',
     'compressor',
