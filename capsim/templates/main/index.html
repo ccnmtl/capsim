@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load waffle_tags %}
+{% load humanize %}
 
 {% load bootstrap %}
 
@@ -656,9 +657,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									id="increase-physical-activity"
 									name="intervention_increase_physical_activity" >
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.increase_physical_activity.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.increase_physical_activity.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.increase_physical_activity.low_cost|intcomma}}</option>
 					</select>				
 
 					<p>Potential actions include:  Developing and implementing physical activity strategies that fit into people’s daily routines – strategies that are most effective when tailored to specific interests and preferences.</p>
@@ -677,9 +678,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_ensure_screening"
 									id="ensure-screening">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.ensure_screening.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.ensure_screening.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.ensure_screening.low_cost|intcomma}}</option>
 					</select>				
 					<p>Potential actions include:  Health care providers’ standards of practice including routine screening of body mass index (BMI), counseling, and behavioral interventions for adults to improve physical activity behaviors and dietary choices.</p>
 					<p><small>Reference:  <a href="https://capsim.ccnmtl.columbia.edu/media/pdf/CD000984.pdf">Flodgren G, Deane K, Dickinson HO, Kirk S, Alberti H, Beyer FR, Brown JG, Penney TL, Summerbell CD, Eccles MP. Interventions to change the behaviour of health professionals and the organisation of care to promote weight reduction in overweight and obese adults. Cochrane Database of Systematic Reviews 2010, Issue 3. Art. No.: CD000984. DOI: 10.1002/14651858.CD000984.pub2.</a></small></p>
@@ -693,9 +694,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_active_living_at_work"
 									id="active-living-at-work">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.active_living_at_work.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.active_living_at_work.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.active_living_at_work.low_cost|intcomma}}</option>
 					</select>
 					<p>Potential actions include:  Increasing opportunities for
 					physical activity as part of a wellness/health promotion
@@ -710,9 +711,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_physical_environment"
 									id="physical-environment">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.physical_environment.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.physical_environment.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.physical_environment.low_cost|intcomma}}</option>
 					</select>				
 					<p>Potential actions include:  Communities and organizations
 					developing and maintaining sustainable strategies to create
@@ -727,9 +728,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_social_influence"
 									id="activity-social-influence">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.social_influence.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.social_influence.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.social_influence.low_cost|intcomma}}</option>
 					</select>	
 					
 					<p>Increasing/decreasing the extent that people's diet and activity behaviors influence one another.</p>
@@ -750,9 +751,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_health_promoting_food"
 									id="health-promoting-food">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.health_promoting_food.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.health_promoting_food.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.health_promoting_food.low_cost|intcomma}}</option>
 					</select>				
 					<p>Potential actions include:  State and localities creating cross-sectoral collaborations among the food and beverage industry, philanthropy, the finance and banking sector, the real estate sector, and the community to develop private funding to facilitate the development of healthy food retailing in underserved areas.</p>
 					<p><small>Reference:  PHA’s full progress report including partner
@@ -765,9 +766,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_healthy_eating_at_work"
 									id="healthy-eating-at-work">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.healthy_eating_at_work.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.healthy_eating_at_work.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.healthy_eating_at_work.low_cost|intcomma}}</option>
 					</select>				
 					<p>Potential actions include:  Public and private employers promoting healthy eating in the worksite in their own institutional policies and practices by, for example, providing access to and promotion of healthful foods and beverages.</p>
 					<p><small>References:  <a href="https://capsim.ccnmtl.columbia.edu/media/pdf/Worksite2010AHRFSystematic_Soler.pdf">Soler RE, Leeks KD, Razi S, Hopkins DP, Griffith M, Aten A, Chattopadhyay SK, Smith SC, Habarta N, Goetzel RZ, Pronk NP, Richling DE, Bauer DR, Buchanan LR, Florence CS, Koonin L, MacLean D, Rosenthal A, Matson Koffman D, Grizzell JV, Walker AM: A systematic review of selected interventions for worksite health promotion: the assessment of health risks with feedback. Am J Prev Med 2010, 38:S237-S262.</a></small></p>
@@ -781,9 +782,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_national_health_standards"
 									id="national-health-standards">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.national_health_standards.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.national_health_standards.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.national_health_standards.low_cost|intcomma}}</option>
 					</select>				
 
 					<p>Potential actions include:  Making clean, potable water readily available in public places, worksites, and recreation areas.
@@ -797,9 +798,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_nutrition_education_policies"
 									id="nutrition-education-policies">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.nutrition_education_policies.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.nutrition_education_policies.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.nutrition_education_policies.low_cost|intcomma}}</option>
 					</select>				
 					<p>Potential actions include:  Removing the restrictions on the types of information that can be included in SNAP-Ed programs and encouraging advice about types of foods to reduce.</p>
 					<p><small>Reference:  <a href="http://www.cdc.gov/nutrition/downloads/State-Indicator-Report-Fruits-Vegetables-2013.pdf">http://www.cdc.gov/nutrition/downloads/State-Indicator-Report-Fruits-Vegetables-2013.pdf</a></small></p>
@@ -813,9 +814,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_food_labeling"
 									id="food-labeling">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.food_labeling.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.food_labeling.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.food_labeling.low_cost|intcomma}}</option>
 					</select>				
 
 					<p>Potential actions include:  Restaurants implementing the FDA regulations that require restaurants with 20 or more locations to provide calorie labeling on their menus and menu boards, and the FDA/USDA monitoring industry for compliance with this policy.</p>
@@ -829,9 +830,9 @@ makeGraph("div.placeholder", runData, runStdDevs);
 									name="intervention_food_social_influence"
 									id="food-social-influence">
 					  <option value="">Select Level</option>
-					  <option value="high">High</option>
-					  <option value="medium">Medium</option>
-					  <option value="low">Low</option>
+					  <option value="high">${{by_slug.social_influence.high_cost|intcomma}}</option>
+					  <option value="medium">${{by_slug.social_influence.medium_cost|intcomma}}</option>
+					  <option value="low">${{by_slug.social_influence.low_cost|intcomma}}</option>
 					</select>
 					
 					<p>Increasing/decreasing the extent that people's diet and activity behaviors influence one another.</p>

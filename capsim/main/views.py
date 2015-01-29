@@ -33,6 +33,20 @@ def apply_skews(request, skew_params):
     return skew_params
 
 
+def template_safe(k):
+    """ convert slugs into ones that we can use as attributes
+    in the template. Ie,
+
+    {{by_slug.increase-physical-activity}}
+
+    would be a syntax error, but
+
+    {{by_slug.increase_physical_activity}}
+
+    is ok."""
+    return k.replace('-', '_')
+
+
 class NewRunView(LoggedInMixin, View):
     template_name = 'main/index.html'
 
@@ -65,9 +79,12 @@ class NewRunView(LoggedInMixin, View):
         form = RunForm()
         parameters = Parameter.objects.all()
         form = merge_parameters_into_form(form, parameters)
+        by_slug = {template_safe(i.slug): i
+                   for i in Intervention.objects.all()}
         return render(
             request, self.template_name,
             dict(form=form, interventions=Intervention.objects.all(),
+                 by_slug=by_slug,
                  parameters=parameters))
 
 
