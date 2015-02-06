@@ -29,9 +29,11 @@
 <script type="text/javascript" src="{{STATIC_URL}}js/graph.js"></script>
 
 <p>Ran simulation with <b>{{number_agents}}</b> agents for <b>{{ticks}}</b> ticks.</p>
-<p>Resulting agents mass mean: <b>{{mass_mean}}</b></p>
+
+<h3>Time-series of Mean Agent Mass Across All Agents</h3>
 
 <div class="placeholder-mass"/>
+
 
 <script type="text/javascript">
 var massRunData = [];
@@ -39,12 +41,12 @@ var massRunData = [];
 massRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div.placeholder-mass", massRunData, 860, 200, 15);
+makeGraph("div.placeholder-mass", massRunData, 860, 400,
+    "Agent Mass (where the average in the simulation model is 100)");
 </script>
 
-<p>Resulting agents intake mean: <b>{{intake_mean}}</b></p>
-
-<div class="placeholder-intake"/>
+<h3>Time-series of Mean Agent Energy Intake Across All Agents</h3>
+<div class="placeholder-intake"></div>
 
 <script type="text/javascript">
 var intakeRunData = [];
@@ -52,12 +54,12 @@ var intakeRunData = [];
 intakeRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div.placeholder-intake", intakeRunData, 860, 200, 15);
+makeGraph("div.placeholder-intake", intakeRunData, 860, 400,
+    "Agent's Energy Intake (where the units are arbitrary)");
 </script>
 
-<p>Resulting agents expenditure mean: <b>{{expenditure_mean}}</b></p>
-
-<div class="placeholder-expenditure"/>
+<h3>Time-series of Mean Agent Energy Expenditure Across All Agents</h3>
+<div class="placeholder-expenditure"></div>
 
 <script type="text/javascript">
 var expenditureRunData = [];
@@ -65,7 +67,8 @@ var expenditureRunData = [];
 expenditureRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div.placeholder-expenditure", expenditureRunData, 860, 200, 20);
+makeGraph("div.placeholder-expenditure", expenditureRunData, 860, 400,
+    "Agent's Energy Expenditure (where the units are arbitrary)");
 </script>
 
 <hr />
