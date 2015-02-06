@@ -29,48 +29,43 @@
 <script type="text/javascript" src="{{STATIC_URL}}js/graph.js"></script>
 
 <p>Ran simulation with <b>{{number_agents}}</b> agents for <b>{{ticks}}</b> ticks.</p>
-<p>Resulting agents mass mean: <b>{{mass_mean}}</b>,
-	stddev: <b>{{mass_stddev}}</b></p>
+<p>Resulting agents mass mean: <b>{{mass_mean}}</b></p>
 
 <div class="placeholder-mass"/>
 
 <script type="text/javascript">
 var massRunData = [];
-var massRunStdDevs = [];
 {% for d in mass_stats %}
-massRunData.push({{d.mean}});massRunStdDevs.push({{d.std}});
+massRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div.placeholder-mass", massRunData, massRunStdDevs, 860, 200, 15);
+makeGraph("div.placeholder-mass", massRunData, 860, 200, 15);
 </script>
 
-<p>Resulting agents intake mean: <b>{{intake_mean}}</b>,
-	stddev: <b>{{intake_stddev}}</b></p>
+<p>Resulting agents intake mean: <b>{{intake_mean}}</b></p>
 
 <div class="placeholder-intake"/>
 
 <script type="text/javascript">
 var intakeRunData = [];
-var intakeRunStdDevs = [];
 {% for d in intake_stats %}
-intakeRunData.push({{d.mean}});intakeRunStdDevs.push({{d.std}});
+intakeRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div.placeholder-intake", intakeRunData, intakeRunStdDevs, 860, 200, 15);
+makeGraph("div.placeholder-intake", intakeRunData, 860, 200, 15);
 </script>
 
-<p>Resulting agents expenditure mean: <b>{{expenditure_mean}}</b>, stddev: <b>{{expenditure_stddev}}</b></p>
+<p>Resulting agents expenditure mean: <b>{{expenditure_mean}}</b></p>
 
 <div class="placeholder-expenditure"/>
 
 <script type="text/javascript">
 var expenditureRunData = [];
-var expenditureRunStdDevs = [];
 {% for d in expenditure_stats %}
-expenditureRunData.push({{d.mean}});expenditureRunStdDevs.push({{d.std}});
+expenditureRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div.placeholder-expenditure", expenditureRunData, expenditureRunStdDevs, 860, 200, 20);
+makeGraph("div.placeholder-expenditure", expenditureRunData, 860, 200, 20);
 </script>
 
 <hr />

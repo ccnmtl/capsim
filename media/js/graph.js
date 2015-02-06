@@ -1,7 +1,7 @@
 //var margin = 15;
 //width = 860;
 //height = 200;
-var makeGraph = function (loc, data, stddevs, width, height, margin) {
+var makeGraph = function (loc, data, width, height, margin) {
     var w = width;
     var h = height;
 
@@ -21,7 +21,6 @@ var makeGraph = function (loc, data, stddevs, width, height, margin) {
 		    .y(function(d) { return -1 * y(d); });
 		
     g.append("svg:path").attr("d", line(data)).attr("class", "mean");
-    g.append("svg:path").attr("d", line(stddevs)).attr("class", "stddev");
 		
     g.append("svg:line")
 		    .attr("x1", x(0))
