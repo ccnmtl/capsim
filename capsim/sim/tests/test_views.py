@@ -4,7 +4,7 @@ from django.test.client import Client
 from capsim.sim.models import (
     RunRecord, RunOutputRecord, Intervention, Parameter)
 from capsim.sim.logic import Run
-from waffle import Flag
+from waffle.models import Flag
 from .factories import ExpRunFactory
 
 

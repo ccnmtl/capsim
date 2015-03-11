@@ -10,7 +10,7 @@ from capsim.sim.logic import Run
 from capsim.sim.models import (
     RunRecord, RunOutputRecord, Intervention, Parameter,
     merge_parameters_into_form)
-from waffle import Flag
+from waffle.models import Flag
 import waffle
 from .forms import RunForm, ALL_FIELDS
 
