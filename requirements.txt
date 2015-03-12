@@ -80,7 +80,7 @@ django-treebeard==2.0b2
 django-pagetree==1.0.1
 django-pageblocks==1.0.0
 django-quizblock==0.9.0
-django-markwhat==1.0
+django-markwhat==2014.9.20
 django-celery==3.1.9
 factory_boy==2.1.1
 gunicorn==19.1.1
