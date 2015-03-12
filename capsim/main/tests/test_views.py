@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.test.client import Client
 from pagetree.helpers import get_hierarchy
 from django.contrib.auth.models import User
-from waffle import Flag
+
+from waffle.models import Flag
 
 
 class BasicViewTest(TestCase):
