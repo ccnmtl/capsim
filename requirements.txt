@@ -44,7 +44,7 @@ python-dateutil==2.4.0
 pytz==2014.7
 networkx==1.8.1
 python-ldap==2.4.18
-Pillow==2.7.0
+Pillow==2.8.1
 mock==1.0.1
 anyjson==0.3.3
 amqp==1.4.6
