@@ -7,7 +7,7 @@ smartypants==1.6.0.3
 uuid==1.30
 psycopg2==2.5.4
 versiontools==1.9.1
-statsd==3.0.1
+statsd==3.1
 pep8==1.5.7
 mccabe==0.2.1
 pyflakes==0.8.1
