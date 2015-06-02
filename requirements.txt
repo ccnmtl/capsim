@@ -53,7 +53,7 @@ celery==3.1.18
 sqlparse==0.1.14
 
 sorl==3.1
-djangowind==0.13.2
+djangowind==0.13.3
 typogrify==2.0.0
 django-indexer==0.3.0
 django-templatetag-sugar==0.1
