@@ -51,6 +51,7 @@ librabbitmq==1.6.1
 billiard==3.3.0.20
 celery==3.1.18
 sqlparse==0.1.14
+decorator==3.4.2
 
 sorl==3.1
 djangowind==0.13.3
