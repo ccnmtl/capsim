@@ -82,42 +82,36 @@
 
 <script type="text/javascript">
 var massRunData = [];
-var massRunStdDevs = [];
 
 {% for run in runs %}
 massRunData = [];
-massRunStdDevs = [];
 {% for d in run.mass_stats %}
-massRunData.push({{d.mean}});massRunStdDevs.push({{d.std}});
+massRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div#graph-{{run.run.id}}-mass", massRunData, massRunStdDevs, 300, 100, 20);
+makeGraph("div#graph-{{run.run.id}}-mass", massRunData, 300, 100, "mass");
 {% endfor %}
 
 var intakeRunData = [];
-var intakeRunStdDevs = [];
 
 {% for run in runs %}
 intakeRunData = [];
-intakeRunStdDevs = [];
 {% for d in run.intake_stats %}
-intakeRunData.push({{d.mean}});intakeRunStdDevs.push({{d.std}});
+intakeRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div#graph-{{run.run.id}}-intake", intakeRunData, intakeRunStdDevs, 300, 100, 20);
+makeGraph("div#graph-{{run.run.id}}-intake", intakeRunData, 300, 100, "intake");
 {% endfor %}
 
 var expenditureRunData = [];
-var expenditureRunStdDevs = [];
 
 {% for run in runs %}
 expenditureRunData = [];
-expenditureRunStdDevs = [];
 {% for d in run.expenditure_stats %}
-expenditureRunData.push({{d.mean}});expenditureRunStdDevs.push({{d.std}});
+expenditureRunData.push({{d.mean}});
 {% endfor %}
 
-makeGraph("div#graph-{{run.run.id}}-expenditure", expenditureRunData, expenditureRunStdDevs, 300, 100, 20);
+makeGraph("div#graph-{{run.run.id}}-expenditure", expenditureRunData, 300, 100, "expenditure");
 {% endfor %}
 </script>
 
