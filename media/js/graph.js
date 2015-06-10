@@ -16,7 +16,6 @@ var makeGraph = function (loc, data, width, height, yAxisLabel) {
     var valueLine = d3.svg.line()
 		    .x(function(d,i) { return x(i); })
 		    .y(function(d) { return y(d); });
-		
     var svg = d3.select(loc)
         .append("svg:svg")
             .attr("width", width)
