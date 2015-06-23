@@ -20,7 +20,7 @@ lxml==3.4.4
 sure==1.2.9
 pyzmq==14.3.0
 MarkupSafe==0.18
-Jinja2==2.7
+Jinja2==2.7.3
 ipython==3.0.0
 ipdb==0.8
 extras==0.0.3
