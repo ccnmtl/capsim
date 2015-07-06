@@ -84,4 +84,4 @@ gunicorn==19.3.0
 django-infranil==0.1.0
 
 matplotlib==1.3.0
-pandas==0.12.0
+pandas==0.16.1
