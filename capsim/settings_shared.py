@@ -105,7 +105,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.admin',
     'django.contrib.humanize',
-    'typogrify',
     'compressor',
     'django_statsd',
     'bootstrapform',
