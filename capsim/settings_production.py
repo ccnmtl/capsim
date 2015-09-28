@@ -1,35 +1,15 @@
 # flake8: noqa
 from settings_shared import *
+from ccnmtlsettings.production import common
 
-TEMPLATE_DIRS = (
-    "/var/www/capsim/capsim/capsim/templates",
-)
-
-MEDIA_ROOT = '/var/www/capsim/uploads/'
-# put any static media here to override app served static media
-STATICMEDIA_MOUNTS = (
-    ('/sitemedia', '/var/www/capsim/capsim/sitemedia'),
-)
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'capsim',
-        'HOST': '',
-        'PORT': 6432,
-        'USER': '',
-        'PASSWORD': '',
-    }
-}
-
-COMPRESS_ROOT = "/var/www/capsim/capsim/media/"
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
-
-CELERYD_CONCURRENCY = 4
-
-if 'migrate' not in sys.argv:
-    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
+locals().update(
+    common(
+        project=project,
+        base=base,
+        STATIC_ROOT=STATIC_ROOT,
+        INSTALLED_APPS=INSTALLED_APPS,
+        s3static=False,
+    ))
 
 try:
     from local_settings import *

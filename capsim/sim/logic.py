@@ -236,8 +236,8 @@ def network_input_percent(input, neighbors):
                / (count link-neighbors)]
     end
     """
-    return (count_neighbors_greater(neighbors, input)
-            / np.maximum(count_neighbors(neighbors), 1.))
+    return (count_neighbors_greater(neighbors, input) /
+            np.maximum(count_neighbors(neighbors), 1.))
 
 
 def count_neighbors_greater(neighbors, a):
@@ -261,8 +261,8 @@ def calculate_friend_output(output, neighbors):
       report sigmoid (10 * (network-output-percent - 0.50)) - 0.50
     end
     """
-    return (sigmoid(10. * (network_output_percent(output, neighbors) - 0.5))
-            - 0.5)
+    return (sigmoid(10. * (network_output_percent(output, neighbors) - 0.5)) -
+            0.5)
 
 
 def network_output_percent(output, neighbors):
@@ -275,8 +275,8 @@ def network_output_percent(output, neighbors):
                / (count link-neighbors)]
     end
     """
-    return (count_neighbors_greater(neighbors, output)
-            / np.maximum(count_neighbors(neighbors), 1.))
+    return (count_neighbors_greater(neighbors, output) /
+            np.maximum(count_neighbors(neighbors), 1.))
 
 
 def calculate_c_control(food_literacy, food_literacy_weight=1.):
@@ -300,10 +300,10 @@ def food_sum(food_exposure, energy_density,
              food_advertising, food_convenience,
              food_exposure_weight=1., energy_density_weight=1.,
              food_advertising_weight=1., food_convenience_weight=1.):
-    return (((food_exposure * food_exposure_weight) - 0.5)
-            + ((energy_density * energy_density_weight) - 0.5)
-            + ((food_advertising * food_advertising_weight) - 0.5)
-            + ((food_convenience * food_convenience_weight) - 0.5))
+    return (((food_exposure * food_exposure_weight) - 0.5) +
+            ((energy_density * energy_density_weight) - 0.5) +
+            ((food_advertising * food_advertising_weight) - 0.5) +
+            ((food_convenience * food_convenience_weight) - 0.5))
 
 
 def calculate_physical_activity(recreation_activity, domestic_activity,
@@ -326,10 +326,10 @@ def activity_sum(recreation_activity, domestic_activity,
                  domestic_activity_weight=1.,
                  transport_activity_weight=1.,
                  education_activity_weight=1.):
-    return (((recreation_activity * recreation_activity_weight) - 0.5)
-            + ((domestic_activity * domestic_activity_weight) - 0.5)
-            + ((transport_activity * transport_activity_weight) - 0.5)
-            + ((education_activity * education_activity_weight) - 0.5))
+    return (((recreation_activity * recreation_activity_weight) - 0.5) +
+            ((domestic_activity * domestic_activity_weight) - 0.5) +
+            ((transport_activity * transport_activity_weight) - 0.5) +
+            ((education_activity * education_activity_weight) - 0.5))
 
 
 def calculate_mass(mass, input, total_output, gamma_1):
@@ -368,11 +368,11 @@ def calculate_input(total_output, force_of_habit, gamma_2,
                           - c-control * gamma4 + random-normal 0 sigma1
     end
     """
-    return (total_output
-            + (force_of_habit * gamma_2)
-            + (friend_input * gamma_3)
-            - (c_control * gamma_4)
-            + np.random.normal(0.0, sigma_1, total_output.shape))
+    return (total_output +
+            (force_of_habit * gamma_2) +
+            (friend_input * gamma_3) -
+            (c_control * gamma_4) +
+            np.random.normal(0.0, sigma_1, total_output.shape))
 
 
 def calculate_total_output(base_output, physical_activity, gamma_5,
@@ -383,10 +383,10 @@ def calculate_total_output(base_output, physical_activity, gamma_5,
              + random-normal 0 sigma2
     end
     """
-    return (base_output
-            + (physical_activity * gamma_5)
-            + (friend_output * gamma_6)
-            + np.random.normal(0.0, sigma_2, base_output.shape))
+    return (base_output +
+            (physical_activity * gamma_5) +
+            (friend_output * gamma_6) +
+            np.random.normal(0.0, sigma_2, base_output.shape))
 
 
 class RunOutput(object):
