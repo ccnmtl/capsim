@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ccnmtl/capsim.svg?branch=master)](https://travis-ci.org/ccnmtl/capsim)
+
 ## Public Health Capstone Simulation (Python Version)
 
 ### requirements
