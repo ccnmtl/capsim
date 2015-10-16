@@ -1,0 +1,24 @@
+db:
+  image: postgres
+rabbitmq:
+  image: rabbitmq
+web:
+  build: .
+  command: python manage.py runserver 0.0.0.0:8000 --settings=capsim.settings_compose
+  volumes:
+    - .:/var/www/capsim/capsim
+  ports:
+    - "8000:8000"
+  links:
+    - db
+    - rabbitmq
+celery:
+  build: .
+  command: python manage.py celery worker --settings=capsim.settings_compose
+  environment:
+    - C_FORCE_ROOT=true
+  volumes:
+    - .:/var/www/capsim/capsim
+  links:
+    - db
+    - rabbitmq

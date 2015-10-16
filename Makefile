@@ -28,6 +28,15 @@ check: ./ve/bin/python
 shell: ./ve/bin/python
 	$(MANAGE) shell_plus
 
+build:
+	docker build -t ccnmtl/capsim .
+
+compose-migrate:
+	docker-compose run web python manage.py migrate --settings=capsim.settings_compose
+
+compose-run:
+	docker-compose up
+
 clean:
 	rm -rf ve
 	rm -rf media/CACHE
