@@ -51,7 +51,7 @@ python-ldap==2.4.20
 Pillow==2.8.1
 mock==1.0.1
 anyjson==0.3.3
-amqp==1.4.6
+amqp==1.4.7
 amqplib==1.0.2
 kombu==3.0.26
 librabbitmq==1.6.1
