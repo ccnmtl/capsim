@@ -6,18 +6,24 @@ from capsim.sim.models import (
 
 
 class UserFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = User
+    class Meta:
+        model = User
+
     username = factory.Sequence(lambda n: "user%03d" % n)
     is_staff = True
 
 
 class RunRecordFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = RunRecord
+    class Meta:
+        model = RunRecord
+
     user = factory.SubFactory(UserFactory)
 
 
 class ExperimentFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Experiment
+    class Meta:
+        model = Experiment
+
     user = factory.SubFactory(UserFactory)
     total = 1
     data = "{}"
@@ -31,26 +37,34 @@ class ExperimentFactory(factory.DjangoModelFactory):
 
 
 class ExpRunFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = ExpRun
+    class Meta:
+        model = ExpRun
+
     experiment = factory.SubFactory(ExperimentFactory)
     run = factory.SubFactory(RunRecordFactory)
 
 
 class InterventionFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Intervention
+    class Meta:
+        model = Intervention
+
     name = factory.Sequence(lambda n: "Intervention r%03d" % n)
     slug = factory.Sequence(lambda n: "intervention-r%03d" % n)
 
 
 class InterventionLevelFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = InterventionLevel
+    class Meta:
+        model = InterventionLevel
+
     intervention = factory.SubFactory(InterventionFactory)
     level = "medium"
     cost = 200
 
 
 class ParameterFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Parameter
+    class Meta:
+        model = Parameter
+
     slug = "test_parameter"
     num_type = "int"
     value = 0.0
