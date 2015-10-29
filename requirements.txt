@@ -83,7 +83,8 @@ django-pageblocks==1.0.3
 django-quizblock==1.1.4
 django-markwhat==1.4
 django-celery==3.1.16
-factory_boy==2.4.1
+fake-factory==0.5.3
+factory_boy==2.6.0
 gunicorn==19.3.0
 django-infranil==0.1.0
 
