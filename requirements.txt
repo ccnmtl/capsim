@@ -56,7 +56,7 @@ amqplib==1.0.2
 kombu==3.0.29
 librabbitmq==1.6.1
 billiard==3.3.0.21
-celery==3.1.18
+celery==3.1.19
 sqlparse==0.1.16
 decorator==4.0.2
 sorl==3.1
