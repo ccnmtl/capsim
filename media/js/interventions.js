@@ -1,80 +1,84 @@
-var total_budget = 5000000;
+// expects window.costs, window.defaults, and window.modifiers
+// to exist and be populated (dynamically in a template)
 
-var budget_used = 0;
+var totalBudget = 5000000;
 
-var update_budget_progress_bar = function() {
-    var percent_used = budget_used / total_budget * 100;
-    var percent_remaining = 100 - percent_used;
+var budgetUsed = 0;
+
+var updateBudgetProgressBar = function() {
+    var percentUsed = budgetUsed / totalBudget * 100;
+    var percentRemaining = 100 - percentUsed;
     var bar = $('#budget-progress-bar .progress-bar');
-    bar.attr('aria-valuenow', percent_remaining);
-    bar.attr('style', 'width: ' + Math.floor(percent_remaining) + "%");
+    bar.attr('aria-valuenow', percentRemaining);
+    bar.attr('style', 'width: ' + Math.floor(percentRemaining) + '%');
     var label = $('#budget-progress-bar .sr');
-		var formatter = new Intl.NumberFormat('en-US', {
-				style: 'currency',
-				currency: 'USD',
-				minimumFractionDigits: 0,
-		});
-    label.text(formatter.format(total_budget - budget_used));
+    var formatter = new Intl.NumberFormat(
+        'en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+        });
+    label.text(formatter.format(totalBudget - budgetUsed));
 };
 
-var over_budget = function(amount) {
-    $("#run-sim-button").attr('disabled','disabled');
-    $("#overbudget-amount").text(amount);
-    $("#overbudget").show();
+var overBudget = function(amount) {
+    $('#run-sim-button').attr('disabled','disabled');
+    $('#overbudget-amount').text(amount);
+    $('#overbudget').show();
 };
 
-var calculate_budget = function() {
-    budget_used = 0;
-    var controls = $(".intervention-control");
-    for (var i=0; i < controls.length; i++) {
-        if (controls[i].value != "") {
-            var cost = costs[controls[i].id][controls[i].value];
-            budget_used += cost;
+var calculateBudget = function() {
+    budgetUsed = 0;
+    var controls = $('.intervention-control');
+    for (var i = 0; i < controls.length; i++) {
+        if (controls[i].value !== '') {
+            var cost = window.costs[controls[i].id][controls[i].value];
+            budgetUsed += cost;
         }
     }
-    apply_modifiers();
-    update_budget_progress_bar();
-    if (budget_used > total_budget) {
-        over_budget(budget_used - total_budget);
+    applyModifiers();
+    updateBudgetProgressBar();
+    if (budgetUsed > totalBudget) {
+        overBudget(budgetUsed - totalBudget);
     } else {
-        $("#run-sim-button").removeAttr('disabled');
-        $("#overbudget").hide();
+        $('#run-sim-button').removeAttr('disabled');
+        $('#overbudget').hide();
     }
 };
 
-var current_values = {};
+var currentValues = {};
 
-var reset_parameters = function() {
-    for (var k in defaults) {
-        if (defaults.hasOwnProperty(k)) {
-            $("#" + k).val(defaults[k]);
-            current_values[k] = defaults[k];
+var resetParameters = function() {
+    for (var k in window.defaults) {
+        if (window.defaults.hasOwnProperty(k)) {
+            $('#' + k).val(window.defaults[k]);
+            currentValues[k] = window.defaults[k];
         }
     }
 };
 
-var apply_modifiers = function() {
+var applyModifiers = function() {
     // set everything to a known state
-    reset_parameters();
+    resetParameters();
     // then go through each control that is set and adjust accordingly
-    var controls = $(".intervention-control");
-    for (var i=0; i < controls.length; i++) {
-        if (controls[i].value != "") {
-            var m = modifiers[controls[i].id][controls[i].value];
-            for (var j=0; j < m.length; j++) {
-                var param_name = m[j].param;
+    var controls = $('.intervention-control');
+    for (var i = 0; i < controls.length; i++) {
+        if (controls[i].value !== '') {
+            var m = window.modifiers[controls[i].id][controls[i].value];
+            for (var j = 0; j < m.length; j++) {
+                var paramName = m[j].param;
                 var adjustment = m[j].adjustment;
-                var p = $("#" + param_name);
-                var new_value = current_values[param_name] + adjustment;
-                current_values[param_name] = new_value;
-                p.val(new_value);
+                var p = $('#' + paramName);
+                var newValue = currentValues[paramName] + adjustment;
+                currentValues[paramName] = newValue;
+                p.val(newValue);
             }
         }
     }
 };
 
-$(".intervention-control").change(calculate_budget);
-$("#reset-all-button").click(function () {
-    reset_parameters();
-    $("#intervention-form").trigger('reset');
+$('.intervention-control').change(calculateBudget);
+$('#reset-all-button').click(function() {
+    resetParameters();
+    $('#intervention-form').trigger('reset');
 });

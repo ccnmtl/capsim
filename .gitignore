@@ -7,3 +7,4 @@ reports
 .coverage
 local_settings.py
 .ipynb_checkpoints
+node_modules
