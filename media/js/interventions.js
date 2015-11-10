@@ -1,3 +1,6 @@
+// expects window.costs, window.defaults, and window.modifiers
+// to exist and be populated (dynamically in a template)
+
 var total_budget = 5000000;
 
 var budget_used = 0;
@@ -27,8 +30,8 @@ var calculate_budget = function() {
     budget_used = 0;
     var controls = $(".intervention-control");
     for (var i=0; i < controls.length; i++) {
-        if (controls[i].value != "") {
-            var cost = costs[controls[i].id][controls[i].value];
+        if (controls[i].value !== "") {
+            var cost = window.costs[controls[i].id][controls[i].value];
             budget_used += cost;
         }
     }
@@ -45,10 +48,10 @@ var calculate_budget = function() {
 var current_values = {};
 
 var reset_parameters = function() {
-    for (var k in defaults) {
-        if (defaults.hasOwnProperty(k)) {
-            $("#" + k).val(defaults[k]);
-            current_values[k] = defaults[k];
+    for (var k in window.defaults) {
+        if (window.defaults.hasOwnProperty(k)) {
+            $("#" + k).val(window.defaults[k]);
+            current_values[k] = window.defaults[k];
         }
     }
 };
@@ -59,8 +62,8 @@ var apply_modifiers = function() {
     // then go through each control that is set and adjust accordingly
     var controls = $(".intervention-control");
     for (var i=0; i < controls.length; i++) {
-        if (controls[i].value != "") {
-            var m = modifiers[controls[i].id][controls[i].value];
+        if (controls[i].value !== "") {
+            var m = window.modifiers[controls[i].id][controls[i].value];
             for (var j=0; j < m.length; j++) {
                 var param_name = m[j].param;
                 var adjustment = m[j].adjustment;

@@ -8,6 +8,7 @@
     "predef": [
         "$",
         "confirm",
+				"d3",
         "jQuery"
     ]
 }

@@ -6,8 +6,8 @@ var makeGraph = function (loc, data, width, height, yAxisLabel) {
     var w = width - margin.left - margin.right;
     var h = height - margin.top - margin.bottom;
 
-    y = d3.scale.linear().domain([120, 80]).range([0, h]);
-    x = d3.scale.linear().domain([0, data.length]).range([0, w]);
+    var y = d3.scale.linear().domain([120, 80]).range([0, h]);
+    var x = d3.scale.linear().domain([0, data.length]).range([0, w]);
 
     var xAxis = d3.svg.axis().scale(x)
          .orient("bottom").ticks(5);
