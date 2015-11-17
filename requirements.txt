@@ -42,7 +42,7 @@ requests==2.7.0
 logilab-common==0.63.2
 logilab-astng==0.24.3
 pylint==1.4.4
-six==1.9.0
+six==1.10.0
 numpy==1.10.0
 python-dateutil==2.4.2
 pytz==2015.6
