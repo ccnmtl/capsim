@@ -1,3 +1,4 @@
+ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 MANAGE=./manage.py
 APP=capsim
 FLAKE8=./ve/bin/flake8
@@ -40,11 +41,24 @@ node_modules/jshint/bin/jshint:
 node_modules/jscs/bin/jscs:
 	npm install jscs --prefix .
 
-build:
+# use wheelhouse/requirements.txt as the sentinal so make
+# knows whether it needs to rebuild the wheel directory or not
+# has the added advantage that it can just pip install
+# from that later on as well
+wheelhouse/requirements.txt: requirements.txt
+	mkdir -p wheelhouse
+	docker run --rm \
+	-v $(ROOT_DIR):/app \
+	-v $(ROOT_DIR)/wheelhouse:/wheelhouse \
+	ccnmtl/django.build
+	cp requirements.txt wheelhouse/requirements.txt
+	touch wheelhouse/requirements.txt
+
+build: wheelhouse/requirements.txt
 	docker build -t ccnmtl/capsim .
 
 compose-migrate:
-	docker-compose run web python manage.py migrate --settings=capsim.settings_compose
+	docker-compose run web /ve/bin/python manage.py migrate --settings=capsim.settings_compose
 
 compose-run:
 	docker-compose up
