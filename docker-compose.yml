@@ -3,22 +3,22 @@ db:
 rabbitmq:
   image: rabbitmq
 web:
-  build: .
-  command: python manage.py runserver 0.0.0.0:8000 --settings=capsim.settings_compose
+  image: ccnmtl/capsim
+  command: /ve/bin/python manage.py runserver 0.0.0.0:8000 --settings=capsim.settings_compose
   volumes:
-    - .:/var/www/capsim/capsim
+    - .:/app
   ports:
     - "8000:8000"
   links:
     - db
     - rabbitmq
 celery:
-  build: .
-  command: python manage.py celery worker --settings=capsim.settings_compose
+  image: ccnmtl/capsim
+  command: /ve/bin/python manage.py celery worker --settings=capsim.settings_compose
   environment:
     - C_FORCE_ROOT=true
   volumes:
-    - .:/var/www/capsim/capsim
+    - .:/app
   links:
     - db
     - rabbitmq
