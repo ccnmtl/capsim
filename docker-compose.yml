@@ -4,7 +4,9 @@ rabbitmq:
   image: rabbitmq
 web:
   image: ccnmtl/capsim
-  command: /ve/bin/python manage.py runserver 0.0.0.0:8000 --settings=capsim.settings_compose
+  environment:
+    - SETTINGS=settings_compose
+  command: manage runserver 0.0.0.0:8000
   volumes:
     - .:/app
   ports:
@@ -14,9 +16,10 @@ web:
     - rabbitmq
 celery:
   image: ccnmtl/capsim
-  command: /ve/bin/python manage.py celery worker --settings=capsim.settings_compose
+  command: worker
   environment:
     - C_FORCE_ROOT=true
+    - SETTINGS=settings_compose    
   volumes:
     - .:/app
   links:

@@ -7,5 +7,6 @@ RUN /ve/bin/flake8 /app/capsim/ --max-complexity=10
 RUN /ve/bin/python manage.py test
 EXPOSE 8000
 ADD docker-run.sh /run.sh
-ADD docker-worker.sh /worker.sh
-CMD ["/run.sh"]
+ENV APP capsim
+ENTRYPOINT ["/run.sh"]
+CMD ["run"]
