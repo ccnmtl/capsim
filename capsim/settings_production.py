@@ -8,7 +8,7 @@ locals().update(
         base=base,
         STATIC_ROOT=STATIC_ROOT,
         INSTALLED_APPS=INSTALLED_APPS,
-        s3static=False,
+        cloudfront="d1xa4pq0x5fm1x",
     ))
 
 try:
