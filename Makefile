@@ -1,5 +1,6 @@
 APP=capsim
 JS_FILES=media/js/interventions.js media/js/graph.js
+MAX_COMPLEXITY=5
 
 all: jenkins
 
