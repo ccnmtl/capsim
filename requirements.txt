@@ -68,6 +68,7 @@ celery==3.1.19
 sqlparse==0.1.18
 decorator==4.0.4
 boto==2.38.0
+contextlib2==0.5.1
 
 sorl==3.1
 djangowind==0.14.3
