@@ -68,6 +68,7 @@ celery==3.1.19
 sqlparse==0.1.18
 decorator==4.0.4
 boto==2.38.0
+contextlib2==0.5.1
 
 sorl==3.1
 djangowind==0.14.3
@@ -77,7 +78,7 @@ django-annoying==0.8.5
 django-appconf==1.0.1
 django-compressor==1.6
 django-statsd-mozilla==0.3.16
-raven==5.8.1
+raven==5.10.1
 django-bootstrap-form==3.2
 django-debug-toolbar==1.4
 django-waffle==0.11
