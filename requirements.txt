@@ -48,7 +48,7 @@ certifi==2015.11.20.1
 requests==2.9.1
 logilab-common==0.63.2
 logilab-astng==0.24.3
-pylint==1.4.4
+pylint==1.5.4
 six==1.10.0
 numpy==1.10.1
 python-dateutil==2.4.2
