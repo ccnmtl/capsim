@@ -74,7 +74,6 @@ sorl==3.1
 djangowind==0.14.3
 django-indexer==0.3.0
 django-paging==0.2.5
-django-annoying==0.8.7
 django-appconf==1.0.1
 django-compressor==1.6
 django-statsd-mozilla==0.3.16
