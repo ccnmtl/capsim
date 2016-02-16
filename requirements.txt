@@ -27,7 +27,7 @@ path.py==8.1.2
 pyzmq==14.6.0
 MarkupSafe==0.23
 Jinja2==2.7.3
-ipython==4.0.1
+ipython==4.1.1
 ipdb==0.8.1
 extras==0.0.3
 python-mimeparse==0.1.4
