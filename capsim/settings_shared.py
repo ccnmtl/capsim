@@ -24,6 +24,7 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
 
 INSTALLED_APPS += [  # noqa
     'django.contrib.humanize',
+    'bootstrap3',
     'bootstrapform',
     'django_extensions',
     'pagetree',
