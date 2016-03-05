@@ -73,6 +73,7 @@ argparse==1.4.0
 wsgiref==0.1.2
 rcssmin==1.0.6
 rjsmin==1.0.12
+cycler==0.10.0
 
 django-bootstrap3==6.2.2
 sorl==3.1
