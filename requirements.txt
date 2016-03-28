@@ -8,7 +8,7 @@ versiontools==1.9.1
 statsd==3.2.1
 pep8==1.7.0
 mccabe==0.4.0
-pyflakes==1.0.0
+pyflakes==1.1.0
 flake8==2.5.4
 pyparsing==2.0.7
 singledispatch==3.4.0.3
