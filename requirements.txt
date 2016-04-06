@@ -75,7 +75,7 @@ rcssmin==1.0.6
 rjsmin==1.0.12
 cycler==0.10.0
 
-django-bootstrap3==6.2.2
+django-bootstrap3==7.0.1
 sorl==3.1
 djangowind==0.14.3
 django-indexer==0.3.0
