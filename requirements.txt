@@ -50,7 +50,7 @@ logilab-common==0.63.2
 logilab-astng==0.24.3
 pylint==1.5.5
 six==1.10.0
-numpy==1.10.1
+numpy==1.11.0
 pytz==2016.3
 python-dateutil==2.5.2
 networkx==1.9.1
