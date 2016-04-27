@@ -36,7 +36,6 @@ testtools==1.8.0
 testscenarios==0.5.0
 python-subunit==1.2.0
 rdflib==4.2.1
-selenium==2.48.0
 coverage==4.0.3
 pyasn1==0.1.9
 pycparser==2.14
