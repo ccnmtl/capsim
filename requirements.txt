@@ -52,8 +52,8 @@ six==1.10.0
 numpy==1.11.0
 pytz==2016.3
 python-dateutil==2.5.2
-networkx==1.9.1
 setuptools==20.9.0
+networkx==1.11
 python-ldap==2.4.22
 Pillow==3.0.0
 mock==1.0.1
