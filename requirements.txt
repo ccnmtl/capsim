@@ -51,7 +51,7 @@ pylint==1.5.5
 six==1.10.0
 numpy==1.11.0
 pytz==2016.3
-python-dateutil==2.5.2
+python-dateutil==2.5.3
 setuptools==20.9.0
 networkx==1.11
 python-ldap==2.4.22
