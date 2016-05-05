@@ -21,7 +21,7 @@ sure==1.2.24
 traitlets==4.2.1
 ipython_genutils==0.1.0
 pexpect==4.0.1
-pickleshare==0.5
+pickleshare==0.7.2
 simplegeneric==0.8.1
 path.py==8.1.2
 pyzmq==15.2.0
