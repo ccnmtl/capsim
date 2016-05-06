@@ -54,7 +54,7 @@ pytz==2016.4
 python-dateutil==2.5.3
 setuptools==20.9.0
 networkx==1.11
-python-ldap==2.4.22
+python-ldap==2.4.25
 Pillow==3.2.0
 mock==1.0.1
 anyjson==0.3.3
