@@ -40,7 +40,7 @@ rdflib==4.2.1
 coverage==4.0.3
 pyasn1==0.1.9
 pycparser==2.14
-cffi==1.2.1
+cffi==1.6.0
 cryptography==0.9.3
 pyOpenSSL==16.0.0
 ndg-httpsclient==0.4.0
