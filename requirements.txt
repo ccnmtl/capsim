@@ -57,7 +57,7 @@ setuptools==21.0.0
 networkx==1.11
 python-ldap==2.4.25
 Pillow==3.2.0
-mock==1.0.1
+mock==2.0.0
 anyjson==0.3.3
 amqp==1.4.9
 amqplib==1.0.2
