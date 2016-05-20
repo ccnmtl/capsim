@@ -29,7 +29,7 @@ MarkupSafe==0.23
 Jinja2==2.8
 ipython==4.2.0
 ipdb==0.10.0
-extras==0.0.3
+extras==1.0.0
 python-mimeparse==1.5.2
 unittest2==1.1.0
 fixtures==2.0.0
