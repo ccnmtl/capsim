@@ -73,6 +73,7 @@ wsgiref==0.1.2
 rcssmin==1.0.6
 rjsmin==1.0.12
 cycler==0.10.0
+ipaddress==1.0.16
 
 django-bootstrap3==7.0.1
 sorl==3.1
@@ -96,7 +97,7 @@ django-pageblocks==1.0.4
 django-quizblock==1.2.0
 django-markwhat==1.4
 django-celery==3.1.17
-fake-factory==0.5.3
+fake-factory==0.5.7
 factory_boy==2.6.1
 gunicorn==19.3.0
 django-infranil==1.0.0
