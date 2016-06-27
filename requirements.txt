@@ -51,7 +51,7 @@ logilab-common==1.2.2
 logilab-astng==0.24.3
 pylint==1.5.6
 six==1.10.0
-numpy==1.11.0
+numpy==1.11.1
 pytz==2016.4
 python-dateutil==2.5.3
 setuptools==23.0.0
