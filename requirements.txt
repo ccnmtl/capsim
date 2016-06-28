@@ -69,7 +69,7 @@ billiard==3.3.0.23
 celery==3.1.23
 sqlparse==0.1.19
 decorator==4.0.10
-boto==2.40.0
+boto==2.41.0
 contextlib2==0.5.3
 argparse==1.4.0
 wsgiref==0.1.2
