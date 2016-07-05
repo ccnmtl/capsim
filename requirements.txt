@@ -24,7 +24,6 @@ ipython_genutils==0.1.0
 pexpect==4.1.0
 pickleshare==0.7.2
 simplegeneric==0.8.1
-path.py==8.2.1
 pyzmq==15.2.0
 MarkupSafe==0.23
 Jinja2==2.8
