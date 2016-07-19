@@ -51,7 +51,7 @@ logilab-astng==0.24.3
 pylint==1.5.6
 six==1.10.0
 numpy==1.11.1
-pytz==2016.6
+pytz==2016.6.1
 python-dateutil==2.5.3
 setuptools==24.0.3
 networkx==1.11
