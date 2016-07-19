@@ -36,6 +36,7 @@ fixtures==3.0.0
 testtools==2.2.0
 testscenarios==0.5.0
 python-subunit==1.2.0
+webencodings==0.5
 rdflib==4.2.1
 coverage==4.1
 pyasn1==0.1.9
