@@ -67,7 +67,7 @@ kombu==3.0.35
 librabbitmq==1.6.1
 billiard==3.3.0.23
 celery==3.1.23
-sqlparse==0.1.19
+sqlparse==0.2.0
 decorator==4.0.10
 boto==2.42.0
 contextlib2==0.5.3
