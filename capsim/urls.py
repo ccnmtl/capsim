@@ -1,3 +1,9 @@
+import django.contrib.auth.views
+import django.views.static
+import djangowind.views
+import capsim.main.views
+import capsim.sim.views
+
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
@@ -6,23 +12,17 @@ from django.views.generic import DetailView
 from django.views.generic.edit import DeleteView
 from pagetree.generic.views import PageView
 from infranil.views import InfranilView
-import capsim.main.views
-import capsim.sim.views
 from capsim.sim.models import RunRecord, Experiment, Parameter
 admin.autodiscover()
 
 redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
 auth_urls = url(r'^accounts/', include('django.contrib.auth.urls'))
-logout_page = url(
-    r'^accounts/logout/$',
-    'django.contrib.auth.views.logout',
-    {'next_page': redirect_after_logout})
+logout_page = url(r'^accounts/logout/$', django.contrib.auth.views.logout,
+                  {'next_page': redirect_after_logout})
 if hasattr(settings, 'CAS_BASE'):
     auth_urls = url(r'^accounts/', include('djangowind.urls'))
-    logout_page = url(
-        r'^accounts/logout/$',
-        'djangowind.views.logout',
-        {'next_page': redirect_after_logout})
+    logout_page = url(r'^accounts/logout/$', djangowind.views.logout,
+                      {'next_page': redirect_after_logout})
 
 urlpatterns = [
     auth_urls,
@@ -92,8 +92,8 @@ urlpatterns = [
     url(r'^model/', TemplateView.as_view(template_name="main/model.html")),
     url(r'smoketest/', include('smoketest.urls')),
     url(r'^infranil/(?P<path>.*)$', InfranilView.as_view()),
-    url(r'^uploads/(?P<path>.*)$',
-        'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^uploads/(?P<path>.*)$', django.views.static.serve,
+        {'document_root': settings.MEDIA_ROOT}),
     url(r'^pagetree/', include('pagetree.urls')),
     url(r'^quizblock/', include('quizblock.urls')),
     url(r'^pages/edit/(?P<path>.*)$', capsim.main.views.EditPage.as_view(),
