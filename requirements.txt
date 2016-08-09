@@ -48,7 +48,7 @@ cryptography==1.4
 pyOpenSSL==16.0.0
 ndg-httpsclient==0.4.2
 certifi==2016.8.2
-requests==2.10.0
+requests==2.11.0
 logilab-common==1.2.2
 logilab-astng==0.24.3
 pylint==1.6.4
