@@ -12,7 +12,7 @@ pyflakes==1.2.3
 pycodestyle==2.0.0
 configparser==3.5.0
 enum34==1.1.6
-flake8==3.0.3
+flake8==3.0.4
 pyparsing==2.1.5
 singledispatch==3.4.0.3
 backports-abc==0.4
@@ -48,7 +48,7 @@ cryptography==1.4
 pyOpenSSL==16.0.0
 ndg-httpsclient==0.4.2
 certifi==2016.8.8
-requests==2.10.0
+requests==2.11.0
 logilab-common==1.2.2
 logilab-astng==0.24.3
 pylint==1.6.4
@@ -86,7 +86,7 @@ djangowind==0.15.0
 django-appconf==1.0.2
 django-compressor==2.0
 django-statsd-mozilla==0.3.16
-raven==5.24.2
+raven==5.24.3
 django-bootstrap-form==3.2.1
 django-debug-toolbar==1.5
 django-waffle==0.11.1
