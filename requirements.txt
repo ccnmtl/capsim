@@ -13,7 +13,7 @@ pycodestyle==2.0.0
 configparser==3.5.0
 enum34==1.1.6
 flake8==3.0.4
-pyparsing==2.1.6
+pyparsing==2.1.7
 singledispatch==3.4.0.3
 backports-abc==0.4
 tornado==4.4.1
