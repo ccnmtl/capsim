@@ -44,7 +44,7 @@ coverage==4.2
 pyasn1==0.1.9
 pycparser==2.14
 cffi==1.7.0
-cryptography==1.4
+cryptography==1.5
 pyOpenSSL==16.0.0
 ndg-httpsclient==0.4.2
 certifi==2016.8.8
