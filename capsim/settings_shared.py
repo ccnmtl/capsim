@@ -79,7 +79,7 @@ INTERVENTION_SKEWS = {
     # 2-4:  Introduce, Modify, and Utilize Health-Promoting
     #       Food and Beverage Retailing and Distribution Policies
     ('intervention_health_promoting_food', 'high'): dict(mass=-2.),
-    ('intervention_health_promoting_food', 'high'): dict(mass=-1.),
+    ('intervention_health_promoting_food', 'medium'): dict(mass=-1.),
 
     # 4-3: Encourage Active Living and Healthy Eating at Work
     ('intervention_healthy_eating_at_work', 'high'): dict(mass=-3.),
