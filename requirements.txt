@@ -80,7 +80,7 @@ rjsmin==1.0.12
 cycler==0.10.0
 ipaddress==1.0.17
 
-django-bootstrap3==7.0.1
+django-bootstrap3==7.1.0
 sorl==3.1
 djangowind==0.15.0
 django-appconf==1.0.2
