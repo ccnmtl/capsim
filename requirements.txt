@@ -47,7 +47,7 @@ cffi==1.8.3
 cryptography==1.5.1
 pyOpenSSL==16.1.0
 ndg-httpsclient==0.4.2
-certifi==2016.8.31
+certifi==2016.9.26
 requests==2.11.1
 logilab-common==1.2.2
 logilab-astng==0.24.3
