@@ -113,4 +113,4 @@ django-smtp-ssl==1.0
 matplotlib==1.5.3
 pandas==0.18.1
 
-ccnmtlsettings==0.3.0
+ccnmtlsettings==1.1.2
