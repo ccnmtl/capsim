@@ -42,7 +42,7 @@ webencodings==0.5
 rdflib==4.2.1
 coverage==4.2
 pyasn1==0.1.9
-pycparser==2.16
+pycparser==2.17
 cffi==1.8.3
 cryptography==1.5.2
 pyOpenSSL==16.2.0
