@@ -7,6 +7,6 @@ install:
 python:
   - "2.7"
 script:
-  - make
+  - make jenkins
 notifications:
   slack: ccnmtl:GizSNscLWJLldjQrffB8mwgm
