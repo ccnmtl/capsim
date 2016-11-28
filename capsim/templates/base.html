@@ -242,18 +242,18 @@
 <script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
 {% endcompress %}
 
-<script src="//cdn.ravenjs.com/1.1.18/jquery,native/raven.min.js"></script>
+<script src="https://cdn.ravenjs.com/3.8.1/raven.min.js"></script>
 <script>
 Raven.config('https://5b524de512e0496f846471c20abfde0e@sentry.ccnmtl.columbia.edu/3', {
     whitelistUrls: [/capsim\.ccnmtl\.columbia\.edu/]
 }).install();
 {% if not request.user.is_anonymous %}
-Raven.setUser({
+Raven.setUserContext({
     email: '{{request.user.email}}',
     id: '{{request.user.username}}'
 });
 {% else %}
-Raven.setUser({
+Raven.setUserContext({
     email: 'none',
     id: 'anonymous'
 });
