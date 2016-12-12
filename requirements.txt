@@ -105,7 +105,7 @@ django-treebeard==4.1.0
 django-pagetree==1.2.4
 django-pageblocks==1.0.4
 django-quizblock==1.2.2
-django-markwhat==1.5
+django-markwhat==1.5.1
 django-celery==3.1.17
 Faker==0.7.3
 factory_boy==2.7.0
