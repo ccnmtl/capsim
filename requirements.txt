@@ -40,7 +40,7 @@ testscenarios==0.5.0
 python-subunit==1.2.0
 webencodings==0.5
 rdflib==4.2.1
-coverage==4.3.1
+coverage==4.3.4
 pyasn1==0.1.9
 pycparser==2.17
 cffi==1.9.1
@@ -54,14 +54,14 @@ logilab-astng==0.24.3
 pylint==1.6.4
 six==1.10.0
 
-numpy==1.11.3
+numpy==1.12.0
 pytz==2016.10
 
 python-dateutil==2.6.0
 setuptools==29.0.1
 
 networkx==1.11
-ldap3==2.1.1
+ldap3==2.2.0
 olefile==0.44
 Pillow==4.0.0
 mock==2.0.0
@@ -101,7 +101,7 @@ django-smoketest==1.0.0
 django-extensions==1.7.5
 django-ga-context==0.1.0
 django-stagingcontext==0.1.0
-django-impersonate==1.0.1
+django-impersonate==1.1
 django-treebeard==4.1.0
 django-pagetree==1.2.4
 django-pageblocks==1.0.4
