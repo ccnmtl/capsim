@@ -64,7 +64,7 @@ python-dateutil==2.6.0
 setuptools==29.0.1
 
 networkx==1.11
-ldap3==2.2.0
+ldap3==2.2.1
 olefile==0.44
 Pillow==4.0.0
 mock==2.0.0
