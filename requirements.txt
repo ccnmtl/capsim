@@ -111,7 +111,7 @@ django-pageblocks==1.0.4
 django-quizblock==1.2.2
 django-markwhat==1.5.1
 django-celery==3.2.1
-Faker==0.7.7
+Faker==0.7.9
 factory_boy==2.8.1
 gunicorn==19.6.0
 django-infranil==1.1.0
