@@ -1,5 +1,5 @@
 --index-url https://pypi.ccnmtl.columbia.edu/
-Django==1.10.5
+Django==1.10.6
 httplib2==0.10.2
 Markdown==2.6.8
 uuid==1.30
