@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "makeGraph" }]*/
 //var margin = 15;
 //width = 860;
 //height = 200;
