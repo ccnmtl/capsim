@@ -5,6 +5,9 @@ module.exports = {
         "jquery": true
     },
     "extends": "eslint:recommended",
+    "globals": {
+        "d3": true,
+    },
     "rules": {
         "indent": [
             "error",
