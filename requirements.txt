@@ -114,7 +114,7 @@ django-markwhat==1.5.1
 django-celery==3.2.1
 Faker==0.7.10
 factory_boy==2.8.1
-gunicorn==19.7.0
+gunicorn==19.7.1
 django-infranil==1.1.0
 django-storages==1.5.2
 django-cacheds3storage==0.1.2
