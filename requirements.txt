@@ -67,7 +67,7 @@ setuptools==34.3.2
 networkx==1.11
 ldap3==2.2.2
 olefile==0.44
-Pillow==4.0.0
+Pillow==4.1.0
 mock==2.0.0
 anyjson==0.3.3
 
