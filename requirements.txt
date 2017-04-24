@@ -33,7 +33,7 @@ ipython==5.3.0
 
 Jinja2==2.9.6
 
-ipdb==0.10.2
+ipdb==0.10.3
 extras==1.0.0
 python-mimeparse==1.6.0
 unittest2==1.1.0
