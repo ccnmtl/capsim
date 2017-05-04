@@ -393,7 +393,7 @@ class RunOutput(object):
     def __init__(self, ticks, params, data):
         self.ticks = ticks
         self.params = params
-        self.data = pd.DataFrame(data).sort(['tick'])
+        self.data = pd.DataFrame(data).sort_values(by=['tick'])
 
     def to_dict(self):
         return dict(
