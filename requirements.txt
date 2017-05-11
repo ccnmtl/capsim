@@ -52,7 +52,7 @@ cryptography==1.8.1
 pyOpenSSL==17.0.0
 ndg-httpsclient==0.4.2
 certifi==2017.4.17
-requests==2.13.0
+requests==2.14.2
 logilab-common==1.4.0
 logilab-astng==0.24.3
 editdistance==0.3.1
