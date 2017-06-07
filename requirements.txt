@@ -1,6 +1,5 @@
---index-url https://pypi.ccnmtl.columbia.edu/
 Django==1.11.2
-httplib2==0.10.2
+httplib2==0.10.3
 Markdown==2.6.8
 uuid==1.30
 psycopg2==2.7.1
@@ -97,7 +96,7 @@ cycler==0.10.0
 ipaddress==1.0.18
 
 django-bootstrap3==8.2.3
-sorl==3.1
+requirements/src/sorl-3.1.tar.gz
 djangowind==1.0.0
 django-appconf==1.0.2
 django-compressor==2.1.1
@@ -114,7 +113,7 @@ django-stagingcontext==0.1.0
 django-impersonate==1.1
 django-treebeard==4.1.1
 django-pagetree==1.3.2
-django-pageblocks==1.0.4
+django-pageblocks==1.1.0
 django-quizblock==1.2.2
 django-markwhat==1.5.1
 django-celery==3.2.1
