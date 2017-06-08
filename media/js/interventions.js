@@ -22,7 +22,7 @@ var updateBudgetProgressBar = function() {
 };
 
 var overBudget = function(amount) {
-    $('#run-sim-button').attr('disabled','disabled');
+    $('#run-sim-button').attr('disabled', 'disabled');
     $('#overbudget-amount').text(amount);
     $('#overbudget').show();
 };
