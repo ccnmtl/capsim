@@ -11,23 +11,23 @@ var makeGraph = function(loc, data, width, height, yAxisLabel) {
     var x = d3.scale.linear().domain([0, data.length]).range([0, w]);
 
     var xAxis = d3.svg.axis().scale(x)
-         .orient('bottom').ticks(5);
+        .orient('bottom').ticks(5);
     var yAxis = d3.svg.axis().scale(y)
-         .orient('left').ticks(5);
+        .orient('left').ticks(5);
     var valueLine = d3.svg.line()
         .x(function(d, i) { return x(i); })
         .y(function(d) { return y(d); });
     var svg = d3.select(loc)
         .append('svg:svg')
-            .attr('width', width)
-            .attr('height', height)
+        .attr('width', width)
+        .attr('height', height)
         .append('svg:g')
         .attr('transform',
-              'translate(' + margin.left + ',' + margin.top + ')');
+            'translate(' + margin.left + ',' + margin.top + ')');
 
     svg.append('path')
-       .attr('d', valueLine(data))
-       .attr('class', 'mean');
+        .attr('d', valueLine(data))
+        .attr('class', 'mean');
 
     svg.append('g')
         .attr('class', 'x-axis')
@@ -36,7 +36,7 @@ var makeGraph = function(loc, data, width, height, yAxisLabel) {
 
     svg.append('text')
         .attr('transform',
-              'translate(' + (w / 2) + ' ,' + (h + margin.bottom) + ')')
+            'translate(' + (w / 2) + ' ,' + (h + margin.bottom) + ')')
         .style('text-anchor', 'middle')
         .text('Simulation Time');
 
