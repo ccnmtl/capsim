@@ -121,7 +121,7 @@ Faker==0.7.18
 factory_boy==2.9.0
 gunicorn==19.7.1
 django-infranil==1.1.0
-django-storages==1.6.4
+django-storages==1.6.5
 django-cacheds3storage==0.1.2
 django-smtp-ssl==1.0
 
