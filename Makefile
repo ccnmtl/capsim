@@ -14,8 +14,3 @@ compose-run:
 
 notebook: ./ve/bin/python
 	$(MANAGE) shell_plus --notebook
-
-eslint: $(JS_SENTINAL)
-	$(NODE_MODULES)/.bin/eslint $(JS_FILES)
-
-.PHONY: eslint
