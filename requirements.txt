@@ -61,7 +61,7 @@ logilab-common==1.4.1
 logilab-astng==0.24.3
 editdistance==0.3.1
 pylint==1.7.2
-six==1.10.0
+six==1.11.0
 
 numpy==1.13.1
 pytz==2017.2
