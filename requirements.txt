@@ -117,7 +117,7 @@ django-pageblocks==1.2.0  # pyup: <2.0.0
 django-quizblock==1.2.3
 django-markwhat==1.5.1
 django-celery==3.2.1
-Faker==0.8.3
+Faker==0.8.4
 factory_boy==2.9.2
 gunicorn==19.7.1
 django-infranil==1.1.0
