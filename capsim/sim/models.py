@@ -268,7 +268,7 @@ class Experiment(models.Model):
         p = self.full_csv_path()
         try:
             os.unlink(p)
-        except:
+        except OSError:
             # failing to delete the file shouldn't be fatal
             # most of the time, it will just mean that
             # the file just doesn't exist
