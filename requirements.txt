@@ -63,7 +63,7 @@ editdistance==0.3.1
 pylint==1.7.2
 six==1.11.0
 
-numpy==1.13.2
+numpy==1.13.3
 pytz==2017.2
 
 python-dateutil==2.6.1
