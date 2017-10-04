@@ -43,7 +43,7 @@ python-subunit==1.2.0
 webencodings==0.5.1
 rdflib==4.2.2
 coverage==4.4.1
-pyasn1==0.3.6
+pyasn1==0.3.7
 pycparser==2.18
 cffi==1.11.1
 asn1crypto==0.23.0
