@@ -101,7 +101,7 @@ djangowind==1.0.1
 django-appconf==1.0.2
 django-compressor==2.2
 django-statsd-mozilla==0.4.0
-raven==6.2.1
+raven==6.3.0
 django-bootstrap-form==3.3
 django-debug-toolbar==1.8
 django-waffle==0.12.0
