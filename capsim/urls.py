@@ -1,18 +1,20 @@
-import django.contrib.auth.views
-import django.views.static
-import djangowind.views
-import capsim.main.views
-import capsim.sim.views
-
+from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.conf import settings
-from django.views.generic import TemplateView
+import django.contrib.auth.views
 from django.views.generic import DetailView
+from django.views.generic import TemplateView
 from django.views.generic.edit import DeleteView
-from pagetree.generic.views import PageView
+import django.views.static
+import djangowind.views
 from infranil.views import InfranilView
+from pagetree.generic.views import PageView
+
+import capsim.main.views
 from capsim.sim.models import RunRecord, Experiment, Parameter
+import capsim.sim.views
+
+
 admin.autodiscover()
 
 redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
@@ -104,3 +106,7 @@ urlpatterns = [
         hierarchy_name="main",
         hierarchy_base="/pages/")),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += [url(r'^__debug__/', include(debug_toolbar.urls))]
