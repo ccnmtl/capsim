@@ -244,14 +244,15 @@ def count_neighbors_greater(neighbors, a):
     """ returns count of neighbors that are >= than each agent in array a """
     out = np.zeros(a.shape)
     for i in range(len(a)):
-        out[i] = len(np.where(a[[neighbors.neighbors(i)]] >= a[i])[0])
+        lst = list(neighbors.neighbors(i))
+        out[i] = len(np.where(a[[lst]] >= a[i])[0])
     return out
 
 
 def count_neighbors(neighbors):
     """ takes a nx.Graph and returns list np.array of # neighbors
     basically, the degrees of each """
-    dlist = np.array(list(neighbors.degree_iter()))
+    dlist = np.array(list(neighbors.degree()))
     return dlist.T[1]
 
 
