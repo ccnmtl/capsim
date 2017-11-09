@@ -30,7 +30,7 @@ MarkupSafe==1.0
 
 ipython==5.5.0 # pyup: <6.0.0
 
-Jinja2==2.9.6
+Jinja2==2.10
 
 ipdb==0.10.3
 extras==1.0.0
