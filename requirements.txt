@@ -67,7 +67,7 @@ numpy==1.13.3
 pytz==2017.3
 
 python-dateutil==2.6.1
-setuptools==38.2.1
+setuptools==38.2.3
 
 networkx==2.0
 ldap3==2.4
