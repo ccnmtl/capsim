@@ -120,7 +120,7 @@ django-markwhat==1.6.0
 django-celery==3.2.2
 text-unidecode==1.1
 Faker==0.8.10
-factory_boy==2.9.2
+factory_boy==2.10.0
 gunicorn==19.7.1
 django-infranil==1.1.0
 django-storages==1.6.5
