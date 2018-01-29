@@ -49,7 +49,7 @@ cffi==1.11.4
 asn1crypto==0.24.0
 cryptography==2.1.4
 pyOpenSSL==17.5.0
-ndg-httpsclient==0.4.3
+ndg-httpsclient==0.4.4
 certifi==2018.1.18
 
 chardet==3.0.4
