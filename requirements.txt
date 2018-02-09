@@ -64,7 +64,7 @@ pylint==1.8.2
 six==1.11.0
 
 numpy==1.14.0
-pytz==2017.3
+pytz==2018.3
 
 python-dateutil==2.6.1
 setuptools==38.5.1
