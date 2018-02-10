@@ -42,7 +42,7 @@ testscenarios==0.5.0
 python-subunit==1.2.0
 webencodings==0.5.1
 rdflib==4.2.2
-coverage==4.5
+coverage==4.5.1
 pyasn1==0.4.2
 pycparser==2.18
 cffi==1.11.4
