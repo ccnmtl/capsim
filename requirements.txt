@@ -45,7 +45,7 @@ rdflib==4.2.2
 coverage==4.5.1
 pyasn1==0.4.2
 pycparser==2.18
-cffi==1.11.4
+cffi==1.11.5
 asn1crypto==0.24.0
 cryptography==2.1.4
 pyOpenSSL==17.5.0
