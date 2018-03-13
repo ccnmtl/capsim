@@ -119,7 +119,7 @@ django-quizblock==1.2.3
 django-markwhat==1.6.0
 django-celery==3.2.2
 text-unidecode==1.2
-Faker==0.8.11
+Faker==0.8.12
 factory_boy==2.10.0
 gunicorn==19.7.1
 django-infranil==1.1.0
