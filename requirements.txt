@@ -93,7 +93,7 @@ wsgiref==0.1.2
 rcssmin==1.0.6
 rjsmin==1.0.12
 cycler==0.10.0
-ipaddress==1.0.19
+ipaddress==1.0.21
 
 django-bootstrap3==9.1.0
 requirements/src/sorl-3.1.tar.gz
