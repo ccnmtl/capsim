@@ -4,8 +4,7 @@ sudo: false
 install:
   - pip install -U pip wheel
   - pip install -U setuptools
-  - pip install --only-binary=numpy numpy
-  - pip install -r requirements.txt
+  - pip install -r requirements.txt --only-binary=numpy
 python:
   - "2.7.6"
 script:
