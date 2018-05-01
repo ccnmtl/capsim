@@ -95,7 +95,7 @@ rjsmin==1.0.12
 cycler==0.10.0
 ipaddress==1.0.21
 
-django-bootstrap3==9.1.0
+django-bootstrap3==10.0.0
 requirements/src/sorl-3.1.tar.gz
 djangowind==1.1.0
 django-appconf==1.0.2
