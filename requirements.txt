@@ -85,7 +85,7 @@ billiard==3.5.0.4
 celery==3.1.26.post2 # pyup: <4.0.0
 sqlparse==0.2.4
 decorator==4.2.1
-boto==2.48.0
+boto==2.49.0
 contextlib2==0.5.5
 argparse==1.4.0
 wsgiref==0.1.2
