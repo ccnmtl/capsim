@@ -27,7 +27,7 @@ simplegeneric==0.8.1
 pyzmq==17.1.0
 MarkupSafe==1.0
 
-ipython==5.7.0 # pyup: <6.0.0
+ipython==5.8.0 # pyup: <6.0.0
 
 Jinja2==2.10
 
