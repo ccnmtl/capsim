@@ -62,7 +62,7 @@ editdistance==0.4
 pylint==1.9.3 # pyup: <2.0.0
 six==1.11.0
 
-numpy==1.15.0
+numpy==1.15.1
 pytz==2018.5
 
 python-dateutil==2.7.3
