@@ -49,7 +49,7 @@ asn1crypto==0.24.0
 cryptography==2.3.1
 pyOpenSSL==18.0.0
 ndg-httpsclient==0.5.1
-certifi==2018.8.13
+certifi==2018.8.24
 
 chardet==3.0.4
 idna==2.7
@@ -107,7 +107,7 @@ django-waffle==0.14.0
 django-jenkins==0.110.0
 django-smoketest==1.1.0
 django-extensions==2.1.2
-typing==3.6.4 # needed for django-extensions
+typing==3.6.6 # needed for django-extensions
 django-ga-context==0.1.0
 django-stagingcontext==0.1.0
 django-impersonate==1.3
