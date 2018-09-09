@@ -115,7 +115,7 @@ django-treebeard==4.2.1
 django-pagetree==1.4.1
 django-pageblocks==1.2.0  # pyup: <2.0.0
 django-quizblock==1.2.3
-django-markwhat==1.6.0
+django-markwhat==1.6.1
 django-celery==3.2.2
 text-unidecode==1.2
 Faker==0.8.18
