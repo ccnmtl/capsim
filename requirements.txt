@@ -43,7 +43,7 @@ webencodings==0.5.1
 rdflib==4.2.2
 coverage==4.5.1
 pyasn1==0.4.4
-pycparser==2.18
+pycparser==2.19
 cffi==1.11.5
 asn1crypto==0.24.0
 cryptography==2.3.1
