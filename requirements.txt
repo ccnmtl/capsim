@@ -68,7 +68,7 @@ pytz==2018.5
 python-dateutil==2.7.3
 setuptools==40.4.3
 
-networkx==2.1
+networkx==2.2
 ldap3==2.5.1
 olefile==0.46
 Pillow==5.2.0
