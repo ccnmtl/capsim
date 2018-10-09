@@ -120,7 +120,7 @@ django-celery==3.2.2
 text-unidecode==1.2
 Faker==0.9.1
 factory_boy==2.11.1
-gunicorn==19.8.1
+gunicorn==19.9.0
 django-infranil==1.1.0
 django-storages==1.7.1
 django-cacheds3storage==0.1.2
