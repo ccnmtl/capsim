@@ -126,7 +126,7 @@ django-storages==1.7.1
 django-cacheds3storage==0.1.2
 django-smtp-ssl==1.0
 
-subprocess32==3.5.2
+subprocess32==3.5.3
 
 matplotlib==2.2.3 # pyup: <3.0.0
 pandas==0.22.0 # pyup: <0.23.0
