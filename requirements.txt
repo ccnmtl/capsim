@@ -65,7 +65,7 @@ six==1.11.0
 numpy==1.15.2
 pytz==2018.5
 
-python-dateutil==2.7.3
+python-dateutil==2.7.4
 setuptools==40.4.3
 
 networkx==2.2
