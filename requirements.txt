@@ -9,7 +9,7 @@ mccabe==0.6.1
 pyflakes==2.0.0
 pycodestyle==2.4.0
 configparser==3.5.0
-enum34==1.1.6
+enum34==1.1.6; python_version < '3.4'
 flake8==3.6.0
 pyparsing==2.3.0
 singledispatch==3.4.0.3
