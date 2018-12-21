@@ -1,5 +1,5 @@
 import numpy as np
-import defaults
+from capsim.sim import defaults
 
 
 class NormalVarParams(object):

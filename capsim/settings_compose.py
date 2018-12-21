@@ -1,5 +1,5 @@
 # flake8: noqa
-from settings_shared import *
+from capsim.settings_shared import *
 
 DEBUG = True
 DATABASES = {
@@ -17,6 +17,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 BROKER_URL = "amqp://guest:guest@rabbitmq:5672/"
 
 try:
-    from local_settings import *
+    from capsim.local_settings import *
 except ImportError:
     pass

@@ -86,7 +86,7 @@ class InterventionAddView(LoggedInMixin, View):
 
 class InterventionSetCostsView(LoggedInMixin, View):
     def post(self, request):
-        for k in request.POST.keys():
+        for k in list(request.POST.keys()):
             (level, _, intervention_id) = k.split("_")
             cost = request.POST.get(k, "0")
             i = Intervention.objects.get(pk=intervention_id)
@@ -109,7 +109,7 @@ class InterventionEditView(LoggedInMixin, View):
     def post(self, request, pk):
         intervention = get_object_or_404(self.model, pk=pk)
         intervention.clear_all_modifiers()
-        for k in request.POST.keys():
+        for k in list(request.POST.keys()):
             (level, t, n) = k.split("_")
             if t != "parameter":
                 continue
@@ -153,7 +153,7 @@ class CompareRunsView(LoggedInMixin, TemplateView):
 
     def get_context_data(self):
         runs = []
-        for k in self.request.GET.keys():
+        for k in list(self.request.GET.keys()):
             if not k.startswith('run'):
                 continue
             id = k.split('_')[1]

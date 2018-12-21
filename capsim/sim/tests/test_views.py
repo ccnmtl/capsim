@@ -20,14 +20,14 @@ class BasicViewTest(TestCase):
     def test_run_form(self):
         response = self.c.get("/run/new/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("id=\"test-new-run-form\"" in response.content)
+        self.assertContains(response, "id=\"test-new-run-form\"")
 
     def test_run_form_disabled(self):
         self.flag.everyone = False
         self.flag.save()
         response = self.c.get("/run/new/")
         self.assertEquals(response.status_code, 200)
-        self.assertFalse("id=\"test-new-run-form\"" in response.content)
+        self.assertNotContains(response, "id=\"test-new-run-form\"")
 
     def test_toggle_flag(self):
         response = self.c.post("/run/toggle/", dict())
@@ -38,7 +38,7 @@ class BasicViewTest(TestCase):
     def test_runs(self):
         response = self.c.get("/run/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("<p>No saved runs yet.</p>" in response.content)
+        self.assertContains(response, "<p>No saved runs yet.</p>")
 
     def test_run(self):
         u = User.objects.create(username='test')
@@ -50,7 +50,7 @@ class BasicViewTest(TestCase):
         ror.from_runoutput(out)
         response = self.c.get("/run/%d/" % rr.id)
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("<h2>Saved Run: " in response.content)
+        self.assertContains(response, "<h2>Saved Run: ")
 
     def test_edit_run(self):
         u = User.objects.create(username='test')
@@ -82,7 +82,7 @@ class BasicViewTest(TestCase):
         ror.from_runoutput(out)
         response = self.c.get("/run/compare/?run_%d=on" % rr.id)
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("makeGraph" in response.content)
+        self.assertContains(response, "makeGraph")
 
     def test_run_json(self):
         u = User.objects.create(username='test')
@@ -94,7 +94,7 @@ class BasicViewTest(TestCase):
         ror.from_runoutput(out)
         response = self.c.get("/run/%d/json/" % rr.id)
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("agents_mass" in response.content)
+        self.assertContains(response, "agents_mass")
 
 
 class ExperimentViewTest(TestCase):
@@ -117,7 +117,7 @@ class ExperimentViewTest(TestCase):
     def test_experiment_post_invalid(self):
         response = self.c.post("/experiment/new/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("errorlist" in response.content)
+        self.assertContains(response, "errorlist")
 
     def test_experiment_post_valid(self):
         response = self.c.post(
@@ -174,7 +174,7 @@ class ExperimentViewTest(TestCase):
         er = ExpRunFactory()
         r = self.c.get(er.experiment.get_absolute_url() + "delete/")
         self.assertEqual(r.status_code, 200)
-        self.assertTrue("<form" in r.content)
+        self.assertContains(r, "<form")
         r = self.c.post(er.experiment.get_absolute_url() + "delete/")
         self.assertEqual(r.status_code, 302)
 
@@ -193,7 +193,7 @@ class InterventionViewTest(TestCase):
         more granular unit tests later"""
         response = self.c.get("/calibrate/intervention/add/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("<form" in response.content)
+        self.assertContains(response, "<form")
 
         response = self.c.post(
             "/calibrate/intervention/add/",
@@ -203,7 +203,7 @@ class InterventionViewTest(TestCase):
         self.assertEquals(response.status_code, 302)
 
         response = self.c.get("/calibrate/intervention/")
-        self.assertTrue("new intervention" in response.content)
+        self.assertContains(response, "new intervention")
 
         i = Intervention.objects.all()[0]
         response = self.c.post(
@@ -215,7 +215,7 @@ class InterventionViewTest(TestCase):
             })
         self.assertEquals(response.status_code, 302)
         response = self.c.get("/calibrate/intervention/")
-        self.assertTrue("400" in response.content)
+        self.assertContains(response, "400")
 
         response = self.c.get(i.get_absolute_url())
         self.assertEquals(response.status_code, 200)
@@ -242,7 +242,7 @@ class ParameterViewTest(TestCase):
         more granular unit tests later"""
         response = self.c.get("/calibrate/parameter/add/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("<form" in response.content)
+        self.assertContains(response, "<form")
 
         response = self.c.post(
             "/calibrate/parameter/add/",
@@ -251,7 +251,7 @@ class ParameterViewTest(TestCase):
         self.assertEquals(response.status_code, 302)
 
         response = self.c.get("/calibrate/parameter/")
-        self.assertTrue("new_parameter" in response.content)
+        self.assertContains(response, "new_parameter")
 
         p = Parameter.objects.all()[0]
         response = self.c.post(
@@ -261,7 +261,7 @@ class ParameterViewTest(TestCase):
                  ))
         self.assertEquals(response.status_code, 302)
         response = self.c.get("/calibrate/parameter/")
-        self.assertTrue("2.0" in response.content)
+        self.assertContains(response, "2.0")
 
         response = self.c.get(p.get_absolute_url())
         self.assertEquals(response.status_code, 200)

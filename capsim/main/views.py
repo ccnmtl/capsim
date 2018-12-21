@@ -23,7 +23,7 @@ class LoggedInMixin(object):
 
 def apply_skews(request, skew_params):
     i_s = settings.INTERVENTION_SKEWS
-    for k in request.POST.keys():
+    for k in list(request.POST.keys()):
         if not k.startswith('intervention_'):
             continue
         v = request.POST[k]

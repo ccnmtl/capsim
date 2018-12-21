@@ -4,6 +4,7 @@ sudo: false
 python:
   - "2.7.6"
   - "2.7"
+  - "3.6"
 install:
   - pip install -U pip==9.0.3
   - pip install -U wheel

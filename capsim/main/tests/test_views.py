@@ -22,7 +22,7 @@ class BasicViewTest(TestCase):
     def test_root_post_invalid(self):
         response = self.c.post("/run/new/")
         self.assertEquals(response.status_code, 200)
-        self.assertTrue("errorlist" in response.content)
+        self.assertContains(response, "errorlist")
 
     def test_root_post_valid(self):
         response = self.c.post(
