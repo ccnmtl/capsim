@@ -75,7 +75,7 @@ Pillow==5.3.0
 mock==2.0.0
 anyjson==0.3.3
 
-vine==1.1.4
+vine==1.2.0
 amqp==2.3.2
 
 amqplib==1.0.2
