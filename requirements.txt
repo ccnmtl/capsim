@@ -63,7 +63,7 @@ pylint==1.9.4 # pyup: <2.0.0
 six==1.12.0
 
 numpy==1.16.0
-pytz==2018.7
+pytz==2018.9
 
 python-dateutil==2.7.5
 setuptools==40.6.3
