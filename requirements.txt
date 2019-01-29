@@ -84,7 +84,7 @@ librabbitmq==2.0.0
 billiard==3.5.0.5
 celery==3.1.26.post2 # pyup: <4.0.0
 sqlparse==0.2.4
-decorator==4.3.0
+decorator==4.3.2
 boto==2.49.0
 contextlib2==0.5.5
 argparse==1.4.0
