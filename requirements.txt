@@ -1,5 +1,5 @@
-Django==1.11.18 # pyup: <2.0
-httplib2==0.12.0
+Django==1.11.20 # pyup: <2.0
+httplib2==0.12.1
 Markdown==2.6.11
 psycopg2==2.7.7
 versiontools==1.9.1
@@ -10,14 +10,14 @@ pyflakes==2.1.0
 pycodestyle==2.5.0
 configparser==3.7.1
 enum34==1.1.6; python_version < '3.4'
-flake8==3.6.0
+flake8==3.7.5
 pyparsing==2.3.1
 singledispatch==3.4.0.3
 backports-abc==0.5
 tornado==4.5.3 # pyup: < 5.0
 BeautifulSoup==3.2.1
 cssselect==1.0.3
-lxml==4.3.0
+lxml==4.3.1
 sure==1.4.11
 traitlets==4.3.2
 ipython_genutils==0.2.0
@@ -66,7 +66,7 @@ numpy==1.16.1
 pytz==2018.9
 
 python-dateutil==2.8.0
-setuptools==40.7.3
+setuptools==40.8.0
 
 networkx==2.2
 ldap3==2.5.2
@@ -76,7 +76,7 @@ mock==2.0.0
 anyjson==0.3.3
 
 vine==1.2.0
-amqp==2.4.0
+amqp==2.4.1
 
 amqplib==1.0.2
 kombu==3.0.37 # pyup: <4.0.0
@@ -137,3 +137,6 @@ pbr==5.1.2
 pyyaml==4.2b4
 stevedore>=1.20.0 # Apache-2.0
 bandit==1.5.1
+
+entrypoints==0.3
+functools32==3.2.3-2; python_version < '3'
