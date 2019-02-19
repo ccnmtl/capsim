@@ -15,7 +15,6 @@ pyparsing==2.3.1
 singledispatch==3.4.0.3
 backports-abc==0.5
 tornado==4.5.3 # pyup: < 5.0
-BeautifulSoup==3.2.1
 cssselect==1.0.3
 lxml==4.3.1
 sure==1.4.11
@@ -80,7 +79,6 @@ amqp==2.4.1
 
 amqplib==1.0.2
 kombu==3.0.37 # pyup: <4.0.0
-librabbitmq==2.0.0
 billiard==3.6.0.0
 celery==3.1.26.post2 # pyup: <4.0.0
 sqlparse==0.2.4
@@ -88,7 +86,6 @@ decorator==4.3.2
 boto==2.49.0
 contextlib2==0.5.5
 argparse==1.4.0
-wsgiref==0.1.2
 rcssmin==1.0.6
 rjsmin==1.0.12
 cycler==0.10.0
@@ -129,7 +126,7 @@ django-smtp-ssl==1.0
 subprocess32==3.5.3
 
 matplotlib==2.2.3 # pyup: <3.0.0
-pandas==0.22.0 # pyup: <0.23.0
+pandas==0.23.4 # pyup: <0.24.0
 
 ccnmtlsettings==1.5.0
 

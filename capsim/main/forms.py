@@ -263,7 +263,7 @@ class ExperimentForm(forms.Form):
 
     independent_variable = forms.ChoiceField(
         initial="gamma_1",
-        choices=zip(FLOAT_FIELDS, FLOAT_FIELDS),
+        choices=list(zip(FLOAT_FIELDS, FLOAT_FIELDS)),
         label="Independent Variable",
         )
     independent_min = forms.FloatField(
@@ -284,7 +284,7 @@ class ExperimentForm(forms.Form):
 
     dependent_variable = forms.ChoiceField(
         initial="gamma_2",
-        choices=zip(FLOAT_FIELDS, FLOAT_FIELDS),
+        choices=list(zip(FLOAT_FIELDS, FLOAT_FIELDS)),
         label="Dependent Variable",
         )
     dependent_min = forms.FloatField(
