@@ -10,7 +10,7 @@ pyflakes==2.1.0
 pycodestyle==2.5.0
 configparser==3.7.3
 enum34==1.1.6; python_version < '3.4'
-flake8==3.7.6
+flake8==3.7.7
 pyparsing==2.3.1
 singledispatch==3.4.0.3
 backports-abc==0.5
