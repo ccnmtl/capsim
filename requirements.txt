@@ -20,7 +20,7 @@ lxml==4.3.3
 sure==1.4.11
 traitlets==4.3.2
 ipython_genutils==0.2.0
-pexpect==4.6.0
+pexpect==4.7.0
 pickleshare==0.7.5
 simplegeneric==0.8.1
 pyzmq==18.0.1
