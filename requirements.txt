@@ -114,7 +114,7 @@ django-quizblock==1.2.3
 django-markwhat==1.6.1
 django-celery==3.2.2 # pyup: <3.3.0
 text-unidecode==1.2
-Faker==1.0.6
+Faker==1.0.7
 factory_boy==2.12.0
 gunicorn==19.9.0
 django-infranil==1.1.0
