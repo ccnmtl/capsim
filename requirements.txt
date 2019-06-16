@@ -47,7 +47,7 @@ asn1crypto==0.24.0
 cryptography==2.7
 pyOpenSSL==19.0.0
 ndg-httpsclient==0.5.1
-certifi==2019.3.9
+certifi==2019.6.16
 
 chardet==3.0.4
 idna==2.8
