@@ -50,6 +50,7 @@ var currentValues = {};
 
 var resetParameters = function() {
     for (var k in window.defaults) {
+        // eslint-disable-next-line no-prototype-builtins
         if (window.defaults.hasOwnProperty(k)) {
             $('#' + k).val(window.defaults[k]);
             currentValues[k] = window.defaults[k];
