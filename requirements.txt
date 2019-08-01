@@ -11,7 +11,7 @@ pycodestyle==2.5.0
 configparser==3.7.4
 enum34==1.1.6; python_version < '3.4'
 flake8==3.7.7
-pyparsing==2.4.1.1
+pyparsing==2.4.2
 singledispatch==3.4.0.3
 backports-abc==0.5
 tornado==4.5.3 # pyup: < 5.0
