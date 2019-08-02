@@ -9,7 +9,6 @@ mccabe==0.6.1
 pyflakes==2.1.1
 pycodestyle==2.5.0
 configparser==3.7.4
-enum34==1.1.6; python_version < '3.4'
 flake8==3.7.7
 pyparsing==2.4.2
 singledispatch==3.4.0.3
@@ -52,9 +51,8 @@ certifi==2019.6.16
 chardet==3.0.4
 idna==2.8
 
-urllib3==1.24.3 # pyup: <1.25
-requests==2.21.0 # pyup: <2.22.0
-# pinning requests here for python 3.4 support
+urllib3==1.25.3
+requests==2.22.0
 
 logilab-common==1.4.3
 logilab-astng==0.24.3
@@ -72,8 +70,7 @@ networkx==2.2 # pyup: <2.3
 ldap3==2.6
 olefile==0.46
 
-# for python 3.4
-Pillow==5.4.1 # pyup: <6.0.0
+Pillow==6.1.0
 
 mock==3.0.5
 anyjson==0.3.3
@@ -113,7 +110,6 @@ django-waffle==0.14.0 # pyup: < 0.15.0
 django-jenkins==0.110.0
 django-smoketest==1.1.0
 django-extensions==2.1.9
-typing==3.7.4 # needed for django-extensions
 django-ga-context==0.1.0
 django-stagingcontext==0.1.0
 django-impersonate==1.4.1
@@ -136,8 +132,7 @@ subprocess32==3.5.4
 
 matplotlib==2.2.4 # pyup: <3.0.0
 
-pandas==0.20.3 # pyup: <0.21.0
-# for python 3.4
+pandas==0.25.0
 
 ccnmtlsettings==1.5.0
 
@@ -147,4 +142,3 @@ stevedore>=1.20.0 # Apache-2.0
 bandit==1.6.2
 
 entrypoints==0.3
-functools32==3.2.3-2; python_version < '3'
