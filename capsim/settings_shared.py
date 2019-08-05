@@ -53,7 +53,7 @@ PAGEBLOCKS = ['pageblocks.TextBlock',
               'quizblock.Quiz',
               ]
 
-BROKER_URL = "amqp://localhost:5672//dmt"
+BROKER_URL = "amqp://localhost:5672//capsim"
 CELERYD_CONCURRENCY = 4
 
 IPYTHON_ARGUMENTS = [
