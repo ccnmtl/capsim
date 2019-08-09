@@ -3,14 +3,7 @@ import os.path
 import djcelery
 import sys
 from ccnmtlsettings.shared import common
-import urllib3.contrib.pyopenssl
 
-# Tell urllib3 to use pyOpenSSL. Needed by python < 2.7.9
-# to resolve an SNIMissingWarning.
-# See:
-#   https://urllib3.readthedocs.io/en/latest/user-guide.html#ssl-py2
-#   https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-urllib3.contrib.pyopenssl.inject_into_urllib3()
 
 project = 'capsim'
 base = os.path.dirname(__file__)
@@ -53,7 +46,7 @@ PAGEBLOCKS = ['pageblocks.TextBlock',
               'quizblock.Quiz',
               ]
 
-BROKER_URL = "amqp://localhost:5672//dmt"
+BROKER_URL = "amqp://localhost:5672//capsim"
 CELERYD_CONCURRENCY = 4
 
 IPYTHON_ARGUMENTS = [
