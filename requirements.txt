@@ -14,7 +14,7 @@ pyparsing==2.4.2
 singledispatch==3.4.0.3
 backports-abc==0.5
 tornado==4.5.3 # pyup: < 5.0
-cssselect==1.0.3
+cssselect==1.1.0
 lxml==4.3.4
 sure==1.4.11
 traitlets==4.3.2
