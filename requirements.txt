@@ -1,5 +1,5 @@
-Django==1.11.22 # pyup: <2.0
-httplib2==0.13.0
+Django==1.11.23 # pyup: <2.0
+httplib2==0.13.1
 Markdown==2.6.11 # pyup: < 3
 psycopg2==2.8.3
 versiontools==1.9.1
@@ -9,13 +9,12 @@ mccabe==0.6.1
 pyflakes==2.1.1
 pycodestyle==2.5.0
 configparser==3.7.4
-enum34==1.1.6; python_version < '3.4'
 flake8==3.7.7
-pyparsing==2.4.1.1
+pyparsing==2.4.2
 singledispatch==3.4.0.3
 backports-abc==0.5
 tornado==4.5.3 # pyup: < 5.0
-cssselect==1.0.3
+cssselect==1.1.0
 lxml==4.3.4
 sure==1.4.11
 traitlets==4.3.2
@@ -23,14 +22,14 @@ ipython_genutils==0.2.0
 pexpect==4.7.0
 pickleshare==0.7.5
 simplegeneric==0.8.1
-pyzmq==18.0.2
+pyzmq==18.1.0
 MarkupSafe==1.1.1
 
 ipython==5.8.0 # pyup: <6.0.0
 
 Jinja2==2.10.1
 
-ipdb==0.12.1
+ipdb==0.12.2
 extras==1.0.0
 python-mimeparse==1.6.0
 unittest2==1.1.0
@@ -39,8 +38,8 @@ testtools==2.3.0
 testscenarios==0.5.0
 python-subunit==1.3.0
 webencodings==0.5.1
-coverage==4.5.3
-pyasn1==0.4.5
+coverage==4.5.4
+pyasn1==0.4.6
 pycparser==2.19
 cffi==1.12.3
 asn1crypto==0.24.0
@@ -52,9 +51,8 @@ certifi==2019.6.16
 chardet==3.0.4
 idna==2.8
 
-urllib3==1.24.3 # pyup: <1.25
-requests==2.21.0 # pyup: <2.22.0
-# pinning requests here for python 3.4 support
+urllib3==1.25.3
+requests==2.22.0
 
 logilab-common==1.4.3
 logilab-astng==0.24.3
@@ -63,7 +61,7 @@ pylint==1.9.4 # pyup: <2.0.0
 six==1.12.0
 
 numpy==1.17.0
-pytz==2019.1
+pytz==2019.2
 
 python-dateutil==2.8.0
 setuptools==41.0.1
@@ -72,8 +70,7 @@ networkx==2.2 # pyup: <2.3
 ldap3==2.6
 olefile==0.46
 
-# for python 3.4
-Pillow==5.4.1 # pyup: <6.0.0
+Pillow==6.1.0
 
 mock==3.0.5
 anyjson==0.3.3
@@ -96,7 +93,7 @@ boto3>=1.9.194,<1.10.0
 contextlib2==0.5.5
 argparse==1.4.0
 rcssmin==1.0.6
-rjsmin==1.0.12
+rjsmin==1.1.0
 cycler==0.10.0
 ipaddress==1.0.22
 
@@ -113,7 +110,6 @@ django-waffle==0.14.0 # pyup: < 0.15.0
 django-jenkins==0.110.0
 django-smoketest==1.1.0
 django-extensions==2.1.9
-typing==3.7.4 # needed for django-extensions
 django-ga-context==0.1.0
 django-stagingcontext==0.1.0
 django-impersonate==1.4.1
@@ -136,15 +132,13 @@ subprocess32==3.5.4
 
 matplotlib==2.2.4 # pyup: <3.0.0
 
-pandas==0.20.3 # pyup: <0.21.0
-# for python 3.4
+pandas==0.25.0
 
 ccnmtlsettings==1.5.0
 
-pbr==5.4.1
-pyyaml==5.1.1
+pbr==5.4.2
+pyyaml==5.1.2
 stevedore>=1.20.0 # Apache-2.0
 bandit==1.6.2
 
 entrypoints==0.3
-functools32==3.2.3-2; python_version < '3'
