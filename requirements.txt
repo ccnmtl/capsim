@@ -17,7 +17,7 @@ tornado==4.5.3 # pyup: < 5.0
 cssselect==1.1.0
 lxml==4.3.5 # pyup: <4.4
 sure==1.4.11
-traitlets==4.3.2
+traitlets==4.3.3
 ipython_genutils==0.2.0
 pexpect==4.7.0
 pickleshare==0.7.5
