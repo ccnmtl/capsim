@@ -64,7 +64,7 @@ numpy==1.16.5 # pyup: <1.17
 pytz==2019.2
 
 python-dateutil==2.8.0
-setuptools==41.2.0
+setuptools==41.4.0
 
 networkx==2.2 # pyup: <2.3
 ldap3==2.6.1
