@@ -27,7 +27,7 @@ MarkupSafe==1.1.1
 
 ipython==5.8.0 # pyup: <6.0.0
 
-Jinja2==2.10.1
+Jinja2==2.10.3
 
 ipdb==0.12.2
 extras==1.0.0
