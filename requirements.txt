@@ -43,7 +43,7 @@ pyasn1==0.4.7
 pycparser==2.19
 cffi==1.13.0
 asn1crypto==1.2.0
-cryptography==2.7
+cryptography==2.8
 pyOpenSSL==19.0.0
 ndg-httpsclient==0.5.1
 certifi==2019.9.11
