@@ -95,7 +95,7 @@ argparse==1.4.0
 rcssmin==1.0.6
 rjsmin==1.1.0
 cycler==0.10.0
-ipaddress==1.0.22
+ipaddress==1.0.23
 
 django-bootstrap3==11.0.0
 requirements/src/sorl-3.2ctl-py2.py3-none-any.whl
