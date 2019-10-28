@@ -83,7 +83,7 @@ kombu==3.0.37 # pyup: <4.0.0
 billiard==3.6.1.0
 celery==3.1.26.post2 # pyup: <4.0.0
 sqlparse==0.3.0
-decorator==4.4.0
+decorator==4.4.1
 s3transfer==0.2.1
 jmespath==0.9.4
 
