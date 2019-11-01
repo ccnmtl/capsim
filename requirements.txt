@@ -132,7 +132,7 @@ subprocess32==3.5.4
 
 matplotlib==2.2.4 # pyup: <3.0.0
 
-pandas==0.25.2
+pandas==0.25.3
 
 ccnmtlsettings==1.5.0
 
