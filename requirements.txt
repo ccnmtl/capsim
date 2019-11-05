@@ -10,7 +10,7 @@ pyflakes==2.1.1
 pycodestyle==2.5.0
 configparser==4.0.2
 flake8==3.7.9
-pyparsing==2.4.2
+pyparsing==2.4.3
 singledispatch==3.4.0.3
 backports-abc==0.5
 tornado==4.5.3 # pyup: < 5.0
