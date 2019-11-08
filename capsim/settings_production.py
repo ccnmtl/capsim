@@ -1,6 +1,8 @@
 # flake8: noqa
 from capsim.settings_shared import *
 from ccnmtlsettings.production import common
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 locals().update(
     common(
@@ -15,3 +17,9 @@ try:
     from capsim.local_settings import *
 except ImportError:
     pass
+
+if hasattr(settings, 'SENTRY_DSN'):
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+    )
