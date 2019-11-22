@@ -8,7 +8,7 @@
 	<li class="active">New Experiment</li>
 </ul>
 
-<form action="." method="post">
+<form action="." method="post">{% csrf_token %}
 
 {{ form.non_field_errors }}
 {{ expform.non_field_errors }}

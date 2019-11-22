@@ -74,6 +74,7 @@ makeGraph("div.placeholder-expenditure", expenditureRunData, 860, 400,
 <hr />
 
 <form action="edit/" method="post">
+{% csrf_token %}
 
 <div class="form-group">
 <label>Title For Run</label>

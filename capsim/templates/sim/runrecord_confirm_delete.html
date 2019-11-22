@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action='.' method="post">
+<form action='.' method="post">{% csrf_token %}
 <div class="alert alert-danger">
 <p>Deleting a Run can't be undone. Are you sure?<br />
 <input type="submit" class='btn btn-danger' value="Yes, delete this

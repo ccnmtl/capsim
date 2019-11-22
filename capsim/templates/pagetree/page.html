@@ -63,6 +63,7 @@
 {% if is_submitted %}
 {% else %}
 <form action="." method="post">
+{% csrf_token %}
 {% endif %}
 {% endif %}
 
@@ -87,6 +88,7 @@
 </form>
 {% endif %}
 {% else %}
+<br />
 <input type="submit" value="Submit" class="btn btn-primary" />
 
 </form>
