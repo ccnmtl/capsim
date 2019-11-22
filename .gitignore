@@ -12,3 +12,4 @@ wheelhouse
 package-lock.json
 .project
 .pydevproject
+.settings

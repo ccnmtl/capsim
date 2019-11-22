@@ -1,6 +1,6 @@
-Django==1.11.26 # pyup: <2.0
+Django==2.2.7
 httplib2==0.14.0
-Markdown==2.6.11 # pyup: < 3
+Markdown==3.1.1
 psycopg2==2.8.4
 versiontools==1.9.1
 statsd==3.3.0
@@ -13,9 +13,9 @@ flake8==3.7.9
 pyparsing==2.4.5
 singledispatch==3.4.0.3
 backports-abc==0.5
-tornado==4.5.3 # pyup: < 5.0
+tornado==6.0.3
 cssselect==1.1.0
-lxml==4.3.5 # pyup: <4.4
+lxml==4.4.1
 sure==1.4.11
 traitlets==4.3.3
 ipython_genutils==0.2.0
@@ -25,7 +25,7 @@ simplegeneric==0.8.1
 pyzmq==18.1.1
 MarkupSafe==1.1.1
 
-ipython==5.8.0 # pyup: <6.0.0
+ipython==7.9.0
 
 Jinja2==2.10.1
 
@@ -57,16 +57,16 @@ requests==2.22.0
 logilab-common==1.4.4
 logilab-astng==0.24.3
 editdistance==0.5.3
-pylint==1.9.4 # pyup: <2.0.0
+pylint==2.4.4
 six==1.13.0
 
-numpy==1.16.5 # pyup: <1.17
+numpy==1.17.4
 pytz==2019.2
 
 python-dateutil==2.8.1
 setuptools==41.6.0
 
-networkx==2.2 # pyup: <2.3
+networkx==2.4
 ldap3==2.6.1
 olefile==0.46
 
@@ -106,8 +106,8 @@ django-statsd-mozilla==0.4.0
 raven==6.10.0
 sentry-sdk==0.13.2
 django-bootstrap-form==3.4
-django-debug-toolbar==1.11 # pyup: < 2.0
-django-waffle==0.14.0 # pyup: < 0.15.0 
+django-debug-toolbar==2.1
+django-waffle==0.14.0 # pyup: <0.15.0
 django-jenkins==0.110.0
 django-smoketest==1.1.0
 django-extensions==2.2.5
@@ -116,7 +116,7 @@ django-stagingcontext==0.1.0
 django-impersonate==1.4.1
 django-treebeard==4.3
 django-pagetree==1.4.1
-django-pageblocks==1.2.0  # pyup: <2.0.0
+django-pageblocks==1.2.0 # pyup: <2.0.0
 django-quizblock==1.2.5
 django-markwhat==1.6.2
 django-celery==3.2.2 # pyup: <3.3.0
@@ -131,7 +131,7 @@ django-smtp-ssl==1.0
 
 subprocess32==3.5.4
 
-matplotlib==2.2.4 # pyup: <3.0.0
+matplotlib==3.1.2
 
 pandas==0.25.3
 
