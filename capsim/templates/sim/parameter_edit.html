@@ -10,7 +10,7 @@
 <a class="pull-right btn btn-danger btn-xs" href="delete/"><span class="glyphicon
  glyphicon-trash"></span> Delete</a>
 
-<form action="." method="post">
+<form action="." method="post">{% csrf_token %}
 
 <h2>Parameter: {{object.slug}}</h2>
 

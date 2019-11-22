@@ -9,7 +9,7 @@
 <p class="alert alert-danger">If you don't know exactly what you're doing here, just back away
 	slowly.</p>
 
-<form action="." method="post">
+<form action="." method="post">{% csrf_token %}
 <fieldset><legend>Add Intervention</legend>
 
 <input type="text" name="name" value="" placeholder="Name"

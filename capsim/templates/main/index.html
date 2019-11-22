@@ -128,6 +128,7 @@ simulation runs and an explanation for the synergies you have discovered.</p>
 {% if request.user.is_staff %}
 <div class="well">
 <form action="/run/toggle/" method="post">
+{% csrf_token %}
 <input type="submit" class="btn btn-warning" value="Disable Simulation (Staff Only)" />
 </form>
 </div>
@@ -178,7 +179,7 @@ makeGraph("div.placeholder", runData, runStdDevs);
 {% endif %}
 
 <form action="." method="post" class="form-horizontal" role="form" id="test-new-run-form">
-
+{% csrf_token %}
 {{ form.non_field_errors }}
 
 <div class="well">

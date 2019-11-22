@@ -7,7 +7,7 @@
 	<li class="active">{{object.name}}</li>
 </ul>
 
-<form action="." method="post">
+<form action="." method="post">{% csrf_token %}
 
 <h2>Intervention: {{object.name}}</h2>
 <p>slug: <tt>{{object.slug}}</tt></p>

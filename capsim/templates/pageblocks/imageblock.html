@@ -1,5 +1,4 @@
 {% load markup %}
-{% load thumbnail %}
 
 {% if block.lightbox %}
 <style type="text/css">
@@ -15,7 +14,7 @@
 				<h3 class="modal-title">{{block.alt}}</h3>
 			</div>
 			<div class="modal-body">
-				<img alt="{{block.alt}}" src="{% if img_src %}{{img_src}}{% else %}{% thumbnail block.image 900x900 %}{% endif %}" />
+				<img alt="{{block.alt}}" src="{% if img_src %}{{img_src}}{% endif %}" />
 				<div class="caption">
 					{{block.caption|markdown}}
 				</div>
@@ -39,7 +38,7 @@
 </ul>
 
 {% else %}
-<img alt="{{block.alt}}" src="{% if img_src %}{{img_src}}{% else %}{% thumbnail block.image 600x600 %}{% endif %}" />
+<img alt="{{block.alt}}" src="{% if img_src %}{{img_src}}{% endif %}" />
 <div class="caption">
 {{block.caption|markdown}}
 </div>
