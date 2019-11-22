@@ -1,19 +1,20 @@
+import csv
+from json import dumps, loads
+import os.path
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
-from django.conf import settings
-from json import dumps, loads
-from .logic import Run, RunOutput
-from .paramset import SimParamSet
+
+from capsim.sim.logic import Run, RunOutput
+from capsim.sim.paramset import SimParamSet
 import numpy as np
 import pandas as pd
-import os.path
-import os
-import csv
 
 
 class RunRecord(models.Model):
     created = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     data = models.TextField(default=u"", blank=True, null=True)
     title = models.TextField(default=u"", blank=True, null=True)
     description = models.TextField(default=u"", blank=True, null=True)
@@ -84,7 +85,7 @@ def skew_param(dset, skew):
 
 class RunOutputRecord(models.Model):
     created = models.DateTimeField(auto_now=True)
-    run = models.ForeignKey(RunRecord)
+    run = models.ForeignKey(RunRecord, on_delete=models.CASCADE)
     data = models.TextField(default=u"", blank=True, null=True)
 
     def from_runoutput(self, runoutput, skew_params=None):
@@ -106,7 +107,7 @@ class RunOutputRecord(models.Model):
 
 
 class Experiment(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.TextField(default=u"", blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -288,8 +289,8 @@ def make_steps(min_value, max_value, num_steps):
 
 
 class ExpRun(models.Model):
-    experiment = models.ForeignKey(Experiment)
-    run = models.ForeignKey(RunRecord)
+    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE)
+    run = models.ForeignKey(RunRecord, on_delete=models.CASCADE)
 
     status = models.CharField(max_length=256, default="enqueued")
 
@@ -352,7 +353,7 @@ class Intervention(models.Model):
 
 
 class InterventionLevel(models.Model):
-    intervention = models.ForeignKey(Intervention)
+    intervention = models.ForeignKey(Intervention, on_delete=models.CASCADE)
     level = models.CharField(
         max_length=256,
         choices=[("high", "high"),
@@ -362,7 +363,8 @@ class InterventionLevel(models.Model):
 
 
 class Modifier(models.Model):
-    interventionlevel = models.ForeignKey(InterventionLevel)
+    interventionlevel = models.ForeignKey(
+        InterventionLevel, on_delete=models.CASCADE)
     parameter = models.CharField(max_length=256)
     adjustment = models.FloatField(default=0.0)
 

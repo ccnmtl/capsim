@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('trials', models.IntegerField(default=1)),
                 ('total', models.IntegerField(default=0)),
                 ('completed', models.IntegerField(default=0)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
                 ('dependent_value', models.FloatField(null=True, blank=True)),
                 ('trial', models.IntegerField(default=0)),
                 ('mass', models.FloatField(default=b'100.0')),
-                ('experiment', models.ForeignKey(to='sim.Experiment')),
+                ('experiment', models.ForeignKey(to='sim.Experiment', on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -71,7 +71,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('level', models.CharField(max_length=256, choices=[(b'high', b'high'), (b'medium', b'medium'), (b'low', b'low')])),
                 ('cost', models.IntegerField(default=0)),
-                ('intervention', models.ForeignKey(to='sim.Intervention')),
+                ('intervention', models.ForeignKey(to='sim.Intervention', on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -83,7 +83,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('parameter', models.CharField(max_length=256)),
                 ('adjustment', models.FloatField(default=0.0)),
-                ('interventionlevel', models.ForeignKey(to='sim.InterventionLevel')),
+                ('interventionlevel', models.ForeignKey(to='sim.InterventionLevel', on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -120,7 +120,7 @@ class Migration(migrations.Migration):
                 ('data', models.TextField(default='', null=True, blank=True)),
                 ('title', models.TextField(default='', null=True, blank=True)),
                 ('description', models.TextField(default='', null=True, blank=True)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -129,13 +129,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='runoutputrecord',
             name='run',
-            field=models.ForeignKey(to='sim.RunRecord'),
+            field=models.ForeignKey(to='sim.RunRecord', on_delete=models.CASCADE),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='exprun',
             name='run',
-            field=models.ForeignKey(to='sim.RunRecord'),
+            field=models.ForeignKey(to='sim.RunRecord', on_delete=models.CASCADE),
             preserve_default=True,
         ),
     ]

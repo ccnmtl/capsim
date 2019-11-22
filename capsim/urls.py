@@ -1,12 +1,10 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-import django.contrib.auth.views
 from django.views.generic import DetailView
 from django.views.generic import TemplateView
 from django.views.generic.edit import DeleteView
 import django.views.static
-import djangowind.views
 from infranil.views import InfranilView
 from pagetree.generic.views import PageView
 
@@ -17,18 +15,12 @@ import capsim.sim.views
 
 admin.autodiscover()
 
-redirect_after_logout = getattr(settings, 'LOGOUT_REDIRECT_URL', None)
 auth_urls = url(r'^accounts/', include('django.contrib.auth.urls'))
-logout_page = url(r'^accounts/logout/$', django.contrib.auth.views.logout,
-                  {'next_page': redirect_after_logout})
 if hasattr(settings, 'CAS_BASE'):
     auth_urls = url(r'^accounts/', include('djangowind.urls'))
-    logout_page = url(r'^accounts/logout/$', djangowind.views.logout,
-                      {'next_page': redirect_after_logout})
 
 urlpatterns = [
     auth_urls,
-    logout_page,
     url(r'^$', TemplateView.as_view(template_name="main/home.html")),
     url(r'^contact/$', TemplateView.as_view(
         template_name="main/contact.html")),
@@ -88,7 +80,7 @@ urlpatterns = [
             model=Parameter,
             success_url="/calibrate/parameter/")),
 
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^_impersonate/', include('impersonate.urls')),
     url(r'^stats/', TemplateView.as_view(template_name="stats.html")),
     url(r'^model/', TemplateView.as_view(template_name="main/model.html")),
