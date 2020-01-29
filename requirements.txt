@@ -15,7 +15,7 @@ singledispatch==3.4.0.3
 backports-abc==0.5
 tornado==6.0.3
 cssselect==1.1.0
-lxml==4.4.2
+lxml==4.5.0
 sure==1.4.11
 pyzmq==18.1.1
 MarkupSafe==1.1.1
