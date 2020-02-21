@@ -1,6 +1,6 @@
 Django==2.2.10 # pyup: < 3
 httplib2==0.17.0
-Markdown==3.2
+Markdown==3.2.1
 psycopg2==2.8.4
 versiontools==1.9.1
 statsd==3.3.0
