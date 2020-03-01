@@ -60,7 +60,7 @@ python-dateutil==2.8.1
 setuptools==45.2.0
 
 networkx==2.4
-ldap3==2.6.1
+ldap3==2.7
 olefile==0.46
 
 Pillow==7.0.0
