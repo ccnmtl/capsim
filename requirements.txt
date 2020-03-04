@@ -73,12 +73,12 @@ amqp==2.5.2
 
 amqplib==1.0.2
 kombu==3.0.37 # pyup: <4.0.0
-billiard==3.6.2.0
+billiard==3.6.3.0
 celery==3.1.26.post2 # pyup: <4.0.0
 sqlparse==0.3.1
-decorator==4.4.1
+decorator==4.4.2
 s3transfer==0.3.3
-jmespath==0.9.4
+jmespath==0.9.5
 
 botocore>=1.15.0,<1.16.0
 boto3>=1.12.0,<1.13.0
@@ -97,7 +97,7 @@ django-appconf==1.0.3
 django-compressor==2.4
 django-statsd-mozilla==0.4.0
 raven==6.10.0
-sentry-sdk==0.14.1
+sentry-sdk==0.14.2
 django-bootstrap-form==3.4
 django-debug-toolbar==2.2
 django-waffle==0.14.0 # pyup: <0.15.0
