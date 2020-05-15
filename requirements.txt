@@ -19,7 +19,7 @@ tornado==6.0.4
 cssselect==1.1.0
 lxml==4.5.0
 sure==1.4.11
-pyzmq==19.0.0
+pyzmq==19.0.1
 MarkupSafe==1.1.1
 
 Jinja2==2.11.2
