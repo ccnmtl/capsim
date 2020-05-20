@@ -1,4 +1,4 @@
-Django==2.2.12 # pyup: < 3
+Django==3.0.6 # pyup: < 3
 httplib2==0.17.4
 Markdown==3.2.2
 psycopg2==2.8.5
