@@ -44,7 +44,7 @@ endif
 jenkins: check flake8 test eslint bandit
 
 $(PY_SENTINAL): $(REQUIREMENTS)
-	rm -rf $(VE)
+	-rm -rf $(VE)/*
 	$(SYS_PYTHON) -m venv $(VE)
 	$(PIP) install pip==$(PIP_VERSION)
 	$(PIP) install --upgrade setuptools
@@ -78,7 +78,7 @@ shell: $(PY_SENTINAL)
 	$(MANAGE) shell_plus
 
 clean:
-	rm -rf $(VE)
+	rm -rf $(VE)/*
 	rm -rf media/CACHE
 	rm -rf reports
 	rm -f celerybeat-schedule

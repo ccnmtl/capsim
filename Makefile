@@ -10,7 +10,7 @@ compose-migrate:
 	docker-compose run web /ve/bin/python manage.py migrate --settings=capsim.settings_compose
 
 compose-run:
-	docker-compose up
+	docker-compose up && docker-compose rm -fsv
 
 notebook: ./ve/bin/python
 	$(MANAGE) shell_plus --notebook

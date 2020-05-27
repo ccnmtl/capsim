@@ -1,10 +1,9 @@
-FROM ccnmtl/django.base
-ADD wheelhouse /wheelhouse
-RUN /ve/bin/pip install --no-index -f /wheelhouse -r /wheelhouse/requirements.txt
+FROM python:3.7-stretch
 WORKDIR /app
 COPY . /app/
-RUN /ve/bin/flake8 /app/capsim/ --max-complexity=10
-RUN /ve/bin/python manage.py test
+RUN make flake8
+RUN make test
+RUN ./ve/bin/pip install psycopg2-binary
 EXPOSE 8000
 ADD docker-run.sh /run.sh
 ENV APP capsim

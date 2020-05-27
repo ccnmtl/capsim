@@ -34,4 +34,8 @@ $(WHEELHOUSE)/requirements.txt: $(REQUIREMENTS)
 build: $(WHEELHOUSE)/requirements.txt
 	docker build -t $(IMAGE) .
 
-.PHONY: build
+docker-clean:
+	-docker rm capsim_web_1 capsim_celery_1
+	-docker rmi capsim:latest
+
+.PHONY: build docker-clean
