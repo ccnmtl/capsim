@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ccnmtl/capsim.svg?branch=master)](https://travis-ci.org/ccnmtl/capsim) [![Greenkeeper badge](https://badges.greenkeeper.io/ccnmtl/capsim.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/ccnmtl/capsim.svg?branch=master)](https://travis-ci.org/ccnmtl/capsim)
 
 ## Public Health Capstone Simulation (Python Version)
 
