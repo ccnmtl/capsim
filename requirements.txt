@@ -130,7 +130,7 @@ matplotlib==3.2.1
 
 pandas==1.0.3
 
-ccnmtlsettings==1.8.0
+ccnmtlsettings==1.8.2
 
 pbr==5.4.5
 pyyaml==5.3.1
