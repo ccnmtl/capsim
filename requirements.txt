@@ -76,7 +76,7 @@ amqp==2.5.2
 amqplib==1.0.2
 kombu==3.0.37 # pyup: <4.0.0
 billiard==3.6.3.0
-celery==3.1.26.post2 # pyup: <4.0.0
+celery==4.4.3 # pyup: <4.0.0
 sqlparse==0.3.1
 decorator==4.4.2
 s3transfer==0.3.3
