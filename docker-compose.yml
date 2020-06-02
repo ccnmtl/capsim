@@ -7,10 +7,10 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
-    #volume:
-      #- ./db-data:/docker-entrypoint-initdb.d
   rabbitmq:
     image: rabbitmq:3.8.3
+    ports:
+      - "5672:5672"
   web:
     image: python:3.6-stretch
     environment:
@@ -28,7 +28,7 @@ services:
     working_dir: /app
     command: /bin/bash -c "make ./ve/sentinal && /app/docker-run.sh worker"
     environment:
-      - C_FORCE_ROOT=true
+      #- C_FORCE_ROOT=true
       - SETTINGS=settings_compose 
       - APP=capsim
     volumes:

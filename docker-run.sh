@@ -25,11 +25,11 @@ if [ "$1" == "shell" ]; then
 fi
 
 if [ "$1" == "worker" ]; then
-		exec ./ve/bin/python3 manage.py celery worker
+		exec ./ve/bin/celery worker -A $APP -c 4 -l debug
 fi
 
 if [ "$1" == "beat" ]; then
-		exec ./ve/bin/python3 manage.py celery beat
+		exec ./ve/bin/celery beat -A $APP
 fi
 
 # run arbitrary commands
