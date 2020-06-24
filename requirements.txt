@@ -49,7 +49,7 @@ idna==2.9
 urllib3==1.25.9  # sentry-sdk
 requests==2.24.0
 
-logilab-common==1.7.1
+logilab-common==1.7.2
 astroid==2.4.2
 editdistance==0.5.3
 pylint==2.5.3
