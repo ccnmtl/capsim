@@ -153,11 +153,10 @@
     {% if request.user.is_anonymous %}
 
 
-                 <form method="get" action="{{ CAS_BASE }}cas/login">
-                    {% csrf_token %}
-                    <input type="hidden" name="destination" value="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/accounts/caslogin/?next={{ request.get_full_path|urlencode }}" />
-                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Columbia University Network ID (UNI)" />
-                 </form>
+         <form method="get" action="{{ CAS_BASE }}cas/login">
+            <input type="hidden" name="destination" value="https://{{ request.get_host }}/accounts/caslogin/?next={{next}}" />
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Columbia University Network ID (UNI)" />
+         </form>
 
 
             <p style="text-align: center;">or</p>
