@@ -8,44 +8,44 @@
 
 <head>
 
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="capsim">
-	<meta name="author" content="CCNMTL">
-  
-	<title>capsim: {% block title %}{% endblock %}</title>
-	
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-  	<script src="../assets/js/html5shiv.js"></script>
-	<script src="../assets/js/respond.min.js"></script>
-	<![endif]-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="capsim">
+    <meta name="author" content="CCNMTL">
 
-	{% compress css %}
-	<link href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{{STATIC_URL}}bootstrap/css/bootstrap-glyphicons.css" rel="stylesheet">
-	<link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
-	{% endcompress %}
-	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
-	{% block css %}{% endblock %}
-	{% block feeds %}{% endblock %}
-	<style type="text/css">
-	.popover-content {background-color: white !important;}
-	
-	.jumbotron
-	{
-		background-image: url({{STATIC_URL}}img/samples/dome.jpg);
-		background-color: #000;
-		background-repeat: no-repeat;
-		color: #fff;
-		background-position: 0% 80%;
-		text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
-		font-weight: bold;
-	}
-	
-	img.media-object {width: 100px;}
-		
-	</style> 
+    <title>capsim: {% block title %}{% endblock %}</title>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    {% compress css %}
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+    {% endcompress %}
+    <link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
+    {% block css %}{% endblock %}
+    {% block feeds %}{% endblock %}
+    <style type="text/css">
+    .popover-content {background-color: white !important;}
+
+    .jumbotron
+    {
+        background-image: url({{STATIC_URL}}img/samples/dome.jpg);
+        background-color: #000;
+        background-repeat: no-repeat;
+        color: #fff;
+        background-position: 0% 80%;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 1);
+        font-weight: bold;
+    }
+
+    img.media-object {width: 100px;}
+
+    </style> 
     <link rel="stylesheet" href="https://search.sites.columbia.edu/cu-privacy-notice/cu-privacy-notice.css" />
     <script src="https://search.sites.columbia.edu/cu-privacy-notice/cu-privacy-notice.js"></script>
 </head>
@@ -65,56 +65,56 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-		<a class="navbar-brand" href="/"><span style="font-weight: bold;"><span style="color: white;">PHC<span style="color: #6489c9;">X</span> </span> </span>  <span style="color: #555;">Beta</span> </a>
+        <a class="navbar-brand" href="/"><span style="font-weight: bold;"><span style="color: white;">PHC<span style="color: #6489c9;">X</span> </span> </span>  <span style="color: #555;">Beta</span> </a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
 
-	<ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
 
-		{% block topnav %}
-		<li><a href="/about/" title="Learn all about PHCX and the math behind it.">About</a></li>
-		<li><a href="/contact/" title="Get in touch.">Contact</a></li>
-		<li><a href="/topics/" title="These are all of the simulations available.">Topics</a></li>
-		<!--
-		<li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
-		{% flag simulation %}
-		<li><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
-		<li><a href="/run/" title="See all the runs.">Saved Runs</a></li>
-		{% else %}
-		<li><span class="navbar-text">[Simulation Deactivated]</span></li>
-		{% endflag %}
-		-->
-		{% endblock %}
+        {% block topnav %}
+        <li><a href="/about/" title="Learn all about PHCX and the math behind it.">About</a></li>
+        <li><a href="/contact/" title="Get in touch.">Contact</a></li>
+        <li><a href="/topics/" title="These are all of the simulations available.">Topics</a></li>
+        <!--
+        <li><a href="/pages/introduction/" title="Ramp up your understanding with this handy tutorial.">Priming Exercises</a></li>
+        {% flag simulation %}
+        <li><a href="/run/new/" title="Create a new run.">Start New Run</a></li>
+        <li><a href="/run/" title="See all the runs.">Saved Runs</a></li>
+        {% else %}
+        <li><span class="navbar-text">[Simulation Deactivated]</span></li>
+        {% endflag %}
+        -->
+        {% endblock %}
 
-		{% block topnavbarleftitems %}{% endblock %}
-		{% block topnavbarrightitems %}{% endblock %}
-		{% block usernav %}
+        {% block topnavbarleftitems %}{% endblock %}
+        {% block topnavbarrightitems %}{% endblock %}
+        {% block usernav %}
           {% if request.user.is_anonymous %}
           <li><a href="#" data-toggle="modal" data-target="#myModal" title="Log in to the system.">Sign In</a></li>
           {% else %}
-		<li class="navbar-text">
-		<div class="btn-group">
-		<button type="button" class="btn btn-default btn-xs">
-		{% if request.user.last_name %}
-		{{request.user.first_name}} {{request.user.last_name}}
-		{% else %}
-		{{ request.user.username }}
-		{% endif %}
-		</button>
-		<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-		<span class="caret"></span>
-		<span class="sr-only">Toggle Dropdown</span>
-		</button>
-		<ul class="dropdown-menu" role="menu">
-		{% if request.user.is_superuser %}
-		<li><a href="{% url 'impersonate-list' %}" class="">Impersonate</a></li>
-		{% endif %}
-		<li><a href="/accounts/logout/" class="">Log Out</a></li>
-		</ul>
-		</div>
-		</li>
+        <li class="navbar-text">
+        <div class="btn-group">
+        <button type="button" class="btn btn-default btn-xs">
+        {% if request.user.last_name %}
+        {{request.user.first_name}} {{request.user.last_name}}
+        {% else %}
+        {{ request.user.username }}
+        {% endif %}
+        </button>
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+        {% if request.user.is_superuser %}
+        <li><a href="{% url 'impersonate-list' %}" class="">Impersonate</a></li>
+        {% endif %}
+        <li><a href="/accounts/logout/" class="">Log Out</a></li>
+        </ul>
+        </div>
+        </li>
           {% endif %}
 {% endblock %}
     </ul>
@@ -127,109 +127,109 @@
 
 <div class="container" id="outer-container" style="">
 
-	<div id="primarynav" style="display: none;">
-		<nav class="nav navbar-default">
-		{% block moduletabs %}
-		{% endblock %}
-		<ul class="nav navbar-nav navbar-right">
-		{% block navrightextra %}{% endblock %}
-		</ul>
-		</nav>
-	</div>
-	
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-	    <div class="modal-content">
-		 <div class="modal-header">
-		   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		   <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-		 </div>
-		 <div class="modal-body">
-	
-		   <p>Select an account.</p>
-		   
-	{% block loginbox %}
-	{% if request.user.is_anonymous %}
-	
-	 
-				 <form method="get" action="{{ CAS_BASE }}cas/login">
-					{% csrf_token %}
-					<input type="hidden" name="destination" value="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/accounts/caslogin/?next={{ request.get_full_path|urlencode }}" />
-					<input class="btn btn-primary btn-lg btn-block" type="submit" value="Columbia University Network ID (UNI)" />
-				 </form>
-	
-	
-			<p style="text-align: center;">or</p>
-	
-		   
-		   {% if login_form.errors %}
-			  <p class="errornote">
-				 <span>
-					<b>Oops!</b> Invalid username or password.
-				 </span>
-				 Please try again. Note that both username and password are case-sensitive.
-			  </p>
-		   {% endif %}
-		   
-			  <form id="login-local" name="login_local" method="post" action="/accounts/login/" class="form-horizontal" role="form">
-				 {% csrf_token %}
-				 <div class="login-local-form" {% if not login_form.errors %}style="display: none"{% endif %}>
-				 
-				 <h3>Guest Account</h3>
-					
-					<div class="form-group">
-					<label for="id_username" class="col-sm-4 control-label">User Name</label>
-					<div class="col-sm-8">
-					{{ login_form.username }}
-					</div>
-					</div>
-					
-					<div class="form-group">
-					<label for="id_password" class="col-sm-4 control-label">Password</label>
-					<div class="col-sm-8">
-					{{ login_form.password }}
-					</div>
-					</div>
-					
-					<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-8">
-					<input class="btn btn-default login-local-form" type="submit" value="Log In" {% if not login_form.errors %}style="display: none;"{% endif %} />                        
-					<input type="hidden" name="next" value="{{ request.get_full_path }}" />
-					</div>
-					</div>
-			    
-				 </div>      
-			    
-			    <input class="btn btn-default btn-lg btn-block" type="button" value="Guest Account" {% if login_form.errors %}style="display: none"{% endif %}
-					onclick="jQuery('.login-local-form').show(); jQuery(this).hide(); return false;"/>
-				  
-			  </form>
-	
-			{% comment %}
-			Do we want to allow non-CU self registration?
-			Are we going to have non-CU accounts at all?
-			<p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
-			{% endcomment %}
-	
-	    
-	{% endif %}
-	{% endblock %}
-		   
-		   
-		 </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div>
-	<!-- /.modal -->
+    <div id="primarynav" style="display: none;">
+        <nav class="nav navbar-default">
+        {% block moduletabs %}
+        {% endblock %}
+        <ul class="nav navbar-nav navbar-right">
+        {% block navrightextra %}{% endblock %}
+        </ul>
+        </nav>
+    </div>
 
-	{% block pagetitle %}{% endblock %}
-	{% block content %}{% endblock %}
-	{% block content-nav %}{% endblock %}
-	
-	{% block sidenav %}{% endblock %}
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+         </div>
+         <div class="modal-body">
 
-	
+           <p>Select an account.</p>
+
+    {% block loginbox %}
+    {% if request.user.is_anonymous %}
+
+
+                 <form method="get" action="{{ CAS_BASE }}cas/login">
+                    {% csrf_token %}
+                    <input type="hidden" name="destination" value="http{% if request.is_secure %}s{% endif %}://{{ request.get_host }}/accounts/caslogin/?next={{ request.get_full_path|urlencode }}" />
+                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Columbia University Network ID (UNI)" />
+                 </form>
+
+
+            <p style="text-align: center;">or</p>
+
+
+           {% if login_form.errors %}
+              <p class="errornote">
+                 <span>
+                    <b>Oops!</b> Invalid username or password.
+                 </span>
+                 Please try again. Note that both username and password are case-sensitive.
+              </p>
+           {% endif %}
+
+              <form id="login-local" name="login_local" method="post" action="/accounts/login/" class="form-horizontal" role="form">
+                 {% csrf_token %}
+                 <div class="login-local-form" {% if not login_form.errors %}style="display: none"{% endif %}>
+
+                 <h3>Guest Account</h3>
+
+                    <div class="form-group">
+                    <label for="id_username" class="col-sm-4 control-label">User Name</label>
+                    <div class="col-sm-8">
+                    {{ login_form.username }}
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <label for="id_password" class="col-sm-4 control-label">Password</label>
+                    <div class="col-sm-8">
+                    {{ login_form.password }}
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-8">
+                    <input class="btn btn-default login-local-form" type="submit" value="Log In" {% if not login_form.errors %}style="display: none;"{% endif %} />                        
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                    </div>
+                    </div>
+
+                 </div>
+
+                <input class="btn btn-default btn-lg btn-block" type="button" value="Guest Account" {% if login_form.errors %}style="display: none"{% endif %}
+                    onclick="jQuery('.login-local-form').show(); jQuery(this).hide(); return false;"/>
+
+              </form>
+
+            {% comment %}
+            Do we want to allow non-CU self registration?
+            Are we going to have non-CU accounts at all?
+            <p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
+            {% endcomment %}
+
+
+    {% endif %}
+    {% endblock %}
+
+
+         </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    {% block pagetitle %}{% endblock %}
+    {% block content %}{% endblock %}
+    {% block content-nav %}{% endblock %}
+
+    {% block sidenav %}{% endblock %}
+
+
 </div>
 
 {% block footer %}
