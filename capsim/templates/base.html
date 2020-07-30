@@ -111,7 +111,7 @@
         {% if request.user.is_superuser %}
         <li><a href="{% url 'impersonate-list' %}" class="">Impersonate</a></li>
         {% endif %}
-        <li><a href="/accounts/logout/" class="">Log Out</a></li>
+        <li><a href="/accounts/logout/?next=/" class="">Log Out</a></li>
         </ul>
         </div>
         </li>
