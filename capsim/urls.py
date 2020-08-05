@@ -1,16 +1,17 @@
+import capsim.main.views
+from capsim.sim.models import RunRecord, Experiment, Parameter
+import capsim.sim.views
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import path
 from django.views.generic import DetailView
+from django.views.generic import RedirectView
 from django.views.generic import TemplateView
 from django.views.generic.edit import DeleteView
 import django.views.static
 from infranil.views import InfranilView
 from pagetree.generic.views import PageView
-
-import capsim.main.views
-from capsim.sim.models import RunRecord, Experiment, Parameter
-import capsim.sim.views
 
 
 admin.autodiscover()
@@ -22,6 +23,8 @@ if hasattr(settings, 'CAS_BASE'):
 urlpatterns = [
     auth_urls,
     url(r'^$', TemplateView.as_view(template_name="main/home.html")),
+    path('accounts/profile/', RedirectView.as_view(url='/'),
+         name='go-to-homepage'),
     url(r'^contact/$', TemplateView.as_view(
         template_name="main/contact.html")),
     url(r'^about/$', TemplateView.as_view(template_name="main/about.html")),
