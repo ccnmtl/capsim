@@ -5,7 +5,7 @@ from capsim.sim.models import (
     Parameter)
 
 
-class UserFactory(factory.DjangoModelFactory):
+class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
@@ -13,14 +13,14 @@ class UserFactory(factory.DjangoModelFactory):
     is_staff = True
 
 
-class RunRecordFactory(factory.DjangoModelFactory):
+class RunRecordFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = RunRecord
 
     user = factory.SubFactory(UserFactory)
 
 
-class ExperimentFactory(factory.DjangoModelFactory):
+class ExperimentFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Experiment
 
@@ -36,7 +36,7 @@ class ExperimentFactory(factory.DjangoModelFactory):
     trials = 1
 
 
-class ExpRunFactory(factory.DjangoModelFactory):
+class ExpRunFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ExpRun
 
@@ -44,7 +44,7 @@ class ExpRunFactory(factory.DjangoModelFactory):
     run = factory.SubFactory(RunRecordFactory)
 
 
-class InterventionFactory(factory.DjangoModelFactory):
+class InterventionFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Intervention
 
@@ -52,7 +52,7 @@ class InterventionFactory(factory.DjangoModelFactory):
     slug = factory.Sequence(lambda n: "intervention-r%03d" % n)
 
 
-class InterventionLevelFactory(factory.DjangoModelFactory):
+class InterventionLevelFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = InterventionLevel
 
@@ -61,7 +61,7 @@ class InterventionLevelFactory(factory.DjangoModelFactory):
     cost = 200
 
 
-class ParameterFactory(factory.DjangoModelFactory):
+class ParameterFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Parameter
 
