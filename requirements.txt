@@ -24,7 +24,7 @@ MarkupSafe==1.1.1
 
 Jinja2==2.11.2
 
-ipdb==0.13.3
+ipdb==0.13.4
 extras==1.0.0
 python-mimeparse==1.6.0
 unittest2==1.1.0
