@@ -128,7 +128,7 @@ subprocess32==3.5.4
 
 matplotlib==3.3.2
 
-pandas==1.1.3
+pandas==1.1.4
 
 ccnmtlsettings==1.9.0
 
