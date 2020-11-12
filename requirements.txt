@@ -126,7 +126,7 @@ django-smtp-ssl==1.0
 
 subprocess32==3.5.4
 
-matplotlib==3.3.2
+matplotlib==3.3.3
 
 pandas==1.1.4
 
