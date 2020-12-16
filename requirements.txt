@@ -48,7 +48,7 @@ chardet==4.0.0
 idna==2.10
 
 urllib3==1.26.2  # sentry-sdk
-requests==2.25.0
+requests==2.25.1
 
 logilab-common==1.8.0
 astroid==2.4.2
