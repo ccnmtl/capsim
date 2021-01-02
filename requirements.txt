@@ -66,7 +66,7 @@ networkx==2.5
 ldap3==2.8.1
 olefile==0.46
 
-Pillow==8.0.1
+Pillow==8.1.0
 
 mock==4.0.3
 anyjson==0.3.3
