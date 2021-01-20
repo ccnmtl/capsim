@@ -1,12 +1,11 @@
-[![Build Status](https://travis-ci.org/ccnmtl/capsim.svg?branch=master)](https://travis-ci.org/ccnmtl/capsim)
+[![Actions Status](https://github.com/ccnmtl/capsim/workflows/build-and-test/badge.svg)](https://github.com/ccnmtl/capsim/actions)
 
 ## Public Health Capstone Simulation (Python Version)
 
 ### requirements
 
-* Python 2.7
-* PostgreSQL 9.1+
-* developed on Ubuntu 12.04. may run on other platforms.
+* Python 3.6
+* Postgres (latest)
 
 ### install
 
