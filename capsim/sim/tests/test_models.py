@@ -86,11 +86,8 @@ class ExperimentTest(TestCase):
     def test_empty_heatmap(self):
         er = ExpRunFactory()
         e = er.experiment
-        try:
-            e.heatmap()
-        except KeyError:
-            # expected with no data
-            pass
+        heatmap = e.heatmap()
+        self.assertFalse(heatmap['data'])
 
 
 class TestIntervention(TestCase):

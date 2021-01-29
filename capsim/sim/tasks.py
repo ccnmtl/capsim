@@ -1,10 +1,10 @@
-from celery.decorators import task
+from celery import shared_task
 from django_statsd.clients import statsd
 from django.utils.encoding import smart_text
-from .models import Experiment, ExpRun, RunRecord, RunOutputRecord
+from capsim.sim.models import Experiment, ExpRun, RunRecord, RunOutputRecord
 
 
-@task
+@shared_task
 def run_experiment(experiment_id):
     statsd.incr("run_experiment")
     print("running experiment %d" % experiment_id)
@@ -12,7 +12,7 @@ def run_experiment(experiment_id):
     e.populate(callback=process_run.delay)
 
 
-@task
+@shared_task
 def generate_full_csv(experiment_id):
     statsd.incr("generate_full_csv")
     print("generating full csv")
@@ -20,7 +20,7 @@ def generate_full_csv(experiment_id):
     e.write_csv()
 
 
-@task
+@shared_task
 def process_run(run_id, exprun_id):
     statsd.incr("process_run")
     print("process_run %d, %d" % (run_id, exprun_id))

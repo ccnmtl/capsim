@@ -8,5 +8,8 @@ jobs:
           python-version: [3.6]
     steps:
       - uses: actions/checkout@v2
-      - name: Build with Makefile
-        run: make
+      - uses: nijel/rabbitmq-action@v1.0.0
+      - name: Run flake8
+        run: make flake8
+      - name: Run unit tests
+        run: make test
