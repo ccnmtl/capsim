@@ -1,6 +1,5 @@
 # Django settings for capsim project.
 import os.path
-import djcelery
 import sys
 from ccnmtlsettings.shared import common
 
@@ -16,11 +15,8 @@ PROJECT_APPS = [
 
 USE_TZ = True
 
-djcelery.setup_loader()
-
 if 'test' in sys.argv or 'jenkins' in sys.argv:
-    CELERY_ALWAYS_EAGER = True
-    BROKER_BACKEND = 'memory'
+    task_always_eager = True
 
 
 INSTALLED_APPS += [  # noqa
@@ -33,7 +29,6 @@ INSTALLED_APPS += [  # noqa
     'quizblock',
     'capsim.main',
     'capsim.sim',
-    'djcelery',
     'sorl.thumbnail',
     'infranil',
 ]
@@ -46,8 +41,8 @@ PAGEBLOCKS = ['pageblocks.TextBlock',
               'quizblock.Quiz',
               ]
 
-BROKER_URL = "amqp://localhost:5672//capsim"
-CELERYD_CONCURRENCY = 4
+broker_url = "amqp://localhost:5672//capsim"
+worker_concurrency = 4
 
 IPYTHON_ARGUMENTS = [
     '--pylab',

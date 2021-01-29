@@ -1,10 +1,15 @@
+import threading
 from django.contrib.auth.models import User
-from django.test import TestCase
+from django.db import connections
+from django.test import TestCase, TransactionTestCase
 from django.test.client import Client
 from capsim.sim.models import (
-    RunRecord, RunOutputRecord, Intervention, Parameter)
+    RunRecord, RunOutputRecord, Intervention, Parameter
+)
 from capsim.sim.logic import Run
 from waffle.models import Flag
+
+from capsim.sim.celery import app
 from .factories import ExpRunFactory
 
 
@@ -97,7 +102,26 @@ class BasicViewTest(TestCase):
         self.assertContains(response, "agents_mass")
 
 
-class ExperimentViewTest(TestCase):
+class ExperimentViewTest(TransactionTestCase):
+    """
+    Celery-enabled test class based on:
+        https://stackoverflow.com/a/43648921/173630
+    """
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        app.control.purge()
+        cls._worker = app.Worker(app=app, pool='solo', concurrency=1)
+        connections.close_all()
+        cls._thread = threading.Thread(target=cls._worker.start)
+        cls._thread.daemon = True
+        cls._thread.start()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls._worker.stop()
+        super().tearDownClass()
+
     def setUp(self):
         self.c = Client()
         self.u = User.objects.create(username="testuser")
