@@ -2,9 +2,11 @@ from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
 from capsim.sim.models import (
-    RunRecord, RunOutputRecord, Intervention, Parameter)
+    RunRecord, RunOutputRecord, Intervention, Parameter
+)
 from capsim.sim.logic import Run
 from waffle.models import Flag
+
 from .factories import ExpRunFactory
 
 
@@ -99,6 +101,7 @@ class BasicViewTest(TestCase):
 
 class ExperimentViewTest(TestCase):
     def setUp(self):
+        super().setUp()
         self.c = Client()
         self.u = User.objects.create(username="testuser")
         self.u.set_password("test")

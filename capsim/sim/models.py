@@ -198,11 +198,27 @@ class Experiment(models.Model):
 
     def heatmap(self):
         data = []
+        empty_map = {
+            'data': [],
+            'min': 0,
+            'max': 0
+        }
+
         for er in self.exprun_set.all():
-            data.append(dict(ind=er.independent_value, dep=er.dependent_value,
-                             trial=er.trial, mass=er.mass))
+            data.append(dict(
+                ind=er.independent_value,
+                dep=er.dependent_value,
+                trial=er.trial, mass=er.mass))
+
+        if not data:
+            return empty_map
+
         df = pd.DataFrame(data)
         hdict = df.groupby(['ind', 'dep'])['mass'].mean().to_dict()
+
+        if not hdict:
+            return empty_map
+
         # since floats make bad dict keys, we force them to
         # string representations. This is reliable but arbitrarily
         # limits us to 4 decimal points of precision. Not perfect,
