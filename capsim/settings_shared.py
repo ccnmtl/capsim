@@ -17,11 +17,15 @@ USE_TZ = True
 
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_CACHE_BACKEND = 'django-cache'
-broker_url = "amqp://localhost:5672//capsim"
-worker_concurrency = 4
+CELERY_BROKER_URL = "amqp://localhost:5672//capsim"
+CELERY_WORKER_CONCURRENCY = 4
 
 if 'test' in sys.argv or 'jenkins' in sys.argv:
-    broker_url = 'memory://localhost/'
+    from celery.contrib.testing.app import DEFAULT_TEST_CONFIG
+
+    CELERY_BROKER_URL = DEFAULT_TEST_CONFIG.get('broker_url')
+    CELERY_RESULT_BACKEND = DEFAULT_TEST_CONFIG.get('result_backend')
+    CELERY_BROKER_HEARTBEAT = DEFAULT_TEST_CONFIG.get('broker_heartbeat')
 
 
 INSTALLED_APPS += [  # noqa
