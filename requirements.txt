@@ -80,7 +80,7 @@ billiard==3.6.3.0
 django-celery-results==2.0.1
 celery>=4.4.7,<5.0.0
 sqlparse==0.4.1
-decorator==4.4.2
+decorator==5.0.0
 s3transfer==0.3.6
 jmespath==0.10.0
 
