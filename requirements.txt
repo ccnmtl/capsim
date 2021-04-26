@@ -53,7 +53,7 @@ requests==2.25.1
 logilab-common==1.8.1
 astroid==2.5.3
 editdistance==0.5.3
-pylint==2.7.4
+pylint==2.8.1
 six==1.15.0
 
 numpy<1.21.0
