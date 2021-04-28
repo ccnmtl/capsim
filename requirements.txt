@@ -78,7 +78,7 @@ amqplib==1.0.2
 kombu>=4.6.11,<5.0.0
 billiard==3.6.4.0
 django-celery-results==2.0.1
-celery>=4.4.7,<5.0.0
+celery>=4.4.7,<6.0.0
 sqlparse==0.4.1
 decorator==5.0.7
 s3transfer==0.4.2
