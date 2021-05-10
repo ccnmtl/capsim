@@ -12,7 +12,7 @@ configparser==5.0.2
 importlib-metadata==4.0.1  # for flake8
 typing_extensions==3.10.0.0
 zipp==3.4.1  # for flake8
-flake8==3.9.1
+flake8==3.9.2
 pyparsing==2.4.7
 singledispatch==3.6.1
 backports-abc==0.5
