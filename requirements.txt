@@ -21,7 +21,7 @@ cssselect==1.1.0
 lxml==4.6.3
 sure==1.4.11
 pyzmq==22.0.3
-MarkupSafe==1.1.1
+MarkupSafe==2.0.0
 
 Jinja2==2.11.3
 
