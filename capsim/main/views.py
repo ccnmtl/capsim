@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.base import View
 from pagetree.generic.views import EditView
 from pagetree.generic.views import InstructorView
@@ -19,6 +19,12 @@ class LoggedInMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LoggedInMixin, self).dispatch(*args, **kwargs)
+
+
+class LoggedInStaffMixin(object):
+    @method_decorator(user_passes_test(lambda u: u.is_staff))
+    def dispatch(self, *args, **kwargs):
+        return super(LoggedInStaffMixin, self).dispatch(*args, **kwargs)
 
 
 def apply_skews(request, skew_params):
@@ -97,11 +103,11 @@ class ToggleFlagView(LoggedInMixin, View):
         return HttpResponseRedirect("/run/new/")
 
 
-class EditPage(LoggedInMixin, EditView):
+class EditPage(LoggedInStaffMixin, EditView):
     hierarchy_name = "main"
     hierarchy_base = "/pages/"
 
 
-class InstructorPage(LoggedInMixin, InstructorView):
+class InstructorPage(LoggedInStaffMixin, InstructorView):
     hierarchy_name = "main"
     hierarchy_base = "/pages/"
