@@ -9,7 +9,7 @@ mccabe==0.6.1
 pyflakes==2.3.1
 pycodestyle==2.7.0
 configparser==5.0.2
-importlib-metadata==4.3.0  # for flake8
+importlib-metadata==4.3.1  # for flake8
 typing_extensions==3.10.0.0
 zipp==3.4.1  # for flake8
 flake8==3.9.2
@@ -42,7 +42,7 @@ asn1crypto==1.4.0
 cryptography==3.4.7
 pyOpenSSL==20.0.1
 ndg-httpsclient==0.5.1
-certifi==2020.12.5  # sentry-sdk
+certifi==2021.5.30  # sentry-sdk
 
 chardet==4.0.0
 idna==3.1
