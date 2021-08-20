@@ -14,7 +14,7 @@ typing_extensions==3.10.0.0
 zipp==3.5.0  # for flake8
 flake8==3.9.2
 pyparsing==2.4.7
-singledispatch==3.6.2
+singledispatch==3.7.0
 backports-abc==0.5
 tornado==6.1
 cssselect==1.1.0
