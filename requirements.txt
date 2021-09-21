@@ -78,7 +78,7 @@ kombu>=4.6.11,<5.0.0
 billiard==3.6.4.0
 django-celery-results==2.2.0
 celery>=4.4.7,<5.0.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 decorator==5.1.0
 s3transfer==0.5.0
 jmespath==0.10.0
