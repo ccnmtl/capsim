@@ -33,6 +33,7 @@ INSTALLED_APPS += [  # noqa
     'bootstrap3',
     'bootstrapform',
     'django_extensions',
+    'django_cas_ng',
     'pagetree',
     'pageblocks',
     'quizblock',
@@ -41,6 +42,17 @@ INSTALLED_APPS += [  # noqa
     'sorl.thumbnail',
     'infranil',
     'django_celery_results',
+]
+
+INSTALLED_APPS.remove('djangowind') # noqa
+
+MIDDLEWARE += [  # noqa
+    'django_cas_ng.middleware.CASMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'django_cas_ng.backends.CASBackend'
 ]
 
 PAGEBLOCKS = ['pageblocks.TextBlock',
@@ -110,3 +122,32 @@ INTERVENTION_SKEWS = {
     ('intervention_food_social_influence', 'high'): dict(mass=-4.),
     ('intervention_food_social_influence', 'medium'): dict(mass=-2.),
 }
+
+CAS_SERVER_URL = 'https://cas.columbia.edu/cas/'
+CAS_VERSION = '3'
+CAS_ADMIN_REDIRECT = False
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(base, "templates"),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+                'stagingcontext.staging_processor',
+                'gacontext.ga_processor'
+            ],
+        },
+    },
+]

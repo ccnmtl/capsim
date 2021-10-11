@@ -1,6 +1,3 @@
-import capsim.main.views
-from capsim.sim.models import RunRecord, Experiment, Parameter
-import capsim.sim.views
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
@@ -13,18 +10,23 @@ import django.views.static
 from infranil.views import InfranilView
 from pagetree.generic.views import PageView
 
+import capsim.main.views
+from capsim.sim.models import RunRecord, Experiment, Parameter
+import capsim.sim.views
+from django_cas_ng import views as cas_views
+
 
 admin.autodiscover()
 
-auth_urls = url(r'^accounts/', include('django.contrib.auth.urls'))
-if hasattr(settings, 'CAS_BASE'):
-    auth_urls = url(r'^accounts/', include('djangowind.urls'))
-
 urlpatterns = [
-    auth_urls,
     url(r'^$', TemplateView.as_view(template_name="main/home.html")),
     path('accounts/profile/', RedirectView.as_view(url='/'),
          name='go-to-homepage'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    path('cas/login', cas_views.LoginView.as_view(),
+         name='cas_ng_login'),
+    path('cas/logout', cas_views.LogoutView.as_view(),
+         name='cas_ng_logout'),
     url(r'^contact/$', TemplateView.as_view(
         template_name="main/contact.html")),
     url(r'^about/$', TemplateView.as_view(template_name="main/about.html")),
