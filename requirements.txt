@@ -96,7 +96,7 @@ ipaddress==1.0.23
 django-bootstrap3==15.0.0
 requirements/src/sorl-3.2ctl-py2.py3-none-any.whl
 
-python-cas==1.5.0
+python-cas==1.6.0
 requirements/src/django_cas_ng-4.2.2ctl-py2.py3-none-any.whl
 
 django-appconf==1.0.5
