@@ -92,7 +92,7 @@
         {% block topnavbarrightitems %}{% endblock %}
         {% block usernav %}
           {% if request.user.is_anonymous %}
-          <li><a href="#" data-toggle="modal" data-target="#myModal" title="Log in to the system.">Sign In</a></li>
+          <li><a href="/accounts/login" title="Log in to the system.">Sign In</a></li>
           {% else %}
         <li class="navbar-text">
         <div class="btn-group">
@@ -137,98 +137,11 @@
         </nav>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-         <div class="modal-header">
-           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-           <h4 class="modal-title" id="myModalLabel">Sign In</h4>
-         </div>
-         <div class="modal-body">
-
-           <p>Select an account.</p>
-
-    {% block loginbox %}
-    {% if request.user.is_anonymous %}
-
-
-         <form method="get" action="{{ CAS_BASE }}cas/login">
-            <input type="hidden" name="destination" value="https://{{ request.get_host }}/accounts/caslogin/?next={{next}}" />
-            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Columbia University Network ID (UNI)" />
-         </form>
-
-
-            <p style="text-align: center;">or</p>
-
-
-           {% if login_form.errors %}
-              <p class="errornote">
-                 <span>
-                    <b>Oops!</b> Invalid username or password.
-                 </span>
-                 Please try again. Note that both username and password are case-sensitive.
-              </p>
-           {% endif %}
-
-              <form id="login-local" name="login_local" method="post" action="/accounts/login/" class="form-horizontal" role="form">
-                 {% csrf_token %}
-                 <div class="login-local-form" {% if not login_form.errors %}style="display: none"{% endif %}>
-
-                 <h3>Guest Account</h3>
-
-                    <div class="form-group">
-                    <label for="id_username" class="col-sm-4 control-label">User Name</label>
-                    <div class="col-sm-8">
-                    {{ login_form.username }}
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <label for="id_password" class="col-sm-4 control-label">Password</label>
-                    <div class="col-sm-8">
-                    {{ login_form.password }}
-                    </div>
-                    </div>
-
-                    <div class="form-group">
-                    <div class="col-sm-offset-4 col-sm-8">
-                    <input class="btn btn-default login-local-form" type="submit" value="Log In" {% if not login_form.errors %}style="display: none;"{% endif %} />                        
-                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                    </div>
-                    </div>
-
-                 </div>
-
-                <input class="btn btn-default btn-lg btn-block" type="button" value="Guest Account" {% if login_form.errors %}style="display: none"{% endif %}
-                    onclick="jQuery('.login-local-form').show(); jQuery(this).hide(); return false;"/>
-
-              </form>
-
-            {% comment %}
-            Do we want to allow non-CU self registration?
-            Are we going to have non-CU accounts at all?
-            <p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
-            {% endcomment %}
-
-
-    {% endif %}
-    {% endblock %}
-
-
-         </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-
     {% block pagetitle %}{% endblock %}
     {% block content %}{% endblock %}
     {% block content-nav %}{% endblock %}
 
     {% block sidenav %}{% endblock %}
-
-
 </div>
 
 {% block footer %}
