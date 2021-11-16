@@ -1,6 +1,6 @@
 Django>=2.2.13,<3
 httplib2==0.20.2
-Markdown==3.3.4
+Markdown==3.3.5
 psycopg2==2.8.6
 versiontools==1.9.1
 statsd==3.3.0
@@ -13,7 +13,7 @@ importlib-metadata==4.8.2  # for flake8
 typing_extensions==3.10.0.2
 zipp==3.6.0  # for flake8
 flake8==4.0.1
-pyparsing==3.0.1
+pyparsing==3.0.6
 singledispatch==3.7.0
 backports-abc==0.5
 tornado==6.1
@@ -23,7 +23,7 @@ sure==2.0.0
 pyzmq==22.3.0
 MarkupSafe==2.0.1
 
-Jinja2==3.0.2
+Jinja2==3.0.3
 
 ipdb==0.13.9
 extras==1.0.0
