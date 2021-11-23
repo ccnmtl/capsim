@@ -36,7 +36,7 @@ python-subunit==1.4.0
 webencodings==0.5.1
 coverage==6.1.2
 pyasn1==0.4.8
-pycparser==2.20
+pycparser==2.21
 cffi==1.15.0
 asn1crypto==1.4.0
 cryptography==36.0.0
