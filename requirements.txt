@@ -13,7 +13,7 @@ importlib-metadata<4.11 # for flake8
 typing_extensions==4.0.1
 zipp==3.6.0  # for flake8
 flake8==4.0.1
-pyparsing==3.0.6
+pyparsing==3.0.7
 singledispatch==3.7.0
 backports-abc==0.5
 tornado==6.1
