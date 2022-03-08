@@ -9,7 +9,7 @@ mccabe==0.7.0
 pyflakes==2.4.0
 pycodestyle==2.8.0
 configparser==5.2.0
-importlib-metadata<4.10 # for flake8
+importlib-metadata<4.12 # for flake8
 typing_extensions==4.1.1
 zipp==3.6.0  # for flake8
 flake8==4.0.1
@@ -66,7 +66,7 @@ networkx<2.8 # no longer supports python 3.6
 ldap3==2.9.1
 olefile==0.46
 
-Pillow==8.4.0
+Pillow==9.0.1
 
 mock==4.0.3
 
