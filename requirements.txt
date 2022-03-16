@@ -38,7 +38,7 @@ coverage==6.2
 pyasn1==0.4.8
 pycparser==2.21
 cffi==1.15.0
-asn1crypto==1.5.0
+asn1crypto==1.5.1
 cryptography==36.0.1
 pyOpenSSL==22.0.0
 ndg-httpsclient==0.5.1
