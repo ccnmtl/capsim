@@ -54,6 +54,7 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'django_cas_ng.backends.CASBackend'
 ]
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 PAGEBLOCKS = ['pageblocks.TextBlock',
               'pageblocks.HTMLBlock',
