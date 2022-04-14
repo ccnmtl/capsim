@@ -1,4 +1,4 @@
-Django==3.2.12
+Django==3.2.13
 httplib2==0.20.4
 Markdown==3.3.6
 psycopg2<2.9
