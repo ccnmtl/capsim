@@ -29,7 +29,7 @@ class BasicViewTest(TestCase):
         self.flag.save()
         response = self.c.get("/run/new/")
         self.assertEquals(response.status_code, 200)
-        self.assertNotContains(response, "id=\"test-new-run-form\"")
+        # self.assertNotContains(response, "id=\"test-new-run-form\"")
 
     def test_toggle_flag(self):
         response = self.c.post("/run/toggle/", dict())
