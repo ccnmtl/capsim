@@ -1,11 +1,13 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 from django.test.client import Client
+from waffle.models import Flag
+from waffle.testutils import override_flag
+
+from capsim.sim.logic import Run
 from capsim.sim.models import (
     RunRecord, RunOutputRecord, Intervention, Parameter
 )
-from capsim.sim.logic import Run
-from waffle.models import Flag
 
 from .factories import ExpRunFactory
 
@@ -25,11 +27,10 @@ class BasicViewTest(TestCase):
         self.assertContains(response, "id=\"test-new-run-form\"")
 
     def test_run_form_disabled(self):
-        self.flag.everyone = False
-        self.flag.save()
-        response = self.c.get("/run/new/")
-        self.assertEquals(response.status_code, 200)
-        # self.assertNotContains(response, "id=\"test-new-run-form\"")
+        with override_flag('simulation', active=False):
+            response = self.c.get("/run/new/")
+            self.assertEquals(response.status_code, 200)
+            self.assertNotContains(response, "id=\"test-new-run-form\"")
 
     def test_toggle_flag(self):
         response = self.c.post("/run/toggle/", dict())
