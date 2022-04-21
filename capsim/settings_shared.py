@@ -45,6 +45,7 @@ INSTALLED_APPS += [  # noqa
 ]
 
 INSTALLED_APPS.remove('djangowind') # noqa
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE += [  # noqa
     'django_cas_ng.middleware.CASMiddleware',
