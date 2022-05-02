@@ -141,4 +141,4 @@ stevedore>=1.20.0 # Apache-2.0
 bandit==1.7.1
 
 entrypoints==0.4
-asgiref==3.5.0
+asgiref==3.5.1
