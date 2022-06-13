@@ -119,7 +119,7 @@ django-pageblocks<=1.2.0
 django-quizblock==1.2.8
 django-markwhat==1.6.2
 text-unidecode==1.3
-Faker==13.12.1
+Faker==13.13.0
 factory_boy==3.2.1
 gunicorn==20.1.0
 django-infranil==1.1.0
