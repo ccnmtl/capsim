@@ -16,7 +16,7 @@ flake8==4.0.1
 pyparsing==3.0.9
 singledispatch==3.7.0
 backports-abc==0.5
-tornado==6.1
+tornado==6.2
 cssselect==1.1.0
 lxml==4.9.1
 sure==2.0.0
@@ -119,7 +119,7 @@ django-pageblocks<=1.2.0
 django-quizblock==1.2.8
 django-markwhat==1.6.2
 text-unidecode==1.3
-Faker==13.14.0
+Faker==13.15.0
 factory_boy==3.2.1
 gunicorn==20.1.0
 django-infranil==1.1.0
