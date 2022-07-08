@@ -29,7 +29,7 @@ ipdb==0.13.9
 extras==1.0.0
 python-mimeparse==1.6.0
 unittest2==1.1.0
-fixtures==4.0.0
+fixtures==4.0.1
 testtools==2.5.0
 testscenarios==0.5.0
 python-subunit==1.4.0
@@ -119,7 +119,7 @@ django-pageblocks<=1.2.0
 django-quizblock==1.2.8
 django-markwhat==1.6.2
 text-unidecode==1.3
-Faker==13.14.0
+Faker==13.15.0
 factory_boy==3.2.1
 gunicorn==20.1.0
 django-infranil==1.1.0
