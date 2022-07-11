@@ -39,7 +39,7 @@ pyasn1==0.4.8
 pycparser==2.21
 cffi==1.15.0
 asn1crypto==1.5.1
-cryptography==37.0.3
+cryptography==37.0.4
 pyOpenSSL==22.0.0
 ndg-httpsclient==0.5.1
 certifi==2022.6.15  # sentry-sdk
