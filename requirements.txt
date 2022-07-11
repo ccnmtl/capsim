@@ -37,7 +37,7 @@ webencodings==0.5.1
 coverage==6.4.1
 pyasn1==0.4.8
 pycparser==2.21
-cffi==1.15.0
+cffi==1.15.1
 asn1crypto==1.5.1
 cryptography==37.0.4
 pyOpenSSL==22.0.0
