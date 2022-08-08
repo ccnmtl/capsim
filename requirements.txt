@@ -34,7 +34,7 @@ testtools==2.5.0
 testscenarios==0.5.0
 python-subunit==1.4.0
 webencodings==0.5.1
-coverage==6.4.2
+coverage==6.4.3
 pyasn1==0.4.8
 pycparser==2.21
 cffi==1.15.1
