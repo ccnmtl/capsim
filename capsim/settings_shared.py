@@ -44,7 +44,7 @@ INSTALLED_APPS += [  # noqa
     'django_celery_results',
 ]
 
-INSTALLED_APPS.remove('djangowind') # noqa
+INSTALLED_APPS.remove('djangowind')  # noqa
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE += [  # noqa
@@ -127,6 +127,15 @@ INTERVENTION_SKEWS = {
 CAS_SERVER_URL = 'https://cas.columbia.edu/cas/'
 CAS_VERSION = '3'
 CAS_ADMIN_REDIRECT = False
+
+# Translate CUIT's CAS user attributes to the Django user model.
+# https://cuit.columbia.edu/content/cas-3-ticket-validation-response
+CAS_APPLY_ATTRIBUTES_TO_USER = True
+CAS_RENAME_ATTRIBUTES = {
+    'givenName': 'first_name',
+    'lastName': 'last_name',
+    'mail': 'email',
+}
 
 TEMPLATES = [
     {
